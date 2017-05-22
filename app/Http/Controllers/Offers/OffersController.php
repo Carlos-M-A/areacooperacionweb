@@ -142,7 +142,7 @@ class OffersController extends Controller
         $offer = Offer::find($id);
         $offer->open = false;
         $offer->save();
-        return view('offers/offerAsOrganization')->with('offer', $offer);
+        return redirect('/offers/'.$offer->id);
     }
     
     public function remove($id) {

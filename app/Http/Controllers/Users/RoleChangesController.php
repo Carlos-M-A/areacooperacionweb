@@ -42,7 +42,7 @@ class RoleChangesController extends Controller
     
     public function reject($id) {
         $roleChangeRequest = RoleChangeRequest::find($id);
-        $roleData = $this->roleData($id, $roleChangeRequest->currentRole);
+        $roleData = $this->roleData($id, $roleChangeRequest->newRole);
         
         $roleChangeRequest->delete();
         $roleData->delete();
