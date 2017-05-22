@@ -1,11 +1,18 @@
 @extends('offers.offer')
 
 @section('offer_options')
-<a href="{{route('openOffers')}}">Close</a>
+
+<form action="{{route('closeOffer', ['id'=> $offer->id])}}" method="POST">
+    {{ csrf_field() }}
+<a href="#" onclick="this.parentNode.submit()">Close</a>
+</form>
 <a href="{{route('showEditOffer', ['id'=> $offer->id])}}">Edit</a>
-<a href="{{route('openOffers')}}">Delete</a>
+<form action="{{route('removeOffer', ['id'=> $offer->id])}}" method="POST">
+    {{ csrf_field() }}
+<a href="#" onclick="this.parentNode.submit()">Remove</a>
+</form>
 @endsection
 
 @section('offer_proposals')
-aaaaaaaaa
+
 @endsection

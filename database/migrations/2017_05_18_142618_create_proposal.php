@@ -25,7 +25,6 @@ class CreateProposal extends Migration
             $table->string('totalHours', 200);
             $table->string('earliestStartDate', 200);
             $table->string('latestEndDate', 200);
-            $table->string('motivation', 200)->nullable();
             $table->tinyInteger('state');
             $table->dateTime('creationDate');
             

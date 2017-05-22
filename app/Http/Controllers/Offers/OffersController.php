@@ -7,7 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Offer;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-
+use App\Proposal;
+    
 class OffersController extends Controller
 {
     
@@ -16,6 +17,13 @@ class OffersController extends Controller
         $user = Auth::user();
         switch ($user->role){
             case 1:
+                $proposal = Proposal::where('offer_id', $offer->id);
+                $proposal->where('student_id', $user->id);
+                if(is_null($proposal)){
+                    return view('offers/offerAsStudent')->with('offer', $offer);
+                } else {
+                    return view('offers/offerAsStudent')->with('offer', $offer)->with('proposal', $proposal->get()->first());
+                }
                 break;
             case 2:
                 return view('offers/offer')->with('offer', $offer);
@@ -79,7 +87,6 @@ class OffersController extends Controller
     }
     
     private function requestToOffer($request, $offer) {
-        $offer->organization_id = Auth::user()->id;
         $offer->title = $request->title;
         $offer->scope = $request->scope;
         $offer->description = $request->description;
@@ -99,17 +106,19 @@ class OffersController extends Controller
     }
     
     public function createOffer(Request $request) {
+        
         $rules = $this->getOfferFieldsRules(1);
         $this->validate($request, $rules);
 
         $offer = $this->requestToOffer($request, new Offer());
+        $offer->organization_id = Auth::user()->id;
         $offer->managedByArea = false;
         $offer->open = true;
         $offer->placesOccupied = 0;
         $offer->createdDate = new \DateTime();
         
         $offer->save();
-        return view('offers/offerAsOrganization')->with('offer', $offer);
+        return redirect('/offers/'.$offer->id);
     }
     
     public function showEditOffer($id) {
@@ -129,4 +138,16 @@ class OffersController extends Controller
         return view('offers/offerAsOrganization')->with('offer', $offer);
     }
     
+    public function close($id) {
+        $offer = Offer::find($id);
+        $offer->open = false;
+        $offer->save();
+        return view('offers/offerAsOrganization')->with('offer', $offer);
+    }
+    
+    public function remove($id) {
+        $offer = Offer::find($id);
+        $offer->delete();
+        return redirect('/offers/openOffers');
+    }
 }

@@ -9,7 +9,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Offer data</div>
-                <div class="panel-body">
+                    <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -57,7 +57,7 @@
                                 </tr>
                                 <tr>
                                     <td>possibleStartDates</td>
-                                    <td>{{$offer->possibleStartDates}}</td>º
+                                    <td>{{$offer->possibleStartDates}}</td>
                                 <tr>
                                     <td>possibleEndDates</td>
                                     <td>{{$offer->possibleEndDates}}</td>
@@ -85,6 +85,14 @@
                                 <tr>
                                     <td>deadLine</td>
                                     <td>{{$offer->deadline}}</td>
+                                </tr>
+                                <tr>
+                                    <td>open</td>
+                                    <td>{{$offer->open}}</td>
+                                </tr>
+                                <tr>
+                                    <td>proposal amount</td>
+                                    <td>{{count($offer->proposals)}}</td>
                                 </tr>
                             </tbody>
                         </table>

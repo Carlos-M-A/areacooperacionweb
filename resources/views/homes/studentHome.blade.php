@@ -8,7 +8,9 @@
                 <div class="panel-heading">Opciones Estudiante</div>
 
                 <div class="panel-body">
-                    <button type="button" class="btn btn-primary btn-block">Button1</button>
+                    
+                    <p>
+                    <a href="{{ route('openOffers') }}"> Open offers</a>
                 </div>
             </div>
         </div>

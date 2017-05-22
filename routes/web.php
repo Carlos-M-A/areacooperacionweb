@@ -96,4 +96,9 @@ Route::get('/offers/closedOffers', 'Offers\OffersController@closedOffers')->name
 Route::get('/offers/{id}', 'Offers\OffersController@offer')->name('offer');
 Route::get('/offers/{id}/showEditOffer', 'Offers\OffersController@showEditOffer')->name('showEditOffer');
 Route::post('/offers/{id}/editOffer', 'Offers\OffersController@editOffer')->name('editOffer');
+Route::post('/offers/{id}/close', 'Offers\OffersController@close')->name('closeOffer');
+Route::post('/offers/{id}/remove', 'Offers\OffersController@remove')->name('removeOffer');
+
+Route::post('/offers/{id}/createProposal', 'Offers\ProposalsController@create')->name('createProposal');
+Route::post('/offers/{id}/removeProposal', 'Offers\ProposalsController@remove')->name('removeProposal');
 
