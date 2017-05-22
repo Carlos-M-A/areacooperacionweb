@@ -9,6 +9,29 @@ use Illuminate\Support\Facades\Auth;
 
 class OffersController extends Controller
 {
+    public function offer($id) {
+        $offer = Offer::find($id);
+        return view('offers/offer')->with('offer', $offer);
+    }
+    
+    public function openOffers() {
+        $offers = Offer::where('open', 1);
+        $user = Auth::user();
+        
+        if($user->rol == 4){
+            $offers->where('organization_id', $user->id);
+        }
+        if($user->rol == 5){
+            $offers->where('managedByArea', 1);
+        }
+        
+        return view('offers/offers')->with('offers', $offers->get());
+    }
+    public function closedOffers() {
+        $offers = Offer::where('open', 0);
+        return view('offers/offers')->with('offers', $offers->get());
+    }
+    
     public function showCreateOffer() {
         return view('offers/createOffer');
     }
@@ -35,7 +58,7 @@ class OffersController extends Controller
 
         $offer = new Offer();
         $offer->organization_id = Auth::user()->id;
-        $offer->managementByArea = false;
+        $offer->managedByArea = false;
         $offer->open = true;
         $offer->title = $request->title;
         $offer->scope = $request->scope;

@@ -61,7 +61,7 @@
                     <form action="{{route('showEditPassword')}}" method="get">
                         <button class="btn btn-primary" type="submit">change password</button>
                                 </form>
-                    @if($user->rol<4)
+                    @if($user->role<4)
                               <form action="{{route('showRequestRoleChange')}}" method="get">
                                   <button class="btn btn-primary" type="submit">change role</button>
                                 </form>

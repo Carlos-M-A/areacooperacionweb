@@ -13,11 +13,12 @@
                         Create offer</button>
                     <form id="createOffer_form" action="{{ route('showCreateOffer') }}" method="GET" style="display: none;">
                                         </form>
-                    <button type="button" class="btn btn-primary btn-block"
-                            onclick="event.preventDefault(); document.getElementById('myOffers_form').submit();">
-                        My offers</button>
-                    <form id="myOffers_form" action="{{ route('showCreateOffer') }}" method="GET" style="display: none;">
-                                        </form>
+                    <p>
+                    <a href="{{ route('openOffers') }}"> My offers</a>
+                    <p>
+                    <a href="{{ route('showCreateOffer') }}"> Old offers (closed)</a>
+                    <p>
+                    <a href="{{ route('showCreateOffer') }}"> Projects with us</a>
                 </div>
             </div>
         </div>

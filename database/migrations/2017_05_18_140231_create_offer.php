@@ -16,7 +16,7 @@ class CreateOffer extends Migration
         Schema::create('Offer', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('organization_id')->unsigned();
-            $table->boolean('managementByArea');
+            $table->boolean('managedByArea');
             $table->boolean('open');
             $table->string('title', 100);
             $table->string('scope', 100);
