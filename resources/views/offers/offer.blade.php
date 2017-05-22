@@ -86,16 +86,17 @@
                                     <td>deadLine</td>
                                     <td>{{$offer->deadline}}</td>
                                 </tr>
-                                
-                                @yield('offer_proposals')
-                                
-                                @yield('student_proposal')
-
                             </tbody>
                         </table>
                     </div>
                 </div>
+                <div class="panel-footer">
+                     @yield('offer_options')
+                </div>
             </div>
+            @yield('offer_proposals')
+                                
+            @yield('student_proposal')
         </div>
     </div>
 </div>

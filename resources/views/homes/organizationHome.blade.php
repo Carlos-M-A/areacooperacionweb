@@ -16,7 +16,7 @@
                     <p>
                     <a href="{{ route('openOffers') }}"> My offers</a>
                     <p>
-                    <a href="{{ route('showCreateOffer') }}"> Old offers (closed)</a>
+                    <a href="{{ route('closedOffers') }}"> Old offers (closed)</a>
                     <p>
                     <a href="{{ route('showCreateOffer') }}"> Projects with us</a>
                 </div>

@@ -6,11 +6,31 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Offer;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class OffersController extends Controller
 {
+    
     public function offer($id) {
         $offer = Offer::find($id);
+        $user = Auth::user();
+        switch ($user->role){
+            case 1:
+                break;
+            case 2:
+                return view('offers/offer')->with('offer', $offer);
+                break;
+            case 3:
+                return view('offers/offer')->with('offer', $offer);
+                break;
+            case 4:
+                return view('offers/offerAsOrganization')->with('offer', $offer);
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+        }
         return view('offers/offer')->with('offer', $offer);
     }
     
@@ -36,8 +56,11 @@ class OffersController extends Controller
         return view('offers/createOffer');
     }
     
-    public function createOffer(Request $request) {
-            $rules = [
+    private function getOfferFieldsRules($minPlaces) {
+        if($minPlaces<1){
+            $minPlaces = 1;
+        }
+        $rules = [
             'title' => 'required|string|max:100',
             'scope' => 'required|string|max:100',
             'description' => 'required|string|max:100',
@@ -47,19 +70,16 @@ class OffersController extends Controller
             'totalHours' => 'required|string|max:100',
             'possibleStartDates' => 'required|string|max:100',
             'possibleEndDates' => 'required|string|max:100',
-            'places' => 'required|integer|max:255',
+            'places' => 'required|integer|max:255|min:'.$minPlaces,
             'monetaryHelp' => 'required|string|max:100',
             'personInCharge' => 'required|string|max:100',
             'deadline' => 'required|date',
         ];
-            
-        $this->validate($request, $rules);
-
-
-        $offer = new Offer();
+        return $rules;
+    }
+    
+    private function requestToOffer($request, $offer) {
         $offer->organization_id = Auth::user()->id;
-        $offer->managedByArea = false;
-        $offer->open = true;
         $offer->title = $request->title;
         $offer->scope = $request->scope;
         $offer->description = $request->description;
@@ -70,14 +90,43 @@ class OffersController extends Controller
         $offer->possibleStartDates = $request->possibleStartDates;
         $offer->possibleEndDates = $request->possibleEndDates;
         $offer->places = $request->places;
-        $offer->placesOccupied = 0;
         $offer->monetaryHelp = $request->monetaryHelp;
         $offer->personInCharge = $request->personInCharge;
         $offer->deadline = $request->deadline;
-        $offer->createdDate = new \DateTime();
-        $offer->save();
-
-
-        return view('offers/createOffer');
+        
+        
+        return $offer;
     }
+    
+    public function createOffer(Request $request) {
+        $rules = $this->getOfferFieldsRules(1);
+        $this->validate($request, $rules);
+
+        $offer = $this->requestToOffer($request, new Offer());
+        $offer->managedByArea = false;
+        $offer->open = true;
+        $offer->placesOccupied = 0;
+        $offer->createdDate = new \DateTime();
+        
+        $offer->save();
+        return view('offers/offerAsOrganization')->with('offer', $offer);
+    }
+    
+    public function showEditOffer($id) {
+        $offer = Offer::find($id);
+        return view('offers/editOffer')->with('offer', $offer);
+    }
+    
+    public function editOffer($id, Request $request) {
+        $offer = Offer::find($id);
+        
+        $rules = $this->getOfferFieldsRules($offer->placesOccupied);
+        $this->validate($request, $rules);
+        
+        $offer = $this->requestToOffer($request, $offer);
+        
+        $offer->save();
+        return view('offers/offerAsOrganization')->with('offer', $offer);
+    }
+    
 }

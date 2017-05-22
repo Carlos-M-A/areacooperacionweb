@@ -94,4 +94,6 @@ Route::post('/offers/createOffer', 'Offers\OffersController@createOffer')->name(
 Route::get('/offers/openOffers', 'Offers\OffersController@openOffers')->name('openOffers');
 Route::get('/offers/closedOffers', 'Offers\OffersController@closedOffers')->name('closedOffers');
 Route::get('/offers/{id}', 'Offers\OffersController@offer')->name('offer');
+Route::get('/offers/{id}/showEditOffer', 'Offers\OffersController@showEditOffer')->name('showEditOffer');
+Route::post('/offers/{id}/editOffer', 'Offers\OffersController@editOffer')->name('editOffer');
 
