@@ -42,11 +42,36 @@ class ProposalsController extends Controller
     }
     
     public function remove($id) {
-        $offer = Offer::find($id);
-        $user = Auth::user();
-        
-        $proposal = Proposal::where('offer_id', $offer->id)->where('student_id', $user->id)->first();
+        $proposal = Proposal::find($id);
         $proposal->delete();
         return redirect('/offers/'.$offer->id);
     }
+    
+    public function approve($id) {
+        $proposal = Proposal::find($id);
+        $proposal->state = 2; //approved by organization
+        $proposal->save();
+        return redirect('/offers/'.$proposal->offer->id);
+    }
+    
+    public function reject($id) {
+        $proposal = Proposal::find($id);
+        $proposal->state = 3; //rejected by organization
+        $proposal->save();
+        return redirect('/offers/'.$proposal->offer->id);
+    }
+    public function accept($id) {
+        $proposal = Proposal::find($id);
+        $proposal->state = 4; //accepted by student
+        $proposal->save();
+        return redirect('/offers/'.$proposal->offer->id);
+    }
+    
+    public function cancel($id) {
+        $proposal = Proposal::find($id);
+        $proposal->state = 5; //cancelled by student
+        $proposal->save();
+        return redirect('/offers/'.$proposal->offer->id);
+    }
+    
 }

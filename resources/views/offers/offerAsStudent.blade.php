@@ -207,10 +207,13 @@
                         </table>
                     </div>
                     <div class="panel-footer">
-                        <form method="POST" action="{{route('removeProposal', ['id'=>$offer->id])}}">
-                            {{ csrf_field() }}
-                            <input class="btn-primary" type="submit" value="Cancel proposal"> 
-                        </form>
+                        <form>
+                                {{ csrf_field() }}
+                                <div class="btn-group">
+                                    <button class="btn btn-danger" type="submit" formmethod="POST" formaction="{{route('removeProposal', ['id'=> $proposal->id])}}">Remove</button>
+                                    <button class="btn btn-warning"  type="submit" formmethod="POST" formaction="{{route('cancelProposal', ['id'=> $proposal->id])}}">Cancel</button>
+                                </div>
+                            </form>
                     </div>
                 </div>
             </div>

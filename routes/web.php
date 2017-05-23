@@ -100,5 +100,9 @@ Route::post('/offers/{id}/close', 'Offers\OffersController@close')->name('closeO
 Route::post('/offers/{id}/remove', 'Offers\OffersController@remove')->name('removeOffer');
 
 Route::post('/offers/{id}/createProposal', 'Offers\ProposalsController@create')->name('createProposal');
-Route::post('/offers/{id}/removeProposal', 'Offers\ProposalsController@remove')->name('removeProposal');
+Route::post('/proposal/{id}/remove', 'Offers\ProposalsController@remove')->name('removeProposal');
+Route::post('/proposal/{id}/approve', 'Offers\ProposalsController@approve')->name('approveProposal');
+Route::post('/proposal/{id}/reject', 'Offers\ProposalsController@reject')->name('rejectProposal');
+Route::post('/proposal/{id}/accept', 'Offers\ProposalsController@accept')->name('acceptProposal');
+Route::post('/proposal/{id}/cancel', 'Offers\ProposalsController@cancel')->name('cancelProposal');
 

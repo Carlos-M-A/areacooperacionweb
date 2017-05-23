@@ -13,24 +13,26 @@ class Proposal extends Model
         return $this->belongsTo('App\Student', 'student_id', 'id');
     }
     
+    public function offer() {
+        return $this->belongsTo('App\Offer', 'offer_id', 'id');
+    }
+    
     /**
-     * Return the name of the branch of knowledge of this study
-     * @return string The full name of the branch
+     * Return the state of this proposal
+     * @return string The full name of the state
      */
-    public function getBranchName() {
+    public function getStateName() {
         switch ($this->branch){
             case 1:
-                return 'Arts and Humanities';
+                return 'Not evaluated';
             case 2:
-                return 'Sciences';
+                return 'Approved';
             case 3:
-                return 'Health sciences';
+                return 'Rejected';
             case 4:
-                return 'Social and legal sciences';
+                return 'Accepted by student';
             case 5:
-                return 'Engineering and architecture';
-            case 6:
-                return 'Other';
+                return 'Cancelled';
         }
     }
 

@@ -88,7 +88,7 @@
                         <form>
                                 {{ csrf_field() }}
                                 <div class="btn-group">
-                                    <button class="btn btn-danger"  type="submit" formmethod="GET" formaction="{{route('showEditOffer', ['id'=> $offer->id])}}">Reject</button>
+                                    <button class="btn btn-danger"  type="submit" formmethod="POST" formaction="{{route('rejectProposal', ['id'=> $proposal->id])}}">Reject</button>
                                 </div>
                             </form>
                     </div>
@@ -139,8 +139,8 @@
                             <form>
                                 {{ csrf_field() }}
                                 <div class="btn-group">
-                                    <button class="btn btn-success" type="submit" formmethod="GET" formaction="{{route('showEditOffer', ['id'=> $offer->id])}}">Approve</button>
-                                    <button class="btn btn-danger"  type="submit" formmethod="GET" formaction="{{route('showEditOffer', ['id'=> $offer->id])}}">Reject</button>
+                                    <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('approveProposal', ['id'=> $proposal->id])}}">Approve</button>
+                                    <button class="btn btn-danger"  type="submit" formmethod="POST" formaction="{{route('rejectProposal', ['id'=> $proposal->id])}}">Reject</button>
                                 </div>
                             </form>
                     </div>
@@ -184,7 +184,7 @@
                         <form>
                                 {{ csrf_field() }}
                                 <div class="btn-group">
-                                    <button class="btn btn-success" type="submit" formmethod="GET" formaction="{{route('showEditOffer', ['id'=> $offer->id])}}">Approve</button>
+                                    <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('approveProposal', ['id'=> $proposal->id])}}">Approve</button>
                                 </div>
                             </form>
                     </div>

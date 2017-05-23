@@ -17,12 +17,11 @@ class OffersController extends Controller
         $user = Auth::user();
         switch ($user->role){
             case 1:
-                $proposal = Proposal::where('offer_id', $offer->id);
-                $proposal->where('student_id', $user->id);
+                $proposal = Proposal::where('offer_id', $offer->id)->where('student_id', $user->id)->get()->first();
                 if(is_null($proposal)){
-                    return view('offers/offerAsStudent')->with('offer', $offer);
+                    return view('offers/offerAsStudent')->with('offer', $offer)->with('proposal');
                 } else {
-                    return view('offers/offerAsStudent')->with('offer', $offer)->with('proposal', $proposal->get()->first());
+                    return view('offers/offerAsStudent')->with('offer', $offer)->with('proposal', $proposal);
                 }
                 break;
             case 2:

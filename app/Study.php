@@ -14,21 +14,23 @@ class Study extends Model
     }
     
     /**
-     * Return the state of this proposal
-     * @return string The full name of the state
+     * Return the name of the branch of knowledge of this study
+     * @return string The full name of the branch
      */
     public function getBranchName() {
         switch ($this->branch){
             case 1:
-                return 'Not evaluated';
+                return 'Arts and Humanities';
             case 2:
-                return 'Approved';
+                return 'Sciences';
             case 3:
-                return 'Rejected';
+                return 'Health sciences';
             case 4:
-                return 'Accepted by student';
+                return 'Social and legal sciences';
             case 5:
-                return 'Cancelled';
+                return 'Engineering and architecture';
+            case 6:
+                return 'Other';
         }
     }
 }
