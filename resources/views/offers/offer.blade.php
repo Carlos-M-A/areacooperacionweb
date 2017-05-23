@@ -7,9 +7,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Offer data</div>
-                    <div class="panel-body">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapseOffer">{{$offer->title}}</a>
+                    </h4>
+                </div>
+                    <div id="collapseOffer" class="panel-collapse collapse">
                     <div class="table-responsive">
                         <table class="table">
                             <thead>

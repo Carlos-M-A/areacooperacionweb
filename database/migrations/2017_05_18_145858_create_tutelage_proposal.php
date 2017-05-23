@@ -21,7 +21,7 @@ class CreateTutelageProposal extends Migration
             $table->tinyInteger('type');
             $table->tinyInteger('state');
             $table->string('comment', 200);
-            //If the teacher wants to be contacted before He seem accepted
+            //If the teacher wants to be contacted before being accepted
             $table->boolean('wantToBeContacted');
             
             $table->foreign('teacher_id')->references('id')->on('Teacher')
