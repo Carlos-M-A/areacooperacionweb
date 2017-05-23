@@ -12,4 +12,8 @@ class Organization extends Model
     public function user() {
         return $this->belongsTo('App\User', 'id', 'id');
     }
+    
+    public function offers() {
+        return $this->hasMany('App\Offer', 'organization_id', 'id');
+    }
 }

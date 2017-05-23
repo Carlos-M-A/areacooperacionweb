@@ -8,15 +8,13 @@
                 <div class="panel-heading">Organization Options</div>
 
                 <div class="panel-body">
-                    <button type="button" class="btn btn-primary btn-block"
-                            onclick="event.preventDefault(); document.getElementById('createOffer_form').submit();">
-                        Create offer</button>
-                    <form id="createOffer_form" action="{{ route('showCreateOffer') }}" method="GET" style="display: none;">
-                                        </form>
+                    
                     <p>
-                    <a href="{{ route('openOffers') }}"> My offers</a>
+                    <a href="{{ route('showCreateOffer') }}"> Create offer</a>
                     <p>
-                    <a href="{{ route('closedOffers') }}"> Old offers (closed)</a>
+                    <a href="{{ route('openOffers') }}"> My open offers</a>
+                    <p>
+                    <a href="{{ route('closedOffers') }}"> My closed offers</a>
                     <p>
                     <a href="{{ route('showCreateOffer') }}"> Projects with us</a>
                 </div>

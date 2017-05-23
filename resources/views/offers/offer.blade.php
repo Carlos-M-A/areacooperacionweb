@@ -25,7 +25,7 @@
                             <tbody>
                                 <tr>
                                     <td>organization_id</td>
-                                    <td>{{$offer->organization_id}}</td>
+                                    <td><a href='{{route('organization', ['id' => $offer->organization_id])}}'>{{$offer->organization->user->name}}</a></td>
                                 </tr>
                                 <tr>
                                     <td>managedByArea</td>
@@ -64,7 +64,7 @@
                                     <td>{{$offer->possibleStartDates}}</td>
                                 <tr>
                                     <td>possibleEndDates</td>
-                                    <td>{{$offer->possibleEndDates}}</td>
+                                    <td>{{$offer->getAmountOfAcceptedProposals()}}</td>
                                 </tr>
                                 <tr>
                                     <td>places</td>
@@ -102,9 +102,9 @@
                         </table>
                     </div>
                 </div>
-                <div class="panel-footer">
+                
                      @yield('offer_options')
-                </div>
+                
             </div>
             @yield('offer_proposals')
                                 

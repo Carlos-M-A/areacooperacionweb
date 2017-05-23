@@ -44,7 +44,7 @@ class ProposalsController extends Controller
     public function remove($id) {
         $proposal = Proposal::find($id);
         $proposal->delete();
-        return redirect('/offers/'.$offer->id);
+        return redirect('/offers/'.$proposal->offer->id);
     }
     
     public function approve($id) {

@@ -8,7 +8,12 @@ use App\User;
 use App\Organization;
 
 class OrganizationsController extends Controller {
-
+    
+    public function organization($id) {
+        $organization = Organization::find($id);
+        return view('users/organization')->with('organization', $organization);
+    }
+    
     public function index() {
         return view('users/registerOrganization');
     }

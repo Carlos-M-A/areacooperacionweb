@@ -112,8 +112,8 @@ class OffersController extends Controller
         $offer = $this->requestToOffer($request, new Offer());
         $offer->organization_id = Auth::user()->id;
         $offer->managedByArea = false;
+        $offer->offerOfConvocatory = false;
         $offer->open = true;
-        $offer->placesOccupied = 0;
         $offer->createdDate = new \DateTime();
         
         $offer->save();

@@ -182,36 +182,43 @@
 
 @else
 
-<div class="panel panel-default">
-                <div class="panel-heading">Your proposal</div>
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>field</th>
-                                    <th>data</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Type</td>
-                                    <td>{{$proposal->type}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Description</td>
-                                    <td>{{$proposal->description}}</td>
-                                </tr>
-                                
-                            </tbody>
-                        </table>
+ <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapseProposal">Your proposal - {{$proposal->getStateName()}}</a>
+                            </h4>
+                        </div>
+                    <div id="collapseProposal" class="panel-collapse collapse">
+                    <ul class="list-group">
+                        <li class="list-group-item ">type: {{$proposal->type}}</li>
+                        <li class="list-group-item">description: {{$proposal->description}}</li>
+                        <li class="list-group-item">scheduleAvailable: {{$proposal->scheduleAvailable}}</li>
+                        <li class="list-group-item">totalHours: {{$proposal->totalHours}}</li>
+                        <li class="list-group-item">earliestStartDate: {{$proposal->earliestStartDate}}</li>
+                        <li class="list-group-item">latestEndDate: {{$proposal->latestEndDate}}</li>
+                        <li class="list-group-item">state: {{$proposal->state}}</li>
+                        <li class="list-group-item">creationDate: {{$proposal->creationDate}}</li>
+                        <li class="list-group-item">skills: {{$proposal->student->skills}}</li>
+                        <li class="list-group-item">areasOfInterest: {{$proposal->student->areasOfInterest}}</li>
+                        <li class="list-group-item">study: {{$proposal->student->study->name}}</li>
+                        <li class="list-group-item">urlCurriculum: {{$proposal->student->urlCurriculum}}</li>
+                        <li class="list-group-item">phone: {{$proposal->student->user->phone}}</li>
+                        <li class="list-group-item">email: {{$proposal->student->user->email}}</li>
+                    </ul>
                     </div>
                     <div class="panel-footer">
                         <form>
                                 {{ csrf_field() }}
                                 <div class="btn-group">
+                                    @if($proposal->state == 1)
                                     <button class="btn btn-danger" type="submit" formmethod="POST" formaction="{{route('removeProposal', ['id'=> $proposal->id])}}">Remove</button>
+                                    @endif
+                                    @if($proposal->state <= 2)
                                     <button class="btn btn-warning"  type="submit" formmethod="POST" formaction="{{route('cancelProposal', ['id'=> $proposal->id])}}">Cancel</button>
+                                    @endif
+                                    @if($proposal->state == 2)
+                                    <button class="btn btn-success"  type="submit" formmethod="POST" formaction="{{route('acceptProposal', ['id'=> $proposal->id])}}">Accept</button>
+                                    @endif
                                 </div>
                             </form>
                     </div>

@@ -22,7 +22,7 @@ class Proposal extends Model
      * @return string The full name of the state
      */
     public function getStateName() {
-        switch ($this->branch){
+        switch ($this->state){
             case 1:
                 return 'Not evaluated';
             case 2:

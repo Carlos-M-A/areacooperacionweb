@@ -17,6 +17,7 @@ class CreateOffer extends Migration
             $table->increments('id');
             $table->integer('organization_id')->unsigned();
             $table->boolean('managedByArea');
+            $table->boolean('offerOfConvocatory');
             $table->boolean('open');
             $table->string('title', 100);
             $table->string('scope', 100);
@@ -28,7 +29,6 @@ class CreateOffer extends Migration
             $table->string('possibleStartDates', 200);
             $table->string('possibleEndDates', 200);
             $table->integer('places')->unsigned();
-            $table->integer('placesOccupied')->unsigned();
             $table->string('monetaryHelp', 200);
             $table->string('personInCharge', 100);
             $table->dateTime('createdDate');

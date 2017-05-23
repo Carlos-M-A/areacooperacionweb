@@ -106,3 +106,4 @@ Route::post('/proposal/{id}/reject', 'Offers\ProposalsController@reject')->name(
 Route::post('/proposal/{id}/accept', 'Offers\ProposalsController@accept')->name('acceptProposal');
 Route::post('/proposal/{id}/cancel', 'Offers\ProposalsController@cancel')->name('cancelProposal');
 
+Route::get('/organizations/{id}', 'Users\OrganizationsController@organization')->name('organization');

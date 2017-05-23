@@ -1,6 +1,8 @@
 @extends('offers.offer')
 
 @section('offer_options')
+@if($offer->open)
+<div class="panel-footer">
 <div class="btn-group">
     <button class="btn btn-warning" onclick="event.preventDefault(); document.getElementById('close_form').submit();">Close</button>
     <button class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('edit_form').submit();">Edit</button>
@@ -14,7 +16,8 @@
 <form id="remove_form" action="{{route('removeOffer', ['id'=> $offer->id])}}" method="POST">
     {{ csrf_field() }}
     </form>
-
+</div>
+@endif
 @endsection
 
 @section('offer_proposals')
@@ -22,10 +25,10 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapseProjects">Projects</a>
+                                <a data-toggle="collapse" href="#collapseWinningProposals">Winning proposals</a>
                             </h4>
     </div>
-    <div id="collapseProjects" class="panel-collapse collapse">
+    <div id="collapseWinningProposals" class="panel-collapse collapse">
         
          @foreach($offer->proposals as $proposal)
             @if($proposal->state == 4)
@@ -84,6 +87,7 @@
                         <li class="list-group-item">creationDate: {{$proposal->creationDate}}</li>
                     </ul>
                     </div>
+                    @if($offer->open)
                     <div class="panel-footer">
                         <form>
                                 {{ csrf_field() }}
@@ -92,6 +96,7 @@
                                 </div>
                             </form>
                     </div>
+                    @endif
                     </div>
                 </div> 
             @endif
@@ -134,6 +139,7 @@
                         <li class="list-group-item">email: {{$proposal->student->user->email}}</li>
                     </ul>
                     </div>
+                    @if($offer->open)
                     <div class="panel-footer">
                         
                             <form>
@@ -144,6 +150,7 @@
                                 </div>
                             </form>
                     </div>
+                    @endif
                     </div>
                 </div> 
             @endif
@@ -180,6 +187,7 @@
                         <li class="list-group-item">creationDate: {{$proposal->creationDate}}</li>
                     </ul>
                     </div>
+                    @if($offer->open)
                     <div class="panel-footer">
                         <form>
                                 {{ csrf_field() }}
@@ -188,6 +196,7 @@
                                 </div>
                             </form>
                     </div>
+                    @endif
                     </div>
                 </div> 
             @endif
