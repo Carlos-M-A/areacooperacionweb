@@ -216,11 +216,35 @@
                                     @if($proposal->state <= 2)
                                     <button class="btn btn-warning"  type="submit" formmethod="POST" formaction="{{route('cancelProposal', ['id'=> $proposal->id])}}">Cancel</button>
                                     @endif
-                                    @if($proposal->state == 2)
-                                    <button class="btn btn-success"  type="submit" formmethod="POST" formaction="{{route('acceptProposal', ['id'=> $proposal->id])}}">Accept</button>
-                                    @endif
                                 </div>
                             </form>
+                        @if($proposal->state == 2)
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('acceptProposal', ['id'=> $proposal->id]) }}">
+                            {{ csrf_field() }}
+                            <div id="title_div" class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                            <label for="title" class="col-md-4 control-label">title</label>
+
+                            <div class="col-md-6">
+                                <input id="title" type="text" class="form-control" name="title" value="{{ old('title')?old('title') : $offer->title }}" autofocus>
+
+                                @if ($errors->has('title'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('title') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
+                            
+                         <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Accept and create project
+                                </button>
+                            </div>
+                        </div>
+                            
+                        </form>
+                        @endif
                     </div>
                 </div>
             </div>

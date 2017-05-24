@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Offer;
 use App\Proposal;
-use App\Project;
 use App\Http\Controllers\Projects\ProjectsController;
 
 use Illuminate\Support\Facades\Auth;
@@ -63,7 +62,11 @@ class ProposalsController extends Controller
         $proposal->save();
         return redirect('/offers/'.$proposal->offer->id);
     }
-    public function accept($id) {
+    public function accept($id, Request $request) {
+        $this->validate($request, [
+            'title' => 'required|string|max:100',
+        ]);
+        
         $proposal = Proposal::find($id);
         $offer = $proposal->offer;
         if(!$offer->open){
@@ -78,7 +81,7 @@ class ProposalsController extends Controller
         
         //The new project is created
         $projectController = new ProjectsController();
-        return $projectController->createProject($proposal);
+        return $projectController->createProject($proposal, $request->title);
     }
     
     public function cancel($id) {
