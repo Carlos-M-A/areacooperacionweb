@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Offer;
 use App\Proposal;
+use App\Project;
+use App\Http\Controllers\Projects\ProjectsController;
+
 use Illuminate\Support\Facades\Auth;
 
 class ProposalsController extends Controller
@@ -62,9 +65,20 @@ class ProposalsController extends Controller
     }
     public function accept($id) {
         $proposal = Proposal::find($id);
+        $offer = $proposal->offer;
+        if(!$offer->open){
+            return redirect('/offers/'.$offer->id);
+        }
         $proposal->state = 4; //accepted by student
         $proposal->save();
-        return redirect('/offers/'.$proposal->offer->id);
+        if($offer->getAmountOfAcceptedProposals()>=$offer->places){
+            $offer->open = false;
+            $offer->save();
+        }
+        
+        //The new project is created
+        $projectController = new ProjectsController();
+        return $projectController->createProject($proposal);
     }
     
     public function cancel($id) {
@@ -74,4 +88,68 @@ class ProposalsController extends Controller
         return redirect('/offers/'.$proposal->offer->id);
     }
     
+    /**
+     * Return the offers in that no proposal has been made by the student who
+     * call this function
+     */
+    public function newOffers() {
+        $offers = Offer::whereDoesntHave('proposals', function ($query) {
+            $user = Auth::user();
+            $query->where('student_id', $user->id);
+        })->where('open', true);
+        
+        return view('offers/offers')->with('offers', $offers->get());
+    }
+    
+    /**
+     * Return the offers in that exists a not evaluated proposal has been made
+     *  by the student who calls this function
+     */
+    public function notEvaluatedProposals() {
+        $offers = Offer::whereHas('proposals', function ($query) {
+            $user = Auth::user();
+            $query->where('student_id', $user->id)->where('state', 1);
+        });
+        
+        return view('offers/offers')->with('offers', $offers->get());
+    }
+    
+    /**
+     * Return the offers in that exists a approved proposal has been made
+     *  by the student who calls this function
+     */
+    public function approvedProposals() {
+        $offers = Offer::whereHas('proposals', function ($query) {
+            $user = Auth::user();
+            $query->where('student_id', $user->id)->where('state', 2);
+        });
+        
+        return view('offers/offers')->with('offers', $offers->get());
+    }
+    
+    /**
+     * Return the offers in that exists a rejected proposal has been made
+     *  by the student who calls this function
+     */
+    public function rejectedProposals() {
+        $offers = Offer::whereHas('proposals', function ($query) {
+            $user = Auth::user();
+            $query->where('student_id', $user->id)->where('state', 3);
+        });
+        
+        return view('offers/offers')->with('offers', $offers->get());
+    }
+    
+    /**
+     * Return the offers in that exists a cancelled proposal has been made
+     *  by the student who calls this function
+     */
+    public function cancelledProposals() {
+        $offers = Offer::whereHas('proposals', function ($query) {
+            $user = Auth::user();
+            $query->where('student_id', $user->id)->where('state', 5);
+        });
+        
+        return view('offers/offers')->with('offers', $offers->get());
+    }
 }

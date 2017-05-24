@@ -64,7 +64,7 @@
                                     <td>{{$offer->possibleStartDates}}</td>
                                 <tr>
                                     <td>possibleEndDates</td>
-                                    <td>{{$offer->getAmountOfAcceptedProposals()}}</td>
+                                    <td>{{$offer->possibleEndDates}}</td>
                                 </tr>
                                 <tr>
                                     <td>places</td>
@@ -72,7 +72,7 @@
                                 </tr>
                                 <tr>
                                     <td>placesOccupied</td>
-                                    <td>{{$offer->placesOccupied}}</td>
+                                    <td>{{$offer->getAmountOfAcceptedProposals()}}</td>
                                 </tr>
                                 <tr>
                                     <td>monetaryHelp</td>

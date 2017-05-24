@@ -17,17 +17,17 @@ class CreateProject extends Migration
             $table->increments('id');
             $table->integer('proposal_id')->unsigned()->nullable();
             $table->integer('offer_id')->unsigned()->nullable();
-            $table->integer('study_id')->unsigned();
+            $table->integer('study_id')->unsigned()->nullable();
             
             $table->string('title', 200);
             $table->string('scope', 200);
             $table->tinyInteger('type');
             $table->string('description', 500);
             $table->string('author', 200);
-            $table->string('tutor', 200);
-            $table->string('cotutors', 500);
-            $table->string('organization', 200);
-            $table->string('urlDocumentation', 200);
+            $table->string('tutor', 200)->nullable();
+            $table->string('cotutors', 500)->nullable();
+            $table->string('organization', 100);
+            $table->string('urlDocumentation', 200)->nullable();
             $table->smallInteger('year');
             $table->tinyInteger('state');
             

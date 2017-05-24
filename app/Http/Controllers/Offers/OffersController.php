@@ -54,6 +54,7 @@ class OffersController extends Controller
         
         return view('offers/offers')->with('offers', $offers->get());
     }
+    
     public function closedOffers() {
         $offers = Offer::where('open', 0);
         return view('offers/offers')->with('offers', $offers->get());
@@ -140,6 +141,7 @@ class OffersController extends Controller
     public function close($id) {
         $offer = Offer::find($id);
         $offer->open = false;
+        Proposal::where('offer_id', $offer->id)->where('state', '<=', 2)->update(['state' => 3]);
         $offer->save();
         return redirect('/offers/'.$offer->id);
     }

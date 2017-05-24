@@ -93,6 +93,12 @@ Route::get('/offers/createOffer', 'Offers\OffersController@showCreateOffer')->na
 Route::post('/offers/createOffer', 'Offers\OffersController@createOffer')->name('createOffer');
 Route::get('/offers/openOffers', 'Offers\OffersController@openOffers')->name('openOffers');
 Route::get('/offers/closedOffers', 'Offers\OffersController@closedOffers')->name('closedOffers');
+Route::get('/offers/newOffers', 'Offers\ProposalsController@newOffers')->name('newOffers');
+Route::get('/offers/notEvaluatedProposals', 'Offers\ProposalsController@notEvaluatedProposals')->name('notEvaluatedProposals');
+Route::get('/offers/approvedProposals', 'Offers\ProposalsController@approvedProposals')->name('approvedProposals');
+Route::get('/offers/rejectedProposals', 'Offers\ProposalsController@rejectedProposals')->name('rejectedProposals');
+Route::get('/offers/cancelledProposals', 'Offers\ProposalsController@cancelledProposals')->name('cancelledProposals');
+
 Route::get('/offers/{id}', 'Offers\OffersController@offer')->name('offer');
 Route::get('/offers/{id}/showEditOffer', 'Offers\OffersController@showEditOffer')->name('showEditOffer');
 Route::post('/offers/{id}/editOffer', 'Offers\OffersController@editOffer')->name('editOffer');
