@@ -12,4 +12,8 @@ class Project extends Model
     public function offer() {
         return $this->belongsTo('App\Offer', 'offer_id', 'id');
     }
+    
+    public function proposal() {
+        return $this->belongsTo('App\Proposal', 'proposal_id', 'id');
+    }
 }

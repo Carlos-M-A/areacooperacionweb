@@ -47,6 +47,26 @@
                                     <td>author</td>
                                     <td>{{$project->author}}</td>
                                 </tr>
+                                <tr>
+                                    <td>tutor</td>
+                                    <td>{{$project->tutor}}</td>
+                                </tr>
+                                <tr>
+                                    <td>secondaryTutors</td>
+                                    <td>{{$project->secondaryTutors}}</td>
+                                </tr>
+                                <tr>
+                                    <td>year</td>
+                                    <td>{{$project->year}}</td>
+                                </tr>
+                                <tr>
+                                    <td>state</td>
+                                    <td>{{$project->state}}</td>
+                                </tr>
+                                <tr>
+                                    <td>urlDocumentation</td>
+                                    <td>{{$project->urlDocumentation}}</td>
+                                </tr>
                                 
                             </tbody>
                         </table>
@@ -58,7 +78,7 @@
             </div>
             @yield('project_proposals')
                                 
-            @yield('student_proposal')
+            @yield('teacher_proposal')
         </div>
     </div>
 </div>

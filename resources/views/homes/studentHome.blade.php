@@ -19,6 +19,8 @@
                     <a href="{{ route('rejectedProposals') }}">Offers with rejected proposals</a>
                     <p>
                     <a href="{{ route('cancelledProposals') }}">Offers with cancelled proposals</a>
+                    <p>
+                    <a href="{{ route('myProjects')}}">My projects</a>
                 </div>
             </div>
         </div>

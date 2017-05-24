@@ -113,3 +113,9 @@ Route::post('/proposal/{id}/accept', 'Offers\ProposalsController@accept')->name(
 Route::post('/proposal/{id}/cancel', 'Offers\ProposalsController@cancel')->name('cancelProposal');
 
 Route::get('/organizations/{id}', 'Users\OrganizationsController@organization')->name('organization');
+
+// Projects management
+Route::get('/projects/myProjects', 'Projects\ProjectsController@myProjects')->name('myProjects');
+Route::get('/projects/{id}', 'Projects\ProjectsController@project')->name('project');
+Route::get('/projects/{id}/showEditProject', 'Projects\ProjectsController@showEditProject')->name('showEditProject');
+Route::post('/projects/{id}/editProject', 'Projects\ProjectsController@editProject')->name('editProject');

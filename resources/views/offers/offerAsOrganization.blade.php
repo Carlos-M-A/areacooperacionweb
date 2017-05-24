@@ -3,18 +3,12 @@
 @section('offer_options')
 @if($offer->open)
 <div class="panel-footer">
-<div class="btn-group">
-    <button class="btn btn-warning" onclick="event.preventDefault(); document.getElementById('close_form').submit();">Close</button>
-    <button class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('edit_form').submit();">Edit</button>
-    <button class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('remove_form').submit();">Remove</button>
-</div>
-<form id="close_form" action="{{route('closeOffer', ['id'=> $offer->id])}}" method="POST">
-    {{ csrf_field() }}
-    </form>
-<form id="edit_form" action="{{route('showEditOffer', ['id'=> $offer->id])}}" method="GET">
-    </form>
-<form id="remove_form" action="{{route('removeOffer', ['id'=> $offer->id])}}" method="POST">
-    {{ csrf_field() }}
+    <form>
+        <div class="btn-group">
+            <button class="btn btn-warning" frommethod="POST" formaction="{{route('closeOffer', ['id'=> $offer->id])}}">Close</button>
+            <button class="btn btn-primary" frommethod="POST" formaction="{{route('showEditOffer', ['id'=> $offer->id])}}">Edit</button>
+            <button class="btn btn-danger" frommethod="POST" formaction="{{route('removeOffer', ['id'=> $offer->id])}}">Remove</button>
+        </div>
     </form>
 </div>
 @endif
