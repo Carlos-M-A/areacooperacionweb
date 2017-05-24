@@ -20,7 +20,7 @@ class CreateTutelageProposal extends Migration
             
             $table->tinyInteger('type');
             $table->tinyInteger('state');
-            $table->string('comment', 200);
+            $table->string('comment', 500);
             //If the teacher wants to be contacted before being accepted
             $table->boolean('wantToBeContacted');
             

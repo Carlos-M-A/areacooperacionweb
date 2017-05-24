@@ -16,4 +16,8 @@ class Project extends Model
     public function proposal() {
         return $this->belongsTo('App\Proposal', 'proposal_id', 'id');
     }
+    
+    public function tutelageProposals() {
+        return $this->hasMany('App\TutelageProposal', 'project_id', 'id');
+    }
 }

@@ -25,7 +25,6 @@ class CreateProject extends Migration
             $table->string('description', 500);
             $table->string('author', 200);
             $table->string('tutor', 200)->nullable();
-            $table->string('secondaryTutors', 400)->nullable();
             $table->string('organization', 100);
             $table->string('urlDocumentation', 200)->nullable();
             $table->smallInteger('year');
