@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Projects;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Project;
+use App\TutelageProposal;
 use Illuminate\Support\Facades\Auth;
 
 class ProjectsController extends Controller
@@ -21,7 +22,7 @@ class ProjectsController extends Controller
         $project->author = $proposal->student->user->getNameAndSurnames();
         $project->organization = $proposal->offer->organization->user->name;
         $project->year = 2015;
-        $project->state = 1;
+        $project->state = 1; //state = Without tutors
         $project->save();
         
         return redirect('projects/'.$project->id);
@@ -35,14 +36,35 @@ class ProjectsController extends Controller
         return view('projects/projects')->with('projects', $projects->get());
     }
     
+    public function newProjectsWithoutTutors() {
+        $projects = Project::whereDoesntHave('tutelageProposals', function ($query) {
+            $user = Auth::user();
+            $query->where('teacher_id', $user->id);
+        });
+        $projects->where('state', 1);
+        
+        return view('projects/projects')->with('projects', $projects->get());
+    }
+    
     public function project($id) {
         $project = Project::find($id);
         $user = Auth::user();
         
         switch($user->role){
             case 1:
-                return view('projects/projectAsStudent')->with('project', $project);
-                break;
+                $tutelageProposalChoosen = TutelageProposal::where('project_id', $project->id)->where('state', 2)->get()->first();
+                if(is_null($tutelageProposalChoosen)){
+                    return view('projects/projectAsStudent')->with('project', $project)->with('tutelageProposalChoosen');
+                } else {
+                    return view('projects/projectAsStudent')->with('project', $project)->with('tutelageProposalChoosen', $tutelageProposalChoosen);
+                }
+            case 2:
+                $tutelageProposal = TutelageProposal::where('project_id', $project->id)->where('teacher_id', $user->id)->get()->first();
+                if(is_null($tutelageProposal)){
+                    return view('projects/projectAsTeacher')->with('project', $project)->with('tutelageProposal');
+                } else {
+                    return view('projects/projectAsTeacher')->with('project', $project)->with('tutelageProposal', $tutelageProposal);
+                }
         }
         return view('projects/project')->with('project', $project);
     }
@@ -68,5 +90,27 @@ class ProjectsController extends Controller
         $project->save();
         
         return redirect('projects/'.$project->id);
+    }
+    
+    public function enterTutorManually($id, Request $request) {
+        $rules = [
+            'name' => 'required|string|max:100',
+            'surnames' => 'required|string|max:100',
+        ];
+        $this->validate($request, $rules);
+        
+        $project = Project::find($id);
+        $tutelageProposals = $project->tutelageProposals;
+        
+        foreach ($tutelageProposals as $tutelageProposal) {
+             $tutelageProposal->state = 3; //Not choosen
+             $tutelageProposal->save();
+        }
+        
+        $project->tutor = $request->name.', '.$request->surnames;
+        $project->state = 2; //state = started
+        $project->save();
+        
+        return redirect('/projects/'.$tutelageProposal->project_id);
     }
 }

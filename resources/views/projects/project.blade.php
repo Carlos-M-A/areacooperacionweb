@@ -52,10 +52,6 @@
                                     <td>{{$project->tutor}}</td>
                                 </tr>
                                 <tr>
-                                    <td>secondaryTutors</td>
-                                    <td>{{$project->secondaryTutors}}</td>
-                                </tr>
-                                <tr>
                                     <td>year</td>
                                     <td>{{$project->year}}</td>
                                 </tr>

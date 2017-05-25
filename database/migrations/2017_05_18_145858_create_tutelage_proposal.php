@@ -18,11 +18,11 @@ class CreateTutelageProposal extends Migration
             $table->integer('teacher_id')->unsigned();
             $table->integer('project_id')->unsigned();
             
-            $table->tinyInteger('type');
             $table->tinyInteger('state');
             $table->string('comment', 500);
             //If the teacher wants to be contacted before being accepted
-            $table->boolean('wantToBeContacted');
+            $table->boolean('wantsToBeContacted');
+            $table->dateTime('creationDate');
             
             $table->foreign('teacher_id')->references('id')->on('Teacher')
                     ->onDelete('cascade');

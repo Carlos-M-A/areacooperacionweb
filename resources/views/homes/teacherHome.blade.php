@@ -8,7 +8,8 @@
                 <div class="panel-heading">Opciones Docente</div>
 
                 <div class="panel-body">
-                    <button type="button" class="btn btn-primary btn-block">Button1</button>
+                    <p>
+                    <a href="{{ route('newProjects') }}">New projects</a>
                 </div>
             </div>
         </div>

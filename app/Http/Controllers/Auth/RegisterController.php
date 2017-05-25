@@ -50,7 +50,7 @@ use RegistersUsers;
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data) {
-        $rules = ['rol' => 'required|integer|max:4|min:1'];
+        $rules['role'] = 'required|integer|max:4|min:1';
         $rules['name'] = 'required|string|max:100';
         $rules['email'] = 'required|string|email|max:190|unique:User';
         $rules['password'] = 'required|string|min:6|confirmed';
@@ -119,7 +119,7 @@ use RegistersUsers;
 
 
 
-        switch ($data['rol']) {
+        switch ($data['role']) {
             case 1:
                 $student = new Student;
                 $student->id = $user->id;

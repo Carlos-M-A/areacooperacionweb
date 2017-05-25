@@ -116,6 +116,11 @@ Route::get('/organizations/{id}', 'Users\OrganizationsController@organization')-
 
 // Projects management
 Route::get('/projects/myProjects', 'Projects\ProjectsController@myProjects')->name('myProjects');
+Route::get('/projects/newProjects', 'Projects\ProjectsController@newProjectsWithoutTutors')->name('newProjects');
 Route::get('/projects/{id}', 'Projects\ProjectsController@project')->name('project');
 Route::get('/projects/{id}/showEditProject', 'Projects\ProjectsController@showEditProject')->name('showEditProject');
 Route::post('/projects/{id}/editProject', 'Projects\ProjectsController@editProject')->name('editProject');
+Route::post('/projects/{id}/enterTutorManually', 'Projects\ProjectsController@enterTutorManually')->name('enterTutorManually');
+Route::post('/projects/{id}/createProposal', 'Projects\TutelageProposalsController@create')->name('createTutelageProposal');
+Route::post('/tutelageProposal/{id}/remove', 'Projects\TutelageProposalsController@remove')->name('removeTutelageProposal');
+Route::post('/tutelageProposal/{id}/accept', 'Projects\TutelageProposalsController@accept')->name('acceptTutelageProposal');
