@@ -98,6 +98,7 @@ Route::get('/offers/notEvaluatedProposals', 'Offers\ProposalsController@notEvalu
 Route::get('/offers/approvedProposals', 'Offers\ProposalsController@approvedProposals')->name('approvedProposals');
 Route::get('/offers/rejectedProposals', 'Offers\ProposalsController@rejectedProposals')->name('rejectedProposals');
 Route::get('/offers/cancelledProposals', 'Offers\ProposalsController@cancelledProposals')->name('cancelledProposals');
+Route::get('/offers/acceptedProposals', 'Offers\ProposalsController@acceptedProposals')->name('acceptedProposals');
 
 Route::get('/offers/{id}', 'Offers\OffersController@offer')->name('offer');
 Route::get('/offers/{id}/showEditOffer', 'Offers\OffersController@showEditOffer')->name('showEditOffer');
@@ -116,7 +117,10 @@ Route::get('/organizations/{id}', 'Users\OrganizationsController@organization')-
 
 // Projects management
 Route::get('/projects/myProjects', 'Projects\ProjectsController@myProjects')->name('myProjects');
-Route::get('/projects/newProjects', 'Projects\ProjectsController@newProjectsWithoutTutors')->name('newProjects');
+Route::get('/projects/newProjects', 'Projects\ProjectsController@newProjectsWithoutTutor')->name('newProjects');
+Route::get('/projects/myTutoredProjects', 'Projects\ProjectsController@myTutoredProjects')->name('myTutoredProjects');
+Route::get('/projects/myTutelageProposals', 'Projects\ProjectsController@myTutelageProposals')->name('myTutelageProposals');
+Route::get('/projects/myTutelageProposalsNotChosen', 'Projects\ProjectsController@myTutelageProposalsNotChosen')->name('myTutelageProposalsNotChosen');
 Route::get('/projects/{id}', 'Projects\ProjectsController@project')->name('project');
 Route::get('/projects/{id}/showEditProject', 'Projects\ProjectsController@showEditProject')->name('showEditProject');
 Route::post('/projects/{id}/editProject', 'Projects\ProjectsController@editProject')->name('editProject');

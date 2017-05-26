@@ -21,8 +21,6 @@ class CreateInscription extends Migration
             $table->float('score', 5, 3);
             $table->smallInteger('order');
             $table->string('observations', 200);
-            $table->boolean('suggestsOffer');
-            $table->string('suggestedOfferDescription', 500);
             
             $table->foreign('student_id')->references('id')->on('Student')
                     ->onDelete('cascade');

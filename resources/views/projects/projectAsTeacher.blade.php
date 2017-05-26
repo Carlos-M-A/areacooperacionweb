@@ -2,7 +2,7 @@
 
 @section('teacher_proposal')
 
-@if(is_null($tutelageProposal))
+@if(is_null($tutelageProposal) && $project->state==1)
 
 <div class="panel panel-default">
                 <div class="panel-heading">Create tutelage proposal</div>

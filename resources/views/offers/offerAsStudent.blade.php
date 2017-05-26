@@ -83,12 +83,12 @@
                             <div class="col-md-6">
                                 <select  id="type" class="form-control" name="type" autofocus>
                                     <option id="typeOption0" value="0">--All types--</option>
-                                    <option id="typeOption1" value="1">Practices</option>
-                                    <option id="typeOption2" value="2">Final degree project</option>
-                                    <option id="typeOption3" value="3">Final master project</option>
-                                    <option id="typeOption4" value="4">Doctoral's thesis</option>
-                                    <option id="typeOption5" value="5">Final career project</option>
-                                    <option id="typeOption6" value="6">Other</option>
+                                    <option id="typeOption1" value="1">Just cooperate</option>
+                                    <option id="typeOption6" value="2">Curricular practice</option>
+                                    <option id="typeOption2" value="3">Final degree project</option>
+                                    <option id="typeOption3" value="4">Final master project</option>
+                                    <option id="typeOption4" value="5">Final career project</option>
+                                    <option id="typeOption5" value="6">Doctoral's thesis</option>
                                 </select>
 
                                 @if ($errors->has('type'))
@@ -216,35 +216,12 @@
                                     @if($proposal->state <= 2)
                                     <button class="btn btn-warning"  type="submit" formmethod="POST" formaction="{{route('cancelProposal', ['id'=> $proposal->id])}}">Cancel</button>
                                     @endif
+                                    @if($proposal->state == 2)
+                                    <!-- Trigger the modal to accept and create project -->
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalCreateProject">Accept</button>
+                                    @endif
                                 </div>
                             </form>
-                        @if($proposal->state == 2)
-                        <form class="form-horizontal" role="form" method="POST" action="{{ route('acceptProposal', ['id'=> $proposal->id]) }}">
-                            {{ csrf_field() }}
-                            <div id="title_div" class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                            <label for="title" class="col-md-4 control-label">title</label>
-
-                            <div class="col-md-6">
-                                <input id="title" type="text" class="form-control" name="title" value="{{ old('title')?old('title') : $offer->title }}" autofocus>
-
-                                @if ($errors->has('title'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('title') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                        </div>
-                            
-                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Accept and create project
-                                </button>
-                            </div>
-                        </div>
-                            
-                        </form>
-                        @endif
                     </div>
                 </div>
             </div>
@@ -255,3 +232,74 @@
 </script>
 
 @endsection
+
+
+
+@if(!is_null($proposal))
+<!-- Modal -->
+<div id="modalCreateProject" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Enter data of project</h4>
+      </div>
+      <div class="modal-body">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('acceptProposal', ['id'=> $proposal->id]) }}">
+                            {{ csrf_field() }}
+                            
+                        @if($proposal->type >=3)
+                        <div id="title_div" class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                            <label for="title" class="col-md-4 control-label">title</label>
+
+                            <div class="col-md-6">
+                                <input id="title" type="text" class="form-control" name="title" value="{{ old('title')}}" autofocus required>
+
+                                @if ($errors->has('title'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('title') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
+                            
+                            <div id="description_div" class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+                            <label for="description" class="col-md-4 control-label">description</label>
+
+                            <div class="col-md-6">
+                                <input id="description" type="text" class="form-control" name="description" value="{{ old('description') }}" autofocus required>
+
+                                @if ($errors->has('description'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('description') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
+                        @endif
+                        
+                        
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-success">
+                                    @if($proposal->type >=3)
+                                        Accept and create project
+                                    @else
+                                        Accept
+                                    @endif
+                                </button>
+                            </div>
+                        </div>
+                            
+                        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+@endif

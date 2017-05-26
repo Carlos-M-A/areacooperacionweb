@@ -15,7 +15,6 @@ class CreateOfferOfConvocatory extends Migration
     {
         Schema::create('OffertOfConvocatory', function (Blueprint $table) {
             $table->integer('id')->unsigned();
-            $table->integer('student_id')->unsigned()->nullable();
             $table->integer('convocatory_id')->unsigned();
             //Where the student will be housed
             $table->string('housing', 500);
@@ -25,7 +24,6 @@ class CreateOfferOfConvocatory extends Migration
             $table->primary('id');
             $table->foreign('id')->references('id')->on('Offer')
                     ->onDelete('cascade');
-            $table->foreign('student_id')->references('id')->on('Student');
             $table->foreign('convocatory_id')->references('id')->on('Convocatory')
                     ->onDelete('cascade');
             

@@ -30,9 +30,9 @@ class TutelageProposal extends Model
             case 1:
                 return 'Not evaluated';
             case 2:
-                return 'Accepted';
+                return 'Chosen';
             case 3:
-                return 'Rejected';
+                return 'Not chosen';
         }
     }
 }

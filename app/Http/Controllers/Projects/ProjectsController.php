@@ -10,15 +10,15 @@ use Illuminate\Support\Facades\Auth;
 
 class ProjectsController extends Controller
 {
-    public function createProject($proposal, $title){
+    public function createProject($proposal, Request $request){
         $project = new Project();
         $project->proposal_id = $proposal->id;
         $project->offer_id = $proposal->offer_id;
         $project->study_id = $proposal->student->study->id;
-        $project->title = $title;
+        $project->title = $request->title;
         $project->scope = $proposal->offer->scope;
         $project->type = $proposal->type;
-        $project->description = '';
+        $project->description = $request->description;
         $project->author = $proposal->student->user->getNameAndSurnames();
         $project->organization = $proposal->offer->organization->user->name;
         $project->year = 2015;
@@ -36,12 +36,48 @@ class ProjectsController extends Controller
         return view('projects/projects')->with('projects', $projects->get());
     }
     
-    public function newProjectsWithoutTutors() {
+    /**
+     * Return the projects in 'Without tutor' state, in which the teacher has
+     * not made a tutelage proposal and in which the study of project is teached
+     * by the teacher who call the function
+     * @return The projects
+     */
+    public function newProjectsWithoutTutor() {
         $projects = Project::whereDoesntHave('tutelageProposals', function ($query) {
             $user = Auth::user();
             $query->where('teacher_id', $user->id);
         });
         $projects->where('state', 1);
+        
+        return view('projects/projects')->with('projects', $projects->get());
+    }
+    
+    public function myTutoredProjects() {
+        $projects = Project::whereHas('tutelageProposals', function ($query) {
+            $user = Auth::user();
+            $query->where('teacher_id', $user->id);
+            $query->where('state', 2);
+        });
+        
+        return view('projects/projects')->with('projects', $projects->get());
+    }
+    
+    public function myTutelageProposals() {
+        $projects = Project::whereHas('tutelageProposals', function ($query) {
+            $user = Auth::user();
+            $query->where('teacher_id', $user->id);
+            $query->where('state', 1);
+        });
+        
+        return view('projects/projects')->with('projects', $projects->get());
+    }
+    
+    public function myTutelageProposalsNotChosen() {
+        $projects = Project::whereHas('tutelageProposals', function ($query) {
+            $user = Auth::user();
+            $query->where('teacher_id', $user->id);
+            $query->where('state', 3);
+        });
         
         return view('projects/projects')->with('projects', $projects->get());
     }

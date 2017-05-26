@@ -63,12 +63,16 @@ class ProposalsController extends Controller
         return redirect('/offers/'.$proposal->offer->id);
     }
     public function accept($id, Request $request) {
-        $this->validate($request, [
-            'title' => 'required|string|max:100',
-        ]);
-        
         $proposal = Proposal::find($id);
         $offer = $proposal->offer;
+        
+        if($proposal->type>=3){
+            $this->validate($request, [
+                'title' => 'required|string|max:100',
+                'description' => 'required|string|max:100',
+            ]);
+        }
+        
         if(!$offer->open){
             return redirect('/offers/'.$offer->id);
         }
@@ -78,10 +82,13 @@ class ProposalsController extends Controller
             $offer->open = false;
             $offer->save();
         }
-        
-        //The new project is created
-        $projectController = new ProjectsController();
-        return $projectController->createProject($proposal, $request->title);
+        if($proposal->type>=3){
+            //The new project is created
+            $projectController = new ProjectsController();
+            return $projectController->createProject($proposal, $request);
+        } else {
+            return redirect('/offers/'.$proposal->offer->id);
+        }
     }
     
     public function cancel($id) {
@@ -151,6 +158,19 @@ class ProposalsController extends Controller
         $offers = Offer::whereHas('proposals', function ($query) {
             $user = Auth::user();
             $query->where('student_id', $user->id)->where('state', 5);
+        });
+        
+        return view('offers/offers')->with('offers', $offers->get());
+    }
+    
+    /**
+     * Return the offers in that exists a acepted proposal has been made
+     *  by the student who calls this function
+     */
+    public function acceptedProposals() {
+        $offers = Offer::whereHas('proposals', function ($query) {
+            $user = Auth::user();
+            $query->where('student_id', $user->id)->where('state', 4);
         });
         
         return view('offers/offers')->with('offers', $offers->get());
