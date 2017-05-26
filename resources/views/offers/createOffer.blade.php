@@ -10,9 +10,19 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Create offer</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('createOffer') }}">
+                    @if(Auth::user()->role==4)
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('createOffer') }}">
+                    @else
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('createOfferManagedByArea') }}">
+                    @endif
                         {{ csrf_field() }}
                         
+                    
+                        
+                    @yield('more_offer_fields') 
+                    
+                    
+                    
                         <div id="title_div" class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                             <label for="title" class="col-md-4 control-label">title</label>
 

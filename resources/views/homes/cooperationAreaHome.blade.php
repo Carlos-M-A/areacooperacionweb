@@ -8,7 +8,12 @@
                 <div class="panel-heading">Opciones area cooperacion</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    <p>
+                    <a href="{{ route('showCreateOffer') }}"> Create offer</a>
+                    <p>
+                    <a href="{{ route('openOffers') }}"> My open offers</a>
+                    <p>
+                    <a href="{{ route('closedOffers') }}"> My closed offers</a>
                 </div>
             </div>
         </div>

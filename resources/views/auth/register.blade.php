@@ -89,7 +89,7 @@
         //For the field about the study selected by the stundent
         studyID = {{old('study') ? old('study') : 0}};
         if (studyID != 0){
-            oldOption = document.getElementById('opcionStudy');
+            oldOption = document.getElementById('optionStudy');
             //The new option (the option selected) is created
             study = document.getElementById('study');
             newOption = document.createElement('OPTION');
@@ -405,7 +405,7 @@
 
                             <div class="col-md-6">
                                 <select  id="study" class="form-control" name="study" value="{{ old('study') }}"  autofocus>
-                                    <option id="opcionStudy" value="0">-- Choose a study --</option>
+                                    <option id="optionStudy" value="0">-- Choose a study --</option>
 
                                     @foreach($studiesList as $element)
                                     <option value="{{$element->id}}" > {{$element->name}} - {{App\Faculty::find($element->faculty_id)->city}}</option>

@@ -8,6 +8,7 @@ use App\Offer;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Proposal;
+use App\OfferOfConvocatory;
     
 class OffersController extends Controller
 {
@@ -23,18 +24,13 @@ class OffersController extends Controller
                 } else {
                     return view('offers/offerAsStudent')->with('offer', $offer)->with('proposal', $proposal);
                 }
-                break;
             case 2:
                 return view('offers/offer')->with('offer', $offer);
-                break;
             case 3:
                 return view('offers/offer')->with('offer', $offer);
-                break;
             case 4:
-                return view('offers/offerAsOrganization')->with('offer', $offer);
-                break;
             case 5:
-                break;
+                return view('offers/offerAsOrganization')->with('offer', $offer);
             case 6:
                 break;
         }
@@ -61,7 +57,14 @@ class OffersController extends Controller
     }
     
     public function showCreateOffer() {
-        return view('offers/createOffer');
+        $user = Auth::user();
+        
+        switch ($user->role){
+            case 4:
+                return view('offers/createOffer');
+            case 5:
+                return view('offers/createOfferAsCooperationArea');
+        }
     }
     
     private function getOfferFieldsRules($minPlaces) {
@@ -116,6 +119,36 @@ class OffersController extends Controller
         $offer->offerOfConvocatory = false;
         $offer->open = true;
         $offer->createdDate = new \DateTime();
+        
+        $offer->save();
+        return redirect('/offers/'.$offer->id);
+    }
+    
+    public function createOfferManagedByArea(Request $request) {
+        $rules = $this->getOfferFieldsRules(1);
+        $rules['organizationId'] = 'required|integer|min:1';
+        $rules['isOfferOfConvocatory'] = 'required|boolean';
+        
+        if($request->isOfferOfConvocatory == true){
+            $rules['convocatoryId'] = 'required|integer|min:1';
+            $rules['housing'] = 'required|string|max:100';
+            $rules['costs'] = 'required|string|max:100';
+        }
+        $this->validate($request, $rules);
+        
+        $offer = $this->requestToOffer($request, new Offer());
+        $offer->organization_id = $request->organizationId;
+        $offer->managedByArea = true;
+        $offer->open = true;
+        $offer->createdDate = new \DateTime();
+        
+        if($request->isOfferOfConvocatory == true){
+            $offer->offerOfConvocatory = true;
+            $offerOfConvocatoryController = new OfferOfConvocatoryController();
+            $offerOfConvocatoryController->createOfferOfConvocatory($request, $offer);
+        } else {
+            $offer->offerOfConvocatory = false;
+        }
         
         $offer->save();
         return redirect('/offers/'.$offer->id);
