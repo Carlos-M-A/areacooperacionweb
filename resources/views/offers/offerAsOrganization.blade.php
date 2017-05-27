@@ -4,10 +4,10 @@
 @if($offer->open)
 <div class="panel-footer">
     <form>
+        {{ csrf_field() }}
         <div class="btn-group">
-            <button class="btn btn-warning" frommethod="POST" formaction="{{route('closeOffer', ['id'=> $offer->id])}}">Close</button>
-            <button class="btn btn-primary" frommethod="POST" formaction="{{route('showEditOffer', ['id'=> $offer->id])}}">Edit</button>
-            <button class="btn btn-danger" frommethod="POST" formaction="{{route('removeOffer', ['id'=> $offer->id])}}">Remove</button>
+            <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditOffer', ['id'=> $offer->id])}}">Edit</button>
+            <button class="btn btn-warning" formmethod="POST" formaction="{{route('closeOffer', ['id'=> $offer->id])}}">Close</button>
         </div>
     </form>
 </div>

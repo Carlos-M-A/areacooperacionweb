@@ -42,7 +42,7 @@ class OffersController extends Controller
         $user = Auth::user();
         
         if($user->role == 4){
-            $offers->where('organization_id', $user->id);
+            $offers->where('organization_id', $user->id)->where('managedByArea', 0);
         }
         if($user->role == 5){
             $offers->where('managedByArea', 1);
@@ -56,7 +56,7 @@ class OffersController extends Controller
         $user = Auth::user();
         
         if($user->role == 4){
-            $offers->where('organization_id', $user->id);
+            $offers->where('organization_id', $user->id)->where('managedByArea', 0);
         }
         if($user->role == 5){
             $offers->where('managedByArea', 1);
@@ -179,7 +179,7 @@ class OffersController extends Controller
         
         $offer = $this->requestToOffer($request, $offer);
         $offer->save();
-        return view('offers/offerAsOrganization')->with('offer', $offer);
+        return redirect('/offers/'.$offer->id);
     }
     
     public function editOfferManagedByArea($id, Request $request) {
@@ -203,20 +203,16 @@ class OffersController extends Controller
         $offersOfConvocatoryController->editOfferOfConvocatory($request, $offer);
         $offer->save();
         
-        return view('offers/offerAsOrganization')->with('offer', $offer);
+        return redirect('/offers/'.$offer->id);
     }
     
     public function close($id) {
         $offer = Offer::find($id);
         $offer->open = false;
-        Proposal::where('offer_id', $offer->id)->where('state', '<=', 2)->update(['state' => 3]);
         $offer->save();
+        
+        Proposal::where('offer_id', $offer->id)->where('state', '<=', 2)->update(['state' => 3]);
+        
         return redirect('/offers/'.$offer->id);
-    }
-    
-    public function remove($id) {
-        $offer = Offer::find($id);
-        $offer->delete();
-        return redirect('/offers/openOffers');
     }
 }

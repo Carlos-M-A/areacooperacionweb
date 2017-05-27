@@ -100,22 +100,25 @@ Route::get('/offers/approvedProposals', 'Offers\ProposalsController@approvedProp
 Route::get('/offers/rejectedProposals', 'Offers\ProposalsController@rejectedProposals')->name('rejectedProposals');
 Route::get('/offers/cancelledProposals', 'Offers\ProposalsController@cancelledProposals')->name('cancelledProposals');
 Route::get('/offers/acceptedProposals', 'Offers\ProposalsController@acceptedProposals')->name('acceptedProposals');
+Route::get('/organizations/{id}', 'Users\OrganizationsController@organization')->name('organization');
+
 
 Route::get('/offers/{id}', 'Offers\OffersController@offer')->name('offer');
 Route::get('/offers/{id}/showEditOffer', 'Offers\OffersController@showEditOffer')->name('showEditOffer');
 Route::post('/offers/{id}/editOffer', 'Offers\OffersController@editOffer')->name('editOffer');
 Route::post('/offers/{id}/editOfferManagedByArea', 'Offers\OffersController@editOfferManagedByArea')->name('editOfferManagedByArea');
 Route::post('/offers/{id}/close', 'Offers\OffersController@close')->name('closeOffer');
-Route::post('/offers/{id}/remove', 'Offers\OffersController@remove')->name('removeOffer');
 
+//Proposal management
 Route::post('/offers/{id}/createProposal', 'Offers\ProposalsController@create')->name('createProposal');
+
 Route::post('/proposal/{id}/remove', 'Offers\ProposalsController@remove')->name('removeProposal');
 Route::post('/proposal/{id}/approve', 'Offers\ProposalsController@approve')->name('approveProposal');
 Route::post('/proposal/{id}/reject', 'Offers\ProposalsController@reject')->name('rejectProposal');
 Route::post('/proposal/{id}/accept', 'Offers\ProposalsController@accept')->name('acceptProposal');
 Route::post('/proposal/{id}/cancel', 'Offers\ProposalsController@cancel')->name('cancelProposal');
 
-Route::get('/organizations/{id}', 'Users\OrganizationsController@organization')->name('organization');
+
 
 // Projects management
 Route::get('/projects/myProjects', 'Projects\ProjectsController@myProjects')->name('myProjects');
