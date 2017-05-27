@@ -9,9 +9,15 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Edit data</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('editOffer', ['id'=> $offer->id]) }}">
+                    
+                    @if(Auth::user()->role==4)
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('editOffer', ['id'=> $offer->id]) }}">
+                    @else
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('editOfferManagedByArea', ['id'=> $offer->id]) }}">
+                    @endif
                         {{ csrf_field() }}
 
+                        @yield('more_offer_fields') 
                         
                         <div id="title_div" class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                             <label for="title" class="col-md-4 control-label">title</label>

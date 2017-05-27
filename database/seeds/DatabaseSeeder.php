@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(OtherSeeder::class);
         $this->call(OrganizationSeeder::class);
         $this->call(RoleChangeRequestSeeder::class);
+        $this->call(ConvocatorySeeder::class);
     }
 }

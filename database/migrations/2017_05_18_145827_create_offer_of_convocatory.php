@@ -13,7 +13,7 @@ class CreateOfferOfConvocatory extends Migration
      */
     public function up()
     {
-        Schema::create('OffertOfConvocatory', function (Blueprint $table) {
+        Schema::create('OfferOfConvocatory', function (Blueprint $table) {
             $table->integer('id')->unsigned();
             $table->integer('convocatory_id')->unsigned();
             //Where the student will be housed
@@ -37,6 +37,6 @@ class CreateOfferOfConvocatory extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('OffertOfConvocatory');
+        Schema::dropIfExists('OfferOfConvocatory');
     }
 }

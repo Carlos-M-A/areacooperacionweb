@@ -17,6 +17,10 @@ class Offer extends Model
         return $this->belongsTo('App\Organization', 'organization_id', 'id');
     }
     
+    public function offerOfConvocatory(){
+        return $this->hasOne('App\OfferOfConvocatory', 'id');
+    }
+    
     public function getAcceptedProposals() {
         return Proposal::where('offer_id', $this->id)->where('state', 4)->get();
     }

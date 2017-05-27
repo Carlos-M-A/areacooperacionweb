@@ -1,4 +1,4 @@
-@extends('offers.createOffer')
+@extends('offers.editOffer')
 
 @php
     $organizations = App\Organization::all();
@@ -39,8 +39,8 @@
 
     <div class="col-md-6">
         <select  id="organizationId" class="form-control" name="organizationId" autofocus>
-            <option id="organizationIdOption0" value="{{old('organizationId') ? old('organizationId') : 0}}">
-                {{old('organizationId') ? App\Organization::find(old('organizationId'))->user->name : '-- Organization --'}}
+            <option id="organizationIdOption0" value="{{old('organizationId') ? old('organizationId') : $offer->organization_id}}">
+                {{old('organizationId') ? App\Organization::find(old('organizationId'))->user->name : $offer->organization->user->name}}
             </option>
             @php
                 $organizations = App\Organization::all();
@@ -63,12 +63,23 @@
     <label for="isOfferOfConvocatory" class="col-md-4 control-label">isOfferOfConvocatory</label>
 
     <div class="col-md-6">
+        
+        @if(old('isOfferOfConvocatory')) <!-- This is not the first call to edit data -->
         <label class="radio-inline">
             <input id="radioYes" onclick="changeRadio()" type="radio" name="isOfferOfConvocatory" value="1" {{ old('isOfferOfConvocatory') ? 'checked' : ''}}>
             Yes</label>
         <label class="radio-inline">
             <input id='radioNo' onclick="changeRadio()" type="radio" name="isOfferOfConvocatory" value="0" {{ old('isOfferOfConvocatory') ? '' : 'checked'}}>
             No</label>
+        @else <!-- This is the first call to edit data -->
+        <label class="radio-inline">
+            <input id="radioYes" onclick="changeRadio()" type="radio" name="isOfferOfConvocatory" value="1" {{ $offer->isOfferOfConvocatory ? 'checked' : ''}}>
+            Yes</label>
+        <label class="radio-inline">
+            <input id='radioNo' onclick="changeRadio()" type="radio" name="isOfferOfConvocatory" value="0" {{ $offer->isOfferOfConvocatory ? '' : 'checked'}}>
+            No</label>
+        @endif
+        
         @if ($errors->has('isOfferOfConvocatory'))
         <span class="help-block">
             <strong>{{ $errors->first('isOfferOfConvocatory') }}</strong>
@@ -82,9 +93,16 @@
 
     <div class="col-md-6">
         <select  id="convocatoryId" class="form-control" name="convocatoryId" autofocus>
-            <option id="convocatoryIdOption0" value="{{old('convocatoryId') ? old('convocatoryId') : 0}}">
-                {{old('convocatoryId') ? App\Convocatory::find(old('convocatoryId'))->title : '-- Convocatory --'}}
-            </option>
+            @if($offer->isOfferOfConvocatory)
+                <option id="convocatoryIdOption0" value="{{old('convocatoryId') ? old('convocatoryId') : $offer->offerOfConvocatory->convocatory_id}}">
+                    {{old('convocatoryId') ? App\Convocatory::find(old('convocatoryId'))->title : $offer->offerOfConvocatory->convocatory->title}}
+                </option>
+            @else
+                <option id="convocatoryIdOption0" value="{{old('convocatoryId') ? old('convocatoryId') : '0'}}">
+                    {{old('convocatoryId') ? App\Convocatory::find(old('convocatoryId'))->title : '-- Convocatory --'}}
+                </option>
+            @endif
+            
             @php
                 $convocatories = App\Convocatory::where('state', '<=', '2')->get();
             @endphp
@@ -105,8 +123,12 @@
     <label for="housing" class="col-md-4 control-label">housing</label>
 
     <div class="col-md-6">
-        <input id="housing" type="text" class="form-control" name="housing" value="{{ old('housing') }}" autofocus>
-
+        @if($offer->isOfferOfConvocatory)
+            <input id="housing" type="text" class="form-control" name="housing" value="{{ old('housing') ?  old('housing') : $offer->offerOfConvocatory->housing }}" autofocus>
+        @else
+            <input id="housing" type="text" class="form-control" name="housing" value="{{ old('housing') ?  old('housing') : '' }}" autofocus>
+        @endif
+        
         @if ($errors->has('housing'))
         <span class="help-block">
             <strong>{{ $errors->first('housing') }}</strong>
@@ -119,8 +141,12 @@
     <label for="costs" class="col-md-4 control-label">costs</label>
 
     <div class="col-md-6">
-        <input id="costs" type="text" class="form-control" name="costs" value="{{ old('costs') }}" autofocus>
-
+        @if($offer->isOfferOfConvocatory)
+            <input id="costs" type="text" class="form-control" name="costs" value="{{ old('costs') ?  old('costs') : $offer->offerOfConvocatory->costs }}" autofocus>
+        @else
+            <input id="costs" type="text" class="form-control" name="costs" value="{{ old('costs') ?  old('costs') : '' }}" autofocus>
+        @endif
+        
         @if ($errors->has('costs'))
         <span class="help-block">
             <strong>{{ $errors->first('costs') }}</strong>

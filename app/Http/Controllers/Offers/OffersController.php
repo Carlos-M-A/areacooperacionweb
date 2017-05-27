@@ -41,10 +41,10 @@ class OffersController extends Controller
         $offers = Offer::where('open', 1);
         $user = Auth::user();
         
-        if($user->rol == 4){
+        if($user->role == 4){
             $offers->where('organization_id', $user->id);
         }
-        if($user->rol == 5){
+        if($user->role == 5){
             $offers->where('managedByArea', 1);
         }
         
@@ -53,6 +53,15 @@ class OffersController extends Controller
     
     public function closedOffers() {
         $offers = Offer::where('open', 0);
+        $user = Auth::user();
+        
+        if($user->role == 4){
+            $offers->where('organization_id', $user->id);
+        }
+        if($user->role == 5){
+            $offers->where('managedByArea', 1);
+        }
+        
         return view('offers/offers')->with('offers', $offers->get());
     }
     
@@ -116,7 +125,7 @@ class OffersController extends Controller
         $offer = $this->requestToOffer($request, new Offer());
         $offer->organization_id = Auth::user()->id;
         $offer->managedByArea = false;
-        $offer->offerOfConvocatory = false;
+        $offer->isOfferOfConvocatory = false;
         $offer->open = true;
         $offer->createdDate = new \DateTime();
         
@@ -141,22 +150,25 @@ class OffersController extends Controller
         $offer->managedByArea = true;
         $offer->open = true;
         $offer->createdDate = new \DateTime();
+        $offer->isOfferOfConvocatory = $request->isOfferOfConvocatory;
+        $offer->save();
         
         if($request->isOfferOfConvocatory == true){
-            $offer->offerOfConvocatory = true;
-            $offerOfConvocatoryController = new OfferOfConvocatoryController();
-            $offerOfConvocatoryController->createOfferOfConvocatory($request, $offer);
-        } else {
-            $offer->offerOfConvocatory = false;
+            $offersOfConvocatoryController = new OffersOfConvocatoryController();
+            $offersOfConvocatoryController->createOfferOfConvocatory($request, $offer);
         }
-        
-        $offer->save();
         return redirect('/offers/'.$offer->id);
     }
     
     public function showEditOffer($id) {
+        $user = Auth::user();
         $offer = Offer::find($id);
-        return view('offers/editOffer')->with('offer', $offer);
+        switch ($user->role){
+            case 4:
+                return view('offers/editOffer')->with('offer', $offer);
+            case 5:
+                return view('offers/editOfferAsCooperationArea')->with('offer', $offer);
+        }
     }
     
     public function editOffer($id, Request $request) {
@@ -166,8 +178,31 @@ class OffersController extends Controller
         $this->validate($request, $rules);
         
         $offer = $this->requestToOffer($request, $offer);
-        
         $offer->save();
+        return view('offers/offerAsOrganization')->with('offer', $offer);
+    }
+    
+    public function editOfferManagedByArea($id, Request $request) {
+        $offer = Offer::find($id);
+        
+        $rules = $this->getOfferFieldsRules($offer->placesOccupied);
+        $rules['organizationId'] = 'required|integer|min:1';
+        $rules['isOfferOfConvocatory'] = 'required|boolean';
+        
+        if($request->isOfferOfConvocatory == true){
+            $rules['convocatoryId'] = 'required|integer|min:1';
+            $rules['housing'] = 'required|string|max:100';
+            $rules['costs'] = 'required|string|max:100';
+        }
+        $this->validate($request, $rules);
+        
+        $offer = $this->requestToOffer($request, $offer);
+        $offer->organization_id = $request->organizationId;
+        $offer->isOfferOfConvocatory = $request->isOfferOfConvocatory;
+        $offersOfConvocatoryController = new OffersOfConvocatoryController();
+        $offersOfConvocatoryController->editOfferOfConvocatory($request, $offer);
+        $offer->save();
+        
         return view('offers/offerAsOrganization')->with('offer', $offer);
     }
     

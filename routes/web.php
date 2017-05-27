@@ -91,7 +91,7 @@ Route::post('/faculties/{id}/changeCity', 'Users\FacultiesController@changeCity'
 // Offers management
 Route::get('/offers/createOffer', 'Offers\OffersController@showCreateOffer')->name('showCreateOffer');
 Route::post('/offers/createOffer', 'Offers\OffersController@createOffer')->name('createOffer');
-Route::post('/offers/createOffer', 'Offers\OffersController@createOfferManagedByArea')->name('createOfferManagedByArea');
+Route::post('/offers/createOfferManagedByArea', 'Offers\OffersController@createOfferManagedByArea')->name('createOfferManagedByArea');
 Route::get('/offers/openOffers', 'Offers\OffersController@openOffers')->name('openOffers');
 Route::get('/offers/closedOffers', 'Offers\OffersController@closedOffers')->name('closedOffers');
 Route::get('/offers/newOffers', 'Offers\ProposalsController@newOffers')->name('newOffers');
@@ -104,6 +104,7 @@ Route::get('/offers/acceptedProposals', 'Offers\ProposalsController@acceptedProp
 Route::get('/offers/{id}', 'Offers\OffersController@offer')->name('offer');
 Route::get('/offers/{id}/showEditOffer', 'Offers\OffersController@showEditOffer')->name('showEditOffer');
 Route::post('/offers/{id}/editOffer', 'Offers\OffersController@editOffer')->name('editOffer');
+Route::post('/offers/{id}/editOfferManagedByArea', 'Offers\OffersController@editOfferManagedByArea')->name('editOfferManagedByArea');
 Route::post('/offers/{id}/close', 'Offers\OffersController@close')->name('closeOffer');
 Route::post('/offers/{id}/remove', 'Offers\OffersController@remove')->name('removeOffer');
 

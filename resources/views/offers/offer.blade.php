@@ -98,6 +98,20 @@
                                     <td>proposal amount</td>
                                     <td>{{count($offer->proposals)}}</td>
                                 </tr>
+                                @if($offer->isOfferOfConvocatory)
+                                <tr>
+                                    <td>housing</td>
+                                    <td>{{$offer->offerOfConvocatory->housing}}</td>
+                                </tr>
+                                <tr>
+                                    <td>costs</td>
+                                    <td>{{$offer->offerOfConvocatory->costs}}</td>
+                                </tr>
+                                <tr>
+                                    <td>convocatory</td>
+                                    <td>{{$offer->offerOfConvocatory->convocatory->title}}</td>
+                                </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>

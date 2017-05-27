@@ -17,7 +17,7 @@ class CreateOffer extends Migration
             $table->increments('id');
             $table->integer('organization_id')->unsigned();
             $table->boolean('managedByArea');
-            $table->boolean('offerOfConvocatory');
+            $table->boolean('isOfferOfConvocatory');
             $table->boolean('open');
             $table->string('title', 100);
             $table->string('scope', 100);
