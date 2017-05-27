@@ -2,15 +2,20 @@
 
 @section('project_options')
 
+@if($project->state <=2)
 <div class="panel-footer">
     <form>
         <div class="btn-group">
-            <button class="btn btn-primary" frommethod="POST" formaction="">Terminate</button>
+            @if($project->state == 2)
+            <!-- Trigger the modal to terminate project -->
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalOfTerminateProject">Terminate</button>
+            @endif
             <button class="btn btn-primary" frommethod="POST" formaction="{{route('showEditProject', ['id'=> $project->id])}}">Edit</button>
             
         </div>
     </form>
 </div>
+@endif
 
 @endsection
 
@@ -113,8 +118,8 @@
 @endsection
 
 
-
-<!-- Modal -->
+@if($project->state == 1)
+<!-- Modal of enter tutor -->
 <div id="modalOfEnterTutorManually" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -170,3 +175,50 @@
 
   </div>
 </div>
+@endif
+
+@if($project->state == 2)
+<!-- Modal of terminate project -->
+<div id="modalOfTerminateProject" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Enter url of documentatation</h4>
+      </div>
+      <div class="modal-body">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('terminateProject', ['id' => $project->id]) }}">
+                        {{ csrf_field() }}
+                        <div id="urlDocumentation_div" class="form-group{{ $errors->has('urlDocumentation') ? ' has-error' : '' }}">
+                            <label for="urlDocumentation" class="col-md-4 control-label">urlDocumentation</label>
+
+                            <div class="col-md-6">
+                                <input id="urlDocumentation" type="url" class="form-control" name="urlDocumentation" value="{{ old('urlDocumentation') }}" required>
+
+                                @if ($errors->has('urlDocumentation'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('urlDocumentation') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Terminate
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+@endif

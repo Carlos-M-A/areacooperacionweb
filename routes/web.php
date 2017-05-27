@@ -95,10 +95,7 @@ Route::post('/offers/createOfferManagedByArea', 'Offers\OffersController@createO
 Route::get('/offers/openOffers', 'Offers\OffersController@openOffers')->name('openOffers');
 Route::get('/offers/closedOffers', 'Offers\OffersController@closedOffers')->name('closedOffers');
 Route::get('/offers/newOffers', 'Offers\ProposalsController@newOffers')->name('newOffers');
-Route::get('/offers/notEvaluatedProposals', 'Offers\ProposalsController@notEvaluatedProposals')->name('notEvaluatedProposals');
-Route::get('/offers/approvedProposals', 'Offers\ProposalsController@approvedProposals')->name('approvedProposals');
-Route::get('/offers/rejectedProposals', 'Offers\ProposalsController@rejectedProposals')->name('rejectedProposals');
-Route::get('/offers/cancelledProposals', 'Offers\ProposalsController@cancelledProposals')->name('cancelledProposals');
+Route::get('/offers/offersWithProposal', 'Offers\ProposalsController@offersWithProposal')->name('offersWithProposal');
 Route::get('/offers/acceptedProposals', 'Offers\ProposalsController@acceptedProposals')->name('acceptedProposals');
 Route::get('/organizations/{id}', 'Users\OrganizationsController@organization')->name('organization');
 
@@ -124,12 +121,12 @@ Route::post('/proposal/{id}/cancel', 'Offers\ProposalsController@cancel')->name(
 Route::get('/projects/myProjects', 'Projects\ProjectsController@myProjects')->name('myProjects');
 Route::get('/projects/newProjects', 'Projects\ProjectsController@newProjectsWithoutTutor')->name('newProjects');
 Route::get('/projects/myTutoredProjects', 'Projects\ProjectsController@myTutoredProjects')->name('myTutoredProjects');
-Route::get('/projects/myTutelageProposals', 'Projects\ProjectsController@myTutelageProposals')->name('myTutelageProposals');
-Route::get('/projects/myTutelageProposalsNotChosen', 'Projects\ProjectsController@myTutelageProposalsNotChosen')->name('myTutelageProposalsNotChosen');
+Route::get('/projects/projectsWithTutelageProposal', 'Projects\ProjectsController@projectsWithTutelageProposal')->name('projectsWithTutelageProposal');
 Route::get('/projects/{id}', 'Projects\ProjectsController@project')->name('project');
 Route::get('/projects/{id}/showEditProject', 'Projects\ProjectsController@showEditProject')->name('showEditProject');
 Route::post('/projects/{id}/editProject', 'Projects\ProjectsController@editProject')->name('editProject');
 Route::post('/projects/{id}/enterTutorManually', 'Projects\ProjectsController@enterTutorManually')->name('enterTutorManually');
+Route::post('/projects/{id}/terminate', 'Projects\ProjectsController@terminate')->name('terminateProject');
 Route::post('/projects/{id}/createProposal', 'Projects\TutelageProposalsController@create')->name('createTutelageProposal');
 Route::post('/tutelageProposal/{id}/remove', 'Projects\TutelageProposalsController@remove')->name('removeTutelageProposal');
 Route::post('/tutelageProposal/{id}/accept', 'Projects\TutelageProposalsController@accept')->name('acceptTutelageProposal');

@@ -112,56 +112,18 @@ class ProposalsController extends Controller
     }
     
     /**
-     * Return the offers in that exists a not evaluated proposal has been made
+     * Return the offers in that exists a proposal has been made
      *  by the student who calls this function
      */
-    public function notEvaluatedProposals() {
+    public function offersWithProposal() {
         $offers = Offer::whereHas('proposals', function ($query) {
             $user = Auth::user();
-            $query->where('student_id', $user->id)->where('state', 1);
+            $query->where('student_id', $user->id);
         });
         
         return view('offers/offers')->with('offers', $offers->get());
     }
     
-    /**
-     * Return the offers in that exists a approved proposal has been made
-     *  by the student who calls this function
-     */
-    public function approvedProposals() {
-        $offers = Offer::whereHas('proposals', function ($query) {
-            $user = Auth::user();
-            $query->where('student_id', $user->id)->where('state', 2);
-        });
-        
-        return view('offers/offers')->with('offers', $offers->get());
-    }
-    
-    /**
-     * Return the offers in that exists a rejected proposal has been made
-     *  by the student who calls this function
-     */
-    public function rejectedProposals() {
-        $offers = Offer::whereHas('proposals', function ($query) {
-            $user = Auth::user();
-            $query->where('student_id', $user->id)->where('state', 3);
-        });
-        
-        return view('offers/offers')->with('offers', $offers->get());
-    }
-    
-    /**
-     * Return the offers in that exists a cancelled proposal has been made
-     *  by the student who calls this function
-     */
-    public function cancelledProposals() {
-        $offers = Offer::whereHas('proposals', function ($query) {
-            $user = Auth::user();
-            $query->where('student_id', $user->id)->where('state', 5);
-        });
-        
-        return view('offers/offers')->with('offers', $offers->get());
-    }
     
     /**
      * Return the offers in that exists a acepted proposal has been made

@@ -12,13 +12,8 @@
                     <p>
                     <a href="{{ route('newOffers') }}">New offers</a>
                     <p>
-                    <a href="{{ route('notEvaluatedProposals') }}">Offers with not evaluated proposals</a>
+                    <a href="{{ route('offersWithProposal') }}">offersWithProposal</a>
                     <p>
-                    <a href="{{ route('approvedProposals') }}">Offers with approved proposals</a>
-                    <p>
-                    <a href="{{ route('rejectedProposals') }}">Offers with rejected proposals</a>
-                    <p>
-                    <a href="{{ route('cancelledProposals') }}">Offers with cancelled proposals</a>
                     <p>
                     <a href="{{ route('myProjects')}}">My projects</a>
                     <p>

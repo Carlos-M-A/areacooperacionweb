@@ -13,9 +13,7 @@
                     <p>
                     <a href="{{ route('myTutoredProjects') }}">myTutoredProjects</a>
                     <p>
-                    <a href="{{ route('myTutelageProposals') }}">myTutelageProposals</a>
-                    <p>
-                    <a href="{{ route('myTutelageProposalsNotChosen') }}">myTutelageProposalsNotChosen</a>
+                    <a href="{{ route('projectsWithTutelageProposal') }}">projectsWithTutelageProposal</a>
                     <p>
                 </div>
             </div>

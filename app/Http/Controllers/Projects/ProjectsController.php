@@ -62,25 +62,15 @@ class ProjectsController extends Controller
         return view('projects/projects')->with('projects', $projects->get());
     }
     
-    public function myTutelageProposals() {
+    public function projectsWithTutelageProposal() {
         $projects = Project::whereHas('tutelageProposals', function ($query) {
             $user = Auth::user();
             $query->where('teacher_id', $user->id);
-            $query->where('state', 1);
         });
         
         return view('projects/projects')->with('projects', $projects->get());
     }
     
-    public function myTutelageProposalsNotChosen() {
-        $projects = Project::whereHas('tutelageProposals', function ($query) {
-            $user = Auth::user();
-            $query->where('teacher_id', $user->id);
-            $query->where('state', 3);
-        });
-        
-        return view('projects/projects')->with('projects', $projects->get());
-    }
     
     public function project($id) {
         $project = Project::find($id);
@@ -148,5 +138,19 @@ class ProjectsController extends Controller
         $project->save();
         
         return redirect('/projects/'.$tutelageProposal->project_id);
+    }
+    
+    public function terminate($id, Request $request) {
+        $rules = [
+            'urlDocumentation' => 'required|string|max:200',
+        ];
+        $this->validate($request, $rules);
+        
+        $project = Project::find($id);
+        $project->state = 3;
+        $project->urlDocumentation = $request->urlDocumentation;
+        $project->save();
+        
+        return redirect('projects/'.$project->id);
     }
 }
