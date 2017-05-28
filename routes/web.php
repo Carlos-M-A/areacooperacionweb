@@ -136,3 +136,5 @@ Route::get('/convocatories/createOffer', 'Convocatories\ConvocatoriesController@
 Route::post('/convocatories/createOffer', 'Convocatories\ConvocatoriesController@createConvocatory')->name('createConvocatory');
 Route::get('/convocatories/{id}', 'Convocatories\ConvocatoriesController@convocatory')->name('convocatory');
 Route::get('/convocatories', 'Convocatories\ConvocatoriesController@convocatories')->name('convocatories');
+Route::get('/convocatories/{id}/showEditConvocatory', 'Convocatories\ConvocatoriesController@showEditConvocatory')->name('showEditConvocatory');
+Route::post('/convocatories/{id}/editConvocatory', 'Convocatories\ConvocatoriesController@editConvocatory')->name('editConvocatory');

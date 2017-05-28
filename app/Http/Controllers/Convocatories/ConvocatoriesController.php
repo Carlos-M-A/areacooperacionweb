@@ -36,6 +36,33 @@ class ConvocatoriesController extends Controller
         return redirect('/convocatories/'.$convocatory->id);
     }
     
+    public function editConvocatory($id ,Request $request) {
+        $rules = [
+            'title' => 'required|string|max:100',
+            'information' => 'required|string|max:100',
+            'estimatedPeriod' => 'required|string|max:100',
+            'urlDocumentation' => 'required|string|max:100',
+            'deadline' => 'required|date',
+        ];
+        $this->validate($request, $rules);
+        
+        $convocatory = Convocatory::find($id);
+        
+        $convocatory->title = $request->title;
+        $convocatory->information = $request->information;
+        $convocatory->estimatedPeriod = $request->estimatedPeriod;
+        $convocatory->urlDocumentation = $request->urlDocumentation;
+        $convocatory->deadline = $request->deadline;
+        $convocatory->save();
+        
+        return redirect('/convocatories/'.$convocatory->id);
+    }
+    
+    public function showEditConvocatory($id) {
+        $convocatory = Convocatory::find($id);
+        return view('convocatories/editConvocatory')->with('convocatory', $convocatory);
+    }
+    
     public function convocatory($id) {
         $convocatory = Convocatory::find($id);
         
