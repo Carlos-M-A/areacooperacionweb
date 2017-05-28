@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Opciones area cooperacion</div>
+                <div class="panel-heading">Options cooperation area</div>
 
                 <div class="panel-body">
                     <p>
@@ -14,6 +14,10 @@
                     <a href="{{ route('openOffers') }}"> My open offers</a>
                     <p>
                     <a href="{{ route('closedOffers') }}"> My closed offers</a>
+                    <p>
+                    <a href="{{ route('showCreateConvocatory') }}"> Create convocatory</a>
+                    <p>
+                    <a href="{{ route('convocatories') }}"> Convocatories</a>
                 </div>
             </div>
         </div>

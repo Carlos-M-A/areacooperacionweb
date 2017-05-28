@@ -27,8 +27,8 @@ class CreateProject extends Migration
             $table->string('tutor', 200)->nullable();
             $table->string('organization', 100);
             $table->string('urlDocumentation', 200)->nullable();
-            $table->smallInteger('year');
             $table->tinyInteger('state');
+            $table->dateTime('createdDate');
             
             $table->foreign('proposal_id')->references('id')->on('Proposal');
             $table->foreign('offer_id')->references('id')->on('Offer');

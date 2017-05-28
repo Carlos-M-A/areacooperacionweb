@@ -130,3 +130,9 @@ Route::post('/projects/{id}/terminate', 'Projects\ProjectsController@terminate')
 Route::post('/projects/{id}/createProposal', 'Projects\TutelageProposalsController@create')->name('createTutelageProposal');
 Route::post('/tutelageProposal/{id}/remove', 'Projects\TutelageProposalsController@remove')->name('removeTutelageProposal');
 Route::post('/tutelageProposal/{id}/accept', 'Projects\TutelageProposalsController@accept')->name('acceptTutelageProposal');
+
+// Convocatories management
+Route::get('/convocatories/createOffer', 'Convocatories\ConvocatoriesController@showCreateConvocatory')->name('showCreateConvocatory');
+Route::post('/convocatories/createOffer', 'Convocatories\ConvocatoriesController@createConvocatory')->name('createConvocatory');
+Route::get('/convocatories/{id}', 'Convocatories\ConvocatoriesController@convocatory')->name('convocatory');
+Route::get('/convocatories', 'Convocatories\ConvocatoriesController@convocatories')->name('convocatories');

@@ -20,9 +20,9 @@ class CreateConvocatory extends Migration
             $table->string('information', 500);
             $table->string('estimatedPeriod', 200);
             $table->string('urlDocumentation', 200);
-            $table->smallInteger('year');
             $table->tinyInteger('state');
-            $table->dateTime('deadline');
+            $table->date('deadline');
+            $table->dateTime('createdDate');
         });
     }
 

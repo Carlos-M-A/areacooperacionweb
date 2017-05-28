@@ -21,7 +21,7 @@ class ProjectsController extends Controller
         $project->description = $request->description;
         $project->author = $proposal->student->user->getNameAndSurnames();
         $project->organization = $proposal->offer->organization->user->name;
-        $project->year = 2015;
+        $project->createdDate = new \DateTime();
         $project->state = 1; //state = Without tutors
         $project->save();
         

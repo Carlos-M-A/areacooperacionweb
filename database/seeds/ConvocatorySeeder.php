@@ -19,9 +19,9 @@ class ConvocatorySeeder extends Seeder
         $convocatory->information = 'info';
         $convocatory->estimatedPeriod = 'asdfad';
         $convocatory->urlDocumentation = 'adsfadf';
-        $convocatory->year = 2016;
         $convocatory->state = 1;
         $convocatory->deadline = '2017-3-3';
+        $convocatory->createdDate = new \DateTime();
         $convocatory->save();
     }
 }
