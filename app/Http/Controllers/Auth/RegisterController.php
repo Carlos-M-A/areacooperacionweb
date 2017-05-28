@@ -80,6 +80,7 @@ use RegistersUsers;
                 $rules['surnames'] = 'required|string|max:100';
                 $rules['areasOfInterest'] = 'required|string|max:500';
                 $rules['description'] = 'required|string|max:500';
+                break;
             // Organization
             case 4:
                 $rules['description'] = 'required|string|max:500';

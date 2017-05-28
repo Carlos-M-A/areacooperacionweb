@@ -10,15 +10,15 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-primary">
-                <div class="panel-heading">Profile data</div>
+                <div class="panel-heading">@lang('general.profile_data')</div>
 
                 <div class="panel-body">
                     <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Field</th>
-                                <th>Data</th>
+                                <th>@lang('general.field')</th>
+                                <th>@lang('general.data')</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,21 +53,17 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    
-                        <form action="{{route('showEditProfile')}}" method="get">
-                              <input class="btn btn-primary" type="submit" value="Editar">
-                                </form>
-                       
-                    <form action="{{route('showEditPassword')}}" method="get">
-                        <button class="btn btn-primary" type="submit">change password</button>
-                                </form>
-                    @if($user->role<4)
-                              <form action="{{route('showRequestRoleChange')}}" method="get">
-                                  <button class="btn btn-primary" type="submit">change role</button>
-                                </form>
-                    @endif
-                    
+                    <form>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditProfile')}}">@lang('general.edit')</button>
+                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditPassword')}}">@lang('general.change_role')</button>
+                        @if($user->role<4)
+                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showRequestRoleChange')}}">@lang('general.change_password')</button>
+                        @endif
+                    </div>
+                    </form>
                 </div>
+                    
             </div>
 
             

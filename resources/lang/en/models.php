@@ -105,6 +105,7 @@ return [
 
     'user' => 'user',
         'password' => 'Password',
+        'email' => 'Email',
         'idCard' => 'ID Card',
         'phone' => 'Phone',
         'role' => 'Role',
