@@ -27,7 +27,7 @@ class TutelageProposalsController extends Controller
         $tutelageProposal->teacher_id = $user->id;
         $tutelageProposal->project_id = $project->id;
         $tutelageProposal->state = 1; //Not evaluated
-        $tutelageProposal->creationDate = new \DateTime();
+        $tutelageProposal->createdDate = new \DateTime();
         $tutelageProposal->save();
         
         

@@ -19,7 +19,6 @@ class CreateInscription extends Migration
             $table->integer('convocatory_id')->unsigned();
             $table->tinyInteger('state');
             $table->float('score', 5, 3);
-            $table->smallInteger('order');
             $table->string('observations', 200);
             
             $table->foreign('student_id')->references('id')->on('Student')

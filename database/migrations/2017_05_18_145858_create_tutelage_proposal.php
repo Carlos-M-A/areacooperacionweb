@@ -22,7 +22,7 @@ class CreateTutelageProposal extends Migration
             $table->string('comment', 500);
             //If the teacher wants to be contacted before being accepted
             $table->boolean('wantsToBeContacted');
-            $table->dateTime('creationDate');
+            $table->dateTime('createdDate');
             
             $table->foreign('teacher_id')->references('id')->on('Teacher')
                     ->onDelete('cascade');
