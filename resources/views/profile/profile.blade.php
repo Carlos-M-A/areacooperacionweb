@@ -71,41 +71,40 @@
             
             
             <div class="panel panel-primary">
-                <div class="panel-heading">Notifications active</div>
+                <div class="panel-heading">@lang('general.notifications')</div>
 
                 <div class="panel-body">
                     <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Notification</th>
-                                <th>State</th>
+                                <th>@lang('general.notification')</th>
+                                <th>@lang('general.state')</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Projects</td>
-                                <td>{{$user->notificationInfoProjects? 'Actice' : 'Inactive'}}</td>
+                            <tr>    
+                                <td>@lang('general.notification_projects')</td>
+                                <td>{{$user->notificationInfoProjects ? __('general.active') : __('general.inactive')}}</td>
                                 <th>
                                     <form action="{{route('changeNotificationProjects')}}" method="post">
                                         {{ csrf_field() }}
-                                        <button   
-                                            type="submit" class="btn btn-primary">
-                                                {{$user->notificationInfoProjects? 'Deactivate' : 'Activate'}}
+                                        <button type="submit" class="btn btn-primary">
+                                                {{$user->notificationInfoProjects ? __('general.deactivate') : __('general.activate')}}
                                         </button>
                                     </form>
                                 </th>
                             </tr>
                             <tr>
-                                <td>Convocations</td>
-                                <td>{{$user->notificationInfoConvocatories? 'Active' : 'Inactive'}}</td>
+                                <td>@lang('general.notification_convocatories')</td>
+                                <td>{{$user->notificationInfoConvocatories ? __('general.active') : __('general.inactive')}}</td>
                                 <th>
                                     <form action="{{route('changeNotificationConvocations')}}" method="post">
                                         {{ csrf_field() }}
                                         <button   
                                             type="submit" class="btn btn-primary">
-                                                {{$user->notificationInfoConvocatories? 'Deactivate' : 'Activate'}}
+                                                {{$user->notificationInfoConvocatories ? __('general.deactivate') : __('general.activate')}}
                                         </button>
                                     </form>
                                 </th>
@@ -117,30 +116,30 @@
             </div>
             
             <div class="panel panel-primary" >
-                <div class="panel-heading">Newsletter Subscription</div>
+                <div class="panel-heading">@lang('general.newsletter_subscription')</div>
 
                 <div class="panel-body">
-                    {{$user->isSubscriber? 'Subscript' : 'Not Subscript'}}
+                    {{$user->isSubscriber? __('general.subscript') : __('general.not_subscript')}}
                 </div>
                 <div class="panel-footer">
                         <form action="{{route('changeSubscription')}}" method="post">
                                         {{ csrf_field() }}
                                         <button   
                                             type="submit" class="btn btn-primary">
-                                                {{$user->isSubscriber? 'Cancel subscription' : 'Subscribe'}}
+                                                {{$user->isSubscriber? __('general.cancel_subscription') : __('general.subscribe')}}
                                         </button>
                                     </form>
                 </div>
             </div>
             
             <div class="panel panel-primary">
-                <div class="panel-heading">Observatory of the cooperation for development of the UVa</div>
+                <div class="panel-heading">@lang('general.observatory_name')</div>
 
                 <div class="panel-body">
                     @if(!is_null($user->observatoryRequest))
-                        You did a request to be a observatory member
+                        @lang('general.did_a_request')
                     @else
-                    {{$user->isObservatoryMember? 'Is member' : 'Not is member'}}
+                    {{$user->isObservatoryMember? __('general.is_member') : __('general.not_is_member')}}
                     @endif
                 </div>
                 <div class="panel-footer">
@@ -149,7 +148,7 @@
                                         {{ csrf_field() }}
                                         <button   
                                             type="submit" class="btn btn-primary">
-                                                Cancel the request
+                                                @lang('general.cancell_request')
                                         </button>
                                     </form>
                     @else
@@ -157,7 +156,7 @@
                                         {{ csrf_field() }}
                                         <button   
                                             type="submit" class="btn btn-primary">
-                                                {{$user->isObservatoryMember? 'Cancel be observatory member' : 'Request be observatory member'}}
+                                                {{$user->isObservatoryMember? __('general.cancel_obs_member') : __('general.request_obs_member')}}
                                         </button>
                                     </form>
                     @endif

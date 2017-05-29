@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-primary">
-                <div class="panel-heading">Profile data</div>
+                <div class="panel-heading">@lang('models.organization')</div>
 
                 <div class="panel-body">
                     <div class="table-responsive">

@@ -129,9 +129,14 @@ Route::post('/tutelageProposal/{id}/remove', 'Projects\TutelageProposalsControll
 Route::post('/tutelageProposal/{id}/accept', 'Projects\TutelageProposalsController@accept')->name('acceptTutelageProposal');
 
 // Convocatories management
-Route::get('/convocatories/createOffer', 'Convocatories\ConvocatoriesController@showCreateConvocatory')->name('showCreateConvocatory');
-Route::post('/convocatories/createOffer', 'Convocatories\ConvocatoriesController@createConvocatory')->name('createConvocatory');
+Route::get('/convocatories/createConvocatory', 'Convocatories\ConvocatoriesController@showCreateConvocatory')->name('showCreateConvocatory');
+Route::post('/convocatories/createConvocatory', 'Convocatories\ConvocatoriesController@createConvocatory')->name('createConvocatory');
 Route::get('/convocatories/{id}', 'Convocatories\ConvocatoriesController@convocatory')->name('convocatory');
 Route::get('/convocatories', 'Convocatories\ConvocatoriesController@convocatories')->name('convocatories');
 Route::get('/convocatories/{id}/showEditConvocatory', 'Convocatories\ConvocatoriesController@showEditConvocatory')->name('showEditConvocatory');
 Route::post('/convocatories/{id}/editConvocatory', 'Convocatories\ConvocatoriesController@editConvocatory')->name('editConvocatory');
+Route::post('/convocatories/{id}/closeConvocatory', 'Convocatories\ConvocatoriesController@close')->name('closeConvocatory');
+
+Route::post('/convocatories/{id}/createInscription', 'Convocatories\InscriptionsController@createInscription')->name('createInscription');
+Route::post('/convocatories/{id}/remove', 'Convocatories\InscriptionsController@remove')->name('removeInscription');
+Route::post('/inscriptions/{id}/edit', 'Convocatories\InscriptionsController@edit')->name('editInscription');

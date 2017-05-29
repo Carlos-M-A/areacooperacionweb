@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1> Studys </h1>
+            <h1> @lang('general.studies') </h1>
             
             <button type="button" class="btn btn-primary btn-block" 
                             onclick="event.preventDefault(); document.getElementById('nuevostudy-form').submit();">
@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Search
+                                    @lang('general.search')
                                 </button>
                             </div>
                         </div>

@@ -7,7 +7,7 @@
 
 @section('secondary_name')
 <tr>
-    <td>Social name</td>
+    <td>Socialname</td>
     <td>{{$organization->socialName}}</td>
 </tr>
 @endsection
@@ -18,11 +18,11 @@
     <td>{{$organization->description}}</td>
 </tr>
 <tr>
-    <td>URL logo</td>
+    <td>URLlogo</td>
     <td>{{$organization->urlLogoImage}}</td>
 </tr>
 <tr>
-    <td>headquarters location</td>
+    <td>headquarterslocation</td>
     <td>{{$organization->headquartersLocation}}</td>
 </tr>
 <tr>

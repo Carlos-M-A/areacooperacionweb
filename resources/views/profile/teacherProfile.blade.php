@@ -25,7 +25,7 @@
 
 @section('studies_teacher')
 <div class="panel panel-primary">
-    <div class="panel-heading">Studies with teaching</div>
+    <div class="panel-heading">@lang('general.studies_with_teaching')</div>
 
     <div class="panel-body">
         <ul class="list-group">
@@ -35,9 +35,8 @@
                 <li  class="list-group-item">
                     <form action="{{route('removeTeachingStudy')}}" method="post">
                         {{ csrf_field() }}
-                        <button   
-                            type="submit" class="btn btn-primary" name="studyWithTeaching" value="{{$study->id}}">
-                            Borrar
+                        <button type="submit" class="btn btn-primary" name="studyWithTeaching" value="{{$study->id}}">
+                            @lang('general.delete')
                         </button>
                     </form>
                 </li>
@@ -78,7 +77,7 @@
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-4">
                         <button type="submit" class="btn btn-primary">
-                            Add study
+                            @lang('general.add_study')
                         </button>
                     </div>
                 </div>

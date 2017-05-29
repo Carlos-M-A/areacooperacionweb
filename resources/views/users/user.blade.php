@@ -84,16 +84,16 @@
                     @if($user->accepted)
                     <form action="{{route('removeUser', ['id'=> $user->id])}}" method="post">
                         {{ csrf_field() }}
-                        <button class="btn btn-primary" type="submit">Remove</button>
+                        <button class="btn btn-primary" type="submit">@lang('general.remove')</button>
                     </form>
                     @else
                     <form action="{{route('acceptUser', ['id'=> $user->id])}}" method="post">
                         {{ csrf_field() }}
-                        <button class="btn btn-primary" type="submit">Accept</button>
+                        <button class="btn btn-primary" type="submit">@lang('general.accept')</button>
                     </form>
                     <form action="{{route('rejectUser', ['id'=> $user->id])}}" method="post">
                         {{ csrf_field() }}
-                        <button class="btn btn-primary" type="submit">Reject</button>
+                        <button class="btn btn-primary" type="submit">@lang('general.reject')</button>
                     </form>
                     @endif
                 </div>
@@ -101,13 +101,13 @@
 
 
             <div class="panel panel-primary">
-                <div class="panel-heading">Observatory of the cooperation to development of the UVa</div>
+                <div class="panel-heading">@lang('general.observatory_name')</div>
 
                 <div class="panel-body">
                     @if(!is_null($user->observatoryRequest))
-                    The user has a request in the observatory
+                        @lang('general.user_has_a_request')
                     @else
-                    {{$user->isObservatoryMember? 'Is member' : 'Not is member'}}
+                        {{$user->isObservatoryMember? __('general.is_member') : __('general.not_is_member')}}
                     @endif
                 </div>
                 <div class="panel-footer">
@@ -116,14 +116,14 @@
                         {{ csrf_field() }}
                         <button   
                             type="submit" class="btn btn-primary">
-                            Reject request
+                            @lang('general.reject')
                         </button>
                     </form>
                     <form action="{{route('observatoryAccept', ['id'=> $user->id])}}" method="post">
                         {{ csrf_field() }}
                         <button   
                             type="submit" class="btn btn-primary">
-                            Accept request
+                            @lang('general.accept')
                         </button>
                     </form>
                     @elseif($user->isObservatoryMember)
@@ -131,7 +131,7 @@
                         {{ csrf_field() }}
                         <button   
                             type="submit" class="btn btn-primary">
-                            Remove member
+                            @lang('general.remove')
                         </button>
                     </form>
                     @endif

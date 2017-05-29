@@ -5,7 +5,7 @@
 @if(is_null($tutelageProposal) && $project->state==1)
 
 <div class="panel panel-default">
-                <div class="panel-heading">Create tutelage proposal</div>
+                <div class="panel-heading">@lang('general.create_tutelage_proposal')</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('createTutelageProposal', ['id' => $project->id]) }}">
                         {{ csrf_field() }}
@@ -43,7 +43,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Make proposal
+                                    @lang('general.create')
                                 </button>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                                 {{ csrf_field() }}
                                 <div class="btn-group">
                                     @if($tutelageProposal->state == 1)
-                                    <button class="btn btn-danger" type="submit" formmethod="POST" formaction="{{route('removeTutelageProposal', ['id'=> $tutelageProposal->id])}}">Remove</button>
+                                    <button class="btn btn-danger" type="submit" formmethod="POST" formaction="{{route('removeTutelageProposal', ['id'=> $tutelageProposal->id])}}">@lang('general.remove')</button>
                                     @endif
                                 </div>
                             </form>

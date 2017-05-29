@@ -9,7 +9,7 @@
         <div class="col-md-8 col-md-offset-2">
             <h1> Role change requests</h1>
             <div class="panel panel-primary">
-                <div class="panel-heading">Requests</div>
+                <div class="panel-heading">@lang('general.role_change_requests')</div>
 
                 <div class="panel-body">
                     <div class="table-responsive">

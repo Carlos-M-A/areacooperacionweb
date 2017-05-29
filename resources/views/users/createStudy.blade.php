@@ -10,7 +10,7 @@
             <h1> Create </h1>
             
             <div class="panel panel-default">
-                <div class="panel-heading">Registrar study</div>
+                <div class="panel-heading">@lang('general.create_study')</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('createStudy') }}">
                         {{ csrf_field() }}
@@ -79,7 +79,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Create
+                                    @lang('general.create')
                                 </button>
                             </div>
                         </div>

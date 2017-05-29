@@ -11,7 +11,7 @@
             
             
             <div class="panel panel-primary">
-                <div class="panel-heading">Registration requests</div>
+                <div class="panel-heading">@lang('general.registration_requests')</div>
 
                 <div class="panel-body">
                     <div class="table-responsive">

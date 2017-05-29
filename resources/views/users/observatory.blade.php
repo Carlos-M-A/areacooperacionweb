@@ -9,7 +9,7 @@
         <div class="col-md-8 col-md-offset-2">
             <h1> The observatory</h1>
             <div class="panel panel-primary">
-                <div class="panel-heading">Request to Observatory</div>
+                <div class="panel-heading">@lang('general.requests_to_observatory')</div>
 
                 <div class="panel-body">
                     <div class="table-responsive">

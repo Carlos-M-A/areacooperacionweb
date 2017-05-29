@@ -264,14 +264,14 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-primary">
-                <div class="panel-heading">Request role change</div>
+                <div class="panel-heading">@lang('general.change_role')</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('requestRoleChange') }}">
                         {{ csrf_field() }}
 
 
                         <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
-                            <label for="role" class="col-md-4 control-label">User type</label>
+                            <label for="role" class="col-md-4 control-label">@lang('general.user_type')</label>
 
                             <div class="col-md-6">
                                 <select  id="role" class="form-control" name="role" onchange="changeRole(0, false, false)" autofocus>
@@ -434,7 +434,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    @lang('general.register')
                                 </button>
                             </div>
                         </div>

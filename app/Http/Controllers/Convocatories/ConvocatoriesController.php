@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Convocatories;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Convocatory;
+use App\Inscription;
+use Illuminate\Support\Facades\Auth;
 
 class ConvocatoriesController extends Controller
 {
@@ -65,13 +67,36 @@ class ConvocatoriesController extends Controller
     
     public function convocatory($id) {
         $convocatory = Convocatory::find($id);
+        $user = Auth::user();
         
-        return view('convocatories/convocatory')->with('convocatory', $convocatory);
+        switch ($user->role){
+            case 1:
+                $inscription = Inscription::where('student_id', $user->id)
+                    ->where('convocatory_id', $convocatory->id)->first();
+                if(is_null($inscription)){
+                    return view('convocatories/convocatoryAsStudent')
+                            ->with('convocatory', $convocatory)->with('inscription');
+                } else {
+                    return view('convocatories/convocatoryAsStudent')
+                            ->with('convocatory', $convocatory)->with('inscription', $inscription);
+                }
+            case 5:
+                return view('convocatories/convocatoryAsCooperationArea')->with('convocatory', $convocatory);
+            default:
+                return view('convocatories/convocatory')->with('convocatory', $convocatory);
+        }
     }
     
     public function convocatories() {
         $convocatories = Convocatory::all();
         
         return view('convocatories/convocatories')->with('convocatories', $convocatories);
+    }
+    
+    public function close($id) {
+        $convocatory = Convocatory::find($id);
+        $convocatory->state = 3; //Closed
+        $convocatory->save();
+        return redirect('/convocatories/'.$convocatory->id);
     }
 }

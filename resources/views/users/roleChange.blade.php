@@ -88,11 +88,11 @@
 
                     <form action="{{route('acceptRoleChange', ['id'=> $roleChangeRequest->id])}}" method="post">
                         {{ csrf_field() }}
-                        <button class="btn btn-primary" type="submit">Accept</button>
+                        <button class="btn btn-primary" type="submit">@lang('general.Accept')</button>
                     </form>
                     <form action="{{route('rejectRoleChange', ['id'=> $roleChangeRequest->id])}}" method="post">
                         {{ csrf_field() }}
-                        <button class="btn btn-primary" type="submit">Reject</button>
+                        <button class="btn btn-primary" type="submit">@lang('general.reject')</button>
                     </form>
 
                 </div>

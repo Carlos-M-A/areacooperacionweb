@@ -7,17 +7,17 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1> Facultyes </h1>
+            <h1> @lang('general.faculties') </h1>
             
             <button type="button" class="btn btn-primary btn-block" 
                             onclick="event.preventDefault(); document.getElementById('nuevafaculty-form').submit();">
-                                                     Create faculty</button>
+                                                     @lang('general.create_faculty')</button>
                     
                     <form id="nuevafaculty-form" action="{{ route('showCreateFaculty') }}" method="GET" style="display: none;">
                                         </form>
             
             <div class="panel panel-default">
-                <div class="panel-heading">Search faculties</div>
+                <div class="panel-heading">@lang('ganeral.search_faculties')</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('searchFaculties') }}">
                         {{ csrf_field() }}
@@ -53,7 +53,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Search
+                                    @lang('general.search')
                                 </button>
                             </div>
                         </div>

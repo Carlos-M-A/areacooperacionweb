@@ -8,9 +8,9 @@
         <div class="btn-group">
             @if($project->state == 2)
             <!-- Trigger the modal to terminate project -->
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalOfTerminateProject">Terminate</button>
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalOfTerminateProject">@lang('general.finish')</button>
             @endif
-            <button class="btn btn-primary" frommethod="POST" formaction="{{route('showEditProject', ['id'=> $project->id])}}">Edit</button>
+            <button class="btn btn-primary" frommethod="POST" formaction="{{route('showEditProject', ['id'=> $project->id])}}">@lang('general.edit')</button>
             
         </div>
     </form>
@@ -25,7 +25,7 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h4 class="panel-title">
-           <a data-toggle="collapse" href="#collapseTutor">Tutor</a>
+           <a data-toggle="collapse" href="#collapseTutor">@lang('general.tutor')</a>
         </h4>
     </div>
     <div id="collapseTutor" class="panel-collapse collapse">
@@ -33,7 +33,7 @@
  
         <div class="panel-group">
             @if($project->state == 1)
-                No tutor has been choosen
+                @lang('general.no_tutor_has_been_chosen')
                 @else
                     @if(is_null($tutelageProposalChoosen))
                         {{$project->tutor}}
@@ -73,7 +73,7 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h4 class="panel-title">
-           <a data-toggle="collapse" href="#collapseTutelageProposals">Tutelage proposals <span class="badge">{{count($project->tutelageProposals)}}</span></a>
+           <a data-toggle="collapse" href="#collapseTutelageProposals">@lang('general.tutelage_proposals') <span class="badge">{{count($project->tutelageProposals)}}</span></a>
         </h4>
     </div>
     <div id="collapseTutelageProposals" class="panel-collapse collapse">
@@ -127,7 +127,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Enter data of tutor</h4>
+        <h4 class="modal-title">@lang('general.enter_data_of_tutor')</h4>
       </div>
       <div class="modal-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('enterTutorManually', ['id' => $project->id]) }}">
@@ -162,14 +162,14 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Save
+                                    @lang('general.save')
                                 </button>
                             </div>
                         </div>
                     </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('general.close')</button>
       </div>
     </div>
 
@@ -186,7 +186,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Enter url of documentatation</h4>
+        <h4 class="modal-title">@lang('general.enter_url_to_documentation')</h4>
       </div>
       <div class="modal-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('terminateProject', ['id' => $project->id]) }}">
@@ -208,14 +208,14 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Terminate
+                                    @lang('general.finish')
                                 </button>
                             </div>
                         </div>
                     </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('general.close')</button>
       </div>
     </div>
 

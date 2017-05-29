@@ -18,6 +18,8 @@
                     <a href="{{ route('myProjects')}}">My projects</a>
                     <p>
                     <a href="{{ route('acceptedProposals') }}">acceptedProposals</a>
+                    <p>
+                    <a href="{{ route('convocatories') }}"> Convocatories</a>
                 </div>
             </div>
         </div>
