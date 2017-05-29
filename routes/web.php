@@ -33,8 +33,8 @@ Route::post('/profile/edit', 'Profile\ProfileController@edit')->name('editProfil
 Route::get('/profile/edit', 'Profile\ProfileController@showEdit')->name('showEditProfile');
 Route::post('/profile/password', 'Profile\ProfileController@editPassword')->name('editPassword');
 Route::get('/profile/password', 'Profile\ProfileController@showEditPassword')->name('showEditPassword');
-Route::post('/profile/changeRole', 'Profile\ProfileController@requestRoleChange')->name('requestRoleChange');
-Route::get('/profile/changeRole', 'Profile\ProfileController@showRequestRoleChange')->name('showRequestRoleChange');
+Route::post('/profile/changeRole', 'Profile\RequestRoleChangeController@requestRoleChange')->name('requestRoleChange');
+Route::get('/profile/changeRole', 'Profile\RequestRoleChangeController@showRequestRoleChange')->name('showRequestRoleChange');
 
 //More profile management
 Route::post('/profile/changeNotificationProjects', 'Profile\NotificationsController@changeNotificationProjects')->name('changeNotificationProjects');

@@ -56,10 +56,10 @@
                     <form>
                     <div class="btn-group">
                         <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditProfile')}}">@lang('general.edit')</button>
-                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditPassword')}}">@lang('general.change_role')</button>
                         @if($user->role<4)
-                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showRequestRoleChange')}}">@lang('general.change_password')</button>
+                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showRequestRoleChange')}}">@lang('general.change_role')</button>
                         @endif
+                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditPassword')}}">@lang('general.change_password')</button>
                     </div>
                     </form>
                 </div>

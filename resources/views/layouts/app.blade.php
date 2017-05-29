@@ -18,7 +18,7 @@
      <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
      <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
      <script src="{{asset('js/jquery-3.2.1.js')}}"></script>
-         
+     @yield('more_script')
       <!--
       With this, the web word perfectly, but the css and js would not be in own server
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

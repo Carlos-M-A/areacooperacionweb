@@ -1,5 +1,20 @@
 @extends('convocatories.convocatory')
 
+@section('more_script')
+<script>
+$(document).ready(function(){
+    $(".evaluate_button").click(function(event){
+        
+        var id = event.target.id;
+        var urlEditInscription = "{{ route('root')}}" + "/inscriptions/" + id + "/edit";
+        $('#modal_form').attr("action", urlEditInscription);
+        $("#modalEvaluateInscription").modal();
+    });
+});
+</script>
+@endsection
+
+
 @section('convocatory_options')
     <div class="panel-footer">
         <form>
@@ -15,20 +30,6 @@
 @endsection
 
 @section('convocatory_inscriptions')
-<script>
-$(document).ready(function(){
-    $(".evaluate_button").click(function(event){
-        
-        var id = event.target.id;
-        var urlEditInscription = "{{ route('root')}}" + "/inscriptions/" + id + "/edit";
-        $('#modal_form').attr("action", urlEditInscription);
-        $("#modalEvaluateInscription").modal();
-    });
-});
-</script>
-
-
-
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h4 class="panel-title">
