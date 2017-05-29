@@ -610,7 +610,7 @@
 -->
 
 <script>
-            initializes();
-            //$(document).ready(initializes());
+            //initializes();
+            $(document).ready(initializes());
 </script>
 @endsection

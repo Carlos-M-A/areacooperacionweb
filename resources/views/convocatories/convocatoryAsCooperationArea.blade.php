@@ -15,6 +15,18 @@
 @endsection
 
 @section('convocatory_inscriptions')
+<script>
+$(document).ready(function(){
+    $(".evaluate_button").click(function(event){
+        
+        var id = event.target.id;
+        var urlEditInscription = "{{ route('root')}}" + "/inscriptions/" + id + "/edit";
+        $('#modal_form').attr("action", urlEditInscription);
+        $("#modalEvaluateInscription").modal();
+    });
+});
+</script>
+
 
 
 <div class="panel panel-primary">
@@ -44,8 +56,7 @@
                     {{ csrf_field() }}
                     <div class="btn-group">
                         <!-- Trigger the modal to evaluate the inscription -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEvaluateInscription">@lang('general.evaluate')</button>
-                        
+                        <button id="{{$inscription->id}}" type="button" class="btn btn-primary evaluate_button" data-toggle="modal"  >@lang('general.evaluate')</button>
                     </div>
                 </form>
         </div>
@@ -55,7 +66,7 @@
     </div>
 </div>
 
-@endsection
+
 
 
 @if($convocatory->state == 1)
@@ -70,7 +81,7 @@
         <h4 class="modal-title">@lang('general.evaluate')</h4>
       </div>
       <div class="modal-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('editInscription', ['id'=> $convocatory->id]) }}">
+                    <form id="modal_form" class="form-horizontal" role="form" method="POST" action="">
                             {{ csrf_field() }}
                             
                         <div class="form-group{{ $errors->has('state') ? ' has-error' : '' }}">
@@ -134,4 +145,8 @@
 
   </div>
 </div>
+
+
 @endif
+
+@endsection
