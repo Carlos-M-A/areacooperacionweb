@@ -48,9 +48,9 @@
                     <ul class="list-group">
                         <li class="list-group-item">state: {{$tutelageProposal->state}}</li>
                         <li class="list-group-item">comment: {{$tutelageProposal->comment}}</li>
-                        <li class="list-group-item">wantsToBeContacted: {{$tutelageProposal->wantsToBeContacted}}</li>
                     </ul>
                     </div>
+                    @if($tutelageProposal->state != 3)
                     <div class="panel-footer">
                         <form>
                                 {{ csrf_field() }}
@@ -58,9 +58,13 @@
                                     @if($tutelageProposal->state == 1)
                                     <button class="btn btn-danger" type="submit" formmethod="POST" formaction="{{route('removeTutelageProposal', ['id'=> $tutelageProposal->id])}}">@lang('general.remove')</button>
                                     @endif
+                                    @if($tutelageProposal->state == 2)
+                                    <button class="btn btn-danger" type="submit" formmethod="POST" formaction="{{route('cancelTutelageProposal', ['id'=> $tutelageProposal->id])}}">@lang('general.cancel')</button>
+                                    @endif
                                 </div>
                             </form>
                     </div>
+                    @endif
                 </div>
             </div>
 @endif

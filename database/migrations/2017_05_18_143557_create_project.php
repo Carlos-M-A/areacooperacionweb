@@ -15,13 +15,14 @@ class CreateProject extends Migration
     {
         Schema::create('Project', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('study_id')->unsigned()->nullable();
-            $table->integer('teacher_id')->unsigned()->nullable();
+            $table->integer('study_id')->unsigned();
+            $table->integer('teacher_id')->unsigned();
             
             $table->string('title', 200);
             $table->string('scope', 200);
             $table->text('description');
             $table->string('tutor', 200)->nullable();
+            $table->string('author', 200)->nullable();
             $table->string('urlDocumentation', 200)->nullable();
             $table->tinyInteger('state');
             $table->dateTime('createdDate');

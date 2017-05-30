@@ -9,11 +9,9 @@
 
                 <div class="panel-body">
                     <p>
-                    <a href="{{ route('newProjects') }}">newProjects</a>
+                    <a href="{{ route('myProjects') }}">myProjects</a>
                     <p>
-                    <a href="{{ route('myTutoredProjects') }}">myTutoredProjects</a>
-                    <p>
-                    <a href="{{ route('projectsWithTutelageProposal') }}">projectsWithTutelageProposal</a>
+                        <a href="{{ route('showCreateProject') }}">Createproject</a>
                     <p>
                 </div>
             </div>

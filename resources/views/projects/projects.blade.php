@@ -15,7 +15,7 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Type</th>
+                                    <th>State</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -23,7 +23,7 @@
                                 @foreach($projects as $project)
                                 <tr>
                                     <td><a href="{{route('project', ['id'=> $project->id])}}" >{{$project->title}}</a></td>
-                                    <td>{{$project->type}}</td>
+                                    <td>{{$project->state}}</td>
                                 </tr>
                                 @endforeach
 

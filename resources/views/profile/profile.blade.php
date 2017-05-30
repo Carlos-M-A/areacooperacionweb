@@ -67,7 +67,7 @@
             </div>
 
             
-            @yield('estudios_docente')
+            @yield('studies_teacher')
             
             
             <div class="panel panel-primary">

@@ -24,10 +24,6 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>offer</td>
-                                    <td><a href='{{route('offer', ['id' => $project->offer_id])}}'>{{$project->offer->title}}</a></td>
-                                </tr>
-                                <tr>
                                     <td>title</td>
                                     <td>{{$project->title}}</td>
                                 </tr>

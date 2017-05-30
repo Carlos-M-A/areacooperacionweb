@@ -217,10 +217,6 @@
                                     <!-- Trigger the modal to accept the offer -->
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalAccept">Accept</button>
                                     @endif
-                                    @if($proposal->state == 4)
-                                    <!-- Trigger the modal to create project -->
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCreateProject">Create project proposal from offer</button>
-                                    @endif
                                 </div>
                             </form>
                     </div>
@@ -233,71 +229,6 @@
 </script>
 
 @endsection
-
-
-
-@if(!is_null($proposal))
-<!-- Modal to create a project proposal-->
-<div id="modalCreateProject" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Enter data of project</h4>
-      </div>
-      <div class="modal-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('createProjectProposal', ['id'=> $proposal->id]) }}">
-                            {{ csrf_field() }}
-                        
-                        <div id="title_div" class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                            <label for="title" class="col-md-4 control-label">title</label>
-
-                            <div class="col-md-6">
-                                <input id="title" type="text" class="form-control" name="title" value="{{ old('title')}}" autofocus required>
-
-                                @if ($errors->has('title'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('title') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                        </div>
-                            
-                            <div id="description_div" class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                            <label for="description" class="col-md-4 control-label">description</label>
-
-                            <div class="col-md-6">
-                                <input id="description" type="text" class="form-control" name="description" value="{{ old('description') }}" autofocus required>
-
-                                @if ($errors->has('description'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('description') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                        </div>
-                        
-                        
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-success">
-                                        Create project proposal
-                                </button>
-                            </div>
-                        </div>
-                            
-                        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-@endif
 
 
 @if(!is_null($proposal))

@@ -17,14 +17,12 @@ class TutelageProposalsController extends Controller
         
         $rules = [
             'comment' => 'required|string|max:100',
-            'wantsToBeContacted' => 'required|boolean',
         ];
         $this->validate($request, $rules);
         
         $tutelageProposal = new TutelageProposal();
         $tutelageProposal->comment = $request->comment;
-        $tutelageProposal->wantsToBeContacted = $request->wantsToBeContacted;
-        $tutelageProposal->teacher_id = $user->id;
+        $tutelageProposal->student_id = $user->id;
         $tutelageProposal->project_id = $project->id;
         $tutelageProposal->state = 1; //Not evaluated
         $tutelageProposal->createdDate = new \DateTime();
@@ -36,27 +34,41 @@ class TutelageProposalsController extends Controller
     
     public function remove($id) {
         $tutelageProposal = TutelageProposal::find($id);
+        $project = $tutelageProposal->project;
+        $project->state = 1;
+        $project->save();
         $tutelageProposal->delete();
+        return redirect('/projects/'.$tutelageProposal->project_id);
+    }
+    
+    public function cancel($id) {
+        $tutelageProposal = TutelageProposal::find($id);
+        $user = Auth::user();
+        if($user->role == 1){ //Caller is a student
+            $tutelageProposal->state = 3;
+        } elseif($user->role == 2){ // caller is a teacher
+            $tutelageProposal->state = 1;
+        }
+        $tutelageProposal->save();
+        
+        $project = $tutelageProposal->project;
+        $project->state = 1;
+        $project->save();
+        
         return redirect('/projects/'.$tutelageProposal->project_id);
     }
     
     public function accept($id) {
         $tutelageProposalAccepted = TutelageProposal::find($id);
         $project = $tutelageProposalAccepted->project;
-        $tutelageProposals = $project->tutelageProposals;
-        
-        foreach ($tutelageProposals as $tutelageProposal) {
-             $tutelageProposal->state = 3; //Not choosen
-             $tutelageProposal->save();
-        }
         $tutelageProposalAccepted->state = 2; //Choosen
         $tutelageProposalAccepted->save();
         
-        $project->tutor = $tutelageProposal->teacher->user->getNameAndSurnames();
+        $project->author = $tutelageProposalAccepted->student->user->getNameAndSurnames();
         $project->state = 2; //state = started
         $project->save();
         
-        return redirect('/projects/'.$tutelageProposal->project_id);
+        return redirect('/projects/'.$project->id);
     }
     
     

@@ -38,6 +38,7 @@ return [
     'accept' => 'Accept',
     'reject' => 'Reject',
     'finish' => 'Finish',
+    'cancel' => 'Cancel',
     
     //Forms
     'confirm_password' => 'Confirm password',
@@ -95,12 +96,11 @@ return [
     
     //Projects
     'tutor' => 'Tutor',
-    'enter_data_of_tutor' => 'Enter data of tutor',
-    'no_tutor_has_been_chosen' => 'No tutor has been chosen',
-    'tutelage_proposals' => 'Tutelage proposals',
-    'enter_data_of_tutor' => 'Enter data of tutor',
+    'author' => 'Author',
+    'no_author_has_been_chosen' => 'No author has been chosen',
     'enter_url_to_documentation' => 'Enter url to documentation',
     'projects' => 'Projects',
+    'tutelage_proposals' => 'Tutelage proposals',
     'create_tutelage_proposal' => 'Create tutelage proposal',
     
     //Convocatories
