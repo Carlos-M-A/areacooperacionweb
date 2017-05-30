@@ -10,19 +10,17 @@ use Illuminate\Support\Facades\Auth;
 
 class ProjectsController extends Controller
 {
-    public function createProject($proposal, Request $request){
+    public function createProject(Request $request){
+        $user = Auth::user(); //The teacher
+            
         $project = new Project();
-        $project->proposal_id = $proposal->id;
-        $project->offer_id = $proposal->offer_id;
-        $project->study_id = $proposal->student->study->id;
+        $project->study_id = $request->study_id;
         $project->title = $request->title;
-        $project->scope = $proposal->offer->scope;
-        $project->type = $proposal->type;
+        $project->scope = $request->scope;
         $project->description = $request->description;
-        $project->author = $proposal->student->user->getNameAndSurnames();
-        $project->organization = $proposal->offer->organization->user->name;
+        $project->teacher_id = $user->id;
         $project->createdDate = new \DateTime();
-        $project->state = 1; //state = Without tutors
+        $project->state = 1; //state = Project proposal
         $project->save();
         
         return redirect('projects/'.$project->id);

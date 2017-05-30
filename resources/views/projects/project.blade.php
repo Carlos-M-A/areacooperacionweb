@@ -40,20 +40,12 @@
                                     <td>{{$project->description}}</td>
                                 </tr>
                                 <tr>
-                                    <td>type</td>
-                                    <td>{{$project->type}}</td>
-                                </tr>
-                                <tr>
                                     <td>author</td>
                                     <td>{{$project->author}}</td>
                                 </tr>
                                 <tr>
                                     <td>tutor</td>
                                     <td>{{$project->tutor}}</td>
-                                </tr>
-                                <tr>
-                                    <td>year</td>
-                                    <td>{{$project->year}}</td>
                                 </tr>
                                 <tr>
                                     <td>state</td>

@@ -62,34 +62,23 @@ class ProposalsController extends Controller
         $proposal->save();
         return redirect('/offers/'.$proposal->offer->id);
     }
-    public function accept($id, Request $request) {
+    public function accept($id) {
         $proposal = Proposal::find($id);
         $offer = $proposal->offer;
-        
-        if($proposal->type>=3){
-            $this->validate($request, [
-                'title' => 'required|string|max:100',
-                'description' => 'required|string|max:100',
-            ]);
-        }
         
         if(!$offer->open){
             return redirect('/offers/'.$offer->id);
         }
+        
         $proposal->state = 4; //accepted by student
         $proposal->save();
         if($offer->getAmountOfAcceptedProposals()>=$offer->places){
             $offer->open = false;
             $offer->save();
         }
-        if($proposal->type>=3){
-            //The new project is created
-            $projectController = new ProjectsController();
-            return $projectController->createProject($proposal, $request);
-        } else {
-            return redirect('/offers/'.$proposal->offer->id);
-        }
+        return redirect('/offers/'.$proposal->offer->id);
     }
+    
     
     public function cancel($id) {
         $proposal = Proposal::find($id);

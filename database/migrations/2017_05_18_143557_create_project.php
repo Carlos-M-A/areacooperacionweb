@@ -15,24 +15,19 @@ class CreateProject extends Migration
     {
         Schema::create('Project', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('proposal_id')->unsigned()->nullable();
-            $table->integer('offer_id')->unsigned()->nullable();
             $table->integer('study_id')->unsigned()->nullable();
+            $table->integer('teacher_id')->unsigned()->nullable();
             
             $table->string('title', 200);
             $table->string('scope', 200);
-            $table->tinyInteger('type');
-            $table->string('description', 500);
-            $table->string('author', 200);
+            $table->text('description');
             $table->string('tutor', 200)->nullable();
-            $table->string('organization', 100);
             $table->string('urlDocumentation', 200)->nullable();
             $table->tinyInteger('state');
             $table->dateTime('createdDate');
             
-            $table->foreign('proposal_id')->references('id')->on('Proposal');
-            $table->foreign('offer_id')->references('id')->on('Offer');
             $table->foreign('study_id')->references('id')->on('Study');
+            $table->foreign('teacher_id')->references('id')->on('Teacher');
         });
     }
 

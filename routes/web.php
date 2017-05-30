@@ -111,7 +111,7 @@ Route::post('/proposal/{id}/approve', 'Offers\ProposalsController@approve')->nam
 Route::post('/proposal/{id}/reject', 'Offers\ProposalsController@reject')->name('rejectProposal');
 Route::post('/proposal/{id}/accept', 'Offers\ProposalsController@accept')->name('acceptProposal');
 Route::post('/proposal/{id}/cancel', 'Offers\ProposalsController@cancel')->name('cancelProposal');
-
+Route::post('/proposal/{id}/createProjectProposal', 'Offers\ProposalsController@createProjectProposal')->name('createProjectProposal');
 
 
 // Projects management

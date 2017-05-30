@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,16 +15,14 @@ class CreateTutelageProposal extends Migration
     {
         Schema::create('TutelageProposal', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('teacher_id')->unsigned();
+            $table->integer('student_id')->unsigned();
             $table->integer('project_id')->unsigned();
             
             $table->tinyInteger('state');
             $table->string('comment', 500);
-            //If the teacher wants to be contacted before being accepted
-            $table->boolean('wantsToBeContacted');
             $table->dateTime('createdDate');
             
-            $table->foreign('teacher_id')->references('id')->on('Teacher')
+            $table->foreign('student_id')->references('id')->on('Student')
                     ->onDelete('cascade');
             $table->foreign('project_id')->references('id')->on('Project')
                     ->onDelete('cascade');

@@ -24,6 +24,7 @@ return [
     //View information
     'field' => 'Field',
     'data' => 'Data',
+    'state' => 'State',
     
     //General buttons
     'create' => 'Create',
