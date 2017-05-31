@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TutelageProposal extends Model
+class InscriptionInProject extends Model
 {
-    protected $table = 'TutelageProposal';
+    protected $table = 'InscriptionInProject';
     public $timestamps = false;
     
     public function student() {

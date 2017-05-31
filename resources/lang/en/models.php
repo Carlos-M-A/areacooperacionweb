@@ -99,9 +99,8 @@ return [
     'teacher' => 'teacher',
         'departments' => 'departments',
     
-    'tutelageProposal' => 'Tutelage proposal',
+    'inscriptionInProject' => 'Inscription in project',
         'comment' => 'Comment',
-        'wantsToBeContacted' => 'Wants To Be Contacted before will be accepted',
 
     'user' => 'user',
         'password' => 'Password',

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTutelageProposal extends Migration
+class CreateInscriptionInProject extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateTutelageProposal extends Migration
      */
     public function up()
     {
-        Schema::create('TutelageProposal', function (Blueprint $table) {
+        Schema::create('InscriptionInProject', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('student_id')->unsigned();
             $table->integer('project_id')->unsigned();
             
             $table->tinyInteger('state');
-            $table->string('comment', 500);
+            $table->string('comment', 500)->nullable();
             $table->dateTime('createdDate');
             
             $table->foreign('student_id')->references('id')->on('Student')
@@ -36,6 +36,6 @@ class CreateTutelageProposal extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('TutelageProposal');
+        Schema::dropIfExists('InscriptionInProject');
     }
 }

@@ -123,10 +123,10 @@ Route::get('/projects/{id}', 'Projects\ProjectsController@project')->name('proje
 Route::get('/projects/{id}/showEditProject', 'Projects\ProjectsController@showEditProject')->name('showEditProject');
 Route::post('/projects/{id}/editProject', 'Projects\ProjectsController@editProject')->name('editProject');
 Route::post('/projects/{id}/finish', 'Projects\ProjectsController@finish')->name('finishProject');
-Route::post('/projects/{id}/createProposal', 'Projects\TutelageProposalsController@create')->name('createTutelageProposal');
-Route::post('/tutelageProposal/{id}/remove', 'Projects\TutelageProposalsController@remove')->name('removeTutelageProposal');
-Route::post('/tutelageProposal/{id}/accept', 'Projects\TutelageProposalsController@accept')->name('acceptTutelageProposal');
-Route::post('/tutelageProposal/{id}/cancel', 'Projects\TutelageProposalsController@cancel')->name('cancelTutelageProposal');
+Route::post('/projects/{id}/createProposal', 'Projects\InscriptionsInProjectController@create')->name('createInscriptionInProject');
+Route::post('/inscriptionsInProject/{id}/remove', 'Projects\InscriptionsInProjectController@remove')->name('removeInscriptionInProject');
+Route::post('/inscriptionsInProject/{id}/accept', 'Projects\InscriptionsInProjectController@accept')->name('acceptInscriptionInProject');
+Route::post('/inscriptionsInProject/{id}/cancel', 'Projects\InscriptionsInProjectController@cancel')->name('cancelInscriptionInProject');
 
 // Convocatories management
 Route::get('/convocatories/createConvocatory', 'Convocatories\ConvocatoriesController@showCreateConvocatory')->name('showCreateConvocatory');

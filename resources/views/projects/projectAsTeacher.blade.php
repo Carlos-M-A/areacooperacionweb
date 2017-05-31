@@ -32,25 +32,25 @@
 
  
         <div class="panel-group">
-            @if(is_null($tutelageProposalChoosen))
+            @if(is_null($inscriptionInProjectChoosen))
                 @lang('general.no_author_has_been_chosen')
                 @else
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#{{'collapse'.$tutelageProposalChoosen->student->id}}">{{$tutelageProposalChoosen->student->user->getNameAndSurnames()}}</a>
+                                <a data-toggle="collapse" href="#{{'collapse'.$inscriptionInProjectChoosen->student->id}}">{{$inscriptionInProjectChoosen->student->user->getNameAndSurnames()}}</a>
                             </h4>
                         </div>
                     
-                        <div id="{{'collapse'.$tutelageProposalChoosen->student->id}}" class="panel-collapse collapse">
+                        <div id="{{'collapse'.$inscriptionInProjectChoosen->student->id}}" class="panel-collapse collapse">
                             <ul class="list-group">
-                                <li class="list-group-item">state: {{$tutelageProposalChoosen->state}}</li>
-                                <li class="list-group-item">comment: {{$tutelageProposalChoosen->comment}}</li>
-                                <li class="list-group-item">phone: {{$tutelageProposalChoosen->student->user->phone}}</li>
-                                <li class="list-group-item">email: {{$tutelageProposalChoosen->student->user->email}}</li>
-                                <li class="list-group-item">areasOfInterest: {{$tutelageProposalChoosen->student->areasOfInterest}}</li>
-                                <li class="list-group-item">skills: {{$tutelageProposalChoosen->student->skills}}</li>
-                                <li class="list-group-item">urlCurriculum: {{$tutelageProposalChoosen->student->urlCurriculum}}</li>
+                                <li class="list-group-item">state: {{$inscriptionInProjectChoosen->state}}</li>
+                                <li class="list-group-item">comment: {{$inscriptionInProjectChoosen->comment}}</li>
+                                <li class="list-group-item">phone: {{$inscriptionInProjectChoosen->student->user->phone}}</li>
+                                <li class="list-group-item">email: {{$inscriptionInProjectChoosen->student->user->email}}</li>
+                                <li class="list-group-item">areasOfInterest: {{$inscriptionInProjectChoosen->student->areasOfInterest}}</li>
+                                <li class="list-group-item">skills: {{$inscriptionInProjectChoosen->student->skills}}</li>
+                                <li class="list-group-item">urlCurriculum: {{$inscriptionInProjectChoosen->student->urlCurriculum}}</li>
                             </ul>
                         </div>
                     </div>
@@ -69,13 +69,12 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h4 class="panel-title">
-           <a data-toggle="collapse" href="#collapseTutelageProposals">@lang('general.tutelage_proposals') <span class="badge">{{count($project->tutelageProposals)}}</span></a>
+           <a data-toggle="collapse" href="#collapseTutelageProposals">@lang('general.inscriptions_in_project') <span class="badge">{{count($project->inscriptionsInProject)}}</span></a>
         </h4>
     </div>
     <div id="collapseTutelageProposals" class="panel-collapse collapse">
         
-         @foreach($project->tutelageProposals as $proposal)
-            @if($proposal->state != 2)
+         @foreach($project->inscriptionsInProject as $proposal)
                 <div class="panel-group">
                    <div class="panel panel-default">
                         <div class="panel-heading">
@@ -93,20 +92,19 @@
                         <li class="list-group-item">skills: {{$proposal->student->skills}}</li>
                         <li class="list-group-item">urlCurriculum: {{$proposal->student->urlCurriculum}}</li>
                     </ul>
-                    </div>
-                       @if($proposal->state == 1)
+                    </div>-
+                       @if($proposal->state == 1 && $project->state == 1)
                         <div class="panel-footer">
                             <form>
                                 {{ csrf_field() }}
                                 <div class="btn-group">
-                                    <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('acceptTutelageProposal', ['id'=> $proposal->id])}}">Choose</button>
+                                    <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('acceptInscriptionInProject', ['id'=> $proposal->id])}}">Choose</button>
                                 </div>
                             </form>
                         </div>
                        @endif
                     </div>
-                </div> 
-            @endif
+                </div>
         @endforeach
     </div>
 </div>
@@ -116,7 +114,7 @@
 @endsection
 
 
-@if($project->state == 2 && !is_null($tutelageProposalChoosen))
+@if($project->state == 2 && !is_null($inscriptionInProjectChoosen))
 <!-- Modal of cancel the author chosen -->
 <div id="cancelAuthor" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -128,7 +126,7 @@
         <h4 class="modal-title">Remove author</h4>
       </div>
       <div class="modal-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{route('cancelTutelageProposal', ['id' => $tutelageProposalChoosen->id])}}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{route('cancelInscriptionInProject', ['id' => $inscriptionInProjectChoosen->id])}}">
                         {{ csrf_field() }}
                         
                         <div class="form-group">

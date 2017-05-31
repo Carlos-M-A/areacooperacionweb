@@ -100,8 +100,8 @@ return [
     'no_author_has_been_chosen' => 'No author has been chosen',
     'enter_url_to_documentation' => 'Enter url to documentation',
     'projects' => 'Projects',
-    'tutelage_proposals' => 'Tutelage proposals',
-    'create_tutelage_proposal' => 'Create tutelage proposal',
+    'inscriptions_in_project' => 'Inscriptions in project',
+    'create_inscription_in_project' => 'Create inscription in project',
     
     //Convocatories
     'evaluate' => 'Evaluate',

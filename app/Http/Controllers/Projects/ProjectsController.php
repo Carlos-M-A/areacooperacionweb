@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Projects;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Project;
-use App\TutelageProposal;
+use App\InscriptionInProject;
 use Illuminate\Support\Facades\Auth;
 
 class ProjectsController extends Controller
@@ -41,7 +41,7 @@ class ProjectsController extends Controller
         $user = Auth::user();
         switch ($user->role){
             case 1:
-                $projects = Project::whereHas('tutelageProposals', function ($query) {
+                $projects = Project::whereHas('inscriptionsInProject', function ($query) {
                     $user = Auth::user();
                     $query->where('student_id', $user->id);
                     $query->where('state', 2);
@@ -67,18 +67,18 @@ class ProjectsController extends Controller
         
         switch($user->role){
             case 1:
-                $tutelageProposal = TutelageProposal::where('project_id', $project->id)->where('student_id', $user->id)->get()->first();
-                if(is_null($tutelageProposal)){
-                    return view('projects/projectAsStudent')->with('project', $project)->with('tutelageProposal');
+                $inscriptionInProject = InscriptionInProject::where('project_id', $project->id)->where('student_id', $user->id)->get()->first();
+                if(is_null($inscriptionInProject)){
+                    return view('projects/projectAsStudent')->with('project', $project)->with('inscriptionInProject');
                 } else {
-                    return view('projects/projectAsStudent')->with('project', $project)->with('tutelageProposal', $tutelageProposal);
+                    return view('projects/projectAsStudent')->with('project', $project)->with('inscriptionInProject', $inscriptionInProject);
                 }
             case 2:
-                $tutelageProposalChoosen = TutelageProposal::where('project_id', $project->id)->where('state', 2)->get()->first();
-                if(is_null($tutelageProposalChoosen)){
-                    return view('projects/projectAsTeacher')->with('project', $project)->with('tutelageProposalChoosen');
+                $inscriptionInProjectChoosen = InscriptionInProject::where('project_id', $project->id)->where('state', 2)->get()->first();
+                if(is_null($inscriptionInProjectChoosen)){
+                    return view('projects/projectAsTeacher')->with('project', $project)->with('inscriptionInProjectChoosen');
                 } else {
-                    return view('projects/projectAsTeacher')->with('project', $project)->with('tutelageProposalChoosen', $tutelageProposalChoosen);
+                    return view('projects/projectAsTeacher')->with('project', $project)->with('inscriptionInProjectChoosen', $inscriptionInProjectChoosen);
                 }
         }
         return view('projects/project')->with('project', $project);
