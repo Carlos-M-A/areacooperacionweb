@@ -92,7 +92,7 @@
                         <li class="list-group-item">skills: {{$proposal->student->skills}}</li>
                         <li class="list-group-item">urlCurriculum: {{$proposal->student->urlCurriculum}}</li>
                     </ul>
-                    </div>-
+                    </div>
                        @if($proposal->state == 1 && $project->state == 1)
                         <div class="panel-footer">
                             <form>

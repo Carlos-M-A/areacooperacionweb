@@ -24,7 +24,7 @@ class ObservatoryController extends Controller
         $user = User::find($id);
         $user->isObservatoryMember = false;
         $user->save();
-        $user->isObservatoryMember->delete();
+        $user->observatoryRequest->delete();
         return redirect($this->redirectTo);
     }
     

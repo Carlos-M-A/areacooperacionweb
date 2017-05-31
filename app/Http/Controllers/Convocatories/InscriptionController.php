@@ -8,7 +8,7 @@ use App\Inscription;
 use App\Convocatory;
 use Illuminate\Support\Facades\Auth;
 
-class InscriptionsController extends Controller
+class InscriptionController extends Controller
 {
     public function createInscription($id) {
         $user = Auth::user();

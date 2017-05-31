@@ -20,44 +20,4 @@ class RoleChangesController extends Controller
         return view('users/roleChanges');
     }
     
-    public function roleChange($id) {
-        $roleChangeRequest = RoleChangeRequest::find($id);
-        $roleData = $this->roleData($id, $roleChangeRequest->newRole);
-        
-        return view('users/roleChange')->with('roleChangeRequest', $roleChangeRequest)->with('roleData', $roleData);
-    }
-    
-    public function accept($id) {
-        $user = User::find($id);
-        $roleChangeRequest = RoleChangeRequest::find($id);
-        $currentRoleData = $this->roleData($id, $roleChangeRequest->currentRole);
-        
-        $user->role = $roleChangeRequest->newRole;
-        $user->save();
-        
-        $currentRoleData->delete();
-        $roleChangeRequest->delete();
-        return redirect('roleChanges');
-    }
-    
-    public function reject($id) {
-        $roleChangeRequest = RoleChangeRequest::find($id);
-        $roleData = $this->roleData($id, $roleChangeRequest->newRole);
-        
-        $roleChangeRequest->delete();
-        $roleData->delete();
-        
-        return redirect('roleChanges');
-    }
-    
-    private function roleData($id, $rol) {
-        switch ($rol){
-            case 1:
-                return Student::find($id);
-            case 2:
-                return Teacher::find($id);
-            case 3:
-                return Other::find($id);
-        }
-    }
 }

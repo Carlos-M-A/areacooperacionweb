@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Organization;
 
-class OrganizationsController extends Controller {
+class OrganizationController extends Controller {
     
     public function organization($id) {
         $organization = Organization::find($id);

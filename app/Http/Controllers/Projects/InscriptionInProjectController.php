@@ -9,7 +9,7 @@ use App\InscriptionInProject;
 use Illuminate\Support\Facades\Auth;
 
 
-class InscriptionsInProjectController extends Controller
+class InscriptionInProjectController extends Controller
 {
     public function create($id, Request $request) {
         $project = Project::find($id);

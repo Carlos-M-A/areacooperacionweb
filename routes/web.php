@@ -52,43 +52,43 @@ Route::post('/observatory/reject/{id}', 'Users\ObservatoryController@rejectReque
 Route::post('/observatory/remove/{id}', 'Users\ObservatoryController@removeMember')->where('id', '[0-9]+')->name('observatoryRemove');
 
 //Users management
-Route::get('/users/{id}', 'Users\UsersController@user')->where('id', '[0-9]+')->name('user');
+Route::get('/users/{id}', 'Users\UserController@user')->where('id', '[0-9]+')->name('user');
 Route::get('/users', 'Users\UsersController@index')->name('users');
 Route::post('/users', 'Users\UsersController@search')->name('searchUsers');
-Route::post('/users/accept/{id}', 'Users\UsersController@accept')->where('id', '[0-9]+')->name('acceptUser');
-Route::post('/users/reject/{id}', 'Users\UsersController@reject')->where('id', '[0-9]+')->name('rejectUser');
-Route::post('/users/remove/{id}', 'Users\UsersController@remove')->where('id', '[0-9]+')->name('removeUser');
+Route::post('/users/accept/{id}', 'Users\UserController@accept')->where('id', '[0-9]+')->name('acceptUser');
+Route::post('/users/reject/{id}', 'Users\UserController@reject')->where('id', '[0-9]+')->name('rejectUser');
+Route::post('/users/remove/{id}', 'Users\UserController@remove')->where('id', '[0-9]+')->name('removeUser');
 Route::get('/users/requests', 'Users\UsersController@registrationRequests')->name('registrationRequests');
-Route::get('/users/registerOrganization', 'Users\OrganizationsController@index')->name('showRegisterOrganization');
-Route::post('/users/registerOrganizaction', 'Users\OrganizationsController@registerOrganization')->name('registerOrganization');
+Route::get('/users/registerOrganization', 'Users\OrganizationController@index')->name('showRegisterOrganization');
+Route::post('/users/registerOrganizaction', 'Users\OrganizationController@registerOrganization')->name('registerOrganization');
 Route::get('/roleChanges', 'Users\RoleChangesController@index')->name('roleChanges');
-Route::get('/roleChanges/{id}', 'Users\RoleChangesController@roleChange')->name('roleChange');
-Route::post('/roleChanges/{id}/accept', 'Users\RoleChangesController@accept')->name('acceptRoleChange');
-Route::post('/roleChanges/{id}/reject', 'Users\RoleChangesController@reject')->name('rejectRoleChange');
+Route::get('/roleChanges/{id}', 'Users\RoleChangeController@roleChange')->name('roleChange');
+Route::post('/roleChanges/{id}/accept', 'Users\RoleChangeController@accept')->name('acceptRoleChange');
+Route::post('/roleChanges/{id}/reject', 'Users\RoleChangeController@reject')->name('rejectRoleChange');
 
 //Studies and faculties management
 Route::get('/studies', 'Users\StudiesController@index')->name('studies');
 Route::post('/studies', 'Users\StudiesController@search')->name('searchStudies');
 Route::get('/faculties', 'Users\FacultiesController@index')->name('faculties');
 Route::post('/faculties', 'Users\FacultiesController@search')->name('searchFaculties');
-Route::get('/studies/createStudy', 'Users\StudiesController@showCreateStudy')->name('showCreateStudy');
-Route::post('/studies/createStudy', 'Users\StudiesController@createStudy')->name('createStudy');
-Route::get('/faculties/createFaculty', 'Users\FacultiesController@showCreateFaculty')->name('showCreateFaculty');
-Route::post('/faculties/createFaculty', 'Users\FacultiesController@createFaculty')->name('createFaculty');
-Route::get('/studies/{id}', 'Users\StudiesController@study')->name('study');
-Route::get('/faculties/{id}', 'Users\FacultiesController@faculty')->name('faculty');
-Route::post('/studies/{id}/changeInactive', 'Users\StudiesController@changeInactive')->name('changeStudyToInactive');
-Route::post('/studies/{id}/changeName', 'Users\StudiesController@changeName')->name('changeStudyName');
-Route::post('/studies/{id}/changeBranch', 'Users\StudiesController@changeBranch')->name('changeStudyBranch');
-Route::post('/studies/{id}/changeFaculty', 'Users\StudiesController@changeFaculty')->name('changeStudyFaculty');
-Route::post('/faculties/{id}/changeInactive', 'Users\FacultiesController@changeInactive')->name('changeFacultyToInactive');
-Route::post('/faculties/{id}/changeName', 'Users\FacultiesController@changeName')->name('changeFacultyName');
-Route::post('/faculties/{id}/changeCity', 'Users\FacultiesController@changeCity')->name('changeFacultyCity');
+Route::get('/studies/createStudy', 'Users\StudyController@showCreateStudy')->name('showCreateStudy');
+Route::post('/studies/createStudy', 'Users\StudyController@createStudy')->name('createStudy');
+Route::get('/faculties/createFaculty', 'Users\FacultyController@showCreateFaculty')->name('showCreateFaculty');
+Route::post('/faculties/createFaculty', 'Users\FacultyController@createFaculty')->name('createFaculty');
+Route::get('/studies/{id}', 'Users\StudyController@study')->name('study');
+Route::get('/faculties/{id}', 'Users\FacultyController@faculty')->name('faculty');
+Route::post('/studies/{id}/changeInactive', 'Users\StudyController@changeInactive')->name('changeStudyToInactive');
+Route::post('/studies/{id}/changeName', 'Users\StudyController@changeName')->name('changeStudyName');
+Route::post('/studies/{id}/changeBranch', 'Users\StudyController@changeBranch')->name('changeStudyBranch');
+Route::post('/studies/{id}/changeFaculty', 'Users\StudyController@changeFaculty')->name('changeStudyFaculty');
+Route::post('/faculties/{id}/changeInactive', 'Users\FacultyController@changeInactive')->name('changeFacultyToInactive');
+Route::post('/faculties/{id}/changeName', 'Users\FacultyController@changeName')->name('changeFacultyName');
+Route::post('/faculties/{id}/changeCity', 'Users\FacultyController@changeCity')->name('changeFacultyCity');
 
 // Offers management
-Route::get('/offers/createOffer', 'Offers\OffersController@showCreateOffer')->name('showCreateOffer');
-Route::post('/offers/createOffer', 'Offers\OffersController@createOffer')->name('createOffer');
-Route::post('/offers/createOfferManagedByArea', 'Offers\OffersController@createOfferManagedByArea')->name('createOfferManagedByArea');
+Route::get('/offers/createOffer', 'Offers\OfferController@showCreateOffer')->name('showCreateOffer');
+Route::post('/offers/createOffer', 'Offers\OfferController@createOffer')->name('createOffer');
+Route::post('/offers/createOfferManagedByArea', 'Offers\OfferController@createOfferManagedByArea')->name('createOfferManagedByArea');
 Route::get('/offers/openOffers', 'Offers\OffersController@openOffers')->name('openOffers');
 Route::get('/offers/closedOffers', 'Offers\OffersController@closedOffers')->name('closedOffers');
 Route::get('/offers/newOffers', 'Offers\ProposalsController@newOffers')->name('newOffers');
@@ -97,46 +97,45 @@ Route::get('/offers/acceptedProposals', 'Offers\ProposalsController@acceptedProp
 Route::get('/organizations/{id}', 'Users\OrganizationsController@organization')->name('organization');
 
 
-Route::get('/offers/{id}', 'Offers\OffersController@offer')->name('offer');
-Route::get('/offers/{id}/showEditOffer', 'Offers\OffersController@showEditOffer')->name('showEditOffer');
-Route::post('/offers/{id}/editOffer', 'Offers\OffersController@editOffer')->name('editOffer');
-Route::post('/offers/{id}/editOfferManagedByArea', 'Offers\OffersController@editOfferManagedByArea')->name('editOfferManagedByArea');
-Route::post('/offers/{id}/close', 'Offers\OffersController@close')->name('closeOffer');
+Route::get('/offers/{id}', 'Offers\OfferController@offer')->name('offer');
+Route::get('/offers/{id}/showEditOffer', 'Offers\OfferController@showEditOffer')->name('showEditOffer');
+Route::post('/offers/{id}/editOffer', 'Offers\OfferController@editOffer')->name('editOffer');
+Route::post('/offers/{id}/editOfferManagedByArea', 'Offers\OfferController@editOfferManagedByArea')->name('editOfferManagedByArea');
+Route::post('/offers/{id}/close', 'Offers\OfferController@close')->name('closeOffer');
 
 //Proposal management
-Route::post('/offers/{id}/createProposal', 'Offers\ProposalsController@create')->name('createProposal');
-
-Route::post('/proposal/{id}/remove', 'Offers\ProposalsController@remove')->name('removeProposal');
-Route::post('/proposal/{id}/approve', 'Offers\ProposalsController@approve')->name('approveProposal');
-Route::post('/proposal/{id}/reject', 'Offers\ProposalsController@reject')->name('rejectProposal');
-Route::post('/proposal/{id}/accept', 'Offers\ProposalsController@accept')->name('acceptProposal');
-Route::post('/proposal/{id}/cancel', 'Offers\ProposalsController@cancel')->name('cancelProposal');
+Route::post('/offers/{id}/createProposal', 'Offers\ProposalController@create')->name('createProposal');
+Route::post('/proposal/{id}/remove', 'Offers\ProposalController@remove')->name('removeProposal');
+Route::post('/proposal/{id}/approve', 'Offers\ProposalController@approve')->name('approveProposal');
+Route::post('/proposal/{id}/reject', 'Offers\ProposalController@reject')->name('rejectProposal');
+Route::post('/proposal/{id}/accept', 'Offers\ProposalController@accept')->name('acceptProposal');
+Route::post('/proposal/{id}/cancel', 'Offers\ProposalController@cancel')->name('cancelProposal');
 
 
 // Projects management
-Route::get('/projects/showCreateProject', 'Projects\ProjectsController@showCreateProject')->name('showCreateProject');
-Route::post('/projects/createProject', 'Projects\ProjectsController@createProject')->name('createProject');
+Route::get('/projects/showCreateProject', 'Projects\ProjectController@showCreateProject')->name('showCreateProject');
+Route::post('/projects/createProject', 'Projects\ProjectController@createProject')->name('createProject');
 Route::get('/projects/myProjects', 'Projects\ProjectsController@myProjects')->name('myProjects');
 Route::get('/projects/openProjects', 'Projects\ProjectsController@openProjects')->name('openProjects');
 
-Route::get('/projects/{id}', 'Projects\ProjectsController@project')->name('project');
-Route::get('/projects/{id}/showEditProject', 'Projects\ProjectsController@showEditProject')->name('showEditProject');
-Route::post('/projects/{id}/editProject', 'Projects\ProjectsController@editProject')->name('editProject');
-Route::post('/projects/{id}/finish', 'Projects\ProjectsController@finish')->name('finishProject');
-Route::post('/projects/{id}/createProposal', 'Projects\InscriptionsInProjectController@create')->name('createInscriptionInProject');
-Route::post('/inscriptionsInProject/{id}/remove', 'Projects\InscriptionsInProjectController@remove')->name('removeInscriptionInProject');
-Route::post('/inscriptionsInProject/{id}/accept', 'Projects\InscriptionsInProjectController@accept')->name('acceptInscriptionInProject');
-Route::post('/inscriptionsInProject/{id}/cancel', 'Projects\InscriptionsInProjectController@cancel')->name('cancelInscriptionInProject');
+Route::get('/projects/{id}', 'Projects\ProjectController@project')->name('project');
+Route::get('/projects/{id}/showEditProject', 'Projects\ProjectController@showEditProject')->name('showEditProject');
+Route::post('/projects/{id}/editProject', 'Projects\ProjectController@editProject')->name('editProject');
+Route::post('/projects/{id}/finish', 'Projects\ProjectController@finish')->name('finishProject');
+Route::post('/projects/{id}/createInscription', 'Projects\InscriptionInProjectController@create')->name('createInscriptionInProject');
+Route::post('/inscriptionsInProject/{id}/remove', 'Projects\InscriptionInProjectController@remove')->name('removeInscriptionInProject');
+Route::post('/inscriptionsInProject/{id}/accept', 'Projects\InscriptionInProjectController@accept')->name('acceptInscriptionInProject');
+Route::post('/inscriptionsInProject/{id}/cancel', 'Projects\InscriptionInProjectController@cancel')->name('cancelInscriptionInProject');
 
 // Convocatories management
-Route::get('/convocatories/createConvocatory', 'Convocatories\ConvocatoriesController@showCreateConvocatory')->name('showCreateConvocatory');
-Route::post('/convocatories/createConvocatory', 'Convocatories\ConvocatoriesController@createConvocatory')->name('createConvocatory');
-Route::get('/convocatories/{id}', 'Convocatories\ConvocatoriesController@convocatory')->name('convocatory');
+Route::get('/convocatories/createConvocatory', 'Convocatories\ConvocatoryController@showCreateConvocatory')->name('showCreateConvocatory');
+Route::post('/convocatories/createConvocatory', 'Convocatories\ConvocatoryController@createConvocatory')->name('createConvocatory');
+Route::get('/convocatories/{id}', 'Convocatories\ConvocatoryController@convocatory')->name('convocatory');
 Route::get('/convocatories', 'Convocatories\ConvocatoriesController@convocatories')->name('convocatories');
-Route::get('/convocatories/{id}/showEditConvocatory', 'Convocatories\ConvocatoriesController@showEditConvocatory')->name('showEditConvocatory');
-Route::post('/convocatories/{id}/editConvocatory', 'Convocatories\ConvocatoriesController@editConvocatory')->name('editConvocatory');
-Route::post('/convocatories/{id}/closeConvocatory', 'Convocatories\ConvocatoriesController@close')->name('closeConvocatory');
+Route::get('/convocatories/{id}/showEditConvocatory', 'Convocatories\ConvocatoryController@showEditConvocatory')->name('showEditConvocatory');
+Route::post('/convocatories/{id}/editConvocatory', 'Convocatories\ConvocatoryController@editConvocatory')->name('editConvocatory');
+Route::post('/convocatories/{id}/closeConvocatory', 'Convocatories\ConvocatoryController@close')->name('closeConvocatory');
 
-Route::post('/convocatories/{id}/createInscription', 'Convocatories\InscriptionsController@createInscription')->name('createInscription');
-Route::post('/convocatories/{id}/remove', 'Convocatories\InscriptionsController@remove')->name('removeInscription');
-Route::post('/inscriptions/{id}/edit', 'Convocatories\InscriptionsController@edit')->name('editInscription');
+Route::post('/convocatories/{id}/createInscription', 'Convocatories\InscriptionController@createInscription')->name('createInscription');
+Route::post('/convocatories/{id}/remove', 'Convocatories\InscriptionController@remove')->name('removeInscription');
+Route::post('/inscriptions/{id}/edit', 'Convocatories\InscriptionController@edit')->name('editInscription');

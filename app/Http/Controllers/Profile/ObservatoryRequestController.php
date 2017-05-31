@@ -37,7 +37,7 @@ class ObservatoryRequestController extends Controller
         $user = Auth::user();
         
         //If the user has already a request then the request is deleted 
-        if(!is_null($user->isObservatoryMember)){
+        if(!is_null($user->observatoryRequest)){
             $user->observatoryRequest->delete();
         }
         
