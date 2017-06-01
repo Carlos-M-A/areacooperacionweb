@@ -51,44 +51,44 @@ use RegistersUsers;
      */
     protected function validator(array $data) {
         $rules['role'] = 'required|integer|max:4|min:1';
-        $rules['name'] = 'required|string|max:100';
-        $rules['email'] = 'required|string|email|max:190|unique:User';
-        $rules['password'] = 'required|string|min:6|confirmed';
-        $rules['idCard'] = 'required|string|max:20|unique:User';
-        $rules['phone'] = 'required|string|max:30';
+        $rules['name'] = 'required|string|max:'.config('forms.user_name');
+        $rules['email'] = 'required|string|email|unique:User|max:'.config('forms.email');
+        $rules['password'] = 'required|string|min:6|confirmed|max:'.config('forms.password');
+        $rules['idCard'] = 'required|string|unique:User|max:'.config('forms.idCard');
+        $rules['phone'] = 'required|string|max:'.config('forms.phone');
 
         switch ($data['role']) {
             //student
             case 1:
-                $rules['surnames'] = 'required|string|max:100';
+                $rules['surnames'] = 'required|string|max:'.config('forms.surnames');
                 $rules['study'] = 'required|integer|min:1';
-                $rules['areasOfInterest'] = 'required|string|max:500';
-                $rules['skills'] = 'required|string|max:500';
+                $rules['areasOfInterest'] = 'required|string|max:'.config('forms.areasOfInterest');
+                $rules['skills'] = 'required|string|max:'.config('forms.skills');
                 $rules['urlCurriculum'] = 'nullable|string';
                 break;
             //Teacher
             case 2:
-                $rules['surnames'] = 'required|string|max:100';
-                $rules['areasOfInterest'] = 'required|string|max:500';
+                $rules['surnames'] = 'required|string|max:'.config('forms.surnames');
+                $rules['areasOfInterest'] = 'required|string|max:'.config('forms.areasOfInterest');
                 //The next rule is a regular expresion to accpet the strings
                 //with this format: 234.343.23,121
                 $rules['teachingStudiesSelected'] = 'required|string|regex:/^([0-9]+,)*([0-9]+)$/';
-                $rules['departments'] = 'required|string|max:500';
+                $rules['departments'] = 'required|string|max:'.config('forms.title');
                 break;
             //Other
             case 3:
-                $rules['surnames'] = 'required|string|max:100';
-                $rules['areasOfInterest'] = 'required|string|max:500';
-                $rules['description'] = 'required|string|max:500';
+                $rules['surnames'] = 'required|string|max:'.config('forms.surnames');
+                $rules['areasOfInterest'] = 'required|string|max:'.config('forms.areasOfInterest');
+                $rules['description'] = 'required|string|max:'.config('forms.other_description');
                 break;
             // Organization
             case 4:
-                $rules['description'] = 'required|string|max:500';
-                $rules['socialName'] = 'required|string|max:200';
+                $rules['description'] = 'required|string|max:'.config('forms.organization_description');
+                $rules['socialName'] = 'required|string|max:'.config('forms.socialName');
                 $rules['urlLogoImage'] = 'required|string';
-                $rules['headquartersLocation'] = 'required|string|max:500';
-                $rules['web'] = 'required|url|max:200';
-                $rules['linksWithNearbyEntities'] = 'nullable|string|max:500';
+                $rules['headquartersLocation'] = 'required|string|max:'.config('forms.headquartersLocation');
+                $rules['web'] = 'required|url|max:'.config('forms.url');
+                $rules['linksWithNearbyEntities'] = 'nullable|string|max:'.config('forms.linksWithNearbyEntities');
                 break;
         }
         return Validator::make($data, $rules);

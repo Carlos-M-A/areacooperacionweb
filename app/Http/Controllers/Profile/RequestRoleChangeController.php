@@ -39,14 +39,14 @@ class RequestRoleChangeController extends Controller
 
         $rules = [
             'role' => 'required|integer|max:3|min:1',
-            'areasOfInterest' => 'required|string|max:500',
+            'areasOfInterest' => 'required|string|max:'.config('forms.areasOfInterest'),
         ];
         
         switch ($request->role) {
             //student
             case 1:
                     $rules['study'] = 'required|integer|min:1';
-                    $rules['skills'] = 'required|string|max:500';
+                    $rules['skills'] = 'required|string|max:'.config('forms.skills');
                     $rules['urlCurriculum'] = 'nullable|string';
                 break;
             //Teacher
@@ -54,11 +54,11 @@ class RequestRoleChangeController extends Controller
                     //The next rule is a regular expresion to accpet the strings
                     //with this format: 234.343.23,121
                     $rules['teachingStudiesSelected'] = 'required|string|regex:/^([0-9]+,)*([0-9]+)$/';
-                    $rules['departments'] = 'required|string|max:500';
+                    $rules['departments'] = 'required|string|max:'.config('forms.departments');
                 break;
             //Other
             case 3:
-                    $rules['description'] = 'required|string|max:500';
+                    $rules['description'] = 'required|string|max:'.config('forms.other_description');
                 break;
         }
         $this->validate($request, $rules);

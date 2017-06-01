@@ -54,18 +54,18 @@ class OfferController extends Controller
             $minPlaces = 1;
         }
         $rules = [
-            'title' => 'required|string|max:100',
-            'scope' => 'required|string|max:100',
-            'description' => 'required|string|max:100',
-            'requeriments' => 'required|string|max:100',
-            'workplan' => 'required|string|max:100',
-            'schedule' => 'required|string|max:100',
-            'totalHours' => 'required|string|max:100',
-            'possibleStartDates' => 'required|string|max:100',
-            'possibleEndDates' => 'required|string|max:100',
+            'title' => 'required|string|max:'.config('forms.offer_title'),
+            'scope' => 'required|string|max:'.config('forms.scope'),
+            'description' => 'required|string|max:'.config('forms.offer_description'),
+            'requeriments' => 'required|string|max:'.config('forms.requeriments'),
+            'workplan' => 'required|string|max:'.config('forms.workplan'),
+            'schedule' => 'required|string|max:'.config('forms.schedule'),
+            'totalHours' => 'required|string|max:'.config('forms.offer_totalHours'),
+            'possibleStartDates' => 'required|string|max:'.config('forms.possibleStartDates'),
+            'possibleEndDates' => 'required|string|max:'.config('forms.possibleEndDates'),
             'places' => 'required|integer|max:255|min:'.$minPlaces,
-            'monetaryHelp' => 'required|string|max:100',
-            'personInCharge' => 'required|string|max:100',
+            'monetaryHelp' => 'required|string|max:'.config('forms.monetaryHelp'),
+            'personInCharge' => 'required|string|max:'.config('forms.personInCharge'),
             'deadline' => 'required|date',
         ];
         return $rules;
@@ -113,8 +113,8 @@ class OfferController extends Controller
         
         if($request->isOfferOfConvocatory == true){
             $rules['convocatoryId'] = 'required|integer|min:1';
-            $rules['housing'] = 'required|string|max:100';
-            $rules['costs'] = 'required|string|max:100';
+            $rules['housing'] = 'required|string|max:'.config('forms.housing');
+            $rules['costs'] = 'required|string|max:'.config('forms.costs');
         }
         $this->validate($request, $rules);
         
@@ -164,8 +164,8 @@ class OfferController extends Controller
         
         if($request->isOfferOfConvocatory == true){
             $rules['convocatoryId'] = 'required|integer|min:1';
-            $rules['housing'] = 'required|string|max:100';
-            $rules['costs'] = 'required|string|max:100';
+            $rules['housing'] = 'required|string|max:'.config('forms.housing');
+            $rules['costs'] = 'required|string|max:'.config('forms.costs');
         }
         $this->validate($request, $rules);
         

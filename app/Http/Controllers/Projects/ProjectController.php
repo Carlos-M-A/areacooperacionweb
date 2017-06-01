@@ -16,9 +16,9 @@ class ProjectController extends Controller
     
     public function createProject(Request $request){
         $this->validate($request, [
-            'title' => 'required|string|max:100',
-            'scope' => 'required|string|max:100',
-            'description' => 'required|string|max:100',
+            'title' => 'required|string|max:'.config('forms.project_title'),
+            'scope' => 'required|string|max:'.config('forms.scope'),
+            'description' => 'required|string|max:'.config('forms.project_description'),
             'studyId' => 'required|int|min:1',
         ]);
         $user = Auth::user(); //The teacher
@@ -92,10 +92,10 @@ class ProjectController extends Controller
     
     public function editProject($id, Request $request) {
         $this->validate($request, [
-            'title' => 'required|string|max:100',
-            'scope' => 'required|string|max:100',
-            'description' => 'required|string|max:100',
-            'urlDocumentation' => 'nullable|string|max:100',
+            'title' => 'required|string|max:'.config('forms.project_title'),
+            'scope' => 'required|string|max:'.config('forms.title'),
+            'description' => 'required|string|max:'.config('forms.project_description'),
+            'urlDocumentation' => 'nullable|string|max:'.config('forms.url'),
         ]);
         $project = Project::find($id);
         $project->title = $request->title;
@@ -111,7 +111,7 @@ class ProjectController extends Controller
     
     public function finish($id, Request $request) {
         $rules = [
-            'urlDocumentation' => 'required|string|max:200',
+            'urlDocumentation' => 'required|string|max:'.config('forms.url'),
         ];
         $this->validate($request, $rules);
         

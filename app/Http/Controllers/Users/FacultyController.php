@@ -24,7 +24,7 @@ class FacultyController extends Controller
     
     public function changeName($id, Request $request) {
         $this->validate($request, [
-            'name' => 'required|string|max:100',
+            'name' => 'required|string|max:'.config('forms.faculty_name'),
         ]);
         $faculty = Faculty::find($id);
         $faculty->name = $request->name;
@@ -34,7 +34,7 @@ class FacultyController extends Controller
     
     public function changeCity($id, Request $request) {
         $this->validate($request, [
-            'city' => 'required|string|max:100',
+            'city' => 'required|string|max:'.config('forms.city'),
         ]);
         $faculty = Faculty::find($id);
         $faculty->city = $request->city;
@@ -48,8 +48,8 @@ class FacultyController extends Controller
     
     public function createFaculty(Request $request) {
         $this->validate($request, [
-            'name' => 'required|string|max:100',
-            'city' => 'required|string|max:100',
+            'name' => 'required|string|max:'.config('forms.faculty_name'),
+            'city' => 'required|string|max:'.config('forms.city'),
         ]);
         $faculty = new Faculty();
         $faculty->name = $request->name;

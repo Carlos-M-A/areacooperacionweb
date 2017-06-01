@@ -15,7 +15,7 @@ class CreateStudy extends Migration
     {
         Schema::create('Study', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 100);
+            $table->string('name', config('forms.study_name'));
             $table->tinyInteger('branch');
             $table->boolean('inactive');
             $table->integer('faculty_id')->unsigned();

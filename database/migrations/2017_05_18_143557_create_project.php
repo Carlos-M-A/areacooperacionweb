@@ -18,12 +18,12 @@ class CreateProject extends Migration
             $table->integer('study_id')->unsigned();
             $table->integer('teacher_id')->unsigned();
             
-            $table->string('title', 200);
-            $table->string('scope', 200);
-            $table->text('description');
-            $table->string('tutor', 200)->nullable();
-            $table->string('author', 200)->nullable();
-            $table->string('urlDocumentation', 200)->nullable();
+            $table->string('title', config('forms.project_title'));
+            $table->string('scope', config('forms.scope'));
+            $table->string('description', config('forms.project_description'));
+            $table->string('tutor', config('forms.tutor'))->nullable();
+            $table->string('author', config('forms.author'))->nullable();
+            $table->string('urlDocumentation', config('forms.url'))->nullable();
             $table->tinyInteger('state');
             $table->dateTime('createdDate');
             

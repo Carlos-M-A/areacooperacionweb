@@ -23,18 +23,18 @@ class OrganizationController extends Controller {
 
 
         $rules = [
-            'name' => 'required|string|max:100',
-            'email' => 'required|string|email|max:190|unique:User',
-            'idCard' => 'required|string|max:20|unique:User',
-            'phone' => 'required|string|max:30',
+            'name' => 'required|string|max:'.config('forms.user_name'),
+            'email' => 'required|string|email|unique:User|max:'.config('forms.email'),
+            'idCard' => 'required|string|unique:User|max:'.config('forms.idCard'),
+            'phone' => 'required|string|max:'.config('forms.phone'),
         ];
 
-        $rules['socialName'] = 'required|string|max:200';
-        $rules['description'] = 'required|string|max:500';
+        $rules['socialName'] = 'required|string|max:'.config('forms.socialName');
+        $rules['description'] = 'required|string|max:'.config('forms.organization_description');
         $rules['urlLogoImage'] = 'nullable|string';
-        $rules['headquartersLocation'] = 'required|string|max:500';
-        $rules['web'] = 'required|url|max:200';
-        $rules['linksWithNearbyEntities'] = 'nullable|string|max:500';
+        $rules['headquartersLocation'] = 'required|string|max:'.config('forms.headquartersLocation');
+        $rules['web'] = 'required|url|max:'.config('forms.url');
+        $rules['linksWithNearbyEntities'] = 'nullable|string|max:'.config('forms.linksWithNearbyEntities');
 
         $this->validate($request, $rules);
 

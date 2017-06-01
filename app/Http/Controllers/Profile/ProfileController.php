@@ -67,40 +67,40 @@ class ProfileController extends Controller {
         $user = Auth::user();
 
         $rules = [
-            'name' => 'required|string|max:100',
-            'email' => 'required|string|email|max:190',
+            'name' => 'required|string|max:'.config('forms.user_name'),
+            'email' => 'required|string|email|max:'.config('forms.email'),
             Rule::unique('User')->ignore($user->email),
-            'idCard' => 'required|string|max:20',
+            'idCard' => 'required|string|max:'.config('forms.idCard'),
             Rule::unique('User')->ignore($user->idCard),
-            'phone' => 'required|string|max:30',
+            'phone' => 'required|string|max:'.config('forms.phone'),
         ];
         
         switch ($user->role) {
             case 1:
-                    $rules['surnames'] = 'required|string|max:100';
+                    $rules['surnames'] = 'required|string|max:'.config('forms.surnames');
                     $rules['study'] = 'required|integer|min:1';
-                    $rules['areasOfInterest'] = 'required|string|max:500';
-                    $rules['skills'] = 'required|string|max:500';
+                    $rules['areasOfInterest'] = 'required|string|max:'.config('forms.areasOfInterest');
+                    $rules['skills'] = 'required|string|max:'.config('forms.skills');
                     $rules['urlCurriculum'] = 'nullable|string';
                 break;
             case 2:
-                    $rules['surnames'] = 'required|string|max:100';
-                    $rules['areasOfInterest'] = 'required|string|max:500';
-                    $rules['departments'] = 'required|string|max:500';
+                    $rules['surnames'] = 'required|string|max:'.config('forms.surnames');
+                    $rules['areasOfInterest'] = 'required|string|max:'.config('forms.areasOfInterest');
+                    $rules['departments'] = 'required|string|max:'.config('forms.departments');
                 break;
             case 3:
-                    $rules['surnames'] = 'required|string|max:100';
-                    $rules['areasOfInterest'] = 'required|string|max:500';
-                    $rules['description'] = 'required|string|max:500';
+                    $rules['surnames'] = 'required|string|max:'.config('forms.surnames');
+                    $rules['areasOfInterest'] = 'required|string|max:'.config('forms.areasOfInterest');
+                    $rules['description'] = 'required|string|max:'.config('forms.other_description');
                 break;
             case 4;
             case 5:
-                    $rules['socialName'] = 'required|string|max:200';
-                    $rules['description'] = 'required|string|max:500';
+                    $rules['socialName'] = 'required|string|max:'.config('forms.socialName');
+                    $rules['description'] = 'required|string|max:'.config('forms.organization_description');
                     $rules['urlLogoImage'] = 'nullable|string';
-                    $rules['headquartersLocation'] = 'required|string|max:500';
-                    $rules['web'] = 'required|url|max:200';
-                    $rules['linksWithNearbyEntities'] = 'nullable|string|max:500';
+                    $rules['headquartersLocation'] = 'required|string|max:'.config('forms.headquartersLocation');
+                    $rules['web'] = 'required|url|max:'.config('forms.url');
+                    $rules['linksWithNearbyEntities'] = 'nullable|string|max:'.config('forms.linksWithNearbyEntities');
                 break;
         }
         $this->validate($request, $rules);
@@ -157,7 +157,7 @@ class ProfileController extends Controller {
 
     public function editPassword(Request $request) {
         $this->validate($request, [
-            'currentPassword' => 'required|string|min:6',
+            'currentPassword' => 'required|string|min:6|max:'.config('forms.password'),
             'password' => 'required|string|min:6|confirmed',
         ]);
 

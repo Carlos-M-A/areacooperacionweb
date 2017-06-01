@@ -16,7 +16,7 @@ class InscriptionInProjectController extends Controller
         $user = Auth::user();
         
         $rules = [
-            'comment' => 'required|string|max:100',
+            'comment' => 'required|string|max:'.config('forms.comment'),
         ];
         $this->validate($request, $rules);
         

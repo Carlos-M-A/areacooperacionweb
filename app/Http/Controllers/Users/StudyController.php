@@ -24,7 +24,7 @@ class StudyController extends Controller
     
     public function changeName($id, Request $request) {
         $this->validate($request, [
-            'name' => 'required|string|max:100',
+            'name' => 'required|string|max:'.config('forms.study_name'),
         ]);
         $study = Study::find($id);
         $study->name = $request->name;
@@ -58,7 +58,7 @@ class StudyController extends Controller
     
     public function createStudy(Request $request) {
         $this->validate($request, [
-            'name' => 'required|string|max:100',
+            'name' => 'required|string|max:'.config('forms.study_name'),
             'branch' => 'required|integer|min:1|max:6',
             'faculty' => 'required|integer|min:1',
         ]);

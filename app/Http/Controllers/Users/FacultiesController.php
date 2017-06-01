@@ -16,8 +16,8 @@ class FacultiesController extends Controller
     
     public function search(Request $request){
         $this->validate($request, [
-            'name' => 'nullable|string|max:100',
-            'city' => 'nullable|string|max:100',
+            'name' => 'nullable|string|max:'.config('forms.faculty_name'),
+            'city' => 'nullable|string|max:'.config('forms.city'),
         ]);
         $faculties;
         

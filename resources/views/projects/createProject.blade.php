@@ -67,8 +67,8 @@
                             <label for="description" class="col-md-4 control-label">description</label>
 
                             <div class="col-md-6">
-                                <input id="description" type="text" class="form-control" name="description" value="{{ old('description') }}" autofocus>
-
+                                <textarea id="description" cols="100" rows="7" maxlength="1000" class="form-control" name="description" value="{{ old('description') }}" autofocus>
+                                </textarea>
                                 @if ($errors->has('description'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('description') }}</strong>

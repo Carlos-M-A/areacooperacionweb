@@ -17,9 +17,9 @@ class CreateOfferOfConvocatory extends Migration
             $table->integer('id')->unsigned();
             $table->integer('convocatory_id')->unsigned();
             //Where the student will be housed
-            $table->string('housing', 500);
+            $table->string('housing', config('forms.housing'));
             //Costs of the travel, housing, etc, at the place of destination
-            $table->string('costs', 500);
+            $table->string('costs', config('forms.costs'));
             
             $table->primary('id');
             $table->foreign('id')->references('id')->on('Offer')

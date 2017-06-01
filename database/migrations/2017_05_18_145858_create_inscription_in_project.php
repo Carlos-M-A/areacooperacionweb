@@ -19,7 +19,7 @@ class CreateInscriptionInProject extends Migration
             $table->integer('project_id')->unsigned();
             
             $table->tinyInteger('state');
-            $table->string('comment', 500)->nullable();
+            $table->string('comment', config('forms.comment'))->nullable();
             $table->dateTime('createdDate');
             
             $table->foreign('student_id')->references('id')->on('Student')

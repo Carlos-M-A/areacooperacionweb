@@ -15,12 +15,12 @@ class CreateUser extends Migration
     {
         Schema::create('User', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 100);
-            $table->string('email', 190)->unique();
+            $table->string('name', config('forms.user_name'));
+            $table->string('email', config('forms.email'))->unique();
             $table->string('password');
             $table->rememberToken();
-            $table->string('idCard', 20)->unique();
-            $table->string('phone', 30);
+            $table->string('idCard', config('forms.idCard'))->unique();
+            $table->string('phone', config('forms.phone'));
             $table->tinyInteger('role');
             $table->boolean('accepted');
             $table->boolean('isObservatoryMember');

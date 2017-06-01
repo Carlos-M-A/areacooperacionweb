@@ -15,8 +15,8 @@ class CreateFaculty extends Migration
     {
         Schema::create('Faculty', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 100);
-            $table->string('city', 100);
+            $table->string('name', config('forms.faculty_name'));
+            $table->string('city', config('forms.city'));
             $table->boolean('inactive');
         });
     }

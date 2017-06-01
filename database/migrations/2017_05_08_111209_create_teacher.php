@@ -15,9 +15,9 @@ class CreateTeacher extends Migration
     {
         Schema::create('Teacher', function (Blueprint $table) {
             $table->integer('id')->unsigned();
-            $table->string('surnames', 100);
-            $table->string('areasOfInterest', 500);
-            $table->string('departments', 500);
+            $table->string('surnames', config('forms.surnames'));
+            $table->string('areasOfInterest', config('forms.areasOfInterest'));
+            $table->string('departments', config('forms.departments'));
             
             $table->primary('id');
             $table->foreign('id')->references('id')->on('User')

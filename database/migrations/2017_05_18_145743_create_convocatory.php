@@ -16,10 +16,10 @@ class CreateConvocatory extends Migration
     {
         Schema::create('Convocatory', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title', 200);
-            $table->string('information', 500);
-            $table->string('estimatedPeriod', 200);
-            $table->string('urlDocumentation', 200);
+            $table->string('title', config('forms.convocatory_title'));
+            $table->string('information', config('forms.information'));
+            $table->string('estimatedPeriod', config('forms.estimatedPeriod'));
+            $table->string('urlDocumentation', config('forms.url'));
             $table->tinyInteger('state');
             $table->date('deadline');
             $table->dateTime('createdDate');

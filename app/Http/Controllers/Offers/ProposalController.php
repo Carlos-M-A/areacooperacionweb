@@ -18,11 +18,11 @@ class ProposalController extends Controller
         
         $rules = [
             'type' => 'required|integer|max:6|min:1',
-            'description' => 'required|string|max:100',
-            'scheduleAvailable' => 'required|string|max:100',
-            'totalHours' => 'required|string|max:100',
-            'earliestStartDate' => 'required|string|max:100',
-            'latestEndDate' => 'required|string|max:100',
+            'description' => 'required|string|max:'.config('forms.proposal_description'),
+            'scheduleAvailable' => 'required|string|max:'.config('forms.scheduleAvailable'),
+            'totalHours' => 'required|string|max:'.config('forms.proposal_totalHours'),
+            'earliestStartDate' => 'required|string|max:'.config('forms.earliestStartDate'),
+            'latestEndDate' => 'required|string|max:'.config('forms.latestEndDate'),
         ];
         $this->validate($request, $rules);
         

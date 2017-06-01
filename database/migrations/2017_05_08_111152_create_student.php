@@ -15,10 +15,10 @@ class CreateStudent extends Migration
     {
         Schema::create('Student', function (Blueprint $table) {
             $table->integer('id')->unsigned();
-            $table->string('surnames', 100);
-            $table->string('areasOfInterest', 500);
-            $table->string('skills', 500);
-            $table->string('urlCurriculum', 200)->nullable();
+            $table->string('surnames', config('forms.surnames'));
+            $table->string('areasOfInterest', config('forms.areasOfInterest'));
+            $table->string('skills', config('forms.skills'));
+            $table->string('urlCurriculum', config('forms.url'))->nullable();
             $table->integer('study_id')->unsigned();
             
             $table->primary('id');

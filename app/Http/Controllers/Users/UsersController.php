@@ -17,8 +17,8 @@ class UsersController extends Controller
     public function search(Request $request){
         $this->validate($request, [
             'role' => 'required|integer|min:0|max:6',
-            'name' => 'nullable|string|max:100',
-            'idCard' => 'nullable|string|max:20',
+            'name' => 'nullable|string|max:'.config('forms.user_name'),
+            'idCard' => 'nullable|string|max:'.config('forms.idCard'),
         ]);
         
         $users = User::where('accepted', true);

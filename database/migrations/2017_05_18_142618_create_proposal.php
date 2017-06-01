@@ -18,13 +18,13 @@ class CreateProposal extends Migration
             $table->integer('student_id')->unsigned();
             $table->integer('offer_id')->unsigned();
             
-            $table->string('description', 500);
+            $table->string('description', config('forms.proposal_description'));
             $table->tinyInteger('type');
             //Schedule available weekly, in total hours or in weekly schedule
-            $table->string('scheduleAvailable', 200);
-            $table->string('totalHours', 200);
-            $table->string('earliestStartDate', 200);
-            $table->string('latestEndDate', 200);
+            $table->string('scheduleAvailable', config('forms.scheduleAvailable'));
+            $table->string('totalHours', config('forms.proposal_totalHours'));
+            $table->string('earliestStartDate', config('forms.earliestStartDate'));
+            $table->string('latestEndDate', config('forms.latestEndDate'));
             $table->tinyInteger('state');
             $table->dateTime('creationDate');
             

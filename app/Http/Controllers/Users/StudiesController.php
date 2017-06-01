@@ -20,7 +20,7 @@ class StudiesController extends Controller
     
     public function search(Request $request){
         $this->validate($request, [
-            'name' => 'nullable|string|max:100',
+            'name' => 'nullable|string|max:'.config('forms.study_name'),
             'branch' => 'required|integer|min:0|max:6',
         ]);
         

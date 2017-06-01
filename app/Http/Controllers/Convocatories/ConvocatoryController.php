@@ -17,10 +17,10 @@ class ConvocatoryController extends Controller
     
     public function createConvocatory(Request $request) {
         $rules = [
-            'title' => 'required|string|max:100',
-            'information' => 'required|string|max:100',
-            'estimatedPeriod' => 'required|string|max:100',
-            'urlDocumentation' => 'required|string|max:100',
+            'title' => 'required|string|max:'.config('forms.convocatory_title'),
+            'information' => 'required|string|max:'.config('forms.information'),
+            'estimatedPeriod' => 'required|string|max:'.config('forms.estimatedPeriod'),
+            'urlDocumentation' => 'required|string',
             'deadline' => 'required|date',
         ];
         $this->validate($request, $rules);
@@ -40,10 +40,10 @@ class ConvocatoryController extends Controller
     
     public function editConvocatory($id ,Request $request) {
         $rules = [
-            'title' => 'required|string|max:100',
-            'information' => 'required|string|max:100',
-            'estimatedPeriod' => 'required|string|max:100',
-            'urlDocumentation' => 'required|string|max:100',
+            'title' => 'required|string|max:'.config('forms.convocatory_title'),
+            'information' => 'required|string|max:'.config('forms.information'),
+            'estimatedPeriod' => 'required|string|max:'.config('forms.estimatedPeriod'),
+            'urlDocumentation' => 'required|string',
             'deadline' => 'required|date',
         ];
         $this->validate($request, $rules);
