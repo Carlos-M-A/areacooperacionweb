@@ -21,6 +21,7 @@ class CreateUser extends Migration
             $table->rememberToken();
             $table->string('idCard', config('forms.idCard'))->unique();
             $table->string('phone', config('forms.phone'));
+            $table->string('urlAvatar', config('forms.file_name'))->nullable();
             $table->tinyInteger('role');
             $table->boolean('accepted');
             $table->boolean('isObservatoryMember');

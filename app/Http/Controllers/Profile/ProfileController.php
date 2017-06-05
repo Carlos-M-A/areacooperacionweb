@@ -73,6 +73,7 @@ class ProfileController extends Controller {
             'idCard' => 'required|string|max:'.config('forms.idCard'),
             Rule::unique('User')->ignore($user->idCard),
             'phone' => 'required|string|max:'.config('forms.phone'),
+            'urlAvatar' => 'nullable|image|dimensions:max_width=256,max_height=256,ratio=1',
         ];
         
         switch ($user->role) {
@@ -81,7 +82,7 @@ class ProfileController extends Controller {
                     $rules['study'] = 'required|integer|min:1';
                     $rules['areasOfInterest'] = 'required|string|max:'.config('forms.areasOfInterest');
                     $rules['skills'] = 'required|string|max:'.config('forms.skills');
-                    $rules['urlCurriculum'] = 'nullable|string';
+                    $rules['urlCurriculum'] = 'nullable|file|mimes:pdf';
                 break;
             case 2:
                     $rules['surnames'] = 'required|string|max:'.config('forms.surnames');
@@ -97,7 +98,6 @@ class ProfileController extends Controller {
             case 5:
                     $rules['socialName'] = 'required|string|max:'.config('forms.socialName');
                     $rules['description'] = 'required|string|max:'.config('forms.user_description');
-                    $rules['urlLogoImage'] = 'nullable|file';
                     $rules['headquartersLocation'] = 'required|string|max:'.config('forms.headquartersLocation');
                     $rules['web'] = 'required|url|max:'.config('forms.url');
                     $rules['linksWithNearbyEntities'] = 'nullable|string|max:'.config('forms.linksWithNearbyEntities');
@@ -109,6 +109,9 @@ class ProfileController extends Controller {
         $user->email = $request->email;
         $user->idCard = $request->idCard;
         $user->phone = $request->phone;
+        if($request->hasFile('urlAvatar')){
+                    $user->urlAvatar = $request->urlAvatar->store('images');
+                }
         $user->save();
 
         switch ($user->role) {
@@ -118,7 +121,9 @@ class ProfileController extends Controller {
                 $student->areasOfInterest = $request->areasOfInterest;
                 $student->study_id = $request->study;
                 $student->skills = $request->skills;
-                $student->urlCurriculum = $request->urlCurriculum;
+                if($request->hasFile('urlCurriculum')){
+                    $student->urlCurriculum = $request->urlCurriculum->store('curriculums');
+                }
                 $student->save();
                 break;
             case 2:
@@ -140,9 +145,6 @@ class ProfileController extends Controller {
                 $organization = Organization::find($user->id);
                 $organization->socialName = $request->socialName;
                 $organization->description = $request->description;
-                if($request->hasFile('urlLogoImage')){
-                    $organization->urlLogoImage = $request->urlLogoImage->store('images ');
-                }
                 $organization->headquartersLocation = $request->headquartersLocation;
                 $organization->web = $request->web;
                 $organization->linksWithNearbyEntities = $request->linksWithNearbyEntities;

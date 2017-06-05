@@ -154,6 +154,21 @@
                             </div>
                         </div>
 
+                        <div id="urlAvatar_div" class="form-group{{ $errors->has('urlAvatar') ? ' has-error' : '' }}">
+                            <label for="urlAvatar" class="col-md-4 control-label">urlAvatar</label>
+
+                            <div class="col-md-6">
+                                <input id="urlAvatar" type="file" class="form-control" name="urlAvatar" value="{{ old('urlAvatar')? old('urlAvatar') : $user->urlAvatar }}" >
+
+                                @if ($errors->has('urlAvatar'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('urlAvatar') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                            
+                        </div>
+                        
                         @if($role==1)
                         <div id="study_div" class="form-group{{ $errors->has('study') ? ' has-error' : '' }}">
                             <label for="study" class="col-md-4 control-label">Studys</label>
@@ -254,23 +269,6 @@
                                 </span>
                                 @endif
                             </div>
-                        </div>
-                        @endif
-
-                        @if($role==4 || $role==5)
-                        <div id="urlLogoImage_div" class="form-group{{ $errors->has('urlLogoImage') ? ' has-error' : '' }}">
-                            <label for="urlLogoImage" class="col-md-4 control-label">urlLogoImage</label>
-
-                            <div class="col-md-6">
-                                <input id="urlLogoImage" type="file" class="form-control" name="urlLogoImage" value="{{ old('urlLogoImage')? old('urlLogoImage') : $roleData->urlLogoImage }}" >
-
-                                @if ($errors->has('urlLogoImage'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('urlLogoImage') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                            
                         </div>
                         @endif
 

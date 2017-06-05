@@ -19,7 +19,6 @@ class StudentSeeder extends Seeder
         $student->surnames = 'Apellidos estu';
         $student->areasOfInterest = 'Area interes estu';
         $student->skills = 'Competencias estu';
-        $student->urlCurriculum = 'url curriculum estu';
         $student->study_id = 1;
         $student->save();
         

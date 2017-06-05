@@ -47,7 +47,6 @@ class RequestRoleChangeController extends Controller
             case 1:
                     $rules['study'] = 'required|integer|min:1';
                     $rules['skills'] = 'required|string|max:'.config('forms.skills');
-                    $rules['urlCurriculum'] = 'nullable|string';
                 break;
             //Teacher
             case 2:
@@ -91,7 +90,6 @@ class RequestRoleChangeController extends Controller
                 $student->areasOfInterest = $request->areasOfInterest;
                 $student->study_id = $request->study;
                 $student->skills = $request->skills;
-                $student->urlCurriculum = $request->urlCurriculum;
                 $student->save();
                 break;
             case 2:

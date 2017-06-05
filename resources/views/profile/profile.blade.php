@@ -45,7 +45,10 @@
                                 <td>Phone number</td>
                                 <td>{{$user->phone}}</td>
                             </tr>
-                            
+                            <tr>
+                                <td>Imagen</td>
+                                <td><img src="{{URL::asset($user->urlAvatar)}}" alt="profile Pic" height="128" width="128"></td>
+                            </tr>
                             @yield('role_data')
 
                         </tbody>
@@ -68,6 +71,8 @@
 
             
             @yield('studies_teacher')
+            
+            @yield('curriculum_student')
             
             
             <div class="panel panel-primary">

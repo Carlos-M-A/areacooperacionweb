@@ -65,7 +65,6 @@ return [
     
     'organization' => 'organization',
         'socialName' => 'Social name',
-        'urlLogoImage' => 'urlLogoImage',
         'headquartersLocation' => 'Headquarters Location',
         'web' => 'web',
         'linksWithNearbyEntities' => 'Links With Nearby Entities',
@@ -107,6 +106,7 @@ return [
         'email' => 'Email',
         'idCard' => 'ID Card',
         'phone' => 'Phone',
+        'urlAvatar' => 'Avatar image',
         'role' => 'Role',
         'accepted' => 'Accepted',
         'isObservatoryMember' => 'Observatory member',

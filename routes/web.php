@@ -139,3 +139,7 @@ Route::post('/convocatories/{id}/closeConvocatory', 'Convocatories\ConvocatoryCo
 Route::post('/convocatories/{id}/createInscription', 'Convocatories\InscriptionController@createInscription')->name('createInscription');
 Route::post('/convocatories/{id}/remove', 'Convocatories\InscriptionController@remove')->name('removeInscription');
 Route::post('/inscriptions/{id}/edit', 'Convocatories\InscriptionController@edit')->name('editInscription');
+
+// Files management
+Route::get('/images/{file}', 'Files\ImagesController@get')->name('getImage');
+Route::get('/curriculums/{file}', 'Files\CurriculumsController@get')->name('getImage');

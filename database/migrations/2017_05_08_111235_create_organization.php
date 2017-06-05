@@ -18,7 +18,6 @@ class CreateOrganization extends Migration
             //bussines name (On ONG is social name)
             $table->string('socialName', config('forms.socialName'));
             $table->string('description', config('forms.organization_description'));
-            $table->string('urlLogoImage', config('forms.file_name'))->nullable();
             $table->string('headquartersLocation', config('forms.headquartersLocation'));
             $table->string('web', config('forms.url'));
             //If the organization is placed so far, as other country

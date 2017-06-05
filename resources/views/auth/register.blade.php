@@ -157,7 +157,6 @@
         
         areasOfInterestDiv = document.getElementById('areasOfInterest_div').style;
         skillsDiv = document.getElementById('skills_div').style;
-        urlCurriculumDiv = document.getElementById('urlCurriculum_div').style;
         departmentsDiv = document.getElementById('departments_div').style;
         descriptionDiv = document.getElementById('description_div').style;
         studyDiv = document.getElementById('study_div').style;
@@ -166,7 +165,6 @@
         
         if(thereAreOrganizationFields){
             socialNameDiv = document.getElementById('socialName_div').style;
-            urlLogoImageDiv = document.getElementById('urlLogoImage_div').style;
             headquartersLocationDiv = document.getElementById('headquartersLocation_div').style;
             webDiv = document.getElementById('web_div').style;
             linksWithNearbyEntitiesDiv = document.getElementById('linksWithNearbyEntities_div').style;
@@ -179,7 +177,6 @@
                 }
                 areasOfInterestDiv.display = 'block';
                 skillsDiv.display = 'block';
-                urlCurriculumDiv.display = 'block';
                 departmentsDiv.display = 'none';
                 descriptionDiv.display = 'none';
                 studyDiv.display = 'block';
@@ -187,7 +184,6 @@
                 teachingStudiesSelectedDiv.display = 'none';
                 if(thereAreOrganizationFields){
                     socialNameDiv.display = 'none';
-                    urlLogoImageDiv.display = 'none';
                     headquartersLocationDiv.display = 'none';
                     webDiv.display = 'none';
                     linksWithNearbyEntitiesDiv.display = 'none';
@@ -199,7 +195,6 @@
                 }
                 areasOfInterestDiv.display = 'block';
                 skillsDiv.display = 'none';
-                urlCurriculumDiv.display = 'none';
                 departmentsDiv.display = 'block';
                 descriptionDiv.display = 'none';
                 studyDiv.display = 'none';
@@ -207,7 +202,6 @@
                 teachingStudiesSelectedDiv.display = 'block';
                 if(thereAreOrganizationFields){
                     socialNameDiv.display = 'none';
-                    urlLogoImageDiv.display = 'none';
                     headquartersLocationDiv.display = 'none';
                     webDiv.display = 'none';
                     linksWithNearbyEntitiesDiv.display = 'none';
@@ -219,7 +213,6 @@
                 }
                 areasOfInterestDiv.display = 'block';
                 skillsDiv.display = 'none';
-                urlCurriculumDiv.display = 'none';
                 departmentsDiv.display = 'none';
                 descriptionDiv.display = 'block';
                 studyDiv.display = 'none';
@@ -227,7 +220,6 @@
                 teachingStudiesSelectedDiv.display = 'none';
                 if(thereAreOrganizationFields){
                     socialNameDiv.display = 'none';
-                    urlLogoImageDiv.display = 'none';
                     headquartersLocationDiv.display = 'none';
                     webDiv.display = 'none';
                     linksWithNearbyEntitiesDiv.display = 'none';
@@ -239,7 +231,6 @@
                 }
                 areasOfInterestDiv.display = 'none';
                 skillsDiv.display = 'none';
-                urlCurriculumDiv.display = 'none';
                 departmentsDiv.display = 'none';
                 descriptionDiv.display = 'block';
                 studyDiv.display = 'none';
@@ -247,7 +238,6 @@
                 teachingStudiesSelectedDiv.display = 'none';
                 if(thereAreOrganizationFields){
                     socialNameDiv.display = 'block';
-                    urlLogoImageDiv.display = 'block';
                     headquartersLocationDiv.display = 'block';
                     webDiv.display = 'block';
                     linksWithNearbyEntitiesDiv.display = 'block';
@@ -491,20 +481,6 @@
                             </div>
                         </div>
 
-                        <div id="urlCurriculum_div" class="form-group{{ $errors->has('urlCurriculum') ? ' has-error' : '' }}">
-                            <label for="urlCurriculum" class="col-md-4 control-label">urlCurriculum</label>
-
-                            <div class="col-md-6">
-                                <input id="urlCurriculum" type="file" class="form-control" name="urlCurriculum" value="{{ old('urlCurriculum') }}" >
-
-                                @if ($errors->has('urlCurriculum'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('urlCurriculum') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                        </div>
-
                         <div id="departments_div" class="form-group{{ $errors->has('departments') ? ' has-error' : '' }}">
                             <label for="departments" class="col-md-4 control-label">departments</label>
 
@@ -532,21 +508,6 @@
                                 @endif
                             </div>
                         </div>
-
-                        <div id="urlLogoImage_div" class="form-group{{ $errors->has('urlLogoImage') ? ' has-error' : '' }}">
-                            <label for="urlLogoImage" class="col-md-4 control-label">urlLogoImage</label>
-
-                            <div class="col-md-6">
-                                <input id="urlLogoImage" type="file" class="form-control" name="urlLogoImage" value="{{ old('urlLogoImage') }}" >
-
-                                @if ($errors->has('urlLogoImage'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('urlLogoImage') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                        </div>
-
 
                         <div id="headquartersLocation_div" class="form-group{{ $errors->has('headquartersLocation') ? ' has-error' : '' }}">
                             <label for="headquartersLocation" class="col-md-4 control-label">headquartersLocation</label>

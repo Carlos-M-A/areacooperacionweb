@@ -64,7 +64,6 @@ use RegistersUsers;
                 $rules['study'] = 'required|integer|min:1';
                 $rules['areasOfInterest'] = 'required|string|max:'.config('forms.areasOfInterest');
                 $rules['skills'] = 'required|string|max:'.config('forms.skills');
-                $rules['urlCurriculum'] = 'nullable|string';
                 break;
             //Teacher
             case 2:
@@ -85,7 +84,6 @@ use RegistersUsers;
             case 4:
                 $rules['description'] = 'required|string|max:'.config('forms.user_description');
                 $rules['socialName'] = 'required|string|max:'.config('forms.socialName');
-                $rules['urlLogoImage'] = 'required|file';
                 $rules['headquartersLocation'] = 'required|string|max:'.config('forms.headquartersLocation');
                 $rules['web'] = 'required|url|max:'.config('forms.url');
                 $rules['linksWithNearbyEntities'] = 'nullable|string|max:'.config('forms.linksWithNearbyEntities');
@@ -128,7 +126,6 @@ use RegistersUsers;
                 $student->areasOfInterest = $data['areasOfInterest'];
                 $student->study_id = $data['study'];
                 $student->skills = $data['study'];
-                $student->urlCurriculum = $data['urlCurriculum'];
                 $student->save();
                 break;
             case 2:
@@ -163,7 +160,6 @@ use RegistersUsers;
                 $organization->id = $user->id;
                 $organization->socialName = $data['socialName'];
                 $organization->description = $data['description'];
-                $organization->urlLogoImage = $data['urlLogoImage'];
                 $organization->headquartersLocation = $data['headquartersLocation'];
                 $organization->web = $data['web'];
                 $organization->linksWithNearbyEntities = $data['linksWithNearbyEntities'];
