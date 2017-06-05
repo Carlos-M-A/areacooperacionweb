@@ -19,10 +19,6 @@
         op0 = document.getElementById('typeOption0');
         op1 = document.getElementById('typeOption1');
         op2 = document.getElementById('typeOption2');
-        op3 = document.getElementById('typeOption3');
-        op4 = document.getElementById('typeOption4');
-        op5 = document.getElementById('typeOption5');
-        op6 = document.getElementById('typeOption6');
         
         switch (type){
             
@@ -37,30 +33,6 @@
                 newOption.selected = true;
                 selectedType.replaceChild(newOption, op0);
                 selectedType.removeChild(op2);
-                break;
-            case 3:
-                newOption = op3.cloneNode(true);
-                newOption.selected = true;
-                selectedType.replaceChild(newOption, op0);
-                selectedType.removeChild(op3);
-                break;
-            case 4:
-                newOption = op4.cloneNode(true);
-                newOption.selected = true;
-                selectedType.replaceChild(newOption, op0);
-                selectedType.removeChild(op4);
-                break;
-            case 5:
-                newOption = op5.cloneNode(true);
-                newOption.selected = true;
-                selectedType.replaceChild(newOption, op0);
-                selectedType.removeChild(op5);
-                break;
-            case 6:
-                newOption = op6.cloneNode(true);
-                newOption.selected = true;
-                selectedType.replaceChild(newOption, op0);
-                selectedType.removeChild(op6);
                 break;
         }
     }
@@ -82,9 +54,9 @@
 
                             <div class="col-md-6">
                                 <select  id="type" class="form-control" name="type" autofocus>
-                                    <option id="typeOption0" value="0">--All types--</option>
+                                    <option id="typeOption0" value="0">{{ old('type')? old('type') : '--Chose type --'}}</option>
                                     <option id="typeOption1" value="1">Just cooperate</option>
-                                    <option id="typeOption6" value="2">Curricular practice</option>
+                                    <option id="typeOption2" value="2">Curricular practice</option>
                                 </select>
 
                                 @if ($errors->has('type'))
@@ -100,8 +72,8 @@
                             <label for="description" class="col-md-4 control-label">description</label>
 
                             <div class="col-md-6">
-                                <input id="description" type="text" class="form-control" name="description" value="{{ old('description') }}" autofocus>
-
+                                <textarea id="description" cols="100" rows="7" maxlength="{{config('forms.proposal_description')}}"
+                                           class="form-control" name="description" autofocus>{{ old('description') }}</textarea>
                                 @if ($errors->has('description'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('description') }}</strong>
@@ -114,8 +86,8 @@
                             <label for="scheduleAvailable" class="col-md-4 control-label">scheduleAvailable</label>
 
                             <div class="col-md-6">
-                                <input id="scheduleAvailable" type="text" class="form-control" name="scheduleAvailable" value="{{ old('scheduleAvailable') }}" autofocus>
-
+                                <textarea id="scheduleAvailable" cols="100" rows="7" maxlength="{{config('forms.scheduleAvailable')}}"
+                                           class="form-control" name="scheduleAvailable" autofocus>{{ old('scheduleAvailable') }}</textarea>
                                 @if ($errors->has('scheduleAvailable'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('scheduleAvailable') }}</strong>
@@ -128,8 +100,8 @@
                             <label for="totalHours" class="col-md-4 control-label">totalHours</label>
 
                             <div class="col-md-6">
-                                <input id="totalHours" type="text" class="form-control" name="totalHours" value="{{ old('totalHours') }}" autofocus>
-
+                                <textarea id="totalHours" cols="100" rows="7" maxlength="{{config('forms.totalHours')}}"
+                                           class="form-control" name="totalHours" autofocus>{{ old('totalHours') }}</textarea>
                                 @if ($errors->has('totalHours'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('totalHours') }}</strong>
@@ -142,8 +114,8 @@
                             <label for="earliestStartDate" class="col-md-4 control-label">earliestStartDate</label>
 
                             <div class="col-md-6">
-                                <input id="earliestStartDate" type="text" class="form-control" name="earliestStartDate" value="{{ old('earliestStartDate') }}" autofocus>
-
+                                <textarea id="earliestStartDate" cols="100" rows="7" maxlength="{{config('forms.earliestStartDate')}}"
+                                           class="form-control" name="earliestStartDate" autofocus>{{ old('earliestStartDate') }}</textarea>
                                 @if ($errors->has('earliestStartDate'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('earliestStartDate') }}</strong>
@@ -155,8 +127,8 @@
                             <label for="latestEndDate" class="col-md-4 control-label">latestEndDate</label>
 
                             <div class="col-md-6">
-                                <input id="latestEndDate" type="text" class="form-control" name="latestEndDate" value="{{ old('latestEndDate') }}" autofocus>
-
+                                <textarea id="latestEndDate" cols="100" rows="7" maxlength="{{config('forms.latestEndDate')}}"
+                                           class="form-control" name="latestEndDate" autofocus>{{ old('latestEndDate') }}</textarea>
                                 @if ($errors->has('latestEndDate'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('latestEndDate') }}</strong>

@@ -50,7 +50,8 @@
                             <label for="description" class="col-md-4 control-label">description</label>
 
                             <div class="col-md-6">
-                                <input id="description" type="text" class="form-control" name="description" value="{{ old('description')?old('description') : $offer->description }}" autofocus>
+                                 <textarea id="description" cols="200" rows="7" maxlength="{{config('forms.offer_description')}}"
+                                           class="form-control" name="description" autofocus>{{ old('description')?old('description') : $offer->description }}</textarea>
 
                                 @if ($errors->has('description'))
                                 <span class="help-block">
@@ -64,8 +65,8 @@
                             <label for="requeriments" class="col-md-4 control-label">requeriments</label>
 
                             <div class="col-md-6">
-                                <input id="requeriments" type="text" class="form-control" name="requeriments" value="{{ old('requeriments')?old('requeriments') : $offer->requeriments }}" autofocus>
-
+                                <textarea id="requeriments" cols="200" rows="7" maxlength="{{config('forms.requeriments')}}"
+                                           class="form-control" name="requeriments" autofocus>{{ old('requeriments')?old('requeriments') : $offer->requeriments }}</textarea>
                                 @if ($errors->has('requeriments'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('requeriments') }}</strong>
@@ -78,8 +79,8 @@
                             <label for="workplan" class="col-md-4 control-label">workplan</label>
 
                             <div class="col-md-6">
-                                <input id="workplan" type="text" class="form-control" name="workplan" value="{{ old('workplan')?old('workplan') : $offer->workplan }}" autofocus>
-
+                                <textarea id="workplan" cols="200" rows="7" maxlength="{{config('forms.workplan')}}"
+                                           class="form-control" name="workplan" autofocus>{{ old('workplan')?old('workplan') : $offer->workplan }}</textarea>
                                 @if ($errors->has('workplan'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('workplan') }}</strong>
@@ -92,8 +93,8 @@
                             <label for="schedule" class="col-md-4 control-label">schedule</label>
 
                             <div class="col-md-6">
-                                <input id="schedule" type="text" class="form-control" name="schedule" value="{{ old('schedule')?old('schedule') : $offer->schedule }}" autofocus>
-
+                                <textarea id="schedule" cols="200" rows="7" maxlength="{{config('forms.schedule')}}"
+                                           class="form-control" name="schedule" autofocus>{{ old('schedule')?old('schedule') : $offer->schedule }}</textarea>
                                 @if ($errors->has('schedule'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('schedule') }}</strong>
@@ -106,8 +107,8 @@
                             <label for="totalHours" class="col-md-4 control-label">totalHours</label>
 
                             <div class="col-md-6">
-                                <input id="totalHours" type="text" class="form-control" name="totalHours" value="{{ old('totalHours')?old('totalHours') : $offer->totalHours }}" autofocus>
-
+                                <textarea id="totalHours" cols="200" rows="7" maxlength="{{config('forms.offer_totalHours')}}"
+                                           class="form-control" name="totalHours" autofocus>{{ old('totalHours')?old('totalHours') : $offer->totalHours }}</textarea>
                                 @if ($errors->has('totalHours'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('totalHours') }}</strong>
@@ -120,8 +121,8 @@
                             <label for="possibleStartDates" class="col-md-4 control-label">possibleStartDates</label>
 
                             <div class="col-md-6">
-                                <input id="possibleStartDates" type="text" class="form-control" name="possibleStartDates" value="{{ old('possibleStartDates')?old('possibleStartDates') : $offer->possibleStartDates }}" autofocus>
-
+                                <textarea id="possibleStartDates" cols="200" rows="7" maxlength="{{config('forms.possibleStartDates')}}"
+                                           class="form-control" name="possibleStartDates" autofocus>{{ old('possibleStartDates')?old('possibleStartDates') : $offer->possibleStartDates }}</textarea>
                                 @if ($errors->has('possibleStartDates'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('possibleStartDates') }}</strong>
@@ -134,8 +135,8 @@
                             <label for="possibleEndDates" class="col-md-4 control-label">possibleEndDates</label>
 
                             <div class="col-md-6">
-                                <input id="possibleEndDates" type="text" class="form-control" name="possibleEndDates" value="{{ old('possibleEndDates')?old('possibleEndDates') : $offer->possibleEndDates }}" autofocus>
-
+                                <textarea id="possibleEndDates" cols="200" rows="7" maxlength="{{config('forms.possibleEndDates')}}"
+                                           class="form-control" name="possibleEndDates" autofocus>{{ old('possibleEndDates')?old('possibleEndDates') : $offer->possibleEndDates }}</textarea>
                                 @if ($errors->has('possibleEndDates'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('possibleEndDates') }}</strong>
@@ -162,8 +163,8 @@
                             <label for="monetaryHelp" class="col-md-4 control-label">monetaryHelp</label>
 
                             <div class="col-md-6">
-                                <input id="monetaryHelp" type="text" class="form-control" name="monetaryHelp" value="{{ old('monetaryHelp')?old('monetaryHelp') : $offer->monetaryHelp }}" autofocus>
-
+                                <textarea id="monetaryHelp" cols="200" rows="7" maxlength="{{config('forms.monetaryHelp')}}"
+                                           class="form-control" name="monetaryHelp" autofocus>{{ old('monetaryHelp')?old('monetaryHelp') : $offer->monetaryHelp }}</textarea>
                                 @if ($errors->has('monetaryHelp'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('monetaryHelp') }}</strong>

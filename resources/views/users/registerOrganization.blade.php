@@ -89,8 +89,8 @@
                             <label for="description" class="col-md-4 control-label">description</label>
 
                             <div class="col-md-6">
-                                <input id="description" type="text" class="form-control" name="description" value="{{ old('description') }}" >
-
+                                <textarea id="description" cols="100" rows="7" maxlength="{{config('forms.user_description')}}"
+                                           class="form-control" name="description" autofocus>{{ old('description') }}</textarea>
                                 @if ($errors->has('description'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('description') }}</strong>
@@ -118,8 +118,8 @@
                             <label for="headquartersLocation" class="col-md-4 control-label">headquartersLocation</label>
 
                             <div class="col-md-6">
-                                <input id="headquartersLocation" type="text" class="form-control" name="headquartersLocation" value="{{ old('headquartersLocation') }}" >
-
+                                <textarea id="headquartersLocation" cols="100" rows="7" maxlength="{{config('forms.headquartersLocation')}}"
+                                           class="form-control" name="headquartersLocation" autofocus>{{ old('headquartersLocation') }}</textarea>
                                 @if ($errors->has('headquartersLocation'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('headquartersLocation') }}</strong>
@@ -146,8 +146,8 @@
                             <label for="linksWithNearbyEntities" class="col-md-4 control-label">linksWithNearbyEntities</label>
 
                             <div class="col-md-6">
-                                <input id="linksWithNearbyEntities" type="text" class="form-control" name="linksWithNearbyEntities" value="{{ old('linksWithNearbyEntities') }}" >
-
+                                <textarea id="linksWithNearbyEntities" cols="100" rows="7" maxlength="{{config('forms.linksWithNearbyEntities')}}"
+                                           class="form-control" name="linksWithNearbyEntities" autofocus>{{ old('linksWithNearbyEntities') }}</textarea>
                                 @if ($errors->has('linksWithNearbyEntities'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('linksWithNearbyEntities') }}</strong>

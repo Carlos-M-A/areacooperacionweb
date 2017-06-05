@@ -24,14 +24,13 @@ return [
     'user_name' => 100,
     'email' => 190, // Never put more than 190 because cause a error in MySQL
     'password' => 100,
-    'idCard' => 20,
+    'idCard' => 20, // Never put more than 190 because cause a error in MySQL
     'phone' => 20,
     'surnames' => 100,
     'areasOfInterest' => 1000,
     'skills' => 2000,
     'departments' => 1000,
-    'other_description' => 1000,
-    'organization_description' => 2000,
+    'user_description' => 2000,
     'socialName' => 200,
     'headquartersLocation' => 200,
     'linksWithNearbyEntities' => 1000,

@@ -93,7 +93,7 @@ class ProjectController extends Controller
     public function editProject($id, Request $request) {
         $this->validate($request, [
             'title' => 'required|string|max:'.config('forms.project_title'),
-            'scope' => 'required|string|max:'.config('forms.title'),
+            'scope' => 'required|string|max:'.config('forms.scope'),
             'description' => 'required|string|max:'.config('forms.project_description'),
             'urlDocumentation' => 'nullable|string|max:'.config('forms.url'),
         ]);

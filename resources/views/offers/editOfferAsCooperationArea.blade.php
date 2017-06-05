@@ -124,9 +124,11 @@
 
     <div class="col-md-6">
         @if($offer->isOfferOfConvocatory)
-            <input id="housing" type="text" class="form-control" name="housing" value="{{ old('housing') ?  old('housing') : $offer->offerOfConvocatory->housing }}" autofocus>
+        <textarea id="housing" cols="200" rows="7" maxlength="{{config('forms.housing')}}"
+            class="form-control" name="housing" autofocus>{{ old('housing') ?  old('housing') : $offer->offerOfConvocatory->housing }}</textarea>
         @else
-            <input id="housing" type="text" class="form-control" name="housing" value="{{ old('housing') ?  old('housing') : '' }}" autofocus>
+        <textarea id="housing" cols="200" rows="7" maxlength="{{config('forms.housing')}}"
+            class="form-control" name="housing" autofocus>{{ old('housing') ?  old('housing') : '' }}</textarea>
         @endif
         
         @if ($errors->has('housing'))
@@ -142,9 +144,11 @@
 
     <div class="col-md-6">
         @if($offer->isOfferOfConvocatory)
-            <input id="costs" type="text" class="form-control" name="costs" value="{{ old('costs') ?  old('costs') : $offer->offerOfConvocatory->costs }}" autofocus>
+        <textarea id="costs" cols="200" rows="7" maxlength="{{config('forms.costs')}}"
+            class="form-control" name="costs" autofocus>{{ old('costs') ?  old('costs') : $offer->offerOfConvocatory->costs }}</textarea>
         @else
-            <input id="costs" type="text" class="form-control" name="costs" value="{{ old('costs') ?  old('costs') : '' }}" autofocus>
+        <textarea id="costs" cols="200" rows="7" maxlength="{{config('forms.costs')}}"
+            class="form-control" name="costs" autofocus>{{ old('costs') ?  old('costs') : '' }}</textarea>
         @endif
         
         @if ($errors->has('costs'))

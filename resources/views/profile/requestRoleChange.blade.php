@@ -365,8 +365,8 @@
                             <label for="areasOfInterest" class="col-md-4 control-label">Areas of interest</label>
 
                             <div class="col-md-6">
-                                <input id="areasOfInterest" type="text" class="form-control" name="areasOfInterest" value="{{ old('areasOfInterest') }}" >
-
+                                <textarea id="areasOfInterest" cols="100" rows="7" maxlength="{{config('forms.areasOfInterest')}}"
+                                           class="form-control" name="areasOfInterest" autofocus>{{ old('areasOfInterest') }}</textarea>
                                 @if ($errors->has('areasOfInterest'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('areasOfInterest') }}</strong>
@@ -379,8 +379,8 @@
                             <label for="skills" class="col-md-4 control-label">skills</label>
 
                             <div class="col-md-6">
-                                <input id="skills" type="text" class="form-control" name="skills" value="{{ old('skills') }}" >
-
+                                <textarea id="skills" cols="100" rows="7" maxlength="{{config('forms.skills')}}"
+                                           class="form-control" name="skills" autofocus>{{ old('skills') }}</textarea>
                                 @if ($errors->has('skills'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('skills') }}</strong>
@@ -407,8 +407,8 @@
                             <label for="departments" class="col-md-4 control-label">departments</label>
 
                             <div class="col-md-6">
-                                <input id="departments" type="text" class="form-control" name="departments" value="{{ old('departments') }}" >
-
+                                <textarea id="departments" cols="100" rows="7" maxlength="{{config('forms.departments')}}"
+                                           class="form-control" name="departments" autofocus>{{ old('departments') }}</textarea>
                                 @if ($errors->has('departments'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('departments') }}</strong>
@@ -421,8 +421,8 @@
                             <label for="description" class="col-md-4 control-label">description</label>
 
                             <div class="col-md-6">
-                                <input id="description" type="text" class="form-control" name="description" value="{{ old('description') }}" >
-
+                                <textarea id="description" cols="100" rows="7" maxlength="{{config('forms.user_description')}}"
+                                           class="form-control" name="description" autofocus>{{ old('description') }}</textarea>
                                 @if ($errors->has('description'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('description') }}</strong>

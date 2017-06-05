@@ -58,7 +58,7 @@ class RequestRoleChangeController extends Controller
                 break;
             //Other
             case 3:
-                    $rules['description'] = 'required|string|max:'.config('forms.other_description');
+                    $rules['description'] = 'required|string|max:'.config('forms.user_description');
                 break;
         }
         $this->validate($request, $rules);

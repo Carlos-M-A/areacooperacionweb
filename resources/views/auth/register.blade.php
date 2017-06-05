@@ -266,7 +266,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">@lang('general.register')</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" enctype="multipart/form-data" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
 
@@ -467,8 +467,8 @@
                             <label for="areasOfInterest" class="col-md-4 control-label">Areas of interest</label>
 
                             <div class="col-md-6">
-                                <input id="areasOfInterest" type="text" class="form-control" name="areasOfInterest" value="{{ old('areasOfInterest') }}" >
-
+                                <textarea id="areasOfInterest" cols="100" rows="7" maxlength="{{config('forms.areasOfInterest')}}"
+                                           class="form-control" name="areasOfInterest" autofocus>{{ old('areasOfInterest') }}</textarea>
                                 @if ($errors->has('areasOfInterest'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('areasOfInterest') }}</strong>
@@ -481,8 +481,8 @@
                             <label for="skills" class="col-md-4 control-label">skills</label>
 
                             <div class="col-md-6">
-                                <input id="skills" type="text" class="form-control" name="skills" value="{{ old('skills') }}" >
-
+                                <textarea id="skills" cols="100" rows="7" maxlength="{{config('forms.skills')}}"
+                                           class="form-control" name="skills" autofocus>{{ old('skills') }}</textarea>
                                 @if ($errors->has('skills'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('skills') }}</strong>
@@ -509,8 +509,8 @@
                             <label for="departments" class="col-md-4 control-label">departments</label>
 
                             <div class="col-md-6">
-                                <input id="departments" type="text" class="form-control" name="departments" value="{{ old('departments') }}" >
-
+                                <textarea id="departments" cols="100" rows="7" maxlength="{{config('forms.departments')}}"
+                                           class="form-control" name="departments" autofocus>{{ old('departments') }}</textarea>
                                 @if ($errors->has('departments'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('departments') }}</strong>
@@ -523,8 +523,8 @@
                             <label for="description" class="col-md-4 control-label">description</label>
 
                             <div class="col-md-6">
-                                <input id="description" type="text" class="form-control" name="description" value="{{ old('description') }}" >
-
+                                <textarea id="description" cols="100" rows="7" maxlength="{{config('forms.user_description')}}"
+                                           class="form-control" name="description" autofocus>{{ old('description') }}</textarea>
                                 @if ($errors->has('description'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('description') }}</strong>
@@ -552,8 +552,8 @@
                             <label for="headquartersLocation" class="col-md-4 control-label">headquartersLocation</label>
 
                             <div class="col-md-6">
-                                <input id="headquartersLocation" type="text" class="form-control" name="headquartersLocation" value="{{ old('headquartersLocation') }}" >
-
+                                <textarea id="headquartersLocation" cols="100" rows="7" maxlength="{{config('forms.headquartersLocation')}}"
+                                           class="form-control" name="headquartersLocation" autofocus>{{ old('headquartersLocation') }}</textarea>
                                 @if ($errors->has('headquartersLocation'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('headquartersLocation') }}</strong>
@@ -580,8 +580,8 @@
                             <label for="linksWithNearbyEntities" class="col-md-4 control-label">linksWithNearbyEntities</label>
 
                             <div class="col-md-6">
-                                <input id="linksWithNearbyEntities" type="text" class="form-control" name="linksWithNearbyEntities" value="{{ old('linksWithNearbyEntities') }}" >
-
+                                <textarea id="linksWithNearbyEntities" cols="100" rows="7" maxlength="{{config('forms.linksWithNearbyEntities')}}"
+                                           class="form-control" name="linksWithNearbyEntities" autofocus>{{ old('linksWithNearbyEntities') }}</textarea>
                                 @if ($errors->has('linksWithNearbyEntities'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('linksWithNearbyEntities') }}</strong>

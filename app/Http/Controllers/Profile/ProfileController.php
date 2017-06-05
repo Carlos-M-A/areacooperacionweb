@@ -91,13 +91,13 @@ class ProfileController extends Controller {
             case 3:
                     $rules['surnames'] = 'required|string|max:'.config('forms.surnames');
                     $rules['areasOfInterest'] = 'required|string|max:'.config('forms.areasOfInterest');
-                    $rules['description'] = 'required|string|max:'.config('forms.other_description');
+                    $rules['description'] = 'required|string|max:'.config('forms.user_description');
                 break;
             case 4;
             case 5:
                     $rules['socialName'] = 'required|string|max:'.config('forms.socialName');
-                    $rules['description'] = 'required|string|max:'.config('forms.organization_description');
-                    $rules['urlLogoImage'] = 'nullable|string';
+                    $rules['description'] = 'required|string|max:'.config('forms.user_description');
+                    $rules['urlLogoImage'] = 'nullable|file';
                     $rules['headquartersLocation'] = 'required|string|max:'.config('forms.headquartersLocation');
                     $rules['web'] = 'required|url|max:'.config('forms.url');
                     $rules['linksWithNearbyEntities'] = 'nullable|string|max:'.config('forms.linksWithNearbyEntities');
@@ -140,7 +140,9 @@ class ProfileController extends Controller {
                 $organization = Organization::find($user->id);
                 $organization->socialName = $request->socialName;
                 $organization->description = $request->description;
-                $organization->urlLogoImage = $request->urlLogoImage;
+                if($request->hasFile('urlLogoImage')){
+                    $organization->urlLogoImage = $request->urlLogoImage->store('images ');
+                }
                 $organization->headquartersLocation = $request->headquartersLocation;
                 $organization->web = $request->web;
                 $organization->linksWithNearbyEntities = $request->linksWithNearbyEntities;

@@ -79,13 +79,13 @@ use RegistersUsers;
             case 3:
                 $rules['surnames'] = 'required|string|max:'.config('forms.surnames');
                 $rules['areasOfInterest'] = 'required|string|max:'.config('forms.areasOfInterest');
-                $rules['description'] = 'required|string|max:'.config('forms.other_description');
+                $rules['description'] = 'required|string|max:'.config('forms.user_description');
                 break;
             // Organization
             case 4:
-                $rules['description'] = 'required|string|max:'.config('forms.organization_description');
+                $rules['description'] = 'required|string|max:'.config('forms.user_description');
                 $rules['socialName'] = 'required|string|max:'.config('forms.socialName');
-                $rules['urlLogoImage'] = 'required|string';
+                $rules['urlLogoImage'] = 'required|file';
                 $rules['headquartersLocation'] = 'required|string|max:'.config('forms.headquartersLocation');
                 $rules['web'] = 'required|url|max:'.config('forms.url');
                 $rules['linksWithNearbyEntities'] = 'nullable|string|max:'.config('forms.linksWithNearbyEntities');

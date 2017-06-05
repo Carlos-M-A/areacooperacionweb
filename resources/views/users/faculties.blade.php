@@ -17,7 +17,7 @@
                                         </form>
             
             <div class="panel panel-default">
-                <div class="panel-heading">@lang('ganeral.search_faculties')</div>
+                <div class="panel-heading">@lang('general.search_faculties')</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('searchFaculties') }}">
                         {{ csrf_field() }}

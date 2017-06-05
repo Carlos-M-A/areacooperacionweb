@@ -15,8 +15,8 @@
                             <label for="comment" class="col-md-4 control-label">comment</label>
 
                             <div class="col-md-6">
-                                <input id="comment" type="text" class="form-control" name="comment" value="{{ old('comment') }}" autofocus>
-
+                                <textarea id="comment" cols="100" rows="7" maxlength="{{config('forms.comment')}}"
+                                           class="form-control" name="comment" autofocus>{{ old('comment') }}</textarea>
                                 @if ($errors->has('comment'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('comment') }}</strong>

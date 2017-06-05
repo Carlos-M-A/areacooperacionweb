@@ -105,8 +105,8 @@
     <label for="housing" class="col-md-4 control-label">housing</label>
 
     <div class="col-md-6">
-        <input id="housing" type="text" class="form-control" name="housing" value="{{ old('housing') }}" autofocus>
-
+        <textarea id="housing" cols="100" rows="7" maxlength="{{config('forms.housing')}}"
+            class="form-control" name="housing" autofocus>{{ old('housing') }}</textarea>
         @if ($errors->has('housing'))
         <span class="help-block">
             <strong>{{ $errors->first('housing') }}</strong>
@@ -119,8 +119,8 @@
     <label for="costs" class="col-md-4 control-label">costs</label>
 
     <div class="col-md-6">
-        <input id="costs" type="text" class="form-control" name="costs" value="{{ old('costs') }}" autofocus>
-
+        <textarea id="costs" cols="100" rows="7" maxlength="{{config('forms.costs')}}"
+            class="form-control" name="costs" autofocus>{{ old('costs') }}</textarea>
         @if ($errors->has('costs'))
         <span class="help-block">
             <strong>{{ $errors->first('costs') }}</strong>

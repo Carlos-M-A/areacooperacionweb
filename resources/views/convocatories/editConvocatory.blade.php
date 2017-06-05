@@ -32,8 +32,8 @@
                             <label for="information" class="col-md-4 control-label">information</label>
 
                             <div class="col-md-6">
-                                <input id="information" type="text" class="form-control" name="information" value="{{ old('information') ?  old('information') : $convocatory->information}}" autofocus>
-
+                                <textarea id="information" cols="200" rows="7" maxlength="{{config('forms.information')}}"
+                                           class="form-control" name="information" autofocus>{{ old('information')?old('information') : $convocatory->information }}</textarea>
                                 @if ($errors->has('information'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('information') }}</strong>
@@ -46,8 +46,8 @@
                             <label for="estimatedPeriod" class="col-md-4 control-label">estimatedPeriod</label>
 
                             <div class="col-md-6">
-                                <input id="estimatedPeriod" type="text" class="form-control" name="estimatedPeriod" value="{{ old('estimatedPeriod') ?  old('estimatedPeriod') : $convocatory->estimatedPeriod}}" autofocus>
-
+                                <textarea id="estimatedPeriod" cols="200" rows="7" maxlength="{{config('forms.estimatedPeriod')}}"
+                                           class="form-control" name="estimatedPeriod" autofocus>{{ old('estimatedPeriod')?old('estimatedPeriod') : $convocatory->estimatedPeriod }}</textarea>
                                 @if ($errors->has('estimatedPeriod'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('estimatedPeriod') }}</strong>

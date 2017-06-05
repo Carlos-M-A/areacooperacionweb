@@ -33,6 +33,10 @@
     <td> Links with nearby entities</td>
     <td>{{$organization->linksWithNearbyEntities}}</td>
 </tr>
+<tr>
+    <td>Imagen</td>
+    <td><img src="{{URL::asset($organization->urlLogoImage)}}" alt="profile Pic" height="200" width="200"></td>
+</tr>
 @endsection
 
 @section('studies_teacher')

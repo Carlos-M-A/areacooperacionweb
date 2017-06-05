@@ -78,7 +78,7 @@ return [
     'create_faculty' => 'Create faculty',
     'create_study' => 'Create study',
     'search_faculties' => 'Search faculties',
-    'falculties' => 'Falculties',
+    'faculties' => 'Falculties',
     'search_studies' => 'Search studies',
     'studies' => 'Studies',
     

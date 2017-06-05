@@ -30,7 +30,7 @@ class OrganizationController extends Controller {
         ];
 
         $rules['socialName'] = 'required|string|max:'.config('forms.socialName');
-        $rules['description'] = 'required|string|max:'.config('forms.organization_description');
+        $rules['description'] = 'required|string|max:'.config('forms.user_description');
         $rules['urlLogoImage'] = 'nullable|string';
         $rules['headquartersLocation'] = 'required|string|max:'.config('forms.headquartersLocation');
         $rules['web'] = 'required|url|max:'.config('forms.url');
@@ -44,7 +44,7 @@ class OrganizationController extends Controller {
         $user->email = $request->email;
         $user->idCard = $request->idCard;
         $user->phone = $request->phone;
-        //creamos un password al azar
+        //Makes a random password
         $user->password = bcrypt(uniqid('pwRandom_'));
         $user->role = 4;
         $user->accepted = true;
