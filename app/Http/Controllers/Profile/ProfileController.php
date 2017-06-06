@@ -10,8 +10,6 @@ use App\Student;
 use App\Teacher;
 use App\Other;
 use App\Organization;
-use App\RoleChangeRequest;
-use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller {
 
@@ -73,7 +71,6 @@ class ProfileController extends Controller {
             'idCard' => 'required|string|max:'.config('forms.idCard'),
             Rule::unique('User')->ignore($user->idCard),
             'phone' => 'required|string|max:'.config('forms.phone'),
-            'urlAvatar' => 'nullable|image|dimensions:max_width=256,max_height=256,ratio=1',
         ];
         
         switch ($user->role) {
@@ -82,7 +79,6 @@ class ProfileController extends Controller {
                     $rules['study'] = 'required|integer|min:1';
                     $rules['areasOfInterest'] = 'required|string|max:'.config('forms.areasOfInterest');
                     $rules['skills'] = 'required|string|max:'.config('forms.skills');
-                    $rules['urlCurriculum'] = 'nullable|file|mimes:pdf';
                 break;
             case 2:
                     $rules['surnames'] = 'required|string|max:'.config('forms.surnames');
@@ -109,9 +105,6 @@ class ProfileController extends Controller {
         $user->email = $request->email;
         $user->idCard = $request->idCard;
         $user->phone = $request->phone;
-        if($request->hasFile('urlAvatar')){
-                    $user->urlAvatar = $request->urlAvatar->store('images');
-                }
         $user->save();
 
         switch ($user->role) {
@@ -121,9 +114,6 @@ class ProfileController extends Controller {
                 $student->areasOfInterest = $request->areasOfInterest;
                 $student->study_id = $request->study;
                 $student->skills = $request->skills;
-                if($request->hasFile('urlCurriculum')){
-                    $student->urlCurriculum = $request->urlCurriculum->store('curriculums');
-                }
                 $student->save();
                 break;
             case 2:

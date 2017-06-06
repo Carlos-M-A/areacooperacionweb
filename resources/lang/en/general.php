@@ -40,6 +40,7 @@ return [
     'finish' => 'Finish',
     'cancel' => 'Cancel',
     
+    
     //Forms
     'confirm_password' => 'Confirm password',
     'new_password' => 'New password',
@@ -51,6 +52,8 @@ return [
     'profile' => 'Profile',
     'change_password' => 'Change password',
     'change_role' => 'Changerole',
+    'upload_avatar' => 'Upload avatar',
+    'upload_curriculum' => 'Upload curriculum',
     'notifications' => 'notifications',
     'notification' => 'notification',
     'notification_projects' => 'notification projects',

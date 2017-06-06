@@ -1,5 +1,19 @@
 @extends('projects.project')
 
+@section('more_script')
+<script>
+    $( document ).ready(function() {
+        $('textarea').keyup(function(event) {
+            var text_max = $('#' + event.target.id).attr('maxlength');
+            var text_length = $('#' + event.target.id).val().length;
+            var text_remaining = text_max - text_length;
+            
+            $('#' + event.target.id).next().html(text_length + ' / ' + text_max);
+        });
+    });
+</script>
+@endsection
+
 @section('teacher_proposal')
 
 @if(is_null($inscriptionInProject) && $project->state==1)
@@ -17,6 +31,7 @@
                             <div class="col-md-6">
                                 <textarea id="comment" cols="100" rows="7" maxlength="{{config('forms.comment')}}"
                                            class="form-control" name="comment" autofocus>{{ old('comment') }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('comment'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('comment') }}</strong>

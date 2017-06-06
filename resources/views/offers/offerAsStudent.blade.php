@@ -4,7 +4,19 @@
 
 @endsection
 
-
+@section('more_script')
+<script>
+    $( document ).ready(function() {
+        $('textarea').keyup(function(event) {
+            var text_max = $('#' + event.target.id).attr('maxlength');
+            var text_length = $('#' + event.target.id).val().length;
+            var text_remaining = text_max - text_length;
+            
+            $('#' + event.target.id).next().html(text_length + ' / ' + text_max);
+        });
+    });
+</script>
+@endsection
 
 @section('student_proposal')
 
@@ -74,6 +86,7 @@
                             <div class="col-md-6">
                                 <textarea id="description" cols="100" rows="7" maxlength="{{config('forms.proposal_description')}}"
                                            class="form-control" name="description" autofocus>{{ old('description') }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('description'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('description') }}</strong>
@@ -88,6 +101,7 @@
                             <div class="col-md-6">
                                 <textarea id="scheduleAvailable" cols="100" rows="7" maxlength="{{config('forms.scheduleAvailable')}}"
                                            class="form-control" name="scheduleAvailable" autofocus>{{ old('scheduleAvailable') }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('scheduleAvailable'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('scheduleAvailable') }}</strong>
@@ -100,8 +114,9 @@
                             <label for="totalHours" class="col-md-4 control-label">totalHours</label>
 
                             <div class="col-md-6">
-                                <textarea id="totalHours" cols="100" rows="7" maxlength="{{config('forms.totalHours')}}"
+                                <textarea id="totalHours" cols="100" rows="7" maxlength="{{config('forms.proposal_totalHours')}}"
                                            class="form-control" name="totalHours" autofocus>{{ old('totalHours') }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('totalHours'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('totalHours') }}</strong>
@@ -116,6 +131,7 @@
                             <div class="col-md-6">
                                 <textarea id="earliestStartDate" cols="100" rows="7" maxlength="{{config('forms.earliestStartDate')}}"
                                            class="form-control" name="earliestStartDate" autofocus>{{ old('earliestStartDate') }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('earliestStartDate'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('earliestStartDate') }}</strong>
@@ -129,6 +145,7 @@
                             <div class="col-md-6">
                                 <textarea id="latestEndDate" cols="100" rows="7" maxlength="{{config('forms.latestEndDate')}}"
                                            class="form-control" name="latestEndDate" autofocus>{{ old('latestEndDate') }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('latestEndDate'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('latestEndDate') }}</strong>

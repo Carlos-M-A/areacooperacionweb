@@ -9,13 +9,6 @@
         <div class="col-md-8 col-md-offset-2">
             <h1> @lang('general.faculties') </h1>
             
-            <button type="button" class="btn btn-primary btn-block" 
-                            onclick="event.preventDefault(); document.getElementById('nuevafaculty-form').submit();">
-                                                     @lang('general.create_faculty')</button>
-                    
-                    <form id="nuevafaculty-form" action="{{ route('showCreateFaculty') }}" method="GET" style="display: none;">
-                                        </form>
-            
             <div class="panel panel-default">
                 <div class="panel-heading">@lang('general.search_faculties')</div>
                 <div class="panel-body">

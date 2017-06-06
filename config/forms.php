@@ -30,7 +30,7 @@ return [
     'areasOfInterest' => 1000,
     'skills' => 2000,
     'departments' => 1000,
-    'user_description' => 2000,
+    'user_description' => 2000, // For organizations and other, who have the description attribute
     'socialName' => 200,
     'headquartersLocation' => 200,
     'linksWithNearbyEntities' => 1000,

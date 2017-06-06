@@ -29,7 +29,11 @@
 </tr>
 <tr>
     <td>curriculum</td>
-    <td><a href="{{URL::asset($student->urlCurriculum)}}">Curriculum</a></td>
+    <td>@if(is_null($student->urlCurriculum))
+            There isn't a curriculum yours 
+        @else
+            <a href="{{URL::asset($student->urlCurriculum)}}">Curriculum</a>
+        @endif</td>
 </tr>
 <tr>
     <td>Study</td>
@@ -41,23 +45,4 @@
 </tr>
 @endsection
 
-@section('curriculum_student')
-<div class="panel panel-primary">
-    <div class="panel-heading">Curriculum</div>
-
-    <div class="panel-body">
-        @if(is_null($student->urlCurriculum))
-            There isn't a curriculum yours 
-        @else
-            <a href="{{URL::asset($student->urlCurriculum)}}">Curriculum</a>
-        @endif
-    </div>
-    <div class="panel-footer">
-                        <!-- Trigger the modal to enter the tutor manually -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUploadCurriculum">upload</button>
-    </div>
-</div>
-
-
-@endsection
 

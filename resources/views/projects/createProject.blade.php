@@ -1,11 +1,26 @@
 @extends('layouts.app')
 
-@section('content')
+
 
 @php
     $teacher = App\Teacher::find(Auth::user()->id);
 @endphp
 
+@section('more_script')
+<script>
+    $( document ).ready(function() {
+        $('textarea').keyup(function(event) {
+            var text_max = $('#' + event.target.id).attr('maxlength');
+            var text_length = $('#' + event.target.id).val().length;
+            var text_remaining = text_max - text_length;
+            
+            $('#' + event.target.id).next().html(text_length + ' / ' + text_max);
+        });
+    });
+</script>
+@endsection
+
+@section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -69,6 +84,7 @@
                             <div class="col-md-6">
                                 <textarea id="description" cols="100" rows="7" maxlength="{{config('forms.project_description')}}"
                                            class="form-control" name="description" autofocus>{{ old('description') }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('description'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('description') }}</strong>

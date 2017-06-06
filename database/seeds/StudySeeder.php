@@ -78,7 +78,7 @@ class StudySeeder extends Seeder
         $study->save();
         
         $study = new Study();
-        $study->name = 'Progbranch de studys conjunto de Grado en Educación Infantil y Grado en Educación Primaria';
+        $study->name = 'Programa de estudios conjunto de Grado en Educación Infantil y Grado en Educación Primaria';
         $study->branch = 4;
         $study->inactive = false;
         $study->faculty_id = 4;

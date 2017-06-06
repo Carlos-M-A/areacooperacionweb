@@ -63,6 +63,10 @@
                         <button class="btn btn-primary" formmethod="GET" formaction="{{route('showRequestRoleChange')}}">@lang('general.change_role')</button>
                         @endif
                         <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditPassword')}}">@lang('general.change_password')</button>
+                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showUploadAvatar')}}">@lang('general.upload_avatar')</button>
+                        @if($user->role==1)
+                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showUploadCurriculum')}}">@lang('general.upload_curriculum')</button>
+                        @endif
                     </div>
                     </form>
                 </div>
@@ -71,8 +75,6 @@
 
             
             @yield('studies_teacher')
-            
-            @yield('curriculum_student')
             
             
             <div class="panel panel-primary">

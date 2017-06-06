@@ -32,8 +32,8 @@
     
     
 </script>
+@section('convocatory_option') 
 
-@section('more_offer_fields')
 <div class="form-group{{ $errors->has('organizationId') ? ' has-error' : '' }}">
     <label for="organizationId" class="col-md-4 control-label">Type</label>
 
@@ -118,7 +118,9 @@
         @endif
     </div>
 </div>
+@endsection
 
+@section('more_offer_fields')
 <div id="housing_div" class="form-group{{ $errors->has('housing') ? ' has-error' : '' }}">
     <label for="housing" class="col-md-4 control-label">housing</label>
 
@@ -130,6 +132,7 @@
         <textarea id="housing" cols="200" rows="7" maxlength="{{config('forms.housing')}}"
             class="form-control" name="housing" autofocus>{{ old('housing') ?  old('housing') : '' }}</textarea>
         @endif
+        <span class="pull-right label label-default"></span>
         
         @if ($errors->has('housing'))
         <span class="help-block">
@@ -150,6 +153,7 @@
         <textarea id="costs" cols="200" rows="7" maxlength="{{config('forms.costs')}}"
             class="form-control" name="costs" autofocus>{{ old('costs') ?  old('costs') : '' }}</textarea>
         @endif
+        <span class="pull-right label label-default"></span>
         
         @if ($errors->has('costs'))
         <span class="help-block">

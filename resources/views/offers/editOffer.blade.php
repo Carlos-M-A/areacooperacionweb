@@ -13,6 +13,18 @@
         });
     });
 </script>
+
+<script>
+    $( document ).ready(function() {
+        $('textarea').keyup(function(event) {
+            var text_max = $('#' + event.target.id).attr('maxlength');
+            var text_length = $('#' + event.target.id).val().length;
+            var text_remaining = text_max - text_length;
+            
+            $('#' + event.target.id).next().html(text_length + ' / ' + text_max);
+        });
+    });
+</script>
 @endsection
 
 @section('content')
@@ -32,7 +44,7 @@
                     @endif
                         {{ csrf_field() }}
 
-                        @yield('more_offer_fields') 
+                        @yield('convocatory_option')
                         
                         <div id="title_div" class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                             <label for="title" class="col-md-4 control-label">title</label>
@@ -67,6 +79,7 @@
                             <div class="col-md-6">
                                  <textarea id="description" cols="200" rows="7" maxlength="{{config('forms.offer_description')}}"
                                            class="form-control" name="description" autofocus>{{ old('description')?old('description') : $offer->description }}</textarea>
+                                           <span class="pull-right label label-default"></span>
 
                                 @if ($errors->has('description'))
                                 <span class="help-block">
@@ -82,6 +95,7 @@
                             <div class="col-md-6">
                                 <textarea id="requeriments" cols="200" rows="7" maxlength="{{config('forms.requeriments')}}"
                                            class="form-control" name="requeriments" autofocus>{{ old('requeriments')?old('requeriments') : $offer->requeriments }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('requeriments'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('requeriments') }}</strong>
@@ -96,6 +110,7 @@
                             <div class="col-md-6">
                                 <textarea id="workplan" cols="200" rows="7" maxlength="{{config('forms.workplan')}}"
                                            class="form-control" name="workplan" autofocus>{{ old('workplan')?old('workplan') : $offer->workplan }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('workplan'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('workplan') }}</strong>
@@ -110,6 +125,7 @@
                             <div class="col-md-6">
                                 <textarea id="schedule" cols="200" rows="7" maxlength="{{config('forms.schedule')}}"
                                            class="form-control" name="schedule" autofocus>{{ old('schedule')?old('schedule') : $offer->schedule }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('schedule'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('schedule') }}</strong>
@@ -124,6 +140,7 @@
                             <div class="col-md-6">
                                 <textarea id="totalHours" cols="200" rows="7" maxlength="{{config('forms.offer_totalHours')}}"
                                            class="form-control" name="totalHours" autofocus>{{ old('totalHours')?old('totalHours') : $offer->totalHours }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('totalHours'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('totalHours') }}</strong>
@@ -138,6 +155,7 @@
                             <div class="col-md-6">
                                 <textarea id="possibleStartDates" cols="200" rows="7" maxlength="{{config('forms.possibleStartDates')}}"
                                            class="form-control" name="possibleStartDates" autofocus>{{ old('possibleStartDates')?old('possibleStartDates') : $offer->possibleStartDates }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('possibleStartDates'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('possibleStartDates') }}</strong>
@@ -152,6 +170,7 @@
                             <div class="col-md-6">
                                 <textarea id="possibleEndDates" cols="200" rows="7" maxlength="{{config('forms.possibleEndDates')}}"
                                            class="form-control" name="possibleEndDates" autofocus>{{ old('possibleEndDates')?old('possibleEndDates') : $offer->possibleEndDates }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('possibleEndDates'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('possibleEndDates') }}</strong>
@@ -180,6 +199,7 @@
                             <div class="col-md-6">
                                 <textarea id="monetaryHelp" cols="200" rows="7" maxlength="{{config('forms.monetaryHelp')}}"
                                            class="form-control" name="monetaryHelp" autofocus>{{ old('monetaryHelp')?old('monetaryHelp') : $offer->monetaryHelp }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('monetaryHelp'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('monetaryHelp') }}</strong>
@@ -187,6 +207,9 @@
                                 @endif
                             </div>
                         </div>
+                        
+                        @yield('more_offer_fields')
+                        
                         
                         <div id="personInCharge_div" class="form-group{{ $errors->has('personInCharge') ? ' has-error' : '' }}">
                             <label for="personInCharge" class="col-md-4 control-label">personInCharge</label>

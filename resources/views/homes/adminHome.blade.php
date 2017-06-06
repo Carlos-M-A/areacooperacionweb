@@ -13,7 +13,11 @@
                     <p>
                     <a href="{{ route('studies') }}"> Studies</a>
                     <p>
+                    <a href="{{ route('showCreateStudy') }}"> @lang('general.create_study')</a>
+                    <p>
                     <a href="{{ route('faculties') }}"> Faculties</a>
+                    <p>
+                    <a href="{{ route('showCreateFaculty') }}"> @lang('general.create_faculty')</a>
                     <p>
                     <a href="{{ route('registrationRequests') }}"> Register requests</a>
                     <p>

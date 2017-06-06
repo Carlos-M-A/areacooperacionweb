@@ -99,20 +99,6 @@
                             </div>
                         </div>
 
-                        <div id="urlLogoImage_div" class="form-group{{ $errors->has('urlLogoImage') ? ' has-error' : '' }}">
-                            <label for="urlLogoImage" class="col-md-4 control-label">urlLogoImage</label>
-
-                            <div class="col-md-6">
-                                <input id="urlLogoImage" type="file" class="form-control" name="urlLogoImage" value="{{ old('urlLogoImage') }}" >
-
-                                @if ($errors->has('urlLogoImage'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('urlLogoImage') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                        </div>
-
 
                         <div id="headquartersLocation_div" class="form-group{{ $errors->has('headquartersLocation') ? ' has-error' : '' }}">
                             <label for="headquartersLocation" class="col-md-4 control-label">headquartersLocation</label>

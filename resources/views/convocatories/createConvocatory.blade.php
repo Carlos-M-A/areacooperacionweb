@@ -13,6 +13,18 @@
         });
     });
 </script>
+
+<script>
+    $( document ).ready(function() {
+        $('textarea').keyup(function(event) {
+            var text_max = $('#' + event.target.id).attr('maxlength');
+            var text_length = $('#' + event.target.id).val().length;
+            var text_remaining = text_max - text_length;
+            
+            $('#' + event.target.id).next().html(text_length + ' / ' + text_max);
+        });
+    });
+</script>
 @endsection
 
 @section('content')
@@ -48,6 +60,7 @@
                             <div class="col-md-6">
                                 <textarea id="information" cols="100" rows="7" maxlength="{{config('forms.information')}}"
                                            class="form-control" name="information" autofocus>{{ old('information') }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('information'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('information') }}</strong>
@@ -62,6 +75,7 @@
                             <div class="col-md-6">
                                 <textarea id="estimatedPeriod" cols="100" rows="7" maxlength="{{config('forms.estimatedPeriod')}}"
                                            class="form-control" name="estimatedPeriod" autofocus>{{ old('estimatedPeriod') }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('estimatedPeriod'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('estimatedPeriod') }}</strong>

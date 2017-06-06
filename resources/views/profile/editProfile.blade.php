@@ -52,9 +52,20 @@
             study.replaceChild(newOption, oldOption);
         }
     }
-
-    
 </script>
+
+ <script>
+    $( document ).ready(function() {
+        $('textarea').keyup(function(event) {
+            var text_max = $('#' + event.target.id).attr('maxlength');
+            var text_length = $('#' + event.target.id).val().length;
+            var text_remaining = text_max - text_length;
+            
+            $('#' + event.target.id).next().html(text_length + ' / ' + text_max);
+        });
+    });
+</script>   
+
 
 
 <div class="container">
@@ -153,21 +164,6 @@
                                 @endif
                             </div>
                         </div>
-
-                        <div id="urlAvatar_div" class="form-group{{ $errors->has('urlAvatar') ? ' has-error' : '' }}">
-                            <label for="urlAvatar" class="col-md-4 control-label">urlAvatar</label>
-
-                            <div class="col-md-6">
-                                <input id="urlAvatar" type="file" class="form-control" name="urlAvatar" value="{{ old('urlAvatar')? old('urlAvatar') : $user->urlAvatar }}" >
-
-                                @if ($errors->has('urlAvatar'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('urlAvatar') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                            
-                        </div>
                         
                         @if($role==1)
                         <div id="study_div" class="form-group{{ $errors->has('study') ? ' has-error' : '' }}">
@@ -199,6 +195,7 @@
                             <div class="col-md-6">
                                 <textarea id="areasOfInterest" cols="200" rows="7" maxlength="{{config('forms.areasOfInterest')}}"
                                            class="form-control" name="areasOfInterest" autofocus>{{ old('areasOfInterest')?old('areasOfInterest') : $roleData->areasOfInterest }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('areasOfInterest'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('areasOfInterest') }}</strong>
@@ -215,25 +212,10 @@
                             <div class="col-md-6">
                                 <textarea id="skills" cols="200" rows="7" maxlength="{{config('forms.skills')}}"
                                            class="form-control" name="skills" autofocus>{{ old('skills')?old('skills') : $roleData->skills }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('skills'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('skills') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                        </div>
-                        @endif
-
-                        @if($role==1)
-                        <div id="urlCurriculum_div" class="form-group{{ $errors->has('urlCurriculum') ? ' has-error' : '' }}">
-                            <label for="urlCurriculum" class="col-md-4 control-label">urlCurriculum</label>
-
-                            <div class="col-md-6">
-                                <input id="urlCurriculum" type="file" class="form-control" name="urlCurriculum" value="{{ old('urlCurriculum')? old('urlCurriculum') : $roleData->urlCurriculum }}" >
-
-                                @if ($errors->has('urlCurriculum'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('urlCurriculum') }}</strong>
                                 </span>
                                 @endif
                             </div>
@@ -247,6 +229,7 @@
                             <div class="col-md-6">
                                 <textarea id="departments" cols="200" rows="7" maxlength="{{config('forms.departments')}}"
                                            class="form-control" name="departments" autofocus>{{ old('departments')?old('departments') : $roleData->departments }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('departments'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('departments') }}</strong>
@@ -263,6 +246,7 @@
                             <div class="col-md-6">
                                 <textarea id="description" cols="200" rows="7" maxlength="{{config('forms.user_description')}}"
                                            class="form-control" name="description" autofocus>{{ old('description')?old('description') : $roleData->description }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('description'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('description') }}</strong>
@@ -279,6 +263,7 @@
                             <div class="col-md-6">
                                 <textarea id="headquartersLocation" cols="200" rows="7" maxlength="{{config('forms.headquartersLocation')}}"
                                            class="form-control" name="headquartersLocation" autofocus>{{ old('headquartersLocation')?old('headquartersLocation') : $roleData->headquartersLocation }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('headquartersLocation'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('headquartersLocation') }}</strong>
@@ -311,6 +296,7 @@
                             <div class="col-md-6">
                                 <textarea id="linksWithNearbyEntities" cols="200" rows="7" maxlength="{{config('forms.linksWithNearbyEntities')}}"
                                            class="form-control" name="linksWithNearbyEntities" autofocus>{{ old('linksWithNearbyEntities')?old('linksWithNearbyEntities') : $roleData->linksWithNearbyEntities }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('linksWithNearbyEntities'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('linksWithNearbyEntities') }}</strong>

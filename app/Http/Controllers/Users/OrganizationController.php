@@ -31,7 +31,6 @@ class OrganizationController extends Controller {
 
         $rules['socialName'] = 'required|string|max:'.config('forms.socialName');
         $rules['description'] = 'required|string|max:'.config('forms.user_description');
-        $rules['urlLogoImage'] = 'nullable|string';
         $rules['headquartersLocation'] = 'required|string|max:'.config('forms.headquartersLocation');
         $rules['web'] = 'required|url|max:'.config('forms.url');
         $rules['linksWithNearbyEntities'] = 'nullable|string|max:'.config('forms.linksWithNearbyEntities');
@@ -60,7 +59,6 @@ class OrganizationController extends Controller {
         $organization->id = $user->id;
         $organization->socialName = $request->socialName;
         $organization->description = $request->description;
-        $organization->urlLogoImage = $request->urlLogoImage;
         $organization->headquartersLocation = $request->headquartersLocation;
         $organization->web = $request->web;
         $organization->linksWithNearbyEntities = $request->linksWithNearbyEntities;

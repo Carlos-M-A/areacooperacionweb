@@ -9,13 +9,6 @@
         <div class="col-md-8 col-md-offset-2">
             <h1> @lang('general.studies') </h1>
             
-            <button type="button" class="btn btn-primary btn-block" 
-                            onclick="event.preventDefault(); document.getElementById('nuevostudy-form').submit();">
-                                                     Create study</button>
-                    
-                    <form id="nuevostudy-form" action="{{ route('showCreateStudy') }}" method="GET" style="display: none;">
-                                        </form>
-            
             <div class="panel panel-default">
                 <div class="panel-heading">Search studies</div>
                 <div class="panel-body">

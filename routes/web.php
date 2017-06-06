@@ -35,6 +35,10 @@ Route::post('/profile/password', 'Profile\ProfileController@editPassword')->name
 Route::get('/profile/password', 'Profile\ProfileController@showEditPassword')->name('showEditPassword');
 Route::post('/profile/changeRole', 'Profile\RequestRoleChangeController@requestRoleChange')->name('requestRoleChange');
 Route::get('/profile/changeRole', 'Profile\RequestRoleChangeController@showRequestRoleChange')->name('showRequestRoleChange');
+Route::get('/profile/avatar', 'Files\ImagesController@showUploadAvatar')->name('showUploadAvatar');
+Route::post('/profile/avatar', 'Files\ImagesController@upload')->name('uploadAvatar');
+Route::get('/profile/curriculum', 'Files\CurriculumsController@showUploadCurriculum')->name('showUploadCurriculum');
+Route::post('/profile/curriculum', 'Files\CurriculumsController@upload')->name('uploadCurriculum');
 
 //More profile management
 Route::post('/profile/changeNotificationProjects', 'Profile\NotificationsController@changeNotificationProjects')->name('changeNotificationProjects');
