@@ -53,20 +53,11 @@
         @endif
     </div>
     <div class="panel-footer">
-        <div>
-            <form class="form-horizontal" role="form" method="POST" action="{{ route('insertTeachingStudy') }}">
-                {{ csrf_field() }}
-                
-
-                <div class="form-group">
-                    <div class="col-md-6 col-md-offset-4">
-                        <button type="submit" class="btn btn-primary">
-                            Upload curriculum
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
+                        <!-- Trigger the modal to enter the tutor manually -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUploadCurriculum">upload</button>
     </div>
 </div>
+
+
 @endsection
+

@@ -1,7 +1,21 @@
 @extends('layouts.app')
 
-@section('content')
+@section('more_script')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    
+<script>
+    $( document ).ready(function() {
+        $('#deadline').datepicker({
+            format: "yyyy-mm-dd",
+            weekStart: 1,
+            startDate: "tomorrow"
+        });
+    });
+</script>
+@endsection
 
+@section('content')
 
 
 <div class="container">
@@ -74,7 +88,7 @@
                             <label for="deadline" class="col-md-4 control-label">deadline</label>
 
                             <div class="col-md-6">
-                                <input id="deadline" type="date" class="form-control" name="deadline" value="{{ old('deadline') }}" autofocus>
+                                <input id="deadline" type="text" class="form-control" name="deadline" value="{{ old('deadline') }}" autofocus>
 
                                 @if ($errors->has('deadline'))
                                 <span class="help-block">
@@ -83,6 +97,7 @@
                                 @endif
                             </div>
                         </div>
+                             
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
@@ -92,6 +107,7 @@
                             </div>
                         </div>
                     </form>
+                    
                 </div>
             </div>
         </div>

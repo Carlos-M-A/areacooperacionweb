@@ -13,26 +13,40 @@
     <!-- Styles -->
      <meta charset="utf-8">
     
-     <!–To guarante that the screen looks good in mobile devices –>
-     <meta name="viewport" content="width=device-width, initial-scale=1">  
+     <!--To guarante that the screen looks good in mobile devices -->
+     
+     <meta name="viewport" content="width=device-width, initial-scale=1"> 
+     
+     
+     <!-- 
+     <script src="{{ asset('js/jquery-3.2.1.js') }}"></script>
+     
      <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
      <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-     <script src="{{asset('js/jquery-3.2.1.js')}}"></script>
-     @yield('more_script')
-      <!--
-      With this, the web word perfectly, but the css and js would not be in own server
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        
-    -->
+      -->
+     
+      <!--With this, the web work perfectly, but the css and js would not be in own server-->
+     
+     <script type="text/javascript"  src="https://code.jquery.com/jquery-3.2.1.js"></script>
+     
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  media="screen">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
-    <!-- Scripts -->
+        
+    
+    <!-- Scripts This script was in laravel original code. Delete if nothing fail
+    <script src="{{ asset('js/app.js') }}"></script>-->
+    
+    
+    
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+    
+    @yield('more_script')
+    
 </head>
 <body>
     <div id="app">
@@ -114,7 +128,7 @@
         
     </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    
+    
 </body>
 </html>
