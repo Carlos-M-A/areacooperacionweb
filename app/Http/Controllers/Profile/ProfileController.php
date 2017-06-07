@@ -66,10 +66,8 @@ class ProfileController extends Controller {
 
         $rules = [
             'name' => 'required|string|max:'.config('forms.user_name'),
-            'email' => 'required|string|email|max:'.config('forms.email'),
-            Rule::unique('User')->ignore($user->email),
-            'idCard' => 'required|string|max:'.config('forms.idCard'),
-            Rule::unique('User')->ignore($user->idCard),
+            'email' => 'required|string|email|unique:User,email,'.$user->id.'|max:'.config('forms.email'),
+            'idCard' => 'required|string|unique:User,idCard,'.$user->id.'|max:'.config('forms.idCard'),
             'phone' => 'required|string|max:'.config('forms.phone'),
         ];
         

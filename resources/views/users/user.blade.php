@@ -81,21 +81,21 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    @if($user->accepted)
-                    <form action="{{route('removeUser', ['id'=> $user->id])}}" method="post">
+                    <form>
                         {{ csrf_field() }}
-                        <button class="btn btn-primary" type="submit">@lang('general.remove')</button>
+                    <div class="btn-group">
+                        @if($user->accepted)
+                            <button class="btn btn-primary" formmethod="POST" formaction="{{route('removeUser', ['id'=> $user->id])}}">@lang('general.remove')</button>
+                            @if($user->role == 4)
+                                <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditOrganization', ['id' => $user->id])}}">@lang('general.edit')</button>
+                            @endif
+                        @else
+                            <button class="btn btn-primary" formmethod="POST" formaction="{{route('acceptUser', ['id'=> $user->id])}}">@lang('general.accept')</button>
+                            <button class="btn btn-primary" formmethod="POST" formaction="{{route('rejectUser', ['id'=> $user->id])}}">@lang('general.reject')</button>
+                        @endif
+                        
+                    </div>
                     </form>
-                    @else
-                    <form action="{{route('acceptUser', ['id'=> $user->id])}}" method="post">
-                        {{ csrf_field() }}
-                        <button class="btn btn-primary" type="submit">@lang('general.accept')</button>
-                    </form>
-                    <form action="{{route('rejectUser', ['id'=> $user->id])}}" method="post">
-                        {{ csrf_field() }}
-                        <button class="btn btn-primary" type="submit">@lang('general.reject')</button>
-                    </form>
-                    @endif
                 </div>
             </div>
 

@@ -63,8 +63,10 @@ Route::post('/users/accept/{id}', 'Users\UserController@accept')->where('id', '[
 Route::post('/users/reject/{id}', 'Users\UserController@reject')->where('id', '[0-9]+')->name('rejectUser');
 Route::post('/users/remove/{id}', 'Users\UserController@remove')->where('id', '[0-9]+')->name('removeUser');
 Route::get('/users/requests', 'Users\UsersController@registrationRequests')->name('registrationRequests');
-Route::get('/users/registerOrganization', 'Users\OrganizationController@index')->name('showRegisterOrganization');
+Route::get('/users/registerOrganization', 'Users\OrganizationController@showRegisterOrganization')->name('showRegisterOrganization');
 Route::post('/users/registerOrganizaction', 'Users\OrganizationController@registerOrganization')->name('registerOrganization');
+Route::get('/users/{id}/editOrganization', 'Users\OrganizationController@showEditOrganization')->name('showEditOrganization');
+Route::post('/users/{id}/editOrganizaction', 'Users\OrganizationController@editOrganization')->name('editOrganization');
 Route::get('/roleChanges', 'Users\RoleChangesController@index')->name('roleChanges');
 Route::get('/roleChanges/{id}', 'Users\RoleChangeController@roleChange')->name('roleChange');
 Route::post('/roleChanges/{id}/accept', 'Users\RoleChangeController@accept')->name('acceptRoleChange');
