@@ -33,25 +33,18 @@ class HomeController extends Controller
         $user = Auth::user();
         switch($user->role){
             case 1:
-                $controller = new HomeStudentController();
-                break;
+                return view('homes/studentHome');
             case 2:
-                $controller = new HomeTeacherController();
-                break;
+                return view('homes/teacherHome');
             case 3:
-                $controller = new HomeOtherController();
-                break;
+                return view('homes/otherHome');
             case 4:
-                $controller = new HomeOrganizationController();
-                break;
+                return view('homes/organizationHome');
             case 5:
-                $controller = new HomeCooperationAreaController();
-                break;
+                return view('homes/cooperationAreaHome');
             case 6:
-                $controller = new HomeAdminController();
-                break;
+                return view('homes/adminHome');
         }
-        return $controller->index();
     }
     
 }
