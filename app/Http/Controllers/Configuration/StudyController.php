@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Users;
+namespace App\Http\Controllers\Configuration;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,7 +12,7 @@ class StudyController extends Controller
     
     public function study($id){
         $study = Study::find($id);
-        return view('users/study')->with('study', $study);
+        return view('configuration/study')->with('study', $study);
     }
     
     public function changeInactive($id) {
@@ -53,7 +53,7 @@ class StudyController extends Controller
     }
     
     public function showCreateStudy() {
-        return view('users/createStudy');
+        return view('configuration/createStudy');
     }
     
     public function createStudy(Request $request) {

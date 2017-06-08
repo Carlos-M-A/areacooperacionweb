@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Offer;
 use App\OfferOfConvocatory;
 
-class OffersOfConvocatoryController extends Controller
+class OfferOfConvocatoryController extends Controller
 {
     public function createOfferOfConvocatory(Request $request, Offer $offer) {
         $offerOfConvocatory = new OfferOfConvocatory();

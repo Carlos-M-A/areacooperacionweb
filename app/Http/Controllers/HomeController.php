@@ -2,14 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Home\HomeStudentController;
-use App\Http\Controllers\Home\HomeTeacherController;
-use App\Http\Controllers\Home\HomeOtherController;
-use App\Http\Controllers\Home\HomeOrganizationController;
-use App\Http\Controllers\Home\HomeCooperationAreaController;
-use App\Http\Controllers\Home\HomeAdminController;
 
 class HomeController extends Controller
 {

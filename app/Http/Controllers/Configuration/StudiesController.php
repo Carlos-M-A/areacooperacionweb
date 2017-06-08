@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Users;
+namespace App\Http\Controllers\Configuration;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,7 +15,7 @@ class StudiesController extends Controller
      */
     public function index() {
         $studies = Study::all();
-        return view('users/studies')->with('studies', $studies);
+        return view('configuration/studies')->with('studies', $studies);
     }
     
     public function search(Request $request){
@@ -27,13 +27,13 @@ class StudiesController extends Controller
         //si el name esta vacio y da igual la branch se envian todos los resultados
         if(is_null($request->name) && $request->branch == 0){
             $studies = Study::all();
-            return view('users/studies')->with('studies', $studies);
+            return view('configuration/studies')->with('studies', $studies);
         }
         
         //Si no se eligio ninguna branch se busca solo por el name del study
         if($request->branch == 0){
             $studies = Study::where('name', 'LIKE', '%'.$request->name.'%');
-            return view('users/studies')->with('studies', $studies->get());
+            return view('configuration/studies')->with('studies', $studies->get());
         }
         
         //Si se eligio una branch se busca dentro de esa branch los studies
@@ -42,6 +42,6 @@ class StudiesController extends Controller
             $studies->where('name', 'LIKE', '%'.$request->name.'%');
         }
         
-        return view('users/studies')->with('studies', $studies->get());
+        return view('configuration/studies')->with('studies', $studies->get());
     }
 }

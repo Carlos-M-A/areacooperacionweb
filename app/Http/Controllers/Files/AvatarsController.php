@@ -8,17 +8,14 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 
-class ImagesController extends Controller
+class AvatarsController extends Controller
 {
     //Route to redirect after a action in profile
     protected $redirectTo = 'profile';
     
     public function get($file)
     {
-        // get the image named $slug from storage and display it
-
-        // Something like (not sure)
-        $image = Storage::get('images/' . $file );
+        $image = Storage::get('avatars/' . $file );
 
         return response()->make($image, 200, ['content-type' => 'image']);
     }
@@ -32,7 +29,7 @@ class ImagesController extends Controller
         $this->validate($request, $rules);
         
         if($request->hasFile('urlAvatar')){
-            $user->urlAvatar = $request->urlAvatar->store('images');
+            $user->urlAvatar = $request->urlAvatar->store('avatars');
         }
         $user->save();
         return redirect($this->redirectTo);

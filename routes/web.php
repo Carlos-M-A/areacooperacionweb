@@ -20,12 +20,6 @@ Auth::routes();
 
 //Managemer of the homes
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home/student', 'Home\HomeStudentController@index')->name('homeStudent');
-Route::get('/home/teacher', 'Home\HomeTeacherController@index')->name('homeTeacher');
-Route::get('/home/other', 'Home\HomeOtherController@index')->name('homeOther');
-Route::get('/home/organization', 'Home\HomeOrganizationController@index')->name('homeOrganization');
-Route::get('/home/cooperationArea', 'Home\HomeCooperationAreaController@index')->name('homeCooperationArea');
-Route::get('/home/admin', 'Home\HomeAdminController@index')->name('homeAdmin');
 
 // Profile management
 Route::get('/profile', 'Profile\ProfileController@index')->name('profile');
@@ -35,12 +29,11 @@ Route::post('/profile/password', 'Profile\ProfileController@editPassword')->name
 Route::get('/profile/password', 'Profile\ProfileController@showEditPassword')->name('showEditPassword');
 Route::post('/profile/changeRole', 'Profile\RequestRoleChangeController@requestRoleChange')->name('requestRoleChange');
 Route::get('/profile/changeRole', 'Profile\RequestRoleChangeController@showRequestRoleChange')->name('showRequestRoleChange');
-Route::get('/profile/avatar', 'Files\ImagesController@showUploadAvatar')->name('showUploadAvatar');
-Route::post('/profile/avatar', 'Files\ImagesController@upload')->name('uploadAvatar');
+Route::get('/profile/avatar', 'Files\AvatarsController@showUploadAvatar')->name('showUploadAvatar');
+Route::post('/profile/avatar', 'Files\AvatarsController@upload')->name('uploadAvatar');
 Route::get('/profile/curriculum', 'Files\CurriculumsController@showUploadCurriculum')->name('showUploadCurriculum');
 Route::post('/profile/curriculum', 'Files\CurriculumsController@upload')->name('uploadCurriculum');
 
-//More profile management
 Route::post('/profile/changeNotificationProjects', 'Profile\NotificationsController@changeNotificationProjects')->name('changeNotificationProjects');
 Route::post('/profile/changeNotificationConvocations', 'Profile\NotificationsController@changeNotificationConvocations')->name('changeNotificationConvocations');
 Route::post('/profile/changeSubscription', 'Profile\SubscriptionController@changeSubscription')->name('changeSubscription');
@@ -48,12 +41,6 @@ Route::post('/profile/requestBeObservatoryMember', 'Profile\ObservatoryRequestCo
 Route::post('/profile/removeBeObservatoryMember', 'Profile\ObservatoryRequestController@removeBeObservatoryMember')->name('removeBeObservatoryMember');
 Route::post('/profile/insertTeachingStudy', 'Profile\TeachingStudiesController@insertTeachingStudy')->name('insertTeachingStudy');
 Route::post('/profile/removeTeachingStudy', 'Profile\TeachingStudiesController@removeTeachingStudy')->name('removeTeachingStudy');
-
-//Observatory management
-Route::get('/observatory', 'Users\ObservatoryController@index')->name('observatory');
-Route::post('/observatory/accept/{id}', 'Users\ObservatoryController@acceptRequest')->where('id', '[0-9]+')->name('observatoryAccept');
-Route::post('/observatory/reject/{id}', 'Users\ObservatoryController@rejectRequest')->where('id', '[0-9]+')->name('observatoryReject');
-Route::post('/observatory/remove/{id}', 'Users\ObservatoryController@removeMember')->where('id', '[0-9]+')->name('observatoryRemove');
 
 //Users management
 Route::get('/users/{id}', 'Users\UserController@user')->where('id', '[0-9]+')->name('user');
@@ -71,25 +58,29 @@ Route::get('/roleChanges', 'Users\RoleChangesController@index')->name('roleChang
 Route::get('/roleChanges/{id}', 'Users\RoleChangeController@roleChange')->name('roleChange');
 Route::post('/roleChanges/{id}/accept', 'Users\RoleChangeController@accept')->name('acceptRoleChange');
 Route::post('/roleChanges/{id}/reject', 'Users\RoleChangeController@reject')->name('rejectRoleChange');
+Route::get('/observatory', 'Users\ObservatoryController@index')->name('observatory');
+Route::post('/observatory/accept/{id}', 'Users\ObservatoryController@acceptRequest')->where('id', '[0-9]+')->name('observatoryAccept');
+Route::post('/observatory/reject/{id}', 'Users\ObservatoryController@rejectRequest')->where('id', '[0-9]+')->name('observatoryReject');
+Route::post('/observatory/remove/{id}', 'Users\ObservatoryController@removeMember')->where('id', '[0-9]+')->name('observatoryRemove');
 
 //Studies and faculties management
-Route::get('/studies', 'Users\StudiesController@index')->name('studies');
-Route::post('/studies', 'Users\StudiesController@search')->name('searchStudies');
-Route::get('/faculties', 'Users\FacultiesController@index')->name('faculties');
-Route::post('/faculties', 'Users\FacultiesController@search')->name('searchFaculties');
-Route::get('/studies/createStudy', 'Users\StudyController@showCreateStudy')->name('showCreateStudy');
-Route::post('/studies/createStudy', 'Users\StudyController@createStudy')->name('createStudy');
-Route::get('/faculties/createFaculty', 'Users\FacultyController@showCreateFaculty')->name('showCreateFaculty');
-Route::post('/faculties/createFaculty', 'Users\FacultyController@createFaculty')->name('createFaculty');
-Route::get('/studies/{id}', 'Users\StudyController@study')->name('study');
-Route::get('/faculties/{id}', 'Users\FacultyController@faculty')->name('faculty');
-Route::post('/studies/{id}/changeInactive', 'Users\StudyController@changeInactive')->name('changeStudyToInactive');
-Route::post('/studies/{id}/changeName', 'Users\StudyController@changeName')->name('changeStudyName');
-Route::post('/studies/{id}/changeBranch', 'Users\StudyController@changeBranch')->name('changeStudyBranch');
-Route::post('/studies/{id}/changeFaculty', 'Users\StudyController@changeFaculty')->name('changeStudyFaculty');
-Route::post('/faculties/{id}/changeInactive', 'Users\FacultyController@changeInactive')->name('changeFacultyToInactive');
-Route::post('/faculties/{id}/changeName', 'Users\FacultyController@changeName')->name('changeFacultyName');
-Route::post('/faculties/{id}/changeCity', 'Users\FacultyController@changeCity')->name('changeFacultyCity');
+Route::get('/studies', 'Configuration\StudiesController@index')->name('studies');
+Route::post('/studies', 'Configuration\StudiesController@search')->name('searchStudies');
+Route::get('/faculties', 'Configuration\FacultiesController@index')->name('faculties');
+Route::post('/faculties', 'Configuration\FacultiesController@search')->name('searchFaculties');
+Route::get('/studies/createStudy', 'Configuration\StudyController@showCreateStudy')->name('showCreateStudy');
+Route::post('/studies/createStudy', 'Configuration\StudyController@createStudy')->name('createStudy');
+Route::get('/faculties/createFaculty', 'Configuration\FacultyController@showCreateFaculty')->name('showCreateFaculty');
+Route::post('/faculties/createFaculty', 'Configuration\FacultyController@createFaculty')->name('createFaculty');
+Route::get('/studies/{id}', 'Configuration\StudyController@study')->name('study');
+Route::get('/faculties/{id}', 'Configuration\FacultyController@faculty')->name('faculty');
+Route::post('/studies/{id}/changeInactive', 'Configuration\StudyController@changeInactive')->name('changeStudyToInactive');
+Route::post('/studies/{id}/changeName', 'Configuration\StudyController@changeName')->name('changeStudyName');
+Route::post('/studies/{id}/changeBranch', 'Configuration\StudyController@changeBranch')->name('changeStudyBranch');
+Route::post('/studies/{id}/changeFaculty', 'Configuration\StudyController@changeFaculty')->name('changeStudyFaculty');
+Route::post('/faculties/{id}/changeInactive', 'Configuration\FacultyController@changeInactive')->name('changeFacultyToInactive');
+Route::post('/faculties/{id}/changeName', 'Configuration\FacultyController@changeName')->name('changeFacultyName');
+Route::post('/faculties/{id}/changeCity', 'Configuration\FacultyController@changeCity')->name('changeFacultyCity');
 
 // Offers management
 Route::get('/offers/createOffer', 'Offers\OfferController@showCreateOffer')->name('showCreateOffer');
@@ -147,5 +138,5 @@ Route::post('/convocatories/{id}/remove', 'Convocatories\InscriptionController@r
 Route::post('/inscriptions/{id}/edit', 'Convocatories\InscriptionController@edit')->name('editInscription');
 
 // Files management
-Route::get('/images/{file}', 'Files\ImagesController@get')->name('getImage');
-Route::get('/curriculums/{file}', 'Files\CurriculumsController@get')->name('getImage');
+Route::get('/avatars/{file}', 'Files\AvatarsController@get')->name('getImage');
+Route::get('/curriculums/{file}', 'Files\CurriculumsController@get')->name('getCurriculum');

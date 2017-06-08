@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Users;
+namespace App\Http\Controllers\Configuration;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,7 +11,7 @@ class FacultiesController extends Controller
     
     public function index() {
         $faculties = Faculty::all();
-        return view('users/faculties')->with('faculties', $faculties);
+        return view('configuration/faculties')->with('faculties', $faculties);
     }
     
     public function search(Request $request){
@@ -24,7 +24,7 @@ class FacultiesController extends Controller
         //If the name and the city are empty then return all results
         if(is_null($request->name) && is_null($request->city)){
             $faculties = Faculty::all();
-            return view('users/faculties')->with('faculties', $faculties);
+            return view('configuration/faculties')->with('faculties', $faculties);
         }
         //Choose that search depending de the empty fields
         if(!is_null($request->name)){
@@ -38,6 +38,6 @@ class FacultiesController extends Controller
         
         
         
-        return view('users/faculties')->with('faculties', $faculties->get());
+        return view('configuration/faculties')->with('faculties', $faculties->get());
     }
 }

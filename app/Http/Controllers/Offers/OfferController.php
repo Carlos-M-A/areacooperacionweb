@@ -127,8 +127,8 @@ class OfferController extends Controller
         $offer->save();
         
         if($request->isOfferOfConvocatory == true){
-            $offersOfConvocatoryController = new OffersOfConvocatoryController();
-            $offersOfConvocatoryController->createOfferOfConvocatory($request, $offer);
+            $offerOfConvocatoryController = new OfferOfConvocatoryController();
+            $offerOfConvocatoryController->createOfferOfConvocatory($request, $offer);
         }
         return redirect('/offers/'.$offer->id);
     }
@@ -172,8 +172,8 @@ class OfferController extends Controller
         $offer = $this->requestToOffer($request, $offer);
         $offer->organization_id = $request->organizationId;
         $offer->isOfferOfConvocatory = $request->isOfferOfConvocatory;
-        $offersOfConvocatoryController = new OffersOfConvocatoryController();
-        $offersOfConvocatoryController->editOfferOfConvocatory($request, $offer);
+        $offerOfConvocatoryController = new OfferOfConvocatoryController();
+        $offerOfConvocatoryController->editOfferOfConvocatory($request, $offer);
         $offer->save();
         
         return redirect('/offers/'.$offer->id);

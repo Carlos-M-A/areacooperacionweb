@@ -11,14 +11,6 @@
 
                 <div class="panel-body">
                     <p>
-                    <a href="{{ route('studies') }}"> Studies</a>
-                    <p>
-                    <a href="{{ route('showCreateStudy') }}"> @lang('general.create_study')</a>
-                    <p>
-                    <a href="{{ route('faculties') }}"> Faculties</a>
-                    <p>
-                    <a href="{{ route('showCreateFaculty') }}"> @lang('general.create_faculty')</a>
-                    <p>
                     <a href="{{ route('registrationRequests') }}"> Register requests</a>
                     <p>
                     <a href="{{ route('users') }}"> Users</a>
@@ -29,6 +21,22 @@
                     <p>
                     <a href="{{ route('observatory') }}"> The observatory</a>
                     
+                </div>
+            </div>
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">Configuration management</div>
+
+                <div class="panel-body">
+                    <p>
+                    <a href="{{ route('studies') }}"> Studies</a>
+                    <p>
+                    <a href="{{ route('showCreateStudy') }}"> @lang('general.create_study')</a>
+                    <p>
+                    <a href="{{ route('faculties') }}"> Faculties</a>
+                    <p>
+                    <a href="{{ route('showCreateFaculty') }}"> @lang('general.create_faculty')</a>
+                    <p>
                 </div>
             </div>
             <div class="panel panel-default">
