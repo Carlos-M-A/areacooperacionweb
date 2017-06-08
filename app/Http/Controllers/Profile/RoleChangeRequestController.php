@@ -11,13 +11,13 @@ use App\Other;
 use App\RoleChangeRequest;
 use Illuminate\Support\Facades\DB;
 
-class RequestRoleChangeController extends Controller
+class RoleChangeRequestController extends Controller
 {
     //Route to redirect after a action in profile
     protected $redirectTo = 'profile';
     
     
-    public function showRequestRoleChange() {
+    public function showCreate() {
         $user = Auth::user();
         if (!is_null($user->roleChangeRequest)) {
             return redirect($this->redirectTo);
@@ -25,7 +25,7 @@ class RequestRoleChangeController extends Controller
         return view('profile/requestRoleChange');
     }
 
-    public function requestRoleChange(Request $request) {
+    public function create(Request $request) {
         $user = Auth::user();
         //The request about the same role is not allowed
         if ($user->role == $request->role || $user->role > 3) {
@@ -69,7 +69,6 @@ class RequestRoleChangeController extends Controller
         $roleChangeRequest->save();
 
         //This is to recycle the surname
-        $surnames;
         switch ($user->role) {
             case 1:
                 $surnames = Student::find($user->id)->surnames;
@@ -100,9 +99,7 @@ class RequestRoleChangeController extends Controller
                 $teacher->departments = $request->departments;
                 $teacher->save();
 
-                $studiesWithTeaching = explode(',', $request->teachingStudiesSelected);
-                $studiesWithTeaching = array_unique($studiesWithTeaching);
-                //$studiesWithTeaching = array_filter($studiesWithTeaching, "greaterThan0");
+                $studiesWithTeaching = array_unique(explode(',', $request->teachingStudiesSelected));
 
                 foreach ($studiesWithTeaching as $estudioId) {
                     DB::table('Study_Teacher')->insert([

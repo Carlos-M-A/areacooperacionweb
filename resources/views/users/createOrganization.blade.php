@@ -1,7 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-
+<script>
+    $( document ).ready(function() {
+        $('textarea').keyup(function(event) {
+            var text_max = $('#' + event.target.id).attr('maxlength');
+            var text_length = $('#' + event.target.id).val().length;
+            var text_remaining = text_max - text_length;
+            
+            $('#' + event.target.id).next().html(text_length + ' / ' + text_max);
+        });
+    });
+</script> 
 
 
 <div class="container">
@@ -10,7 +20,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">@lang('general.register_organization')</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('registerOrganization') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('createOrganization') }}">
                         {{ csrf_field() }}
 
 
@@ -91,6 +101,7 @@
                             <div class="col-md-6">
                                 <textarea id="description" cols="100" rows="7" maxlength="{{config('forms.user_description')}}"
                                            class="form-control" name="description" autofocus>{{ old('description') }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('description'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('description') }}</strong>
@@ -106,6 +117,7 @@
                             <div class="col-md-6">
                                 <textarea id="headquartersLocation" cols="100" rows="7" maxlength="{{config('forms.headquartersLocation')}}"
                                            class="form-control" name="headquartersLocation" autofocus>{{ old('headquartersLocation') }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('headquartersLocation'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('headquartersLocation') }}</strong>
@@ -134,6 +146,7 @@
                             <div class="col-md-6">
                                 <textarea id="linksWithNearbyEntities" cols="100" rows="7" maxlength="{{config('forms.linksWithNearbyEntities')}}"
                                            class="form-control" name="linksWithNearbyEntities" autofocus>{{ old('linksWithNearbyEntities') }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('linksWithNearbyEntities'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('linksWithNearbyEntities') }}</strong>

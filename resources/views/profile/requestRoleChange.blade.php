@@ -267,7 +267,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">@lang('general.change_role')</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('requestRoleChange') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('createRoleChangeRequest') }}">
                         {{ csrf_field() }}
 
 

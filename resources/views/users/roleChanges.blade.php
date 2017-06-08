@@ -23,10 +23,6 @@
                             </thead>
                             <tbody>
 
-                                @php
-                                    $requests = App\RoleChangeRequest::all();
-                                @endphp
-                                
                                 @foreach($requests as $request)
                                 <tr>
                                     <td><a href="{{route('roleChange', ['id'=> $request->id])}}" >{{$request->user->getNameAndSurnames()}}</a></td>

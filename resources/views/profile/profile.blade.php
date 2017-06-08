@@ -60,7 +60,7 @@
                     <div class="btn-group">
                         <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditProfile')}}">@lang('general.edit')</button>
                         @if($user->role<4)
-                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showRequestRoleChange')}}">@lang('general.change_role')</button>
+                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showCreateRoleChangeRequest')}}">@lang('general.change_role')</button>
                         @endif
                         <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditPassword')}}">@lang('general.change_password')</button>
                         <button class="btn btn-primary" formmethod="GET" formaction="{{route('showUploadAvatar')}}">@lang('general.upload_avatar')</button>
@@ -151,7 +151,7 @@
                 </div>
                 <div class="panel-footer">
                     @if(!is_null($user->observatoryRequest))
-                        <form action="{{route('removeBeObservatoryMember')}}" method="post">
+                        <form action="{{route('removeObservatoryRequest')}}" method="post">
                                         {{ csrf_field() }}
                                         <button   
                                             type="submit" class="btn btn-primary">
@@ -159,7 +159,7 @@
                                         </button>
                                     </form>
                     @else
-                        <form action="{{$user->isObservatoryMember? route('removeBeObservatoryMember') : route('requestBeObservatoryMember')}}" method="post">
+                        <form action="{{$user->isObservatoryMember? route('observatoryRemoveMember', ['id' => $user->id]) : route('createObservatoryRequest')}}" method="post">
                                         {{ csrf_field() }}
                                         <button   
                                             type="submit" class="btn btn-primary">

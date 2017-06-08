@@ -112,14 +112,14 @@
                 </div>
                 <div class="panel-footer">
                     @if(!is_null($user->observatoryRequest))
-                    <form action="{{route('observatoryReject', ['id'=> $user->id])}}" method="post">
+                    <form action="{{route('observatoryRejectRequest', ['id'=> $user->id])}}" method="post">
                         {{ csrf_field() }}
                         <button   
                             type="submit" class="btn btn-primary">
                             @lang('general.reject')
                         </button>
                     </form>
-                    <form action="{{route('observatoryAccept', ['id'=> $user->id])}}" method="post">
+                    <form action="{{route('observatoryAcceptRequest', ['id'=> $user->id])}}" method="post">
                         {{ csrf_field() }}
                         <button   
                             type="submit" class="btn btn-primary">
@@ -127,7 +127,7 @@
                         </button>
                     </form>
                     @elseif($user->isObservatoryMember)
-                    <form action="{{route('observatoryRemove', ['id'=> $user->id])}}" method="post">
+                    <form action="{{route('observatoryRemoveMember', ['id'=> $user->id])}}" method="post">
                         {{ csrf_field() }}
                         <button   
                             type="submit" class="btn btn-primary">

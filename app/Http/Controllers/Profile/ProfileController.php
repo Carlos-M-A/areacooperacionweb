@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Profile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use App\Student;
 use App\Teacher;
 use App\Other;
@@ -13,36 +12,11 @@ use App\Organization;
 
 class ProfileController extends Controller {
 
-    
     //Route to redirect after a action in profile
     protected $redirectTo = 'profile';
 
-
-    /**
-     * Show de profile data and his options
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index() {
-        switch (Auth::user()->role) {
-            case 1:
-                return view('profile/studentProfile');
-            case 2:
-                return view('profile/teacherProfile');
-            case 3:
-                return view('profile/otherProfile');
-            case 4:
-                return view('profile/organizationProfile');
-            case 5:
-                return view('profile/organizationProfile');
-            case 6:
-                return view('profile/adminProfile');
-        }
-    }
-
     public function showEdit() {
         $user = Auth::user();
-        $roleData;
         switch ($user->role) {
             case 1:
                 $roleData = Student::find($user->id);
@@ -61,40 +35,66 @@ class ProfileController extends Controller {
         return view('profile/editProfile')->with('role', $user->role)->with('user', $user)->with('roleData', $roleData);
     }
 
+    public function showEditPassword() {
+        return view('profile/editPassword');
+    }
+
+    /**
+     * Show de profile data and his options
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function get() {
+        switch (Auth::user()->role) {
+            case 1:
+                return view('profile/studentProfile');
+            case 2:
+                return view('profile/teacherProfile');
+            case 3:
+                return view('profile/otherProfile');
+            case 4:
+                return view('profile/organizationProfile');
+            case 5:
+                return view('profile/organizationProfile');
+            case 6:
+                return view('profile/adminProfile');
+        }
+    }
+
     public function edit(Request $request) {
         $user = Auth::user();
 
         $rules = [
-            'name' => 'required|string|max:'.config('forms.user_name'),
-            'email' => 'required|string|email|unique:User,email,'.$user->id.'|max:'.config('forms.email'),
-            'idCard' => 'required|string|unique:User,idCard,'.$user->id.'|max:'.config('forms.idCard'),
-            'phone' => 'required|string|max:'.config('forms.phone'),
+            'name' => 'required|string|max:' . config('forms.user_name'),
+            'email' => 'required|string|email|unique:User,email,' . $user->id . '|max:' . config('forms.email'),
+            'idCard' => 'required|string|unique:User,idCard,' . $user->id . '|max:' . config('forms.idCard'),
+            'phone' => 'required|string|max:' . config('forms.phone'),
         ];
-        
+
         switch ($user->role) {
             case 1:
-                    $rules['surnames'] = 'required|string|max:'.config('forms.surnames');
-                    $rules['study'] = 'required|integer|min:1';
-                    $rules['areasOfInterest'] = 'required|string|max:'.config('forms.areasOfInterest');
-                    $rules['skills'] = 'required|string|max:'.config('forms.skills');
+                $rules['surnames'] = 'required|string|max:' . config('forms.surnames');
+                $rules['study'] = 'required|integer|min:1';
+                $rules['areasOfInterest'] = 'required|string|max:' . config('forms.areasOfInterest');
+                $rules['skills'] = 'required|string|max:' . config('forms.skills');
                 break;
             case 2:
-                    $rules['surnames'] = 'required|string|max:'.config('forms.surnames');
-                    $rules['areasOfInterest'] = 'required|string|max:'.config('forms.areasOfInterest');
-                    $rules['departments'] = 'required|string|max:'.config('forms.departments');
+                $rules['surnames'] = 'required|string|max:' . config('forms.surnames');
+                $rules['areasOfInterest'] = 'required|string|max:' . config('forms.areasOfInterest');
+                $rules['departments'] = 'required|string|max:' . config('forms.departments');
                 break;
             case 3:
-                    $rules['surnames'] = 'required|string|max:'.config('forms.surnames');
-                    $rules['areasOfInterest'] = 'required|string|max:'.config('forms.areasOfInterest');
-                    $rules['description'] = 'required|string|max:'.config('forms.user_description');
+                $rules['surnames'] = 'required|string|max:' . config('forms.surnames');
+                $rules['areasOfInterest'] = 'required|string|max:' . config('forms.areasOfInterest');
+                $rules['description'] = 'required|string|max:' . config('forms.user_description');
                 break;
             case 4;
             case 5:
-                    $rules['socialName'] = 'required|string|max:'.config('forms.socialName');
-                    $rules['description'] = 'required|string|max:'.config('forms.user_description');
-                    $rules['headquartersLocation'] = 'required|string|max:'.config('forms.headquartersLocation');
-                    $rules['web'] = 'required|url|max:'.config('forms.url');
-                    $rules['linksWithNearbyEntities'] = 'nullable|string|max:'.config('forms.linksWithNearbyEntities');
+                $rules['socialName'] = 'required|string|max:' . config('forms.socialName');
+                $rules['description'] = 'required|string|max:' . config('forms.user_description');
+                $rules['headquartersLocation'] = 'required|string|max:' . config('forms.headquartersLocation');
+                $rules['web'] = 'required|url|max:' . config('forms.url');
+                $rules['linksWithNearbyEntities'] = 'nullable|string|max:' . config('forms.linksWithNearbyEntities');
                 break;
         }
         $this->validate($request, $rules);
@@ -143,13 +143,9 @@ class ProfileController extends Controller {
         return redirect($this->redirectTo);
     }
 
-    public function showEditPassword() {
-        return view('profile/editPassword');
-    }
-
     public function editPassword(Request $request) {
         $this->validate($request, [
-            'currentPassword' => 'required|string|min:6|max:'.config('forms.password'),
+            'currentPassword' => 'required|string|min:6|max:' . config('forms.password'),
             'password' => 'required|string|min:6|confirmed',
         ]);
 

@@ -18,11 +18,12 @@ class SubscriptionController extends Controller
         $user->isSubscriber= !$user->isSubscriber;
         $user->save();
         
-        if($user->isSubscriber)
-            $this->insertSubscriber();
-        else 
-           $this->removeSubscriber();
-        
+        if($user->isSubscriber){
+            $this->_insertSubscriber();
+        }
+        else{ 
+           $this->_removeSubscriber();
+        }
 
         return redirect($this->redirectTo);
     }
@@ -31,7 +32,7 @@ class SubscriptionController extends Controller
      * Connect with the wordpress plugin that manage the subscriptions to the
      * newsletter and insert the new subscriber
      */
-    private function insertSubscriber() {
+    private function _insertSubscriber() {
         
     }
     
@@ -39,7 +40,7 @@ class SubscriptionController extends Controller
      * Connect with the wordpress plugin that manage the subscriptions to the
      * newsletter and remove the subscriber
      */
-    private function removeSubscriber() {
+    private function _removeSubscriber() {
         
     }
 }

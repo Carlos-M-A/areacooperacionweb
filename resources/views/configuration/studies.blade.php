@@ -12,8 +12,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Search studies</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('searchStudies') }}">
-                        {{ csrf_field() }}
+                    <form class="form-horizontal" role="form" method="GET" action="{{ route('searchStudies') }}">
 
                         <div class="form-group{{ $errors->has('branch') ? ' has-error' : '' }}">
                             <label for="branch" class="col-md-4 control-label">branch</label>

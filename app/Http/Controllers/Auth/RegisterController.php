@@ -72,7 +72,7 @@ use RegistersUsers;
                 //The next rule is a regular expresion to accpet the strings
                 //with this format: 234.343.23,121
                 $rules['teachingStudiesSelected'] = 'required|string|regex:/^([0-9]+,)*([0-9]+)$/';
-                $rules['departments'] = 'required|string|max:'.config('forms.title');
+                $rules['departments'] = 'required|string|max:'.config('forms.departments');
                 break;
             //Other
             case 3:
@@ -112,8 +112,8 @@ use RegistersUsers;
         $user->isSubscriber = false;
         $user->notificationInfoConvocatories = false;
         $user->notificationInfoProjects = false;
-        $user->lastConnectionDate = new \DateTime();
-        $user->createdDate = new \DateTime();
+        $user->lastConnectionDate = new DateTime();
+        $user->createdDate = new DateTime();
         $user->save();
 
 
@@ -136,10 +136,7 @@ use RegistersUsers;
                 $teacher->departments = $data['departments'];
                 $teacher->save();
 
-                $teachingStudies = explode(',', $data['teachingStudiesSelected']);
-                $teachingStudies = array_unique($teachingStudies);
-                //$teachingStudies = array_filter($teachingStudies, "greaterThan0");
-
+                $teachingStudies = array_unique(explode(',', $data['teachingStudiesSelected']));
                 foreach ($teachingStudies as $studyID) {
                     DB::table('Study_Teacher')->insert([
                         'teacher_id' => $user->id,
@@ -167,10 +164,6 @@ use RegistersUsers;
                 break;
         }
         return $user;
-    }
-
-    private function greaterThan0($var) {
-        return ($var > 0);
     }
 
 }

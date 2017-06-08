@@ -4,15 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 
-class HomeController extends Controller
-{
+class HomeController extends Controller {
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth');
     }
 
@@ -21,10 +20,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         $user = Auth::user();
-        switch($user->role){
+        switch ($user->role) {
             case 1:
                 return view('homes/studentHome');
             case 2:
@@ -39,5 +37,5 @@ class HomeController extends Controller
                 return view('homes/adminHome');
         }
     }
-    
+
 }

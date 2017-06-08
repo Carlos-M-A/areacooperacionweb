@@ -14,8 +14,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">@lang('general.search_users')</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('searchUsers') }}">
-                        {{ csrf_field() }}
+                    <form class="form-horizontal" role="form" method="GET" action="{{ route('searchUsers') }}">
 
 
                         <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
