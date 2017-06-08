@@ -18,20 +18,20 @@
      <meta name="viewport" content="width=device-width, initial-scale=1"> 
      
      
-     <!-- 
-     <script src="{{ asset('js/jquery-3.2.1.js') }}"></script>
      
-     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
-     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-      -->
+     <script src="{{ url('js/jquery-3.2.1.js') }}"></script>
      
-      <!--With this, the web work perfectly, but the css and js would not be in own server-->
+     <link href="{{ url('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+     <script src="{{ url('bootstrap/js/bootstrap.min.js') }}"></script>
+     
+     
+      <!--With this, the web work perfectly, but the css and js would not be in own server
      
      <script type="text/javascript"  src="https://code.jquery.com/jquery-3.2.1.js"></script>
      
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  media="screen">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+    -->
         
     
     <!-- Scripts This script was in laravel original code. Delete if nothing fail

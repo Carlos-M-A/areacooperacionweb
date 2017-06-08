@@ -2,6 +2,10 @@
 
 @section('content')
 
+@section('more_script')
+<script type="text/javascript" src="{{url("js/bootstrap-filestyle.min.js")}}"> </script>
+@endsection
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -16,7 +20,7 @@
                             <label for="urlAvatar" class="col-md-4 control-label">urlAvatar</label>
 
                             <div class="col-md-6">
-                                <input id="urlAvatar" type="file" class="form-control" name="urlAvatar" value="{{ old('urlAvatar')}}" >
+                                <input id="urlAvatar" type="file" class="form-control filestyle" data-input="true" name="urlAvatar" value="{{ old('urlAvatar')}}" >
 
                                 @if ($errors->has('urlAvatar'))
                                 <span class="help-block">

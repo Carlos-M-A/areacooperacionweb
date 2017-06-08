@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('more_script')
+<script type="text/javascript" src="{{url("js/bootstrap-filestyle.min.js")}}"> </script>
+@endsection
+
 @section('content')
 
 <div class="container">
@@ -15,7 +19,7 @@
                             <label for="urlCurriculum" class="col-md-4 control-label">urlCurriculum</label>
 
                             <div class="col-md-6">
-                                <input id="urlCurriculum" type="file" class="form-control" name="urlCurriculum" value="{{ old('urlCurriculum')}}" >
+                                <input id="urlCurriculum" type="file" class="form-control filestyle" data-input="true" name="urlCurriculum" value="{{ old('urlCurriculum')}}" >
 
                                 @if ($errors->has('urlCurriculum'))
                                 <span class="help-block">
