@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('content')
-
 @section('more_script')
 <script type="text/javascript" src="{{url("js/bootstrap-filestyle.min.js")}}"> </script>
 @endsection
+
+@section('content')
 
 <div class="container">
     <div class="row">
@@ -12,23 +12,21 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">@lang('general.edit')</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="{{ route('uploadAvatar') }}">
+                    <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="{{ route('uploadCurriculum', ['idUser' => $user->id]) }}">
                         {{ csrf_field() }}
 
-                        
-                        <div id="urlAvatar_div" class="form-group{{ $errors->has('urlAvatar') ? ' has-error' : '' }}">
-                            <label for="urlAvatar" class="col-md-4 control-label">urlAvatar</label>
+                        <div id="urlCurriculum_div" class="form-group{{ $errors->has('urlCurriculum') ? ' has-error' : '' }}">
+                            <label for="urlCurriculum" class="col-md-4 control-label">urlCurriculum</label>
 
                             <div class="col-md-6">
-                                <input id="urlAvatar" type="file" class="form-control filestyle" data-input="true" name="urlAvatar" value="{{ old('urlAvatar')}}" >
+                                <input id="urlCurriculum" type="file" class="form-control filestyle" data-input="true" name="urlCurriculum" value="{{ old('urlCurriculum')}}" >
 
-                                @if ($errors->has('urlAvatar'))
+                                @if ($errors->has('urlCurriculum'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('urlAvatar') }}</strong>
+                                    <strong>{{ $errors->first('urlCurriculum') }}</strong>
                                 </span>
                                 @endif
                             </div>
-                            
                         </div>
                         
                         <div class="form-group">

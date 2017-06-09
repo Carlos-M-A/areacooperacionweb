@@ -88,6 +88,7 @@
                             <button class="btn btn-primary" formmethod="POST" formaction="{{route('removeUser', ['id'=> $user->id])}}">@lang('general.remove')</button>
                             @if($user->role == 4)
                                 <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditOrganization', ['id' => $user->id])}}">@lang('general.edit')</button>
+                                <button class="btn btn-primary" formmethod="GET" formaction="{{route('showUploadAvatar', ['idUser' => $user->id])}}">@lang('general.upload_avatar')</button>
                             @endif
                         @else
                             <button class="btn btn-primary" formmethod="POST" formaction="{{route('acceptUser', ['id'=> $user->id])}}">@lang('general.accept')</button>

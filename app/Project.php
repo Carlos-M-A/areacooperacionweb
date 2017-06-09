@@ -9,12 +9,12 @@ class Project extends Model
     protected $table = 'Project';
     public $timestamps = false;
     
-    public function offer() {
-        return $this->belongsTo('App\Offer', 'offer_id', 'id');
+    public function teacher() {
+        return $this->belongsTo('App\Teacher', 'teacher_id', 'id');
     }
     
-    public function proposal() {
-        return $this->belongsTo('App\Proposal', 'proposal_id', 'id');
+    public function study() {
+        return $this->belongsTo('App\Study', 'study_id', 'id');
     }
     
     public function inscriptionsInProject() {

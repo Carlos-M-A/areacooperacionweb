@@ -6,14 +6,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class AvatarController extends Controller {
 
     //Route to redirect after a action in profile
     protected $redirectTo = 'profile';
 
-    public function showUpload() {
-        return view('profile/uploadAvatar');
+    public function showUpload(int $idUser) {
+        $user = User::find($idUser);
+        return view('files/uploadAvatar')->with('user', $user);
     }
 
     public function get($file) {
@@ -22,8 +24,8 @@ class AvatarController extends Controller {
         return response()->make($image, 200, ['content-type' => 'image']);
     }
 
-    public function upload(Request $request) {
-        $user = Auth::user();
+    public function upload(int $idUser, Request $request) {
+        $user = User::find($idUser);
 
         $rules = [
             'urlAvatar' => 'required|image|dimensions:max_width=256,max_height=256,ratio=1',
@@ -34,6 +36,10 @@ class AvatarController extends Controller {
             $user->urlAvatar = $request->urlAvatar->store('avatars');
         }
         $user->save();
+        
+        if(Auth::user()->role == 1 && Auth::user()->id != $idUser){
+            return redirect('users/'. $user->id);
+        }
         return redirect($this->redirectTo);
     }
 

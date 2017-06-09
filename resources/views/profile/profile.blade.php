@@ -63,9 +63,9 @@
                         <button class="btn btn-primary" formmethod="GET" formaction="{{route('showCreateRoleChangeRequest')}}">@lang('general.change_role')</button>
                         @endif
                         <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditPassword')}}">@lang('general.change_password')</button>
-                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showUploadAvatar')}}">@lang('general.upload_avatar')</button>
+                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showUploadAvatar', ['idUser' => $user->id])}}">@lang('general.upload_avatar')</button>
                         @if($user->role==1)
-                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showUploadCurriculum')}}">@lang('general.upload_curriculum')</button>
+                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showUploadCurriculum', ['idUser' => $user->id])}}">@lang('general.upload_curriculum')</button>
                         @endif
                     </div>
                     </form>

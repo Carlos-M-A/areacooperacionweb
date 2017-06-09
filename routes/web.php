@@ -130,9 +130,9 @@ Route::post('/convocatories/{id}/removeInscription', 'Convocatories\InscriptionC
 Route::post('/inscriptions/{id}/edit', 'Convocatories\InscriptionController@edit')->name('editInscription');
 
 // Files management
+Route::get('/avatars/upload/{idUser}', 'Files\AvatarController@showUpload')->name('showUploadAvatar');
+Route::post('/avatars/upload/{idUser}', 'Files\AvatarController@upload')->name('uploadAvatar');
+Route::get('/curriculums/upload/{idUser}', 'Files\CurriculumController@showUpload')->name('showUploadCurriculum');
+Route::post('/curriculums/upload/{idUser}', 'Files\CurriculumController@upload')->name('uploadCurriculum');
 Route::get('/avatars/{file}', 'Files\AvatarController@get')->name('getImage');
 Route::get('/curriculums/{file}', 'Files\CurriculumController@get')->name('getCurriculum');
-Route::get('/profile/avatar', 'Files\AvatarController@showUpload')->name('showUploadAvatar');
-Route::post('/profile/avatar', 'Files\AvatarController@upload')->name('uploadAvatar');
-Route::get('/profile/curriculum', 'Files\CurriculumController@showUpload')->name('showUploadCurriculum');
-Route::post('/profile/curriculum', 'Files\CurriculumController@upload')->name('uploadCurriculum');
