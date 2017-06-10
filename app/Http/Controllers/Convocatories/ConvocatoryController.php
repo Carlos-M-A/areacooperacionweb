@@ -75,7 +75,7 @@ class ConvocatoryController extends Controller {
             'title' => 'required|string|max:' . config('forms.convocatory_title'),
             'information' => 'required|string|max:' . config('forms.information'),
             'estimatedPeriod' => 'required|string|max:' . config('forms.estimatedPeriod'),
-            'urlDocumentation' => 'required|string',
+            'urlDocumentation' => 'required|url',
             'deadline' => 'required|date',
         ];
         $this->validate($request, $rules);

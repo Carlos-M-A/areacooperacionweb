@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Options cooperation area</div>
+                <div class="panel-heading">Offers management</div>
 
                 <div class="panel-body">
                     <p>
@@ -18,6 +18,18 @@
                     <a href="{{ route('showCreateConvocatory') }}"> Create convocatory</a>
                     <p>
                     <a href="{{ route('convocatories') }}"> Convocatories</a>
+                </div>
+            </div>
+            
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">Project management</div>
+
+                <div class="panel-body">
+                    <p>
+                    <a href="{{ route('closedProjects') }}"> All projects</a>
+                    <p>
+                    <a href="{{ route('showCreateProject') }}"> Create project</a>
                 </div>
             </div>
         </div>

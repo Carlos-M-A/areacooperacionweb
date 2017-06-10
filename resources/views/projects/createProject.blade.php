@@ -3,10 +3,13 @@
 
 
 @php
-    $teacher = App\Teacher::find(Auth::user()->id);
+    $user = Auth::user();
 @endphp
 
+
 @section('more_script')
+@yield('more_more_script')
+
 <script>
     $( document ).ready(function() {
         $('textarea').keyup(function(event) {
@@ -31,16 +34,22 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('studyId') ? ' has-error' : '' }}">
-                            <label for="studyId" class="col-md-4 control-label">Type</label>
+                            <label for="studyId" class="col-md-4 control-label">Study</label>
 
                             <div class="col-md-6">
                                 <select  id="studyId" class="form-control" name="studyId" autofocus>
-                                    <option id="studyIdOption0" value="{{old('studyId') ? old('studyId') : 0}}">
-                                        {{old('studyId') ? App\Study::find(old('studyId'))->name : '-- Study --'}}
+                                    <option id="studyIdOption0" value="{{old('studyId') ? old('studyId') : ''}}">
+                                        {{old('studyId') ? App\Study::find(old('studyId'))->name : ''}}
                                     </option>
-                                    @foreach($teacher->studies as $study)
-                                    <option id="studyIdOption{{$study->id}}" value="{{$study->id}}">{{$study->name}} -- {{$study->faculty->city}}</option>
-                                    @endforeach
+                                    @if($user->role==5)
+                                        @foreach(App\Study::all() as $study)
+                                            <option id="studyIdOption{{$study->id}}" value="{{$study->id}}">{{$study->name}} -- {{$study->faculty->city}}</option>
+                                        @endforeach
+                                    @else
+                                        @foreach($user->teacher->studies as $study)
+                                            <option id="studyIdOption{{$study->id}}" value="{{$study->id}}">{{$study->name}} -- {{$study->faculty->city}}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
 
                                 @if ($errors->has('studyId'))
@@ -64,7 +73,7 @@
                                 @endif
                             </div>
                         </div>
-
+                        
                         <div id="scope_div" class="form-group{{ $errors->has('scope') ? ' has-error' : '' }}">
                             <label for="scope" class="col-md-4 control-label">scope</label>
 
@@ -92,8 +101,9 @@
                                 @endif
                             </div>
                         </div>
-
-
+                        
+                        @yield('more_fields')
+                        
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

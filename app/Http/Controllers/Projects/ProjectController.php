@@ -11,16 +11,34 @@ use Illuminate\Support\Facades\Auth;
 class ProjectController extends Controller {
 
     public function showCreate() {
-        return view('projects/createProject');
+        $user = Auth::user();
+
+        switch ($user->role) {
+            case 2:
+                return view('projects/createProject');
+            case 5:
+                return view('projects/createProjectAsCooperationArea');
+        }
     }
 
     public function showEdit($id) {
         $project = Project::find($id);
+        $user = Auth::user();
+
+        switch ($user->role) {
+            case 2:
+                return view('projects/editProject')->with('project', $project);
+            case 5:
+                return view('projects/editProjectAsCooperationArea')->with('project', $project);
+        }
         return view('projects/editProject')->with('project', $project);
     }
 
     public function get($id) {
         $project = Project::find($id);
+        if(! Auth::check()){
+            return view('projects/project')->with('project', $project);
+        }
         $user = Auth::user();
 
         switch ($user->role) {
@@ -32,47 +50,80 @@ class ProjectController extends Controller {
                     return view('projects/projectAsStudent')->with('project', $project)->with('inscriptionInProject', $inscriptionInProject);
                 }
             case 2:
-                $inscriptionInProjectChoosen = InscriptionInProject::where('project_id', $project->id)->where('state', 2)->get()->first();
-                if (is_null($inscriptionInProjectChoosen)) {
-                    return view('projects/projectAsTeacher')->with('project', $project)->with('inscriptionInProjectChoosen');
+                $inscriptionInProjectChosen = InscriptionInProject::where('project_id', $project->id)->where('state', 2)->get()->first();
+                if (is_null($inscriptionInProjectChosen)) {
+                    return view('projects/projectAsTeacher')->with('project', $project)->with('inscriptionInProjectChosen');
                 } else {
-                    return view('projects/projectAsTeacher')->with('project', $project)->with('inscriptionInProjectChoosen', $inscriptionInProjectChoosen);
+                    return view('projects/projectAsTeacher')->with('project', $project)->with('inscriptionInProjectChosen', $inscriptionInProjectChosen);
                 }
+            case 5:
+                return view('projects/projectAsCooperationArea')->with('project', $project);
         }
         return view('projects/project')->with('project', $project);
     }
 
     public function create(Request $request) {
+        $user = Auth::user();
+        
         $rules = $this->_getProjectFieldsRules();
         $rules['studyId'] = 'required|int|min:1';
+        if($user->role == 5){
+            $rules['finishedDate'] = 'required|date';
+            $rules['tutor'] = 'required|string|max:' . config('forms.tutor');
+            $rules['author'] = 'required|string|max:' . config('forms.author');
+            $rules['urlDocumentation'] = 'required|url|max:' . config('forms.url');
+        }
         $this->validate($request, $rules);
-        
-        $user = Auth::user(); //The teacher
 
         $project = new Project();
+        $this->_requestToProject($request, $project);
         $project->study_id = $request->studyId;
-        $project->title = $request->title;
-        $project->scope = $request->scope;
-        $project->description = $request->description;
-        $project->teacher_id = $user->id;
-        $project->tutor = $user->getNameAndSurnames();
-        $project->createdDate = new \DateTime();
-        $project->state = 1; //state = Project proposal
+        
+        if($user->role == 5){
+            $project->teacher_id = $user->id;
+            $project->tutor = $request->tutor;
+            $project->author = $request->author;
+            $project->state = 3; //state = Finished
+            $project->urlDocumentation = $request->urlDocumentation;
+            $project->finishedDate = $request->finishedDate;
+            $project->createdByAdmin = true;
+        } else {
+            $project->teacher_id = $user->id;
+            $project->tutor = $user->getNameAndSurnames();
+            $project->state = 1; //state = Proposed
+            $project->createdByAdmin = false;
+        }
         $project->save();
 
         return redirect('projects/' . $project->id);
     }
 
     public function edit($id, Request $request) {
+        $user = Auth::user();
+        $project = Project::find($id);
+        
         $rules = $this->_getProjectFieldsRules();
-        $rules['urlDocumentation'] = 'nullable|string|max:' . config('forms.url');
+        if($user->role == 5){ // role = Cooperation area
+            $rules['finishedDate'] = 'required|date';
+            $rules['urlDocumentation'] = 'required|url|max:' . config('forms.url');
+            if($project->createdByAdmin == true){
+                $rules['tutor'] = 'required|string|max:' . config('forms.tutor');
+                $rules['author'] = 'required|string|max:' . config('forms.author');
+            }
+        } else {
+            $rules['urlDocumentation'] = 'nullable|url|max:' . config('forms.url');
+        }
         $this->validate($request, $rules);
         
-        $project = Project::find($id);
-        $project->title = $request->title;
-        $project->scope = $request->scope;
-        $project->description = $request->description;
+        $this->_requestToProject($request, $project);
         $project->urlDocumentation = $request->urlDocumentation;
+        if($user->role == 5){
+            $project->finishedDate = $request->finishedDate;
+            if($project->createdByAdmin == true){
+                $project->tutor = $request->tutor;
+                $project->author = $request->author;
+            }
+        }
         $project->save();
 
         return redirect('projects/' . $project->id);
@@ -87,9 +138,18 @@ class ProjectController extends Controller {
         $project = Project::find($id);
         $project->state = 3;
         $project->urlDocumentation = $request->urlDocumentation;
+        $project->finishedDate = new \DateTime();
         $project->save();
 
         return redirect('projects/' . $project->id);
+    }
+    
+    public function remove(int $id) {
+        $project = Project::find($id);
+        
+        $project->delete();
+
+        return redirect('projects/closedProjects');
     }
 
     private function _getProjectFieldsRules() {
@@ -99,5 +159,11 @@ class ProjectController extends Controller {
             'description' => 'required|string|max:' . config('forms.project_description'),
         ];
         return $rules;
+    }
+    
+    private function _requestToProject(Request $request, Project $project) {
+        $project->title = $request->title;
+        $project->scope = $request->scope;
+        $project->description = $request->description;
     }
 }

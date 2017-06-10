@@ -13,7 +13,7 @@ class CurriculumController extends Controller {
     //Route to redirect after a action in profile
     protected $redirectTo = 'profile';
 
-    public function showUpload($idUser) {
+    public function showUpload(int $idUser) {
         $user = User::find($idUser);
         return view('files/uploadCurriculum')->with('user', $user);
     }
@@ -24,7 +24,7 @@ class CurriculumController extends Controller {
         return response()->make($curriculum, 200, ['content-type' => 'application/pdf']);
     }
 
-    public function upload($idUser, Request $request) {
+    public function upload(int $idUser, Request $request) {
         $user = User::find($idUser);
 
         $rules['urlCurriculum'] = 'required|file|mimes:pdf';

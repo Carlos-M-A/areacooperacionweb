@@ -32,4 +32,9 @@ class ProjectsController extends Controller {
         return view('projects/projects')->with('projects', $projects->get());
     }
 
+    public function closedProjects() {
+        $projects = Project::where('state', 3);
+
+        return view('projects/projects')->with('projects', $projects->get());
+    }
 }

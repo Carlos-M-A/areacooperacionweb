@@ -34,6 +34,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     
+    public function teacher() {
+        return $this->hasOne('App\Teacher', 'id');
+    }
     /**
      * Return the role name of the user
      * @return string

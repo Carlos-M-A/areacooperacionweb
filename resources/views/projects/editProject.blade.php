@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
-@section('content')
-
 @section('more_script')
+@yield('more_more_script')
 <script>
     $( document ).ready(function() {
         $('textarea').keyup(function(event) {
@@ -16,6 +15,7 @@
 </script>
 @endsection
 
+@section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -25,7 +25,6 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('editProject', ['id'=> $project->id]) }}">
                         {{ csrf_field() }}
 
-                        
                         <div id="title_div" class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                             <label for="title" class="col-md-4 control-label">title</label>
 
@@ -82,7 +81,9 @@
                                 @endif
                             </div>
                         </div>
-
+                        
+                        @yield('more_fields')
+                        
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

@@ -10,7 +10,7 @@
             <!-- Trigger the modal to terminate project -->
             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalOfFinishProject">@lang('general.finish')</button>
             @endif
-            <button class="btn btn-primary" frommethod="POST" formaction="{{route('showEditProject', ['id'=> $project->id])}}">@lang('general.edit')</button>
+            <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditProject', ['id'=> $project->id])}}">@lang('general.edit')</button>
             
         </div>
     </form>
@@ -32,25 +32,25 @@
 
  
         <div class="panel-group">
-            @if(is_null($inscriptionInProjectChoosen))
+            @if(is_null($inscriptionInProjectChosen))
                 @lang('general.no_author_has_been_chosen')
                 @else
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#{{'collapse'.$inscriptionInProjectChoosen->student->id}}">{{$inscriptionInProjectChoosen->student->user->getNameAndSurnames()}}</a>
+                                <a data-toggle="collapse" href="#{{'collapse'.$inscriptionInProjectChosen->student->id}}">{{$inscriptionInProjectChosen->student->user->getNameAndSurnames()}}</a>
                             </h4>
                         </div>
                     
-                        <div id="{{'collapse'.$inscriptionInProjectChoosen->student->id}}" class="panel-collapse collapse">
+                        <div id="{{'collapse'.$inscriptionInProjectChosen->student->id}}" class="panel-collapse collapse">
                             <ul class="list-group">
-                                <li class="list-group-item">state: {{$inscriptionInProjectChoosen->state}}</li>
-                                <li class="list-group-item">comment: {{$inscriptionInProjectChoosen->comment}}</li>
-                                <li class="list-group-item">phone: {{$inscriptionInProjectChoosen->student->user->phone}}</li>
-                                <li class="list-group-item">email: {{$inscriptionInProjectChoosen->student->user->email}}</li>
-                                <li class="list-group-item">areasOfInterest: {{$inscriptionInProjectChoosen->student->areasOfInterest}}</li>
-                                <li class="list-group-item">skills: {{$inscriptionInProjectChoosen->student->skills}}</li>
-                                <li class="list-group-item">urlCurriculum: {{$inscriptionInProjectChoosen->student->urlCurriculum}}</li>
+                                <li class="list-group-item">state: {{$inscriptionInProjectChosen->state}}</li>
+                                <li class="list-group-item">comment: {{$inscriptionInProjectChosen->comment}}</li>
+                                <li class="list-group-item">phone: {{$inscriptionInProjectChosen->student->user->phone}}</li>
+                                <li class="list-group-item">email: {{$inscriptionInProjectChosen->student->user->email}}</li>
+                                <li class="list-group-item">areasOfInterest: {{$inscriptionInProjectChosen->student->areasOfInterest}}</li>
+                                <li class="list-group-item">skills: {{$inscriptionInProjectChosen->student->skills}}</li>
+                                <li class="list-group-item">urlCurriculum: {{$inscriptionInProjectChosen->student->urlCurriculum}}</li>
                             </ul>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
 @endsection
 
 
-@if($project->state == 2 && !is_null($inscriptionInProjectChoosen))
+@if($project->state == 2 && !is_null($inscriptionInProjectChosen))
 <!-- Modal of cancel the author chosen -->
 <div id="cancelAuthor" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -126,7 +126,7 @@
         <h4 class="modal-title">Remove author</h4>
       </div>
       <div class="modal-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{route('cancelInscriptionInProject', ['id' => $inscriptionInProjectChoosen->id])}}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{route('cancelInscriptionInProject', ['id' => $inscriptionInProjectChosen->id])}}">
                         {{ csrf_field() }}
                         
                         <div class="form-group">

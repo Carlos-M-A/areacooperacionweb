@@ -39,16 +39,6 @@
                     <p>
                 </div>
             </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">Project management</div>
-
-                <div class="panel-body">
-                    <p>
-                    <a href="{{ route('convocatories') }}"> Projects</a>
-                    <p>
-                    <a href="{{ route('convocatories') }}"> Create project</a>
-                </div>
-            </div>
         </div>
     </div>
 </div>

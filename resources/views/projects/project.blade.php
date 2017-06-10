@@ -48,6 +48,10 @@
                                     <td>{{$project->state}}</td>
                                 </tr>
                                 <tr>
+                                    <td>finishedDate</td>
+                                    <td>{{$project->finishedDate}}</td>
+                                </tr>
+                                <tr>
                                     <td>urlDocumentation</td>
                                     <td>{{$project->urlDocumentation}}</td>
                                 </tr>

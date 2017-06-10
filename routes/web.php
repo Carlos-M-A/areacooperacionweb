@@ -106,11 +106,13 @@ Route::get('/projects/showCreate', 'Projects\ProjectController@showCreate')->nam
 Route::post('/projects/create', 'Projects\ProjectController@create')->name('createProject');
 Route::get('/projects/myProjects', 'Projects\ProjectsController@myProjects')->name('myProjects');
 Route::get('/projects/openProjects', 'Projects\ProjectsController@openProjects')->name('openProjects');
+Route::get('/projects/closedProjects', 'Projects\ProjectsController@closedProjects')->name('closedProjects');
 
 Route::get('/projects/{id}', 'Projects\ProjectController@get')->name('project');
 Route::get('/projects/{id}/showEdit', 'Projects\ProjectController@showEdit')->name('showEditProject');
 Route::post('/projects/{id}/edit', 'Projects\ProjectController@edit')->name('editProject');
 Route::post('/projects/{id}/finish', 'Projects\ProjectController@finish')->name('finishProject');
+Route::post('/projects/{id}/remove', 'Projects\ProjectController@remove')->name('removeProject');
 Route::post('/projects/{id}/createInscription', 'Projects\InscriptionInProjectController@create')->name('createInscriptionInProject');
 Route::post('/inscriptionsInProject/{id}/remove', 'Projects\InscriptionInProjectController@remove')->name('removeInscriptionInProject');
 Route::post('/inscriptionsInProject/{id}/accept', 'Projects\InscriptionInProjectController@accept')->name('acceptInscriptionInProject');

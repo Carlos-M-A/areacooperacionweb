@@ -16,16 +16,17 @@ class CreateProject extends Migration
         Schema::create('Project', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('study_id')->unsigned();
-            $table->integer('teacher_id')->unsigned();
+            $table->integer('teacher_id')->unsigned()->nullable();
             
             $table->string('title', config('forms.project_title'));
             $table->string('scope', config('forms.scope'));
             $table->string('description', config('forms.project_description'));
-            $table->string('tutor', config('forms.tutor'))->nullable();
+            $table->string('tutor', config('forms.tutor'));
             $table->string('author', config('forms.author'))->nullable();
             $table->string('urlDocumentation', config('forms.url'))->nullable();
             $table->tinyInteger('state');
-            $table->dateTime('createdDate');
+            $table->date('finishedDate')->nullable();
+            $table->boolean('createdByAdmin');
             
             $table->foreign('study_id')->references('id')->on('Study');
             $table->foreign('teacher_id')->references('id')->on('Teacher');
