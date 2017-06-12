@@ -43,11 +43,11 @@
                                     </option>
                                     @if($user->role==5)
                                         @foreach(App\Study::all() as $study)
-                                            <option id="studyIdOption{{$study->id}}" value="{{$study->id}}">{{$study->name}} -- {{$study->faculty->city}}</option>
+                                            <option id="studyIdOption{{$study->id}}" value="{{$study->id}}">{{$study->name}} -- {{$study->campus->abbreviation}}</option>
                                         @endforeach
                                     @else
                                         @foreach($user->teacher->studies as $study)
-                                            <option id="studyIdOption{{$study->id}}" value="{{$study->id}}">{{$study->name}} -- {{$study->faculty->city}}</option>
+                                            <option id="studyIdOption{{$study->id}}" value="{{$study->id}}">{{$study->name}} -- {{$study->campus->abbreviation}}</option>
                                         @endforeach
                                     @endif
                                 </select>

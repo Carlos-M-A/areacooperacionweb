@@ -7,12 +7,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1> @lang('general.faculties') </h1>
+            <h1> @lang('general.campuses') </h1>
             
             <div class="panel panel-default">
-                <div class="panel-heading">@lang('general.search_faculties')</div>
+                <div class="panel-heading">@lang('general.search_campuses')</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="GET" action="{{ route('searchFaculties') }}">
+                    <form class="form-horizontal" role="form" method="GET" action="{{ route('searchCampuses') }}">
 
                         <div id="nameDiv" class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
@@ -28,15 +28,15 @@
                             </div>
                         </div>
 
-                        <div id="cityDiv" class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
-                            <label for="city" class="col-md-4 control-label">city</label>
+                        <div id="abbreviationDiv" class="form-group{{ $errors->has('abbreviation') ? ' has-error' : '' }}">
+                            <label for="abbreviation" class="col-md-4 control-label">abbreviation</label>
 
                             <div class="col-md-6">
-                                <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}" autofocus>
+                                <input id="abbreviation" type="text" class="form-control" name="abbreviation" value="{{ old('abbreviation') }}" autofocus>
 
-                                @if ($errors->has('city'))
+                                @if ($errors->has('abbreviation'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('city') }}</strong>
+                                    <strong>{{ $errors->first('abbreviation') }}</strong>
                                 </span>
                                 @endif
                             </div>
@@ -55,7 +55,7 @@
             
             
             <div class="panel panel-primary">
-                <div class="panel-heading">Faculties</div>
+                <div class="panel-heading">Campuses</div>
 
                 <div class="panel-body">
                     <div class="table-responsive">
@@ -63,14 +63,14 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>City</th>
+                                    <th>Abbreviation</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($faculties as $faculty)
+                                @foreach($faculties as $campus)
                                 <tr>
-                                    <td><a href="{{route('faculty', ['id'=> $faculty->id])}}" >{{$faculty->name}}</a></td>
-                                    <td>{{$faculty->city}}</td>
+                                    <td><a href="{{route('campus', ['id'=> $campus->id])}}" >{{$campus->name}}</a></td>
+                                    <td>{{$campus->abbreviation}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

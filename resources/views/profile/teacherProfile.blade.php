@@ -31,7 +31,7 @@
         <ul class="list-group">
             @foreach($teacher->studies as $study)
             <ul  class="list-group">
-                <li class="list-group-item">{{$study->name}} -- {{$study->faculty->name}} </li>
+                <li class="list-group-item">{{$study->name}} -- {{$study->campus->name}} </li>
                 <li  class="list-group-item">
                     <form action="{{route('removeTeachingStudy')}}" method="post">
                         {{ csrf_field() }}
@@ -61,7 +61,7 @@
                             @foreach($studiesList as $elemento)
                             
                             <option value="{{$elemento->id}}" >
-                                {{$elemento->name}} - {{App\Faculty::find($elemento->faculty_id)->city}}
+                                {{$elemento->name}} - {{App\Campus::find($elemento->campus_id)->abbreviation}}
                             </option>
                             @endforeach
                         </select>

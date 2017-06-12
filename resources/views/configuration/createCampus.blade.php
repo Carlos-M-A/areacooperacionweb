@@ -9,9 +9,9 @@
         <div class="col-md-8 col-md-offset-2">
             
             <div class="panel panel-default">
-                <div class="panel-heading">@lang('general.create_faculty')</div>
+                <div class="panel-heading">@lang('general.create_campus')</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('createFaculty') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('createCampus') }}">
                         {{ csrf_field() }}
 
                         <div id="nameDiv" class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -28,15 +28,15 @@
                             </div>
                         </div>
 
-                        <div id="cityDiv" class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
-                            <label for="city" class="col-md-4 control-label">city</label>
+                        <div id="abbreviationDiv" class="form-group{{ $errors->has('abbreviation') ? ' has-error' : '' }}">
+                            <label for="abbreviation" class="col-md-4 control-label">abbreviation</label>
 
                             <div class="col-md-6">
-                                <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}" autofocus>
+                                <input id="abbreviation" type="text" class="form-control" name="abbreviation" value="{{ old('abbreviation') }}" autofocus>
 
-                                @if ($errors->has('city'))
+                                @if ($errors->has('abbreviation'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('city') }}</strong>
+                                    <strong>{{ $errors->first('abbreviation') }}</strong>
                                 </span>
                                 @endif
                             </div>

@@ -22,12 +22,12 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>City</td>
-                                <td>{{$study->faculty->city}}</td>
+                                <td>Abbreviation</td>
+                                <td>{{$study->campus->abbreviation}}</td>
                             </tr>
                             <tr>
-                                <td>Faculty</td>
-                                <td><a href="{{route('faculty', ['id'=> $study->faculty->id])}}"> {{$study->faculty->name}} </a></td>
+                                <td>Campus</td>
+                                <td><a href="{{route('campus', ['id'=> $study->campus->id])}}"> {{$study->campus->name}} </a></td>
                             </tr>
                             <tr>
                                 <td>Name</td>
@@ -126,27 +126,27 @@
                         </div>
                     </form>
                     
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('changeStudyFaculty', ['id'=> $study->id]) }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('changeStudyCampus', ['id'=> $study->id]) }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('faculty') ? ' has-error' : '' }}">
-                            <label for="faculty" class="col-md-4 control-label">Faculty</label>
+                        <div class="form-group{{ $errors->has('campus') ? ' has-error' : '' }}">
+                            <label for="campus" class="col-md-4 control-label">Campus</label>
 
                             <div class="col-md-6">
-                                <select  id="faculty" class="form-control" name="faculty" autofocus>
-                                    <option value="0">--Elige una faculty--</option>
+                                <select  id="campus" class="form-control" name="campus" autofocus>
+                                    <option>--Choose a campus--</option>
                                     
                                     @php
-                                        $faculties = App\Faculty::all();
+                                        $faculties = App\Campus::all();
                                     @endphp
-                                    @foreach($faculties as $faculty)
-                                        <option value="{{$faculty->id}}">{{$faculty->name}} - {{$faculty->city}}</option>
+                                    @foreach($faculties as $campus)
+                                        <option value="{{$campus->id}}">{{$campus->name}} - {{$campus->abbreviation}}</option>
                                     @endforeach
                                 </select>
 
-                                @if ($errors->has('faculty'))
+                                @if ($errors->has('campus'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('faculty') }}</strong>
+                                    <strong>{{ $errors->first('campus') }}</strong>
                                 </span>
                                 @endif
                             </div>

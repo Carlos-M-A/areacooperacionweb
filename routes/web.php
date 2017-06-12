@@ -60,20 +60,20 @@ Route::post('/observatory/remove/{id}', 'Users\ObservatoryController@removeMembe
 
 //Studies and faculties management
 Route::get('/studies', 'Configuration\StudiesController@search')->name('searchStudies');
-Route::get('/faculties', 'Configuration\FacultiesController@search')->name('searchFaculties');
+Route::get('/campuses', 'Configuration\CampusesController@search')->name('searchCampuses');
 Route::get('/studies/create', 'Configuration\StudyController@showCreate')->name('showCreateStudy');
 Route::post('/studies/create', 'Configuration\StudyController@create')->name('createStudy');
-Route::get('/faculties/create', 'Configuration\FacultyController@showCreate')->name('showCreateFaculty');
-Route::post('/faculties/create', 'Configuration\FacultyController@create')->name('createFaculty');
+Route::get('/campuses/create', 'Configuration\CampusController@showCreate')->name('showCreateCampus');
+Route::post('/campuses/create', 'Configuration\CampusController@create')->name('createCampus');
 Route::get('/studies/{id}', 'Configuration\StudyController@get')->name('study');
-Route::get('/faculties/{id}', 'Configuration\FacultyController@get')->name('faculty');
+Route::get('/campuses/{id}', 'Configuration\CampusController@get')->name('campus');
 Route::post('/studies/{id}/changeInactive', 'Configuration\StudyController@changeInactive')->name('changeStudyToInactive');
 Route::post('/studies/{id}/changeName', 'Configuration\StudyController@changeName')->name('changeStudyName');
 Route::post('/studies/{id}/changeBranch', 'Configuration\StudyController@changeBranch')->name('changeStudyBranch');
-Route::post('/studies/{id}/changeFaculty', 'Configuration\StudyController@changeFaculty')->name('changeStudyFaculty');
-Route::post('/faculties/{id}/changeInactive', 'Configuration\FacultyController@changeInactive')->name('changeFacultyToInactive');
-Route::post('/faculties/{id}/changeName', 'Configuration\FacultyController@changeName')->name('changeFacultyName');
-Route::post('/faculties/{id}/changeCity', 'Configuration\FacultyController@changeCity')->name('changeFacultyCity');
+Route::post('/studies/{id}/changeCampus', 'Configuration\StudyController@changeCampus')->name('changeStudyCampus');
+Route::post('/campuses/{id}/changeInactive', 'Configuration\CampusController@changeInactive')->name('changeCampusToInactive');
+Route::post('/campuses/{id}/changeName', 'Configuration\CampusController@changeName')->name('changeCampusName');
+Route::post('/campuses/{id}/changeAbbreviation', 'Configuration\CampusController@changeAbbreviation')->name('changeCampusAbbreviation');
 
 // Offers management
 Route::get('/offers/create', 'Offers\OfferController@showCreate')->name('showCreateOffer');

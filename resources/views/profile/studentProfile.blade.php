@@ -1,7 +1,7 @@
 @php
     $student = App\Student::find(Auth::user()->id);
     $study = App\Study::find($student->study_id);
-    $faculty = App\Faculty::find($study->faculty_id);
+    $campus = App\Campus::find($study->campus_id);
 @endphp
 
 @extends('profile.profile')
@@ -40,8 +40,8 @@
     <td>{{$study->name}}</td>
 </tr>
 <tr>
-    <td> Faculty</td>
-    <td>{{$faculty->name}} - {{$faculty->city}}</td>
+    <td> Campus</td>
+    <td>{{$campus->name}}</td>
 </tr>
 @endsection
 

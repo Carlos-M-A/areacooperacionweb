@@ -21,12 +21,12 @@ class StudyController extends Controller {
         $this->validate($request, [
             'name' => 'required|string|max:' . config('forms.study_name'),
             'branch' => 'required|integer|min:1|max:6',
-            'faculty' => 'required|integer|min:1',
+            'campus' => 'required|integer|min:1',
         ]);
         $study = new Study();
         $study->name = $request->name;
         $study->branch = $request->branch;
-        $study->faculty_id = $request->faculty;
+        $study->campus_id = $request->campus;
         $study->inactive = false;
         $study->save();
         return redirect('studies/' . $study->id);
@@ -59,12 +59,12 @@ class StudyController extends Controller {
         return redirect('studies/' . $study->id);
     }
 
-    public function changeFaculty($id, Request $request) {
+    public function changeCampus($id, Request $request) {
         $this->validate($request, [
-            'faculty' => 'required|integer|min:1',
+            'campus' => 'required|integer|min:1',
         ]);
         $study = Study::find($id);
-        $study->faculty_id = $request->faculty;
+        $study->campus_id = $request->campus;
         $study->save();
         return redirect('studies/' . $study->id);
     }

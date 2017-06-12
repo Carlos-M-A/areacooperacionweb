@@ -9,8 +9,8 @@ class Study extends Model
     protected $table = 'Study';
     public $timestamps = false;
   
-    public function faculty() {
-        return $this->belongsTo('App\Faculty', 'faculty_id', 'id');
+    public function campus() {
+        return $this->belongsTo('App\Campus', 'campus_id', 'id');
     }
     
     /**

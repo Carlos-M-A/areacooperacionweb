@@ -35,10 +35,10 @@ return [
     'headquartersLocation' => 200,
     'linksWithNearbyEntities' => 1000,
     
-    //Faculties and studies
-    'faculty_name' => 100,
+    //Campus and studies
+    'campus_name' => 100,
     'study_name' => 100,
-    'city' => 100,
+    'abbreviation' => 100,
     
     //offers and proposals
     'offer_title' => 200,

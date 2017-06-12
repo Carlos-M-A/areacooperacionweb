@@ -18,8 +18,8 @@ class CreateStudy extends Migration
             $table->string('name', config('forms.study_name'));
             $table->tinyInteger('branch');
             $table->boolean('inactive');
-            $table->integer('faculty_id')->unsigned();
-            $table->foreign('faculty_id')->references('id')->on('Faculty');
+            $table->integer('campus_id')->unsigned();
+            $table->foreign('campus_id')->references('id')->on('Campus');
         });
     }
 

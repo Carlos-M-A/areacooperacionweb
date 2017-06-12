@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFaculty extends Migration
+class CreateCampus extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateFaculty extends Migration
      */
     public function up()
     {
-        Schema::create('Faculty', function (Blueprint $table) {
+        Schema::create('Campus', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', config('forms.faculty_name'));
-            $table->string('city', config('forms.city'));
+            $table->string('name', config('forms.campus_name'));
+            $table->string('abbreviation', config('forms.abbreviation'));
             $table->boolean('inactive');
         });
     }
@@ -28,6 +28,6 @@ class CreateFaculty extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Faculty');
+        Schema::dropIfExists('Campus');
     }
 }

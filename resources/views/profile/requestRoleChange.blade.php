@@ -18,7 +18,7 @@
     @endphp
 
     @foreach($studiesList as $element)
-            namesOfStudies[{{$element -> id}}] = '{{$element->name}} - {{App\Faculty::find($element->faculty_id)->city}}';
+            namesOfStudies[{{$element -> id}}] = '{{$element->name}} - {{App\Campus::find($element->campus_id)->abbreviation}}';
     @endforeach
 
     /**
@@ -307,7 +307,7 @@
                                     <option id="opcionStudy" value="0">-- Choose a study --</option>
 
                                     @foreach($studiesList as $element)
-                                    <option value="{{$element->id}}" > {{$element->name}} - {{App\Faculty::find($element->faculty_id)->city}}</option>
+                                    <option value="{{$element->id}}" > {{$element->name}} - {{App\Campus::find($element->campus_id)->abbreviation}}</option>
                                     @endforeach
                                 </select>
 
@@ -331,7 +331,7 @@
                                     @foreach($studiesList as $element)
                                     <option value="{{$element->id}}" 
                                             onclick="newStudy({{$element->id}})"> 
-                                        {{$element->name}} - {{App\Faculty::find($element->faculty_id)->city}}
+                                        {{$element->name}} - {{App\Campus::find($element->campus_id)->abbreviation}}
                                     </option>
                                     @endforeach
                                 </select>

@@ -33,9 +33,9 @@
                     <p>
                     <a href="{{ route('showCreateStudy') }}"> @lang('general.create_study')</a>
                     <p>
-                    <a href="{{ route('searchFaculties') }}"> Faculties</a>
+                    <a href="{{ route('searchCampuses') }}"> @lang('general.campuses')</a>
                     <p>
-                    <a href="{{ route('showCreateFaculty') }}"> @lang('general.create_faculty')</a>
+                    <a href="{{ route('showCreateCampus') }}"> @lang('general.create_campus')</a>
                     <p>
                 </div>
             </div>

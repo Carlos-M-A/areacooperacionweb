@@ -53,24 +53,24 @@
                         </div>
                         
 
-                        <div class="form-group{{ $errors->has('faculty') ? ' has-error' : '' }}">
-                            <label for="faculty" class="col-md-4 control-label">Faculty</label>
+                        <div class="form-group{{ $errors->has('campus') ? ' has-error' : '' }}">
+                            <label for="campus" class="col-md-4 control-label">Campus</label>
 
                             <div class="col-md-6">
-                                <select  id="faculty" class="form-control" name="faculty" autofocus>
-                                    <option value="0">--Chose faculty--</option>
+                                <select  id="campus" class="form-control" name="campus" autofocus>
+                                    <option value="0">--Chose campus--</option>
                                     
                                     @php
-                                        $faculties = App\Faculty::all();
+                                        $faculties = App\Campus::all();
                                     @endphp
-                                    @foreach($faculties as $faculty)
-                                    <option value="{{$faculty->id}}">{{$faculty->name}} - {{$faculty->city}}</option>
+                                    @foreach($faculties as $campus)
+                                    <option value="{{$campus->id}}">{{$campus->name}} - {{$campus->abbreviation}}</option>
                                     @endforeach
                                 </select>
 
-                                @if ($errors->has('faculty'))
+                                @if ($errors->has('campus'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('faculty') }}</strong>
+                                    <strong>{{ $errors->first('campus') }}</strong>
                                 </span>
                                 @endif
                             </div>

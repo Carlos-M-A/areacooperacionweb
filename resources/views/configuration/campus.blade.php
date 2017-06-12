@@ -7,10 +7,10 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1> Faculty </h1>
+            <h1> Campus </h1>
             
             <div class="panel panel-default">
-                <div class="panel-heading">Faculty</div>
+                <div class="panel-heading">Campus</div>
                 <div class="panel-body">
                     <div class="table-responsive">
                     <table class="table">
@@ -22,16 +22,16 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>City</td>
-                                <td>{{$faculty->city}}</td>
+                                <td>Abbreviation</td>
+                                <td>{{$campus->abbreviation}}</td>
                             </tr>
                             <tr>
-                                <td>Faculty</td>
-                                <td>{{$faculty->name}}</td>
+                                <td>Campus</td>
+                                <td>{{$campus->name}}</td>
                             </tr>
                             <tr>
-                                <td rowspan="{{count($faculty->studies)}}">Studys</td>
-                            @foreach($faculty->studies as $study)
+                                <td rowspan="{{count($campus->studies)}}">Studys</td>
+                            @foreach($campus->studies as $study)
                             
                                     <td><a href="{{route('study', ['id'=> $study->id])}}" >{{$study->name}}</a></td>
                                     
@@ -41,20 +41,20 @@
                                 </tr>
                             <tr>
                                 <td>Inactive</td>
-                                <td>{{$faculty->inactive}}</td>
+                                <td>{{$campus->inactive}}</td>
                             </tr>
                         </tbody>
                     </table>
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('changeFacultyToInactive', ['id'=> $faculty->id]) }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('changeCampusToInactive', ['id'=> $campus->id]) }}">
                         {{ csrf_field() }}
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{$faculty->inactive? 'Activate' : 'Mark as inactive'}}
+                                    {{$campus->inactive? 'Activate' : 'Mark as inactive'}}
                                 </button>
                             </div>
                         </div>
@@ -64,9 +64,9 @@
             
             
             <div class="panel panel-default">
-                <div class="panel-heading">Edit faculty</div>
+                <div class="panel-heading">Edit campus</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('changeFacultyName', ['id'=> $faculty->id]) }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('changeCampusName', ['id'=> $campus->id]) }}">
                         {{ csrf_field() }}
 
                         <div id="nameDiv" class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -93,18 +93,18 @@
                         </div>
                     </form>
                     
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('changeFacultyCity', ['id'=> $faculty->id]) }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('changeCampusAbbreviation', ['id'=> $campus->id]) }}">
                         {{ csrf_field() }}
 
-                        <div id="cityDiv" class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
-                            <label for="city" class="col-md-4 control-label">city</label>
+                        <div id="abbreviationDiv" class="form-group{{ $errors->has('abbreviation') ? ' has-error' : '' }}">
+                            <label for="abbreviation" class="col-md-4 control-label">abbreviation</label>
 
                             <div class="col-md-6">
-                                <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}" autofocus>
+                                <input id="abbreviation" type="text" class="form-control" name="abbreviation" value="{{ old('abbreviation') }}" autofocus>
 
-                                @if ($errors->has('city'))
+                                @if ($errors->has('abbreviation'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('city') }}</strong>
+                                    <strong>{{ $errors->first('abbreviation') }}</strong>
                                 </span>
                                 @endif
                             </div>

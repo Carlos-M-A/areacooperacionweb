@@ -18,70 +18,70 @@ class StudySeeder extends Seeder
         $study->name = 'Grado en Enfermería';
         $study->branch = 3;
         $study->inactive = false;
-        $study->faculty_id = 1;
+        $study->campus_id = 2;
         $study->save();
         
         $study = new Study();
         $study->name = 'Grado en Enología';
         $study->branch = 5;
         $study->inactive = false;
-        $study->faculty_id = 2;
+        $study->campus_id = 2;
         $study->save();
         
         $study = new Study();
         $study->name = 'Grado en Ingeniería Agrícola y del Medio Rural';
         $study->branch = 5;
         $study->inactive = false;
-        $study->faculty_id = 2;
+        $study->campus_id = 2;
         $study->save();
         
         $study = new Study();
         $study->name = 'Grado en Ingeniería Forestal y del Medio Natural';
         $study->branch = 5;
         $study->inactive = false;
-        $study->faculty_id = 2;
+        $study->campus_id = 2;
         $study->save();
         
         $study = new Study();
         $study->name = 'Grado en Ingeniería de las Industrias Agrarias y Alimentarias';
         $study->branch = 5;
         $study->inactive = false;
-        $study->faculty_id = 2;
+        $study->campus_id = 2;
         $study->save();
         
         $study = new Study();
         $study->name = 'Grado en Relaciones Laborales y Recursos Humanos';
         $study->branch = 4;
         $study->inactive = false;
-        $study->faculty_id = 3;
+        $study->campus_id = 2;
         $study->save();
         
         $study = new Study();
         $study->name = 'Grado en Educación Infantil';
         $study->branch = 4;
         $study->inactive = false;
-        $study->faculty_id = 4;
+        $study->campus_id = 2;
         $study->save();
         
         $study = new Study();
         $study->name = 'Grado en Educación Primaria';
         $study->branch = 4;
         $study->inactive = false;
-        $study->faculty_id = 4;
+        $study->campus_id = 2;
         $study->save();
         
         $study = new Study();
         $study->name = 'Grado en Educación Social';
         $study->branch = 4;
         $study->inactive = false;
-        $study->faculty_id = 4;
+        $study->campus_id = 2;
         $study->save();
         
         $study = new Study();
         $study->name = 'Programa de estudios conjunto de Grado en Educación Infantil y Grado en Educación Primaria';
         $study->branch = 4;
         $study->inactive = false;
-        $study->faculty_id = 4;
+        $study->campus_id = 2;
         $study->save();
         
         

@@ -78,10 +78,10 @@ return [
     'add_study' => 'Add study',
     
     //Faculties and studies
-    'create_faculty' => 'Create faculty',
+    'create_campus' => 'Create campus',
     'create_study' => 'Create study',
-    'search_faculties' => 'Search faculties',
-    'faculties' => 'Falculties',
+    'search_campuses' => 'Search campuses',
+    'campuses' => 'Campuses',
     'search_studies' => 'Search studies',
     'studies' => 'Studies',
     

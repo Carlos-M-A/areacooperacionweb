@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Faculty extends Model
+class Campus extends Model
 {
-    protected $table = 'Faculty';
+    protected $table = 'Campus';
     public $timestamps = false;
     
     public function studies() {
-        return $this->hasMany('App\Study', 'faculty_id', 'id');
+        return $this->hasMany('App\Study', 'campus_id', 'id');
     }
 }

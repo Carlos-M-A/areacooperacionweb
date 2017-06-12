@@ -13,9 +13,9 @@ class RoleChangeController extends Controller {
 
     public function get($id) {
         $roleChangeRequest = RoleChangeRequest::find($id);
-        $_roleData = $this->_roleData($id, $roleChangeRequest->newRole);
+        $roleData = $this->_roleData($id, $roleChangeRequest->newRole);
 
-        return view('users/roleChange')->with('roleChangeRequest', $roleChangeRequest)->with('_roleData', $_roleData);
+        return view('users/roleChange')->with('roleChangeRequest', $roleChangeRequest)->with('roleData', $roleData);
     }
 
     public function accept($id) {
@@ -33,10 +33,10 @@ class RoleChangeController extends Controller {
 
     public function reject($id) {
         $roleChangeRequest = RoleChangeRequest::find($id);
-        $_roleData = $this->_roleData($id, $roleChangeRequest->newRole);
+        $roleData = $this->_roleData($id, $roleChangeRequest->newRole);
 
         $roleChangeRequest->delete();
-        $_roleData->delete();
+        $roleData->delete();
 
         return redirect('roleChanges');
     }
