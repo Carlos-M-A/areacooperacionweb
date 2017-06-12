@@ -26,13 +26,13 @@ class ProjectsController extends Controller {
         return view('projects/projects')->with('projects', $projects->get());
     }
 
-    public function openProjects() {
+    public function proposedProjects() {
         $projects = Project::where('state', 1);
 
         return view('projects/projects')->with('projects', $projects->get());
     }
 
-    public function closedProjects() {
+    public function finishedProjects() {
         $projects = Project::where('state', 3);
 
         return view('projects/projects')->with('projects', $projects->get());

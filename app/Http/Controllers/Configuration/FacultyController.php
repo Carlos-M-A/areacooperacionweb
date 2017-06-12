@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Faculty;
 
-class FacultyController extends Controller {
+class CampusController extends Controller {
 
     public function showCreate() {
         return view('configuration/createFaculty');

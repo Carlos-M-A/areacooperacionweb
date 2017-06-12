@@ -105,8 +105,8 @@ Route::post('/proposal/{id}/cancel', 'Offers\ProposalController@cancel')->name('
 Route::get('/projects/showCreate', 'Projects\ProjectController@showCreate')->name('showCreateProject');
 Route::post('/projects/create', 'Projects\ProjectController@create')->name('createProject');
 Route::get('/projects/myProjects', 'Projects\ProjectsController@myProjects')->name('myProjects');
-Route::get('/projects/openProjects', 'Projects\ProjectsController@openProjects')->name('openProjects');
-Route::get('/projects/closedProjects', 'Projects\ProjectsController@closedProjects')->name('closedProjects');
+Route::get('/projects/proposedProjects', 'Projects\ProjectsController@proposedProjects')->name('proposedProjects');
+Route::get('/projects/finishedProjects', 'Projects\ProjectsController@finishedProjects')->name('finishedProjects');
 
 Route::get('/projects/{id}', 'Projects\ProjectController@get')->name('project');
 Route::get('/projects/{id}/showEdit', 'Projects\ProjectController@showEdit')->name('showEditProject');

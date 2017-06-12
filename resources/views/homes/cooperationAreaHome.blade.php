@@ -27,7 +27,7 @@
 
                 <div class="panel-body">
                     <p>
-                    <a href="{{ route('closedProjects') }}"> All projects</a>
+                    <a href="{{ route('finishedProjects') }}"> All projects</a>
                     <p>
                     <a href="{{ route('showCreateProject') }}"> Create project</a>
                 </div>
