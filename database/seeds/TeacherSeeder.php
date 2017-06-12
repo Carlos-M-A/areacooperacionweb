@@ -16,7 +16,6 @@ class TeacherSeeder extends Seeder
         
         $teacher = new Teacher();
         $teacher->id = 5;
-        $teacher->surnames = 'apellidos teacher';
         $teacher->areasOfInterest = 'areas interes teacher';
         $teacher->departments = 'departamentos teacher';
         $teacher->save();

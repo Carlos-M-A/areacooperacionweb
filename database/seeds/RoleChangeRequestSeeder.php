@@ -23,7 +23,6 @@ class RoleChangeRequestSeeder extends Seeder
         
         $teacher = new Teacher();
         $teacher->id = 6;
-        $teacher->surnames = 'Apellidos estu';
         $teacher->areasOfInterest = 'Areas interes cambio rol estu a doce';
         $teacher->departments = 'departamentos cambio de rol estudiante a teacher';
         $teacher->save();

@@ -152,7 +152,7 @@
             role = parseInt(document.getElementById('role').value);
         }
         if(thereIsSurnamesField){
-            surnamesDiv = document.getElementById('surnames_div');
+            surnamesLabel = document.getElementById('surnames_label');
         }
         
         areasOfInterestDiv = document.getElementById('areasOfInterest_div').style;
@@ -164,7 +164,6 @@
         teachingStudiesSelectedDiv = document.getElementById('teachingStudiesSelected_div').style;
         
         if(thereAreOrganizationFields){
-            socialNameDiv = document.getElementById('socialName_div').style;
             headquartersLocationDiv = document.getElementById('headquartersLocation_div').style;
             webDiv = document.getElementById('web_div').style;
             linksWithNearbyEntitiesDiv = document.getElementById('linksWithNearbyEntities_div').style;
@@ -173,7 +172,7 @@
             case 5:
             case 1:
                 if(thereIsSurnamesField){
-                    surnamesDiv.style.display = 'block';
+                    surnamesLabel.textContent = '{{__('models.surnames')}}';
                 }
                 areasOfInterestDiv.display = 'block';
                 skillsDiv.display = 'block';
@@ -183,7 +182,6 @@
                 teachingStudiesDiv.display = 'none';
                 teachingStudiesSelectedDiv.display = 'none';
                 if(thereAreOrganizationFields){
-                    socialNameDiv.display = 'none';
                     headquartersLocationDiv.display = 'none';
                     webDiv.display = 'none';
                     linksWithNearbyEntitiesDiv.display = 'none';
@@ -191,7 +189,7 @@
                 break;
             case 2:
                 if(thereIsSurnamesField){
-                    surnamesDiv.style.display = 'block';
+                    surnamesLabel.textContent = '{{__('models.surnames')}}';
                 }
                 areasOfInterestDiv.display = 'block';
                 skillsDiv.display = 'none';
@@ -201,7 +199,6 @@
                 teachingStudiesDiv.display = 'block';
                 teachingStudiesSelectedDiv.display = 'block';
                 if(thereAreOrganizationFields){
-                    socialNameDiv.display = 'none';
                     headquartersLocationDiv.display = 'none';
                     webDiv.display = 'none';
                     linksWithNearbyEntitiesDiv.display = 'none';
@@ -209,7 +206,7 @@
                 break;
             case 3:
                 if(thereIsSurnamesField){
-                    surnamesDiv.style.display = 'block';
+                    surnamesLabel.textContent = '{{__('models.surnames')}}';
                 }
                 areasOfInterestDiv.display = 'block';
                 skillsDiv.display = 'none';
@@ -219,7 +216,6 @@
                 teachingStudiesDiv.display = 'none';
                 teachingStudiesSelectedDiv.display = 'none';
                 if(thereAreOrganizationFields){
-                    socialNameDiv.display = 'none';
                     headquartersLocationDiv.display = 'none';
                     webDiv.display = 'none';
                     linksWithNearbyEntitiesDiv.display = 'none';
@@ -227,7 +223,7 @@
                 break;
             case 4:
                 if(thereIsSurnamesField){
-                    surnamesDiv.style.display = 'none';
+                    surnamesLabel.textContent = '{{__('models.socialName')}}';
                 }
                 areasOfInterestDiv.display = 'none';
                 skillsDiv.display = 'none';
@@ -237,7 +233,6 @@
                 teachingStudiesDiv.display = 'none';
                 teachingStudiesSelectedDiv.display = 'none';
                 if(thereAreOrganizationFields){
-                    socialNameDiv.display = 'block';
                     headquartersLocationDiv.display = 'block';
                     webDiv.display = 'block';
                     linksWithNearbyEntitiesDiv.display = 'block';
@@ -309,7 +304,7 @@
                         </div>
 
                         <div id="surnames_div" class="form-group{{ $errors->has('surnames') ? ' has-error' : '' }}">
-                            <label for="surnames" class="col-md-4 control-label">surnames</label>
+                            <label id="surnames_label"for="surnames" class="col-md-4 control-label">surnames</label>
 
                             <div class="col-md-6">
                                 <input id="surnames" type="text" class="form-control" name="surnames" value="{{ old('surnames') }}" autofocus>
@@ -317,20 +312,6 @@
                                 @if ($errors->has('surnames'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('surnames') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div id="socialName_div" class="form-group{{ $errors->has('socialName') ? ' has-error' : '' }}">
-                            <label for="socialName" class="col-md-4 control-label">Razón Social</label>
-
-                            <div class="col-md-6">
-                                <input id="socialName" type="text" class="form-control" name="socialName" value="{{ old('socialName') }}" >
-
-                                @if ($errors->has('socialName'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('socialName') }}</strong>
                                 </span>
                                 @endif
                             </div>

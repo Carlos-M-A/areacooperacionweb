@@ -16,7 +16,6 @@ class StudentSeeder extends Seeder
         
         $student = new Student();
         $student->id = 6;
-        $student->surnames = 'Apellidos estu';
         $student->areasOfInterest = 'Area interes estu';
         $student->skills = 'Competencias estu';
         $student->study_id = 1;

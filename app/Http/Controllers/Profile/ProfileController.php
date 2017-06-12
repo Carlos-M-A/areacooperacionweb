@@ -69,28 +69,25 @@ class ProfileController extends Controller {
             'email' => 'required|string|email|unique:User,email,' . $user->id . '|max:' . config('forms.email'),
             'idCard' => 'required|string|unique:User,idCard,' . $user->id . '|max:' . config('forms.idCard'),
             'phone' => 'required|string|max:' . config('forms.phone'),
+            'surnames' => 'required|string|max:' . config('forms.surnames'),
         ];
 
         switch ($user->role) {
             case 1:
-                $rules['surnames'] = 'required|string|max:' . config('forms.surnames');
                 $rules['study'] = 'required|integer|min:1';
                 $rules['areasOfInterest'] = 'required|string|max:' . config('forms.areasOfInterest');
                 $rules['skills'] = 'required|string|max:' . config('forms.skills');
                 break;
             case 2:
-                $rules['surnames'] = 'required|string|max:' . config('forms.surnames');
                 $rules['areasOfInterest'] = 'required|string|max:' . config('forms.areasOfInterest');
                 $rules['departments'] = 'required|string|max:' . config('forms.departments');
                 break;
             case 3:
-                $rules['surnames'] = 'required|string|max:' . config('forms.surnames');
                 $rules['areasOfInterest'] = 'required|string|max:' . config('forms.areasOfInterest');
                 $rules['description'] = 'required|string|max:' . config('forms.user_description');
                 break;
             case 4;
             case 5:
-                $rules['socialName'] = 'required|string|max:' . config('forms.socialName');
                 $rules['description'] = 'required|string|max:' . config('forms.user_description');
                 $rules['headquartersLocation'] = 'required|string|max:' . config('forms.headquartersLocation');
                 $rules['web'] = 'required|url|max:' . config('forms.url');
@@ -100,6 +97,7 @@ class ProfileController extends Controller {
         $this->validate($request, $rules);
 
         $user->name = $request->name;
+        $user->surnames = $request->surnames;
         $user->email = $request->email;
         $user->idCard = $request->idCard;
         $user->phone = $request->phone;
@@ -108,7 +106,6 @@ class ProfileController extends Controller {
         switch ($user->role) {
             case 1:
                 $student = Student::find($user->id);
-                $student->surnames = $request->surnames;
                 $student->areasOfInterest = $request->areasOfInterest;
                 $student->study_id = $request->study;
                 $student->skills = $request->skills;
@@ -116,14 +113,12 @@ class ProfileController extends Controller {
                 break;
             case 2:
                 $teacher = Teacher::find($user->id);
-                $teacher->surnames = $request->surnames;
                 $teacher->areasOfInterest = $request->areasOfInterest;
                 $teacher->departments = $request->departments;
                 $teacher->save();
                 break;
             case 3:
                 $other = Other::find($user->id);
-                $other->surnames = $request->surnames;
                 $other->areasOfInterest = $request->areasOfInterest;
                 $other->description = $request->description;
                 $other->save();
@@ -131,7 +126,6 @@ class ProfileController extends Controller {
             case 4:
             case 5:
                 $organization = Organization::find($user->id);
-                $organization->socialName = $request->socialName;
                 $organization->description = $request->description;
                 $organization->headquartersLocation = $request->headquartersLocation;
                 $organization->web = $request->web;

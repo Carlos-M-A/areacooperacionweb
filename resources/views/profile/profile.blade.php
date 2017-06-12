@@ -30,9 +30,10 @@
                                 <td>Name</td>
                                 <td>{{$user->name}}</td>
                             </tr>
-                            
-                            @yield('secondary_name')
-                            
+                            <tr>
+                                <td>surnames</td>
+                                <td>{{$user->surnames}}</td>
+                            </tr>
                             <tr>
                                 <td>Email</td>
                                 <td>{{$user->email}}</td>

@@ -38,15 +38,15 @@
                             </div>
                         </div>
 
-                        <div id="socialName_div" class="form-group{{ $errors->has('socialName') ? ' has-error' : '' }}">
-                            <label for="socialName" class="col-md-4 control-label">Razón Social</label>
+                        <div id="surnames_div" class="form-group{{ $errors->has('surnames') ? ' has-error' : '' }}">
+                            <label for="surnames" class="col-md-4 control-label">@lang('models.socialName')</label>
 
                             <div class="col-md-6">
-                                <input id="socialName" type="text" class="form-control" name="socialName" value="{{ old('socialName') }}" >
+                                <input id="surnames" type="text" class="form-control" name="surnames" value="{{ old('surnames') }}" >
 
-                                @if ($errors->has('socialName'))
+                                @if ($errors->has('surnames'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('socialName') }}</strong>
+                                    <strong>{{ $errors->first('surnames') }}</strong>
                                 </span>
                                 @endif
                             </div>

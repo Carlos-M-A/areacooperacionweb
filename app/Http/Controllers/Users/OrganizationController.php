@@ -70,7 +70,7 @@ class OrganizationController extends Controller {
             'email' => 'required|string|email|unique:User,email,' . $idToIgnore . '|max:' . config('forms.email'),
             'idCard' => 'required|string|unique:User,idCard,' . $idToIgnore . '|max:' . config('forms.idCard'),
             'phone' => 'required|string|max:' . config('forms.phone'),
-            'socialName' => 'required|string|max:' . config('forms.socialName'),
+            'surnames' => 'required|string|max:' . config('forms.surnames'),
             'description' => 'required|string|max:' . config('forms.user_description'),
             'headquartersLocation' => 'required|string|max:' . config('forms.headquartersLocation'),
             'web' => 'required|url|max:' . config('forms.url'),
@@ -82,13 +82,13 @@ class OrganizationController extends Controller {
 
     private function _requestToUser(Request $request, $user) {
         $user->name = $request->name;
+        $user->surnames = $request->surnames;
         $user->email = $request->email;
         $user->idCard = $request->idCard;
         $user->phone = $request->phone;
     }
 
     private function _requestToOrganization(Request $request, $organization) {
-        $organization->socialName = $request->socialName;
         $organization->description = $request->description;
         $organization->headquartersLocation = $request->headquartersLocation;
         $organization->web = $request->web;

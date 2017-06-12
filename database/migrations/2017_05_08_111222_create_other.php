@@ -15,7 +15,6 @@ class CreateOther extends Migration
     {
         Schema::create('Other', function (Blueprint $table) {
             $table->integer('id')->unsigned();
-            $table->string('surnames', config('forms.surnames'));
             $table->string('areasOfInterest', config('forms.areasOfInterest'));
             $table->string('description', config('forms.other_description'));
             

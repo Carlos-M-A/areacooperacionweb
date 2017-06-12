@@ -68,24 +68,10 @@ class RoleChangeRequestController extends Controller
         $roleChangeRequest->newRole = $request->role;
         $roleChangeRequest->save();
 
-        //This is to recycle the surname
-        switch ($user->role) {
-            case 1:
-                $surnames = Student::find($user->id)->surnames;
-                break;
-            case 2:
-                $surnames = Teacher::find($user->id)->surnames;
-                break;
-            case 3:
-                $surnames = Other::find($user->id)->surnames;
-                break;
-        }
-
         switch ($request->role) {
             case 1:
                 $student = new Student;
                 $student->id = $user->id;
-                $student->surnames = $surnames;
                 $student->areasOfInterest = $request->areasOfInterest;
                 $student->study_id = $request->study;
                 $student->skills = $request->skills;
@@ -94,7 +80,6 @@ class RoleChangeRequestController extends Controller
             case 2:
                 $teacher = new Teacher;
                 $teacher->id = $user->id;
-                $teacher->surnames = $surnames;
                 $teacher->areasOfInterest = $request->areasOfInterest;
                 $teacher->departments = $request->departments;
                 $teacher->save();
@@ -112,7 +97,6 @@ class RoleChangeRequestController extends Controller
             case 3:
                 $other = new Other;
                 $other->id = $user->id;
-                $other->surnames = $surnames;
                 $other->areasOfInterest = $request->areasOfInterest;
                 $other->description = $request->description;
                 $other->save();

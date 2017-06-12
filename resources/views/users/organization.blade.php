@@ -22,12 +22,10 @@
                                     <td>Name</td>
                                     <td>{{$organization->user->name}}</td>
                                 </tr>
-
                                 <tr>
                                     <td>Social name</td>
-                                    <td>{{$organization->socialName}}</td>
+                                    <td>{{$organization->user->surnames}}</td>
                                 </tr>
-
                                 <tr>
                                     <td>Email</td>
                                     <td>{{$organization->user->email}}</td>

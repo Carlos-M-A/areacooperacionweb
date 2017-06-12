@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
         
         $user = new User;
         $user->name = 'Administrador';
+        $user->surnames = 'Apellidos admin';
         $user->email = 'administrador@email.com';
         $user->password = bcrypt('123456');
         $user->idCard = 'adminDNI';
@@ -34,6 +35,7 @@ class UserSeeder extends Seeder
         
         $user = new User;
         $user->name = 'Área de Cooperación';
+        $user->surnames = 'Área de Cooperacion Internacional para el Desarrollo de la Universidad de Valladaolid';
         $user->email = 'areacooperacion@email.com';
         $user->password = bcrypt('123456');
         $user->idCard = 'areaDNI';
@@ -50,6 +52,7 @@ class UserSeeder extends Seeder
         
         $user = new User;
         $user->name = 'Organizacion';
+        $user->surnames = 'Social name org';
         $user->email = 'organizacion@email.com';
         $user->password = bcrypt('123456');
         $user->idCard = 'orgDNI';
@@ -66,6 +69,7 @@ class UserSeeder extends Seeder
         
         $user = new User;
         $user->name = 'Otro';
+        $user->surnames = 'Apellidos otro';
         $user->email = 'otro@email.com';
         $user->password = bcrypt('123456');
         $user->idCard = 'otroDNI';
@@ -82,6 +86,7 @@ class UserSeeder extends Seeder
         
         $user = new User;
         $user->name = 'Docente';
+        $user->surnames = 'Apellidos doce';
         $user->email = 'docente@email.com';
         $user->password = bcrypt('123456');
         $user->idCard = 'docenteDNI';
@@ -98,6 +103,7 @@ class UserSeeder extends Seeder
         
         $user = new User;
         $user->name = 'Estudiante';
+        $user->surnames = 'Apellidos estu';
         $user->email = 'estudiante@email.com';
         $user->password = bcrypt('123456');
         $user->idCard = 'estudianteDNI';
@@ -116,6 +122,7 @@ class UserSeeder extends Seeder
         
         $user = new User;
         $user->name = 'Organizacion gestionada 1';
+        $user->surnames = 'social name 1';
         $user->email = 'organizacionGes1@email.com';
         $user->password = bcrypt('123456');
         $user->idCard = 'orgDNI1';
@@ -132,6 +139,7 @@ class UserSeeder extends Seeder
         
         $user = new User;
         $user->name = 'Organizacion gestionada 2';
+        $user->surnames = 'social name 2';
         $user->email = 'organizacionGes2@email.com';
         $user->password = bcrypt('123456');
         $user->idCard = 'orgDNI2';

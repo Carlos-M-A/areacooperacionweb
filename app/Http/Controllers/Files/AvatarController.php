@@ -37,7 +37,7 @@ class AvatarController extends Controller {
         }
         $user->save();
         
-        if(Auth::user()->role == 1 && Auth::user()->id != $idUser){
+        if(Auth::user()->role == 6 && Auth::user()->id != $idUser){
             return redirect('users/'. $user->id);
         }
         return redirect($this->redirectTo);

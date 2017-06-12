@@ -21,7 +21,6 @@ return [
     'deadline' => 'Deadline',
     'createdDate' => 'Created date',
     'description' => 'Description',
-    'surnames' => 'Surnames',
     'areasOfInterest' => 'Areas of interest',
     'state' => 'State',
     'year' => 'Year',
@@ -102,6 +101,7 @@ return [
         'comment' => 'Comment',
 
     'user' => 'user',
+        'surnames' => 'Surnames',
         'password' => 'Password',
         'email' => 'Email',
         'idCard' => 'ID Card',

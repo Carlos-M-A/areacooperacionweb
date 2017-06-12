@@ -16,7 +16,6 @@ class OtherSeeder extends Seeder
         
         $other = new Other();
         $other->id = 4;
-        $other->surnames = 'apellidos other';
         $other->areasOfInterest = 'areas interes other';
         $other->description = 'descripción other';
         $other->save();

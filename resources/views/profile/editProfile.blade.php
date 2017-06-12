@@ -91,12 +91,15 @@
                             </div>
                         </div>
 
-                        @if($role<=3)
+                        
                         <div id="surnames_div" class="form-group{{ $errors->has('surnames') ? ' has-error' : '' }}">
-                            <label for="surnames" class="col-md-4 control-label">surnames</label>
-
+                            @if($user->role < 3 || $user->role == 6)
+                                <label for="surnames" class="col-md-4 control-label">@lang('models.surnames')</label>
+                            @else
+                                <label for="surnames" class="col-md-4 control-label">@lang('models.socialName')</label>
+                            @endif
                             <div class="col-md-6">
-                                <input id="surnames" type="text" class="form-control" name="surnames" value="{{ old('surnames')? old('surnames') : $roleData->surnames }}" autofocus>
+                                <input id="surnames" type="text" class="form-control" name="surnames" value="{{ old('surnames')? old('surnames') : $user->surnames }}" autofocus>
 
                                 @if ($errors->has('surnames'))
                                 <span class="help-block">
@@ -105,23 +108,7 @@
                                 @endif
                             </div>
                         </div>
-                       @endif
 
-                        @if($role==4 || $role==5)
-                        <div id="socialName_div" class="form-group{{ $errors->has('socialName') ? ' has-error' : '' }}">
-                            <label for="socialName" class="col-md-4 control-label">socialName</label>
-
-                            <div class="col-md-6">
-                                <input id="socialName" type="text" class="form-control" name="socialName" value="{{ old('socialName')? old('socialName') : $roleData->socialName }}" >
-
-                                @if ($errors->has('socialName'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('socialName') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                        </div>
-                        @endif
 
                         <div id="email_div" class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>

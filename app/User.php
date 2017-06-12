@@ -59,16 +59,14 @@ class User extends Authenticatable
     }
     
     public function getNameAndSurnames() {
-        $name = $this->name;
         switch ($this->role){
             case 1:
-                return $name.', '.Student::find($this->id)->surnames;
             case 2:
-                return $name.', '.Teacher::find($this->id)->surnames;
             case 3:
-                return $name.', '.Other::find($this->id)->surnames;
+            case 6:
+                return $this->name.', '.$this->surnames;
             default:
-                return $name;
+                return $this->name;
         }
     }
     

@@ -102,6 +102,7 @@ use RegistersUsers;
 
         $user = new User;
         $user->name = $data['name'];
+        $user->surnames = $data['surnames'];
         $user->email = $data['email'];
         $user->password = bcrypt($data['password']);
         $user->idCard = $data['idCard'];
@@ -122,7 +123,6 @@ use RegistersUsers;
             case 1:
                 $student = new Student;
                 $student->id = $user->id;
-                $student->surnames = $data['surnames'];
                 $student->areasOfInterest = $data['areasOfInterest'];
                 $student->study_id = $data['study'];
                 $student->skills = $data['study'];
@@ -131,7 +131,6 @@ use RegistersUsers;
             case 2:
                 $teacher = new Teacher;
                 $teacher->id = $user->id;
-                $teacher->surnames = $data['surnames'];
                 $teacher->areasOfInterest = $data['areasOfInterest'];
                 $teacher->departments = $data['departments'];
                 $teacher->save();
@@ -147,7 +146,6 @@ use RegistersUsers;
             case 3:
                 $other = new Other;
                 $other->id = $user->id;
-                $other->surnames = $data['surnames'];
                 $other->areasOfInterest = $data['areasOfInterest'];
                 $other->description = $data['description'];
                 $other->save();
@@ -155,7 +153,6 @@ use RegistersUsers;
             case 4:
                 $organization = new Organization;
                 $organization->id = $user->id;
-                $organization->socialName = $data['socialName'];
                 $organization->description = $data['description'];
                 $organization->headquartersLocation = $data['headquartersLocation'];
                 $organization->web = $data['web'];

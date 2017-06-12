@@ -15,7 +15,6 @@ class CreateTeacher extends Migration
     {
         Schema::create('Teacher', function (Blueprint $table) {
             $table->integer('id')->unsigned();
-            $table->string('surnames', config('forms.surnames'));
             $table->string('areasOfInterest', config('forms.areasOfInterest'));
             $table->string('departments', config('forms.departments'));
             

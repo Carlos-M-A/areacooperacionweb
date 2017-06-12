@@ -4,13 +4,6 @@
 
 @extends('profile.profile')
 
-@section('secondary_name')
-<tr>
-    <td>Apellidos</td>
-    <td>{{$other->surnames}}</td>
-</tr>
-@endsection
-
 @section('role_data')
 <tr>
     <td>areaOfInterest</td>

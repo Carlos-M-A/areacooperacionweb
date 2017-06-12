@@ -16,6 +16,8 @@ class CreateUser extends Migration
         Schema::create('User', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', config('forms.user_name'));
+            // If the user is a organization surnames = socialName
+            $table->string('surnames', config('forms.surnames')); 
             $table->string('email', config('forms.email'))->unique();
             $table->string('password');
             $table->rememberToken();

@@ -35,9 +35,10 @@
                                     <td>Name</td>
                                     <td>{{$user->name}}</td>
                                 </tr>
-
-                                @yield('name_secundary')
-
+                                <tr>
+                                    <td>surname</td>
+                                    <td>{{$user->surnames}}</td>
+                                </tr>
                                 <tr>
                                     <td>Email</td>
                                     <td>{{$user->email}}</td>
