@@ -14,7 +14,7 @@
 </script>
 @endsection
 
-@section('teacher_proposal')
+@section('student_inscription')
 
 @if(is_null($inscriptionInProject) && $project->state==1)
 

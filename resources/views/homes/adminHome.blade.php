@@ -19,7 +19,7 @@
                     <p>
                     <a href="{{ route('showCreateOrganization') }}"> Create organization</a>
                     <p>
-                    <a href="{{ route('observatory') }}"> The observatory</a>
+                    <a href="{{ route('observatory', ['ask' => 1]) }}"> The observatory</a>
                     
                 </div>
             </div>

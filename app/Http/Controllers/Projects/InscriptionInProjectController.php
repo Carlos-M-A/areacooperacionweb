@@ -41,15 +41,17 @@ class InscriptionInProjectController extends Controller {
 
     public function cancel($id) {
         $inscriptionInProject = InscriptionInProject::find($id);
+        $project = $inscriptionInProject->project;
         $user = Auth::user();
         if ($user->role == 1) { //Caller is a student
             $inscriptionInProject->state = 3;
+            
         } elseif ($user->role == 2) { // caller is a teacher
             $inscriptionInProject->state = 1;
         }
+        
         $inscriptionInProject->save();
-
-        $project = $inscriptionInProject->project;
+        $project->author = '';
         $project->state = 1;
         $project->save();
 

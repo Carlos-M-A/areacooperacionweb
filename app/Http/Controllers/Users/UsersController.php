@@ -14,7 +14,8 @@ class UsersController extends Controller {
             'name' => 'nullable|string|max:' . config('forms.user_name'),
             'idCard' => 'nullable|string|max:' . config('forms.idCard'),
         ]);
-
+        $request->flash();
+        
         $users = User::where('accepted', true);
 
         if ($request->role != 0) {
@@ -27,12 +28,12 @@ class UsersController extends Controller {
             $users->where('idCard', 'LIKE', '%' . $request->idCard . '%');
         }
 
-        return view('users/users')->with('users', $users->get());
+        return view('users/users')->with('users', $users->paginate(config('constants.pagination')));
     }
 
     public function registrationRequests() {
         $users = User::where('accepted', false);
-        return view('users/registrationRequests')->with('users', $users->get());
+        return view('users/registrationRequests')->with('users', $users->paginate(config('constants.pagination')));
     }
 
 }

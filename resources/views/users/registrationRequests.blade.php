@@ -35,6 +35,9 @@
                         </table>
                     </div>
                 </div>
+                <div class="panel-footer">
+                    {{ $users->links() }}
+                </div>
             </div>
             
         </div>

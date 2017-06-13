@@ -33,8 +33,8 @@ return [
         'urlDocumentation' => 'urlDocumentation',
         
     
-    'faculty' => 'Faculty',
-        'city' => 'city',
+    'campus' => 'Campus',
+        'abbreviation' => 'Abbreviation',
     
     'inscription' => 'Inscription',
         'score' => 'Score',

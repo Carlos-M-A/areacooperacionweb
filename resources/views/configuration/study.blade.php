@@ -137,9 +137,9 @@
                                     <option>--Choose a campus--</option>
                                     
                                     @php
-                                        $faculties = App\Campus::all();
+                                        $campuses = App\Campus::all();
                                     @endphp
-                                    @foreach($faculties as $campus)
+                                    @foreach($campuses as $campus)
                                         <option value="{{$campus->id}}">{{$campus->name}} - {{$campus->abbreviation}}</option>
                                     @endforeach
                                 </select>

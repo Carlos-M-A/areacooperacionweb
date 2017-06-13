@@ -64,9 +64,9 @@
                      @yield('project_options')
                 
             </div>
-            @yield('project_proposals')
+            @yield('project_inscriptions')
                                 
-            @yield('teacher_proposal')
+            @yield('student_inscription')
         </div>
     </div>
 </div>

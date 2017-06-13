@@ -19,7 +19,7 @@
 
 @endsection
 
-@section('project_proposals')
+@section('project_inscriptions')
 
 
 <div class="panel panel-primary">
@@ -66,39 +66,40 @@
 </div>
 
 @if($project->state <= 2)
-<div class="panel panel-primary">
+<div class="panel panel-default">
     <div class="panel-heading">
-        <h4 class="panel-title">
-           <a data-toggle="collapse" href="#collapseTutelageProposals">@lang('general.inscriptions_in_project') <span class="badge">{{count($project->inscriptionsInProject)}}</span></a>
-        </h4>
+        <ul class="nav nav-pills">
+                        <li class="{{old('stateInscriptions')==1 ? 'active' : ''}}"><a href="{{ route('project', ['id'=> $project->id, 'stateInscriptions' => 1]) }}">Inscriptions<span class="badge">{{$project->getAmountOfNotChosenInscriptions()}}</span></a></li>
+                        <li class="{{old('stateInscriptions')==3 ? 'active' : ''}}"><a href="{{ route('project', ['id'=> $project->id, 'stateInscriptions' => 3]) }}">Cancelled inscriptions<span class="badge">{{$project->getAmountOfCancelledInscriptions()}}</span></a></li>
+                    </ul>
     </div>
-    <div id="collapseTutelageProposals" class="panel-collapse collapse">
+    <div class="panel-body">
         
-         @foreach($project->inscriptionsInProject as $proposal)
+         @foreach($inscriptions as $inscription)
                 <div class="panel-group">
                    <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#{{'collapse'.$proposal->student->id}}">{{$proposal->student->user->getNameAndSurnames()}}</a>
+                                <a data-toggle="collapse" href="#{{'collapse'.$inscription->student->id}}">{{$inscription->student->user->getNameAndSurnames()}}</a>
                             </h4>
                         </div>
-                    <div id="{{'collapse'.$proposal->student->id}}" class="panel-collapse collapse">
+                    <div id="{{'collapse'.$inscription->student->id}}" class="panel-collapse collapse">
                     <ul class="list-group">
-                        <li class="list-group-item">state: {{$proposal->state}}</li>
-                        <li class="list-group-item">comment: {{$proposal->comment}}</li>
-                        <li class="list-group-item">phone: {{$proposal->student->user->phone}}</li>
-                        <li class="list-group-item">email: {{$proposal->student->user->email}}</li>
-                        <li class="list-group-item">areasOfInterest: {{$proposal->student->areasOfInterest}}</li>
-                        <li class="list-group-item">skills: {{$proposal->student->skills}}</li>
-                        <li class="list-group-item">urlCurriculum: {{$proposal->student->urlCurriculum}}</li>
+                        <li class="list-group-item">state: {{$inscription->state}}</li>
+                        <li class="list-group-item">comment: {{$inscription->comment}}</li>
+                        <li class="list-group-item">phone: {{$inscription->student->user->phone}}</li>
+                        <li class="list-group-item">email: {{$inscription->student->user->email}}</li>
+                        <li class="list-group-item">areasOfInterest: {{$inscription->student->areasOfInterest}}</li>
+                        <li class="list-group-item">skills: {{$inscription->student->skills}}</li>
+                        <li class="list-group-item">urlCurriculum: {{$inscription->student->urlCurriculum}}</li>
                     </ul>
                     </div>
-                       @if($proposal->state == 1 && $project->state == 1)
+                       @if($inscription->state == 1 && $project->state == 1)
                         <div class="panel-footer">
                             <form>
                                 {{ csrf_field() }}
                                 <div class="btn-group">
-                                    <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('acceptInscriptionInProject', ['id'=> $proposal->id])}}">Choose</button>
+                                    <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('acceptInscriptionInProject', ['id'=> $inscription->id])}}">Choose</button>
                                 </div>
                             </form>
                         </div>
@@ -107,6 +108,9 @@
                 </div>
         @endforeach
     </div>
+    <div class="panel-footer">
+                    {{ $inscriptions->appends(['stateInscriptions' => old('stateInscriptions')])->links() }}
+                </div>
 </div>
 @endif
 

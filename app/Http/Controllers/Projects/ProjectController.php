@@ -34,7 +34,7 @@ class ProjectController extends Controller {
         return view('projects/editProject')->with('project', $project);
     }
 
-    public function get($id) {
+    public function get($id, Request $request) {
         $project = Project::find($id);
         if(! Auth::check()){
             return view('projects/project')->with('project', $project);
@@ -50,11 +50,21 @@ class ProjectController extends Controller {
                     return view('projects/projectAsStudent')->with('project', $project)->with('inscriptionInProject', $inscriptionInProject);
                 }
             case 2:
+                $this->validate($request, [
+                    'stateInscriptions' => 'nullable|integer|min:1|max:3',
+                ]);
+                $state = 1;
+                if(!is_null($request->stateInscriptions)){
+                    $state = $request->stateInscriptions;
+                }
+                $request->flash();
+                
+                $inscriptions = InscriptionInProject::where('project_id', $project->id)->where('state', $state)->paginate(config('constants.pagination'));
                 $inscriptionInProjectChosen = InscriptionInProject::where('project_id', $project->id)->where('state', 2)->get()->first();
                 if (is_null($inscriptionInProjectChosen)) {
-                    return view('projects/projectAsTeacher')->with('project', $project)->with('inscriptionInProjectChosen');
+                    return view('projects/projectAsTeacher')->with('project', $project)->with('inscriptions', $inscriptions)->with('inscriptionInProjectChosen');
                 } else {
-                    return view('projects/projectAsTeacher')->with('project', $project)->with('inscriptionInProjectChosen', $inscriptionInProjectChosen);
+                    return view('projects/projectAsTeacher')->with('project', $project)->with('inscriptions', $inscriptions)->with('inscriptionInProjectChosen', $inscriptionInProjectChosen);
                 }
             case 5:
                 return view('projects/projectAsCooperationArea')->with('project', $project);

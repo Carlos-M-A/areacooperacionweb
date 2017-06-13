@@ -11,25 +11,17 @@ class CampusesController extends Controller {
     public function search(Request $request) {
         $this->validate($request, [
             'name' => 'nullable|string|max:' . config('forms.campus_name'),
-            'abbreviation' => 'nullable|string|max:' . config('forms.abbreviation'),
         ]);
-
+        $request->flash();
         //If the name and the abbreviation are empty then return all results
-        if (is_null($request->name) && is_null($request->abbreviation)) {
-            $faculties = Campus::all();
-            return view('configuration/campuses')->with('faculties', $faculties);
+        if (is_null($request->name)) {
+            $campuses = Campus::paginate(config('constants.pagination'));
+            return view('configuration/campuses')->with('campuses', $campuses);
         }
-        //Choose that search depending de the empty fields
-        if (!is_null($request->name)) {
-            $faculties = Campus::where('name', 'LIKE', '%' . $request->name . '%');
-            if (!is_null($request->abbreviation)) {
-                $faculties->where('abbreviation', 'LIKE', '%' . $request->abbreviation . '%');
-            }
-        } else {
-            $faculties = Campus::where('abbreviation', 'LIKE', '%' . $request->abbreviation . '%');
-        }
-
-        return view('configuration/campuses')->with('faculties', $faculties->get());
+        
+        $campuses = Campus::where('name', 'LIKE', '%' . $request->name . '%');
+            
+        return view('configuration/campuses')->with('campuses', $campuses->paginate(config('constants.pagination')));
     }
 
 }

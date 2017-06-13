@@ -20,4 +20,12 @@ class Project extends Model
     public function inscriptionsInProject() {
         return $this->hasMany('App\InscriptionInProject', 'project_id', 'id');
     }
+    
+    public function getAmountOfNotChosenInscriptions() {
+        return InscriptionInProject::where('project_id', $this->id)->where('state', 1)->count();
+    }
+    
+    public function getAmountOfCancelledInscriptions() {
+        return InscriptionInProject::where('project_id', $this->id)->where('state', 3)->count();
+    }
 }

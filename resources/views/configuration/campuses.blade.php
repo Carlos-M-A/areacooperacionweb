@@ -28,20 +28,6 @@
                             </div>
                         </div>
 
-                        <div id="abbreviationDiv" class="form-group{{ $errors->has('abbreviation') ? ' has-error' : '' }}">
-                            <label for="abbreviation" class="col-md-4 control-label">abbreviation</label>
-
-                            <div class="col-md-6">
-                                <input id="abbreviation" type="text" class="form-control" name="abbreviation" value="{{ old('abbreviation') }}" autofocus>
-
-                                @if ($errors->has('abbreviation'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('abbreviation') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                        </div>
-
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
@@ -67,7 +53,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($faculties as $campus)
+                                @foreach($campuses as $campus)
                                 <tr>
                                     <td><a href="{{route('campus', ['id'=> $campus->id])}}" >{{$campus->name}}</a></td>
                                     <td>{{$campus->abbreviation}}</td>
@@ -76,6 +62,10 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+                
+                <div class="panel-footer">
+                    {{ $campuses->appends(['name' => old('name')])->links() }}
                 </div>
             </div>
             

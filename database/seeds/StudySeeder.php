@@ -15,7 +15,42 @@ class StudySeeder extends Seeder
         DB::table('Study')->delete();
 
         $study = new Study();
-        $study->name = 'Grado en Enfermería';
+        $study->name = 'Grado en Enfermería 1';
+        $study->branch = 3;
+        $study->inactive = false;
+        $study->campus_id = 2;
+        $study->save();
+        
+        $study = new Study();
+        $study->name = 'Grado en Enfermería2';
+        $study->branch = 3;
+        $study->inactive = false;
+        $study->campus_id = 2;
+        $study->save();
+        
+        $study = new Study();
+        $study->name = 'Grado en Enfermería3';
+        $study->branch = 3;
+        $study->inactive = false;
+        $study->campus_id = 2;
+        $study->save();
+        
+        $study = new Study();
+        $study->name = 'Grado en Enfermería4';
+        $study->branch = 3;
+        $study->inactive = false;
+        $study->campus_id = 2;
+        $study->save();
+        
+        $study = new Study();
+        $study->name = 'Grado en Enfermería5';
+        $study->branch = 3;
+        $study->inactive = false;
+        $study->campus_id = 2;
+        $study->save();
+        
+        $study = new Study();
+        $study->name = 'Grado en Enfermería6';
         $study->branch = 3;
         $study->inactive = false;
         $study->campus_id = 2;

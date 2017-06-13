@@ -13,6 +13,7 @@ return [
     | are represented by a integer.
     */
 
+    'role_0' => ' -- All roles --',
     'role_1' => 'Student',
     'role_2' => 'Teacher',
     'role_3' => 'Other',
@@ -20,6 +21,7 @@ return [
     'role_5' => 'Cooperation Area',
     'role_6' => 'Admin',
     
+    'branch_0' => ' -- All branches --',
     'branch_1' => 'Arts and Humanities',
     'branch_2' => 'Sciences',
     'branch_3' => 'Health Sciences',

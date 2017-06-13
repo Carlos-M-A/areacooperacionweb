@@ -12,7 +12,7 @@ class RoleChangesController extends Controller {
      * @return type
      */
     public function all() {
-        $requests = RoleChangeRequest::all();
+        $requests = RoleChangeRequest::paginate(config('constants.pagination'));
         return view('users/roleChanges')->with('requests', $requests);
     }
 

@@ -13,26 +13,27 @@ class StudiesController extends Controller {
             'name' => 'nullable|string|max:' . config('forms.study_name'),
             'branch' => 'required|integer|min:0|max:6',
         ]);
-
-        //si el name esta vacio y da igual la branch se envian todos los resultados
+        $request->flash();
+        
+        //search all studies
         if (is_null($request->name) && $request->branch == 0) {
-            $studies = Study::all();
+            $studies = Study::paginate(config('constants.pagination'));
             return view('configuration/studies')->with('studies', $studies);
         }
 
-        //Si no se eligio ninguna branch se busca solo por el name del study
+        //search studies by name
         if ($request->branch == 0) {
             $studies = Study::where('name', 'LIKE', '%' . $request->name . '%');
-            return view('configuration/studies')->with('studies', $studies->get());
+            return view('configuration/studies')->with('studies', $studies->paginate(config('constants.pagination')));
         }
 
-        //Si se eligio una branch se busca dentro de esa branch los studies
+        //search studies by name and branch
         $studies = Study::where('branch', $request->branch);
         if (!is_null($request->name)) {
             $studies->where('name', 'LIKE', '%' . $request->name . '%');
         }
 
-        return view('configuration/studies')->with('studies', $studies->get());
+        return view('configuration/studies')->with('studies', $studies->paginate(config('constants.pagination')));
     }
 
 }

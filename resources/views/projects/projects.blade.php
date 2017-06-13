@@ -22,7 +22,7 @@
                                 
                                 @foreach($projects as $project)
                                 <tr>
-                                    <td><a href="{{route('project', ['id'=> $project->id])}}" >{{$project->title}}</a></td>
+                                    <td><a href="{{route('project', ['id'=> $project->id, 'stateInscriptions' => 1])}}" >{{$project->title}}</a></td>
                                     <td>{{$project->state}}</td>
                                 </tr>
                                 @endforeach

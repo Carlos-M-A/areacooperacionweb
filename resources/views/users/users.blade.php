@@ -22,13 +22,18 @@
 
                             <div class="col-md-6">
                                 <select  id="role" class="form-control" name="role" autofocus>
-                                    <option id="roleOption0" value="0">--All roles--</option>
-                                    <option id="roleOption1" value="1">Student UVa</option>
-                                    <option id="roleOption2" value="2">Teacher UVa</option>
-                                    <option id="roleOption3" value="3">Other</option>
-                                    <option id="roleOption4" value="4">Organization</option>
-                                    <option id="roleOption5" value="5">Cooperation area</option>
-                                    <option id="roleOption6" value="6">Admin</option>
+                                    @if(old('role')>0)
+                                        <option value="{{old('role')}}">@lang('enums.role_' . old('role'))</option>
+                                        <option value="0">@lang('enums.role_0')</option>
+                                    @else
+                                        <option value="0">@lang('enums.role_0')</option>
+                                    @endif
+                                    <option id="roleOption1" value="1">@lang('enums.role_1')</option>
+                                    <option id="roleOption2" value="2">@lang('enums.role_2')</option>
+                                    <option id="roleOption3" value="3">@lang('enums.role_3')</option>
+                                    <option id="roleOption4" value="4">@lang('enums.role_4')</option>
+                                    <option id="roleOption5" value="5">@lang('enums.role_5')</option>
+                                    <option id="roleOption6" value="6">@lang('enums.role_6')</option>
                                 </select>
 
                                 @if ($errors->has('role'))
@@ -109,6 +114,9 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div class="panel-footer">
+                    {{ $users->appends(['name' => old('name'),'role' => old('role'), 'idCard' => old('idCard')])->links() }}
                 </div>
             </div>
             

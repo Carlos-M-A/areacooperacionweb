@@ -38,7 +38,7 @@ return [
     //Campus and studies
     'campus_name' => 100,
     'study_name' => 100,
-    'abbreviation' => 100,
+    'abbreviation' => 5,
     
     //offers and proposals
     'offer_title' => 200,
