@@ -69,8 +69,8 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <ul class="nav nav-pills">
-                        <li class="{{old('stateInscriptions')==1 ? 'active' : ''}}"><a href="{{ route('project', ['id'=> $project->id, 'stateInscriptions' => 1]) }}">Inscriptions<span class="badge">{{$project->getAmountOfNotChosenInscriptions()}}</span></a></li>
-                        <li class="{{old('stateInscriptions')==3 ? 'active' : ''}}"><a href="{{ route('project', ['id'=> $project->id, 'stateInscriptions' => 3]) }}">Cancelled inscriptions<span class="badge">{{$project->getAmountOfCancelledInscriptions()}}</span></a></li>
+                        <li class="{{old('stateOfInscriptions')==1 ? 'active' : ''}}"><a href="{{ route('project', ['id'=> $project->id, 'stateOfInscriptions' => 1]) }}">Inscriptions<span class="badge">{{$project->getAmountOfNotChosenInscriptions()}}</span></a></li>
+                        <li class="{{old('stateOfInscriptions')==3 ? 'active' : ''}}"><a href="{{ route('project', ['id'=> $project->id, 'stateOfInscriptions' => 3]) }}">Cancelled inscriptions<span class="badge">{{$project->getAmountOfCancelledInscriptions()}}</span></a></li>
                     </ul>
     </div>
     <div class="panel-body">
@@ -109,8 +109,8 @@
         @endforeach
     </div>
     <div class="panel-footer">
-                    {{ $inscriptions->appends(['stateInscriptions' => old('stateInscriptions')])->links() }}
-                </div>
+                    {{ $inscriptions->appends(['stateOfInscriptions' => old('stateOfInscriptions')])->links() }}
+    </div>
 </div>
 @endif
 

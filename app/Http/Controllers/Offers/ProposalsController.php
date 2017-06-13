@@ -9,19 +9,6 @@ use Illuminate\Support\Facades\Auth;
 class ProposalsController extends Controller {
 
     /**
-     * Return the offers in that no proposal has been made by the student who
-     * call this function
-     */
-    public function newOffers() {
-        $offers = Offer::whereDoesntHave('proposals', function ($query) {
-                    $user = Auth::user();
-                    $query->where('student_id', $user->id);
-                })->where('open', true);
-
-        return view('offers/offers')->with('offers', $offers->get());
-    }
-
-    /**
      * Return the offers in that exists a proposal has been made
      *  by the student who calls this function
      */
@@ -31,7 +18,7 @@ class ProposalsController extends Controller {
                     $query->where('student_id', $user->id);
                 });
 
-        return view('offers/offers')->with('offers', $offers->get());
+        return view('offers/offers')->with('offers', $offers->paginate(config('constants.pagination')));
     }
 
     /**
@@ -44,7 +31,19 @@ class ProposalsController extends Controller {
                     $query->where('student_id', $user->id)->where('state', 4);
                 });
 
-        return view('offers/offers')->with('offers', $offers->get());
+        return view('offers/offers')->with('offers', $offers->paginate(config('constants.pagination')));
     }
 
+    /**
+     * Return the offers in that exists a acepted proposal has been made
+     *  by the student who calls this function
+     */
+    public function approvedProposals() {
+        $offers = Offer::whereHas('proposals', function ($query) {
+                    $user = Auth::user();
+                    $query->where('student_id', $user->id)->where('state', 2);
+                });
+
+        return view('offers/offers')->with('offers', $offers->paginate(config('constants.pagination')));
+    }
 }

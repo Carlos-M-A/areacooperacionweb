@@ -31,6 +31,9 @@
                         </table>
                     </div>
                 </div>
+                <div class="panel-footer">
+                    {{ $convocatories->links() }}
+                </div>
             </div>
         </div>
     </div>

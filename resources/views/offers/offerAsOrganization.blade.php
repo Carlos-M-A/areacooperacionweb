@@ -16,98 +16,19 @@
 
 @section('offer_proposals')
 
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapseWinningProposals">Winning proposals</a>
-                            </h4>
-    </div>
-    <div id="collapseWinningProposals" class="panel-collapse collapse">
-        
-         @foreach($offer->proposals as $proposal)
-            @if($proposal->state == 4)
-                <div class="panel-group">
-                   <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#{{'collapse'.$proposal->student->id}}">{{$proposal->student->user->getNameAndSurnames()}}</a>
-                            </h4>
-                        </div>
-                    <div id="{{'collapse'.$proposal->student->id}}" class="panel-collapse collapse">
-                    <ul class="list-group">
-                        <li class="list-group-item ">type: {{$proposal->type}}</li>
-                        <li class="list-group-item">description: {{$proposal->description}}</li>
-                        <li class="list-group-item">scheduleAvailable: {{$proposal->scheduleAvailable}}</li>
-                        <li class="list-group-item">totalHours: {{$proposal->totalHours}}</li>
-                        <li class="list-group-item">earliestStartDate: {{$proposal->earliestStartDate}}</li>
-                        <li class="list-group-item">latestEndDate: {{$proposal->latestEndDate}}</li>
-                        <li class="list-group-item">state: {{$proposal->state}}</li>
-                        <li class="list-group-item">creationDate: {{$proposal->creationDate}}</li>
-                    </ul>
-                    </div>
-                    </div>
-                </div> 
-            @endif
-        @endforeach
-    </div>
-</div>
-
-<div class="panel panel-success">
-    <div class="panel-heading">
-        <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapseApprovedProposals">Approved Proposals</a>
-                            </h4>
-    </div>
-    <div id="collapseApprovedProposals" class="panel-collapse collapse">
-        
-         @foreach($offer->proposals as $proposal)
-            @if($proposal->state == 2)
-                <div class="panel-group">
-                   <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#{{'collapse'.$proposal->student->id}}">{{$proposal->student->user->getNameAndSurnames()}}</a>
-                            </h4>
-                        </div>
-                    <div id="{{'collapse'.$proposal->student->id}}" class="panel-collapse collapse">
-                    <ul class="list-group">
-                        <li class="list-group-item ">type: {{$proposal->type}}</li>
-                        <li class="list-group-item">description: {{$proposal->description}}</li>
-                        <li class="list-group-item">scheduleAvailable: {{$proposal->scheduleAvailable}}</li>
-                        <li class="list-group-item">totalHours: {{$proposal->totalHours}}</li>
-                        <li class="list-group-item">earliestStartDate: {{$proposal->earliestStartDate}}</li>
-                        <li class="list-group-item">latestEndDate: {{$proposal->latestEndDate}}</li>
-                        <li class="list-group-item">state: {{$proposal->state}}</li>
-                        <li class="list-group-item">creationDate: {{$proposal->creationDate}}</li>
-                    </ul>
-                    </div>
-                    @if($offer->open)
-                    <div class="panel-footer">
-                        <form>
-                                {{ csrf_field() }}
-                                <div class="btn-group">
-                                    <button class="btn btn-danger"  type="submit" formmethod="POST" formaction="{{route('rejectProposal', ['id'=> $proposal->id])}}">Reject</button>
-                                </div>
-                            </form>
-                    </div>
-                    @endif
-                    </div>
-                </div> 
-            @endif
-        @endforeach
-    </div>
-</div>
-
 <div class="panel panel-info">
     <div class="panel-heading">
-        <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapseNewProposals">New Proposals</a>
-                            </h4>
+        <ul class="nav nav-pills">
+                        <li class="{{old('stateOfProposals')==1 ? 'active' : ''}}"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 1]) }}">news<span class="badge">{{$offer->getAmountOfNotEvaluatedProposals()}}</span></a></li>
+                        <li class="{{old('stateOfProposals')==2 ? 'active' : ''}}"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 2]) }}">Approved<span class="badge">{{$offer->getAmountOfApprovedProposals()}}</span></a></li>
+                        <li class="{{old('stateOfProposals')==3 ? 'active' : ''}}"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 3]) }}">Rejected<span class="badge">{{$offer->getAmountOfRejectedProposals()}}</span></a></li>
+                        <li class="{{old('stateOfProposals')==5 ? 'active' : ''}}"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 5]) }}">Cancelled<span class="badge">{{$offer->getAmountOfCancelledProposals()}}</span></a></li>
+                        <li class="{{old('stateOfProposals')==4 ? 'active' : ''}}"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 4]) }}">Students winners<span class="badge">{{$offer->getAmountOfAcceptedProposals()}}</span></a></li>
+                    </ul>
     </div>
-    <div id="collapseNewProposals" class="panel-collapse collapse">
+    <div class="panel-body">
         
-         @foreach($offer->proposals as $proposal)
-            @if($proposal->state == 1)
+         @foreach($proposals as $proposal)
                 <div class="panel-group">
                    <div class="panel panel-default">
                         <div class="panel-heading">
@@ -139,100 +60,23 @@
                             <form>
                                 {{ csrf_field() }}
                                 <div class="btn-group">
+                                    @if($proposal->state == 1 || $proposal->state == 3)
                                     <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('approveProposal', ['id'=> $proposal->id])}}">Approve</button>
+                                    @endif
+                                    @if($proposal->state <= 2)
                                     <button class="btn btn-danger"  type="submit" formmethod="POST" formaction="{{route('rejectProposal', ['id'=> $proposal->id])}}">Reject</button>
+                                    @endif
                                 </div>
                             </form>
                     </div>
                     @endif
                     </div>
                 </div> 
-            @endif
         @endforeach
     </div>
-</div>
-
-<div class="panel panel-danger">
-    <div class="panel-heading">
-        <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapseRejectedProposals">Rejected Proposals</a>
-                            </h4>
-    </div>
-    <div id="collapseRejectedProposals" class="panel-collapse collapse">
-        
-         @foreach($offer->proposals as $proposal)
-            @if($proposal->state == 3)
-                <div class="panel-group">
-                   <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#{{'collapse'.$proposal->student->id}}">{{$proposal->student->user->getNameAndSurnames()}}</a>
-                            </h4>
-                        </div>
-                    <div id="{{'collapse'.$proposal->student->id}}" class="panel-collapse collapse">
-                    <ul class="list-group">
-                        <li class="list-group-item ">type: {{$proposal->type}}</li>
-                        <li class="list-group-item">description: {{$proposal->description}}</li>
-                        <li class="list-group-item">scheduleAvailable: {{$proposal->scheduleAvailable}}</li>
-                        <li class="list-group-item">totalHours: {{$proposal->totalHours}}</li>
-                        <li class="list-group-item">earliestStartDate: {{$proposal->earliestStartDate}}</li>
-                        <li class="list-group-item">latestEndDate: {{$proposal->latestEndDate}}</li>
-                        <li class="list-group-item">state: {{$proposal->state}}</li>
-                        <li class="list-group-item">creationDate: {{$proposal->creationDate}}</li>
-                    </ul>
-                    </div>
-                    @if($offer->open)
-                    <div class="panel-footer">
-                        <form>
-                                {{ csrf_field() }}
-                                <div class="btn-group">
-                                    <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('approveProposal', ['id'=> $proposal->id])}}">Approve</button>
-                                </div>
-                            </form>
-                    </div>
-                    @endif
-                    </div>
-                </div> 
-            @endif
-        @endforeach
+    <div class="panel-footer">
+        {{ $proposals->appends(['stateOfProposals' => old('stateOfProposals')])->links() }}
     </div>
 </div>
-
-<div class="panel panel-danger">
-    <div class="panel-heading">
-        <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapseCancelledProposals">Cancelled Proposals</a>
-                            </h4>
-    </div>
-    <div id="collapseCancelledProposals" class="panel-collapse collapse">
-        
-         @foreach($offer->proposals as $proposal)
-            @if($proposal->state == 5)
-                <div class="panel-group">
-                   <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#{{'collapse'.$proposal->student->id}}">{{$proposal->student->user->getNameAndSurnames()}}</a>
-                            </h4>
-                        </div>
-                    <div id="{{'collapse'.$proposal->student->id}}" class="panel-collapse collapse">
-                    <ul class="list-group">
-                        <li class="list-group-item ">type: {{$proposal->type}}</li>
-                        <li class="list-group-item">description: {{$proposal->description}}</li>
-                        <li class="list-group-item">scheduleAvailable: {{$proposal->scheduleAvailable}}</li>
-                        <li class="list-group-item">totalHours: {{$proposal->totalHours}}</li>
-                        <li class="list-group-item">earliestStartDate: {{$proposal->earliestStartDate}}</li>
-                        <li class="list-group-item">latestEndDate: {{$proposal->latestEndDate}}</li>
-                        <li class="list-group-item">state: {{$proposal->state}}</li>
-                        <li class="list-group-item">creationDate: {{$proposal->creationDate}}</li>
-                    </ul>
-                    </div>
-                    </div>
-                </div> 
-            @endif
-        @endforeach
-    </div>
-</div>
-
 @endsection
 

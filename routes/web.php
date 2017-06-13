@@ -79,11 +79,13 @@ Route::post('/campuses/{id}/changeAbbreviation', 'Configuration\CampusController
 Route::get('/offers/create', 'Offers\OfferController@showCreate')->name('showCreateOffer');
 Route::post('/offers/create', 'Offers\OfferController@create')->name('createOffer');
 Route::post('/offers/createOfferManagedByArea', 'Offers\OfferController@createOfferManagedByArea')->name('createOfferManagedByArea');
-Route::get('/offers/openOffers', 'Offers\OffersController@openOffers')->name('openOffers');
-Route::get('/offers/closedOffers', 'Offers\OffersController@closedOffers')->name('closedOffers');
-Route::get('/offers/newOffers', 'Offers\ProposalsController@newOffers')->name('newOffers');
+Route::get('/offers/openOffers', 'Offers\OffersController@myOpenOffers')->name('myOpenOffers');
+Route::get('/offers/closedOffers', 'Offers\OffersController@myClosedOffers')->name('myClosedOffers');
+Route::get('/offers/myOffers', 'Offers\OffersController@myOffers')->name('myOffers');
+Route::get('/offers/newOffers', 'Offers\OffersController@newOffers')->name('newOffers');
 Route::get('/offers/offersWithProposal', 'Offers\ProposalsController@offersWithProposal')->name('offersWithProposal');
 Route::get('/offers/acceptedProposals', 'Offers\ProposalsController@acceptedProposals')->name('acceptedProposals');
+Route::get('/offers/approvedProposals', 'Offers\ProposalsController@approvedProposals')->name('approvedProposals');
 Route::get('/organizations/{id}', 'Users\OrganizationsController@get')->name('organization');
 
 Route::get('/offers/{id}', 'Offers\OfferController@get')->name('offer');

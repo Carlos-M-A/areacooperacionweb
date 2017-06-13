@@ -23,18 +23,18 @@ class ProjectsController extends Controller {
                 break;
         }
 
-        return view('projects/projects')->with('projects', $projects->get());
+        return view('projects/projects')->with('projects', $projects->paginate(config('constants.pagination')));
     }
 
     public function proposedProjects() {
         $projects = Project::where('state', 1);
 
-        return view('projects/projects')->with('projects', $projects->get());
+        return view('projects/projects')->with('projects', $projects->paginate(config('constants.pagination')));
     }
 
     public function finishedProjects() {
         $projects = Project::where('state', 3);
 
-        return view('projects/projects')->with('projects', $projects->get());
+        return view('projects/projects')->with('projects', $projects->paginate(config('constants.pagination')));
     }
 }

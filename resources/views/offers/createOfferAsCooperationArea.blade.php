@@ -39,8 +39,8 @@
 
     <div class="col-md-6">
         <select  id="organizationId" class="form-control" name="organizationId" autofocus>
-            <option id="organizationIdOption0" value="{{old('organizationId') ? old('organizationId') : 0}}">
-                {{old('organizationId') ? App\Organization::find(old('organizationId'))->user->name : '-- Organization --'}}
+            <option id="organizationIdOption0" value="{{old('organizationId') ? old('organizationId') : ''}}">
+                {{old('organizationId') ? App\Organization::find(old('organizationId'))->user->name : ''}}
             </option>
             @php
                 $organizations = App\Organization::all();
@@ -82,8 +82,8 @@
 
     <div class="col-md-6">
         <select  id="convocatoryId" class="form-control" name="convocatoryId" autofocus>
-            <option id="convocatoryIdOption0" value="{{old('convocatoryId') ? old('convocatoryId') : 0}}">
-                {{old('convocatoryId') ? App\Convocatory::find(old('convocatoryId'))->title : '-- Convocatory --'}}
+            <option id="convocatoryIdOption0" value="{{old('convocatoryId') ? old('convocatoryId') : ''}}">
+                {{old('convocatoryId') ? App\Convocatory::find(old('convocatoryId'))->title : ''}}
             </option>
             @php
                 $convocatories = App\Convocatory::where('state', '<=', '2')->get();

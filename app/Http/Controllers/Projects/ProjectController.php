@@ -51,11 +51,11 @@ class ProjectController extends Controller {
                 }
             case 2:
                 $this->validate($request, [
-                    'stateInscriptions' => 'nullable|integer|min:1|max:3',
+                    'stateOfInscriptions' => 'nullable|integer|min:1|max:3',
                 ]);
                 $state = 1;
-                if(!is_null($request->stateInscriptions)){
-                    $state = $request->stateInscriptions;
+                if(!is_null($request->stateOfInscriptions)){
+                    $state = $request->stateOfInscriptions;
                 }
                 $request->flash();
                 

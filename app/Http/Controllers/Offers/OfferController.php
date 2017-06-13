@@ -32,7 +32,7 @@ class OfferController extends Controller {
         }
     }
 
-    public function get($id) {
+    public function get($id, Request $request) {
         $offer = Offer::find($id);
         $user = Auth::user();
         switch ($user->role) {
@@ -45,7 +45,17 @@ class OfferController extends Controller {
                 }
             case 4:
             case 5:
-                return view('offers/offerAsOrganization')->with('offer', $offer);
+                $this->validate($request, [
+                    'stateOfProposals' => 'nullable|integer|min:1|max:5',
+                ]);
+                $state = 1;
+                if(!is_null($request->stateOfProposals)){
+                    $state = $request->stateOfProposals;
+                }
+                $request->flash();
+                
+                $proposals = Proposal::where('offer_id', $offer->id)->where('state', $state)->paginate(config('constants.pagination'));
+                return view('offers/offerAsOrganization')->with('offer', $offer)->with('proposals', $proposals);
             default:
                 return view('offers/offer')->with('offer', $offer);
         }

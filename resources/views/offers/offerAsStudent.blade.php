@@ -20,38 +20,6 @@
 
 @section('student_proposal')
 
-<script>
-    
-    /**
-    * This function is called when reload the page to the form renember the chosen type.
-    * Update the type (It is changed for the selected type above)
-    */
-    function updateSelectedType(type){
-        var selectedType = document.getElementById('type');
-        op0 = document.getElementById('typeOption0');
-        op1 = document.getElementById('typeOption1');
-        op2 = document.getElementById('typeOption2');
-        
-        switch (type){
-            
-            case 1:
-                newOption = op1.cloneNode(true);
-                newOption.selected = true;
-                selectedType.replaceChild(newOption, op0);
-                selectedType.removeChild(op1);
-                break;
-            case 2:
-                newOption = op2.cloneNode(true);
-                newOption.selected = true;
-                selectedType.replaceChild(newOption, op0);
-                selectedType.removeChild(op2);
-                break;
-        }
-    }
-    
-    
-</script>
-
 @if(is_null($proposal))
 
 <div class="panel panel-default">
@@ -66,9 +34,9 @@
 
                             <div class="col-md-6">
                                 <select  id="type" class="form-control" name="type" autofocus>
-                                    <option id="typeOption0" value="0">{{ old('type')? old('type') : '--Chose type --'}}</option>
-                                    <option id="typeOption1" value="1">Just cooperate</option>
-                                    <option id="typeOption2" value="2">Curricular practice</option>
+                                    <option id="typeOption0" value="{{ old('type')? old('type') : ''}}">{{ old('type')? __('enums.proposal_type_'.old('type')) : ''}}</option>
+                                    <option id="typeOption1" value="1">@lang('enums.proposal_type_1')</option>
+                                    <option id="typeOption2" value="2">@lang('enums.proposal_type_2')</option>
                                 </select>
 
                                 @if ($errors->has('type'))

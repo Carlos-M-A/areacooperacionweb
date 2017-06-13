@@ -12,10 +12,12 @@
                     <p>
                     <a href="{{ route('showCreateOffer') }}"> Create offer</a>
                     <p>
-                    <a href="{{ route('openOffers') }}"> My open offers</a>
+                    <a href="{{ route('myOpenOffers') }}"> My open offers</a>
                     <p>
-                    <a href="{{ route('closedOffers') }}"> My closed offers</a>
-                    
+                    <a href="{{ route('myClosedOffers') }}"> My closed offers</a>
+                    <p>
+                    <a href="{{ route('myOffers') }}"> myOffers</a>
+                    <p>
                 </div>
             </div>
         </div>

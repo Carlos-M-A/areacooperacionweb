@@ -30,28 +30,33 @@ $(document).ready(function(){
 @endsection
 
 @section('convocatory_inscriptions')
-<div class="panel panel-primary">
+<div class="panel panel-info">
     <div class="panel-heading">
-        <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapseWinningProposals">Inscriptions</a>
-                            </h4>
+        Inscriptions
+        <ul class="nav nav-pills">
+                        <li class="{{old('stateOfInscriptions')==1 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 1]) }}">Inscriptions<span class="badge">{{$convocatory->getAmountOfNotEvaluatedInscriptions()}}</span></a></li>
+                        <li class="{{old('stateOfInscriptions')==2 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 2]) }}">Accepted<span class="badge">{{$convocatory->getAmountOfAcceptedInscriptions()}}</span></a></li>
+                        <li class="{{old('stateOfInscriptions')==3 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 3]) }}">Alternate<span class="badge">{{$convocatory->getAmountOfAlternateInscriptions()}}</span></a></li>
+                        <li class="{{old('stateOfInscriptions')==4 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 4]) }}">Rejected<span class="badge">{{$convocatory->getAmountOfRejectedInscriptions()}}</span></a></li>
+                        <li class="{{old('stateOfInscriptions')==5 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 5]) }}">Cancelled inscriptions<span class="badge">{{$convocatory->getAmountOfCancelledInscriptions()}}</span></a></li>
+                    </ul>
     </div>
-    <div id="collapseWinningProposals" class="panel-collapse collapse">  
-@foreach($convocatory->inscriptions as $inscription)
+    <div class="panel-body">  
+@foreach($inscriptions as $inscription)
     <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" href="#collapseProposal">{{$inscription->student->user->getNameAndSurnames()}}</a>
+                    <a data-toggle="collapse" href="#collapseProposa{{$inscription->student->user->id}}">{{$inscription->student->user->getNameAndSurnames()}}</a>
                 </h4>
             </div>
-        <div id="collapseProposal" class="panel-collapse collapse">
+        <div id="collapseProposa{{$inscription->student->user->id}}" class="panel-collapse collapse">
         <ul class="list-group">
             <li class="list-group-item ">state: {{$inscription->state}}</li>
             <li class="list-group-item">score: {{$inscription->score}}</li>
             <li class="list-group-item">observations: {{$inscription->observations}}</li>
         </ul>
         </div>
-        @if($convocatory->state == 1)
+        @if($convocatory->state == 1 && $inscription->state != 5)
         <div class="panel-footer">
             <form>
                     {{ csrf_field() }}
@@ -64,6 +69,9 @@ $(document).ready(function(){
         @endif
     </div>
 @endforeach
+    </div>
+    <div class="panel-footer">
+                    {{ $inscriptions->appends(['stateOfInscriptions' => old('stateOfInscriptions')])->links() }}
     </div>
 </div>
 

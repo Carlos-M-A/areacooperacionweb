@@ -19,7 +19,7 @@ class ConvocatoryController extends Controller {
         return view('convocatories/editConvocatory')->with('convocatory', $convocatory);
     }
 
-    public function get($id) {
+    public function get($id, Request $request) {
         $convocatory = Convocatory::find($id);
         $user = Auth::user();
 
@@ -35,7 +35,17 @@ class ConvocatoryController extends Controller {
                                     ->with('convocatory', $convocatory)->with('inscription', $inscription);
                 }
             case 5:
-                return view('convocatories/convocatoryAsCooperationArea')->with('convocatory', $convocatory);
+                $this->validate($request, [
+                    'stateOfInscriptions' => 'nullable|integer|min:1|max:5',
+                ]);
+                $state = 1;
+                if(!is_null($request->stateOfInscriptions)){
+                    $state = $request->stateOfInscriptions;
+                }
+                $request->flash();
+                
+                $inscriptions = Inscription::where('convocatory_id', $convocatory->id)->where('state', $state)->paginate(config('constants.pagination'));
+                return view('convocatories/convocatoryAsCooperationArea')->with('convocatory', $convocatory)->with('inscriptions', $inscriptions);
             default:
                 return view('convocatories/convocatory')->with('convocatory', $convocatory);
         }

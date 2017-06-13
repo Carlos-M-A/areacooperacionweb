@@ -8,7 +8,7 @@ use App\Convocatory;
 class ConvocatoriesController extends Controller {
 
     public function all() {
-        $convocatories = Convocatory::all();
+        $convocatories = Convocatory::paginate(config('constants.pagination'));
         return view('convocatories/convocatories')->with('convocatories', $convocatories);
     }
 
