@@ -8,7 +8,7 @@
                 <div class="panel-heading">Opciones Otro</div>
 
                 <div class="panel-body">
-                    <button type="button" class="btn btn-primary btn-block">Button1</button>
+                    
                 </div>
             </div>
         </div>

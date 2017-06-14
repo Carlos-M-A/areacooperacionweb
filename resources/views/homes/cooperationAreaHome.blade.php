@@ -9,17 +9,13 @@
 
                 <div class="panel-body">
                     <p>
-                    <a href="{{ route('showCreateOffer') }}"> Create offer</a>
+                    <a href="{{ route('showCreateOffer') }}"> @lang('general.create_offer')</a>
                     <p>
-                    <a href="{{ route('myOpenOffers') }}"> My open offers</a>
+                    <a href="{{ route('myOffers') }}"> @lang('general.my_offers')</a>
                     <p>
-                    <a href="{{ route('myClosedOffers') }}"> My closed offers</a>
+                    <a href="{{ route('showCreateConvocatory') }}">@lang('general.create_convocatory')</a>
                     <p>
-                    <a href="{{ route('myOffers') }}"> myOffers</a>
-                    <p>
-                    <a href="{{ route('showCreateConvocatory') }}"> Create convocatory</a>
-                    <p>
-                    <a href="{{ route('convocatories') }}"> Convocatories</a>
+                    <a href="{{ route('convocatories') }}">@lang('general.convocatories')</a>
                 </div>
             </div>
             
@@ -29,9 +25,9 @@
 
                 <div class="panel-body">
                     <p>
-                    <a href="{{ route('finishedProjects') }}"> All projects</a>
+                    <a href="{{ route('finishedProjects') }}"> @lang('general.finished_projects')</a>
                     <p>
-                    <a href="{{ route('showCreateProject') }}"> Create project</a>
+                    <a href="{{ route('showCreateProject') }}"> @lang('general.create_project')</a>
                 </div>
             </div>
         </div>

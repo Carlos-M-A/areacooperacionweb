@@ -135,55 +135,69 @@
 
 @else
 
- <div class="panel panel-default">
+<div class="panel-group">
+                   <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapseProposal">Your proposal - {{$proposal->getStateName()}}</a>
-                            </h4>
+                            @lang('general.your_proposal')
+                        <div class="media">
+                            <div class="media-left">
+                                @if(!is_null($proposal->student->user->urlAvatar))
+                                <img src="{{URL::asset($proposal->student->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                @else
+                                <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                @endif
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    <a data-toggle="collapse" href="#collapseProposal">{{$proposal->student->user->getNameAndSurnames()}}</a>
+                                @if($proposal->state == 1)
+                                    <span class="label label-info">@lang('enums.proposal_state_1')</span>
+                                @elseif($proposal->state == 2)
+                                    <span class="label label-success">@lang('enums.proposal_state_2')</span>
+                                @elseif($proposal->state == 3)
+                                    <span class="label label-danger">@lang('enums.proposal_state_3')</span>
+                                @elseif($proposal->state == 4)
+                                    <span class="label label-success">@lang('enums.proposal_state_4')</span>
+                                @elseif($proposal->state == 5)
+                                    <span class="label label-danger">@lang('enums.proposal_state_5')</span>
+                                @endif
+                                </h4>
+                                <p>
+                                    <form>
+                                        {{ csrf_field() }}
+                                        <div class="btn-group">
+                                            @if($proposal->state == 1)
+                                            <button class="btn btn-warning" type="submit" formmethod="POST" formaction="{{route('removeProposal', ['id'=> $proposal->id])}}">Remove</button>
+                                            @endif
+                                            @if($proposal->state <= 2)
+                                            <!-- Trigger the modal to accept the offer -->
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalCancel">Cancel</button>
+                                            @endif
+                                            @if($proposal->state == 2)
+                                            <!-- Trigger the modal to accept the offer -->
+                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalAccept">Accept</button>
+                                            @endif
+                                        </div>
+                                    </form>
+                                </p>
+                            </div>
                         </div>
-                    <div id="collapseProposal" class="panel-collapse collapse">
-                    <ul class="list-group">
-                        <li class="list-group-item ">type: {{$proposal->type}}</li>
-                        <li class="list-group-item">description: {{$proposal->description}}</li>
-                        <li class="list-group-item">scheduleAvailable: {{$proposal->scheduleAvailable}}</li>
-                        <li class="list-group-item">totalHours: {{$proposal->totalHours}}</li>
-                        <li class="list-group-item">earliestStartDate: {{$proposal->earliestStartDate}}</li>
-                        <li class="list-group-item">latestEndDate: {{$proposal->latestEndDate}}</li>
-                        <li class="list-group-item">state: {{$proposal->state}}</li>
-                        <li class="list-group-item">creationDate: {{$proposal->creationDate}}</li>
-                        <li class="list-group-item">skills: {{$proposal->student->skills}}</li>
-                        <li class="list-group-item">areasOfInterest: {{$proposal->student->areasOfInterest}}</li>
-                        <li class="list-group-item">study: {{$proposal->student->study->name}}</li>
-                        <li class="list-group-item">urlCurriculum: {{$proposal->student->urlCurriculum}}</li>
-                        <li class="list-group-item">phone: {{$proposal->student->user->phone}}</li>
-                        <li class="list-group-item">email: {{$proposal->student->user->email}}</li>
-                    </ul>
+                        </div>
+                        <div id="collapseProposal" class="panel-collapse collapse">
+                        <ul class="list-group">
+                            <li class="list-group-item "><b>@lang('models.type'):</b> @lang('enums.proposal_type_' . $proposal->type)</li>
+                            <li class="list-group-item"><b>@lang('models.description'):</b> {{$proposal->description}}</li>
+                            <li class="list-group-item"><b>@lang('models.scheduleAvailable'):</b> {{$proposal->scheduleAvailable}}</li>
+                            <li class="list-group-item"><b>@lang('models.totalHours'):</b> {{$proposal->totalHours}}</li>
+                            <li class="list-group-item"><b>@lang('models.earliestStartDate'):</b> {{$proposal->earliestStartDate}}</li>
+                            <li class="list-group-item"><b>@lang('models.latestEndDate'):</b> {{$proposal->latestEndDate}}</li>
+                            <li class="list-group-item"><b>@lang('models.creationDate'):</b> {{$proposal->creationDate}}</li>
+                        </ul>
+                        </div>
                     </div>
-                    <div class="panel-footer">
-                        <form>
-                                {{ csrf_field() }}
-                                <div class="btn-group">
-                                    @if($proposal->state == 1)
-                                    <button class="btn btn-warning" type="submit" formmethod="POST" formaction="{{route('removeProposal', ['id'=> $proposal->id])}}">Remove</button>
-                                    @endif
-                                    @if($proposal->state <= 2)
-                                    <!-- Trigger the modal to accept the offer -->
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalCancel">Cancel</button>
-                                    @endif
-                                    @if($proposal->state == 2)
-                                    <!-- Trigger the modal to accept the offer -->
-                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalAccept">Accept</button>
-                                    @endif
-                                </div>
-                            </form>
-                    </div>
-                </div>
-            </div>
-@endif
+                </div> 
 
-<script>
-       updateSelectedType({{ old('type')?old('type'):0 }});                     
-</script>
+@endif
 
 @endsection
 

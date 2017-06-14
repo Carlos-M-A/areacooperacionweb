@@ -22,7 +22,7 @@
 @section('project_inscriptions')
 
 
-<div class="panel panel-primary">
+<div class="panel panel-info">
     <div class="panel-heading">
         <h4 class="panel-title">
            <a>@lang('general.author')</a>
@@ -122,13 +122,7 @@
                         </div>
                     <div id="{{'collapse'.$inscription->student->id}}" class="panel-collapse collapse">
                     <ul class="list-group">
-                        <li class="list-group-item">state: {{$inscription->state}}</li>
-                        <li class="list-group-item">comment: {{$inscription->comment}}</li>
-                        <li class="list-group-item">phone: {{$inscription->student->user->phone}}</li>
-                        <li class="list-group-item">email: {{$inscription->student->user->email}}</li>
-                        <li class="list-group-item">areasOfInterest: {{$inscription->student->areasOfInterest}}</li>
-                        <li class="list-group-item">skills: {{$inscription->student->skills}}</li>
-                        <li class="list-group-item">urlCurriculum: {{$inscription->student->urlCurriculum}}</li>
+                        <li class="list-group-item"><b>@lang('models.comment'):</b> {{$inscription->comment}}</li>
                     </ul>
                     </div>
                     </div>

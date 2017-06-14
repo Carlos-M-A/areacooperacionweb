@@ -7,45 +7,32 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-primary">
+            <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" href="#collapseOffer">{{$convocatory->title}}</a>
-                    </h4>
-                </div>
-                    <div id="collapseOffer" class="panel-collapse collapse">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>field</th>
-                                    <th>data</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>title</td>
-                                    <td>{{$convocatory->title}}</td>
-                                </tr>
-                                <tr>
-                                    <td>information</td>
-                                    <td>{{$convocatory->information}}</td>
-                                </tr>
-                                <tr>
-                                    <td>estimatedPeriod</td>
-                                    <td>{{$convocatory->estimatedPeriod}}</td>
-                                </tr>
-                                <tr>
-                                    <td>urlDocumentation</td>
-                                    <td>{{$convocatory->urlDocumentation}}</td>
-                                </tr>
-                                <tr>
-                                    <td>deadLine</td>
-                                    <td>{{$convocatory->deadline}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a data-toggle="collapse" href="#collapseConvocatory">{{$convocatory->title}}</a>
+                            @if($convocatory->state == 1)
+                            <span class="label label-success">@lang('enums.convocatory_state_' . $convocatory->state)</span>
+                            @elseif($convocatory->state == 2)
+                            <span class="label label-warning">@lang('enums.convocatory_state_' . $convocatory->state)</span>
+                            @elseif($convocatory->state == 3)
+                            <span class="label label-danger">@lang('enums.convocatory_state_' . $convocatory->state)</span>
+                            @endif
+                        </h4>
+                        <p><a href='{{route('organization', ['id' => 2])}}'>{{config('app.name', 'Area of Cooperation')}}</a></p>
                     </div>
+                </div>
+                    <div class="">
+                        <ul class="nav nav-pills">
+                        <li class=""><a>@lang('models.deadline')<span class="badge">{{$convocatory->deadline}}</span></a></li>
+                        <li class=""><a href="{{$convocatory->urlDocumentation}}">@lang('models.urlDocumentation')</a></li>
+                        </ul>
+                    </div>
+                    <div id="collapseConvocatory" class="panel-collapse collapse">
+                        <ul class="list-group">
+                            <li class="list-group-item"><b>@lang('models.information'):</b> {{$convocatory->information}}</li>
+                            <li class="list-group-item"><b>@lang('models.estimatedPeriod'):</b> {{$convocatory->estimatedPeriod}}</li>
+                        </ul>
                 </div>
                 
                      @yield('convocatory_options')

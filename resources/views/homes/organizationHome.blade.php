@@ -10,13 +10,9 @@
                 <div class="panel-body">
                     
                     <p>
-                    <a href="{{ route('showCreateOffer') }}"> Create offer</a>
+                    <a href="{{ route('showCreateOffer') }}"> @lang('general.create_offer')</a>
                     <p>
-                    <a href="{{ route('myOpenOffers') }}"> My open offers</a>
-                    <p>
-                    <a href="{{ route('myClosedOffers') }}"> My closed offers</a>
-                    <p>
-                    <a href="{{ route('myOffers') }}"> myOffers</a>
+                    <a href="{{ route('myOffers') }}"> @lang('general.my_offers')</a>
                     <p>
                 </div>
             </div>

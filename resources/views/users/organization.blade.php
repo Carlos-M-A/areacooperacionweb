@@ -11,12 +11,6 @@
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Field</th>
-                                    <th>Data</th>
-                                </tr>
-                            </thead>
                             <tbody>
                                 <tr>
                                     <td>Name</td>

@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-info">
-                <div class="panel-heading">Convocatories</div>
+                <div class="panel-heading">@lang('general.convocatories')</div>
                 <div class="panel-body">
                     @foreach($convocatories as $convocatory)
                         <li class="list-group-item">

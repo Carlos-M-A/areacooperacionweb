@@ -105,13 +105,33 @@ return [
     'projects' => 'Projects',
     'inscriptions_in_project' => 'Inscriptions in project',
     'create_inscription_in_project' => 'Create inscription in project',
+    'my_projects' => 'My projects',
+    'proposed_projects' => 'Proposed projects',
+    'finished_projects' => 'Finished projects',
+    'create_project' => 'Create projects',
     
     //Convocatories
     'evaluate' => 'Evaluate',
+    'your_inscription' => 'Your inscription',
+    'convocatories' => 'Convocatories',
+    'create_convocatory' => 'Create convocatory',
     
     //Offers
     'closed' => 'Closed',
     'open' => 'Open',
+    'offers' => 'Offers',
+    'proposals' => 'Proposals',
+    'places_occupied' => 'Places occupied',
+    'your_proposal' => 'Your proposal',
+    'my_offers' => 'My offers',
+    'my_open_offers' => 'My open offers',
+    'my_closed_offers' => 'My closed offers',
+    'new_offers' => 'New offers',
+    'my_proposals' => 'My proposals',
+    'approved_proposals' => 'Approved proposals',
+    'my_practices' => 'My practices',
+    'create_offer' => 'Create offer',
+    
 ];
 
     

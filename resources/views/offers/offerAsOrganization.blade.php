@@ -18,6 +18,7 @@
 
 <div class="panel panel-info">
     <div class="panel-heading">
+        Proposals
         <ul class="nav nav-pills">
                         <li class="{{old('stateOfProposals')==1 ? 'active' : ''}}"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 1]) }}">news<span class="badge">{{$offer->getAmountOfNotEvaluatedProposals()}}</span></a></li>
                         <li class="{{old('stateOfProposals')==2 ? 'active' : ''}}"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 2]) }}">Approved<span class="badge">{{$offer->getAmountOfApprovedProposals()}}</span></a></li>
@@ -73,24 +74,16 @@
                                 </p>
                             </div>
                         </div>
-                        </li>
             </div>
                     <div id="{{'collapse'.$proposal->student->id}}" class="panel-collapse collapse">
                     <ul class="list-group">
-                        <li class="list-group-item ">type: {{$proposal->type}}</li>
-                        <li class="list-group-item">description: {{$proposal->description}}</li>
-                        <li class="list-group-item">scheduleAvailable: {{$proposal->scheduleAvailable}}</li>
-                        <li class="list-group-item">totalHours: {{$proposal->totalHours}}</li>
-                        <li class="list-group-item">earliestStartDate: {{$proposal->earliestStartDate}}</li>
-                        <li class="list-group-item">latestEndDate: {{$proposal->latestEndDate}}</li>
-                        <li class="list-group-item">state: {{$proposal->state}}</li>
-                        <li class="list-group-item">creationDate: {{$proposal->creationDate}}</li>
-                        <li class="list-group-item">skills: {{$proposal->student->skills}}</li>
-                        <li class="list-group-item">areasOfInterest: {{$proposal->student->areasOfInterest}}</li>
-                        <li class="list-group-item">study: {{$proposal->student->study->name}}</li>
-                        <li class="list-group-item">urlCurriculum: {{$proposal->student->urlCurriculum}}</li>
-                        <li class="list-group-item">phone: {{$proposal->student->user->phone}}</li>
-                        <li class="list-group-item">email: {{$proposal->student->user->email}}</li>
+                        <li class="list-group-item "><b>@lang('models.type'):</b> @lang('enums.proposal_type_' . $proposal->type)</li>
+                        <li class="list-group-item"><b>@lang('models.description'):</b> {{$proposal->description}}</li>
+                        <li class="list-group-item"><b>@lang('models.scheduleAvailable'):</b> {{$proposal->scheduleAvailable}}</li>
+                        <li class="list-group-item"><b>@lang('models.totalHours'):</b> {{$proposal->totalHours}}</li>
+                        <li class="list-group-item"><b>@lang('models.earliestStartDate'):</b> {{$proposal->earliestStartDate}}</li>
+                        <li class="list-group-item"><b>@lang('models.latestEndDate'):</b> {{$proposal->latestEndDate}}</li>
+                        <li class="list-group-item"><b>@lang('models.creationDate'):</b> {{$proposal->creationDate}}</li>
                     </ul>
                     </div>
                     </div>

@@ -14,6 +14,49 @@
 </script>
 @endsection
 
+
+@section('project_tutor')
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+           <a>@lang('general.tutor')</a>
+        </h4>
+    </div>
+    <div class="panel-body">
+
+ 
+        <div class="panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            
+                        <!-- Left-aligned -->
+                        <div class="media">
+                            <div class="media-left">
+                                @if(!is_null($project->teacher->user->urlAvatar))
+                                <img src="{{URL::asset($project->teacher->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                @else
+                                <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                @endif
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">{{$project->teacher->user->getNameAndSurnames()}}</h4>
+                                <p>
+                                    
+                                        <!-- Trigger the modal to enter the tutor manually -->
+                                        <button type="button" >View profile</button>
+                                    
+                                </p>
+                            </div>
+                        </div>
+                        </li>
+                        </div>
+                    </div>
+        </div> 
+    </div>
+</div>
+@endsection
+
+
 @section('student_inscription')
 
 @if(is_null($inscriptionInProject) && $project->state==1)
@@ -52,36 +95,58 @@
             </div>
 
 @else
-
- <div class="panel panel-default">
+<div class="panel-group">
+                   <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapseProposal">Your inscription - {{$inscriptionInProject->getStateName()}}</a>
-                            </h4>
+                        <!-- Left-aligned -->
+                        <div class="media">
+                            @lang('general.your_inscription')
+                            <div class="media-left">
+                                @if(!is_null($inscriptionInProject->student->user->urlAvatar))
+                                <img src="{{URL::asset($inscriptionInProject->student->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                @else
+                                <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                @endif
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    <a data-toggle="collapse" href="#collapseProposal">{{$inscriptionInProject->student->user->getNameAndSurnames()}}</a>
+                                @if($inscriptionInProject->state == 1)
+                                    <span class="label label-info">@lang('enums.inscription_in_project_state_1')</span>
+                                @elseif($inscriptionInProject->state == 2)
+                                    <span class="label label-success">@lang('enums.inscription_in_project_state_2')</span>
+                                @elseif($inscriptionInProject->state == 3)
+                                    <span class="label label-danger">@lang('enums.inscription_in_project_state_3')</span>
+                                @endif
+                                </h4>
+                                <p>
+                                    @if(!$project->state == 3)
+                                    <form>
+                                        {{ csrf_field() }}
+                                        <div class="btn-group">
+                                            @if($inscriptionInProject->state == 1)
+                                            <button class="btn btn-danger" type="submit" formmethod="POST" formaction="{{route('removeInscriptionInProject', ['id'=> $inscriptionInProject->id])}}">@lang('general.remove')</button>
+                                            @endif
+                                            @if($inscriptionInProject->state == 2)
+                                            <button class="btn btn-danger" type="submit" formmethod="POST" formaction="{{route('cancelInscriptionInProject', ['id'=> $inscriptionInProject->id])}}">@lang('general.cancel')</button>
+                                            @endif
+                                        </div>
+                                    </form>
+                                    @endif
+                                </p>
+                            </div>
+                        </div>
+                        </li>
                         </div>
                     <div id="collapseProposal" class="panel-collapse collapse">
                     <ul class="list-group">
-                        <li class="list-group-item">state: {{$inscriptionInProject->state}}</li>
-                        <li class="list-group-item">comment: {{$inscriptionInProject->comment}}</li>
+                        <li class="list-group-item"><b>@lang('models.comment'):</b> {{$inscriptionInProject->comment}}</li>
                     </ul>
                     </div>
-                    @if($inscriptionInProject->state != 3 && $project->state != 3)
-                    <div class="panel-footer">
-                        <form>
-                                {{ csrf_field() }}
-                                <div class="btn-group">
-                                    @if($inscriptionInProject->state == 1)
-                                    <button class="btn btn-danger" type="submit" formmethod="POST" formaction="{{route('removeInscriptionInProject', ['id'=> $inscriptionInProject->id])}}">@lang('general.remove')</button>
-                                    @endif
-                                    @if($inscriptionInProject->state == 2)
-                                    <button class="btn btn-danger" type="submit" formmethod="POST" formaction="{{route('cancelInscriptionInProject', ['id'=> $inscriptionInProject->id])}}">@lang('general.cancel')</button>
-                                    @endif
-                                </div>
-                            </form>
                     </div>
-                    @endif
                 </div>
-            </div>
+
+
 @endif
 
 

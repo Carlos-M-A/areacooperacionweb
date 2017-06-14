@@ -14,16 +14,16 @@ $user = Auth::user();
                     Offers
                     @if($user->role == 1)
                     <ul class="nav nav-pills">
-                        <li class=""><a href="{{ route('newOffers') }}">newOffers</a></li>
-                        <li class=""><a href="{{ route('offersWithProposal') }}">offersWithProposal</a></li>
-                        <li class=""><a href="{{ route('approvedProposals') }}">approvedProposals</a></li>
-                        <li class=""><a href="{{ route('acceptedProposals') }}">acceptedProposals</a></li>
+                        <li class=""><a href="{{ route('newOffers') }}">@lang('general.new_offers')</a></li>
+                        <li class=""><a href="{{ route('offersWithProposal') }}">@lang('general.my_proposals')</a></li>
+                        <li class=""><a href="{{ route('approvedProposals') }}">@lang('general.approved_proposals')</a></li>
+                        <li class=""><a href="{{ route('acceptedProposals') }}">@lang('general.my_practices')</a></li>
                     </ul>
                     @elseif($user->role == 4 || $user->role == 5)
                     <ul class="nav nav-pills">
-                        <li class=""><a href="{{ route('myOffers') }}">myOffers</a></li>
-                        <li class=""><a href="{{ route('myOpenOffers') }}">myOpenOffers</a></li>
-                        <li class=""><a href="{{ route('myClosedOffers') }}">myClosedOffers</a></li>
+                        <li class=""><a href="{{ route('myOffers') }}">@lang('general.my_offers')</a></li>
+                        <li class=""><a href="{{ route('myOpenOffers') }}">@lang('general.my_open_offers')</a></li>
+                        <li class=""><a href="{{ route('myClosedOffers') }}">@lang('general.my_closed_offers')</a></li>
                     </ul>
                     @endif
                 </div>

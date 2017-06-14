@@ -15,9 +15,9 @@ return [
     
     // Names of attributes that are in at least two models
     'title' => 'Title',
-    'name' => 'name',
-    'inactive' => 'inactive',
-    'scope' => 'scope',
+    'name' => 'Name',
+    'inactive' => 'Inactive',
+    'scope' => 'Scope',
     'deadline' => 'Deadline',
     'createdDate' => 'Created date',
     'description' => 'Description',
@@ -25,12 +25,13 @@ return [
     'state' => 'State',
     'year' => 'Year',
     'type' => 'Type',
+    'urlDocumentation' => 'Documentation',
     
     
     'convocatory' => 'Convocatory',
-        'information' => 'information',
+        'information' => 'Information',
         'estimatedPeriod' => 'Estimated period',
-        'urlDocumentation' => 'urlDocumentation',
+        
         
     
     'campus' => 'Campus',
@@ -45,22 +46,22 @@ return [
         
     
     'offer' => 'Offer',
-        'managedByArea' => 'managedByArea',
-        'isOfferOfConvocatory' => 'isOfferOfConvocatory',
-        'open' => 'open',
-        'requeriments' => 'requeriments',
-        'workplan' => 'workplan',
-        'schedule' => 'schedule',
-        'totalHours' => 'totalHours',
-        'possibleStartDates' => 'possibleStartDates',
-        'possibleEndDates' => 'possibleEndDates',
-        'places' => 'places',
-        'monetaryHelp' => 'monetaryHelp',
-        'personInCharge' => 'personInCharge',
+        'managedByArea' => 'Managed by',
+        'isOfferOfConvocatory' => 'Is offer of convocatory',
+        'open' => 'Open',
+        'requeriments' => 'Requeriments',
+        'workplan' => 'Workplan',
+        'schedule' => 'Schedule',
+        'totalHours' => 'Total hours',
+        'possibleStartDates' => 'Possible start dates',
+        'possibleEndDates' => 'Possible end dates',
+        'places' => 'Places',
+        'monetaryHelp' => 'Monetary help',
+        'personInCharge' => 'Person in charge',
     
     'offerOfConvocatory' => 'Offer Of Convocatory',
-        'housing' => 'housing',
-        'costs' => 'costs',
+        'housing' => 'Housing',
+        'costs' => 'Costs',
     
     'organization' => 'organization',
         'socialName' => 'Social name',
@@ -68,34 +69,34 @@ return [
         'web' => 'web',
         'linksWithNearbyEntities' => 'Links With Nearby Entities',
     
-    'other' => 'other',
+    'other' => 'Other',
     
-    'project' => 'project',
-        'author' => 'author',
-        'tutor' => 'tutor',
-        'urlDocumentation' => 'urlDocumentation',
+    'project' => 'Project',
+        'author' => 'Author',
+        'tutor' => 'Tutor',
+        'finishedDate' => 'Finished date',
     
-    'proposal' => 'proposal',
-        'scheduleAvailable' => 'scheduleAvailable',
-        'totalHours' => 'totalHours',
-        'earliestStartDate' => 'earliestStartDate',
-        'latestEndDate' => 'latestEndDate',
-        'creationDate' => 'creationDate',
+    'proposal' => 'Proposal',
+        'scheduleAvailable' => 'Schedule available',
+        'totalHours' => 'TotalHours',
+        'earliestStartDate' => 'Earliest start date',
+        'latestEndDate' => 'Latest end date',
+        'creationDate' => 'Creation date',
             
     
     'roleChangeRequest' => 'Role change request',
-        'currentRole' => 'currentRole',
-        'newRole' => 'newRole',
+        'currentRole' => 'Current role',
+        'newRole' => 'New role',
     
-    'student' => 'student',
+    'student' => 'Student',
         'skills' => 'Skills',
         'urlCurriculum' => 'urlCurriculum',
     
-    'study' => 'study',
-        'branch' => 'branch',
+    'study' => 'Study',
+        'branch' => 'Branch',
     
-    'teacher' => 'teacher',
-        'departments' => 'departments',
+    'teacher' => 'Teacher',
+        'departments' => 'Departments',
     
     'inscriptionInProject' => 'Inscription in project',
         'comment' => 'Comment',

@@ -9,9 +9,9 @@
 
                 <div class="panel-body">
                     <p>
-                    <a href="{{ route('myProjects') }}">myProjects</a>
+                    <a href="{{ route('myProjects') }}">@lang('general.my_projects')</a>
                     <p>
-                        <a href="{{ route('showCreateProject') }}">Createproject</a>
+                        <a href="{{ route('showCreateProject') }}">@lang('general.create_project')</a>
                     <p>
                 </div>
             </div>

@@ -10,17 +10,13 @@
                 <div class="panel-body">
                     
                     <p>
-                    <a href="{{ route('newOffers') }}">New offers</a>
+                    <a href="{{ route('newOffers') }}">@lang('general.offers')</a>
                     <p>
-                    <a href="{{ route('offersWithProposal') }}">offersWithProposal</a>
+                    <a href="{{ route('acceptedProposals') }}">@lang('general.my_practices')</a>
                     <p>
-                    <a href="{{ route('acceptedProposals') }}">acceptedProposals</a>
+                    <a href="{{ route('proposedProjects') }}">@lang('general.projects')</a>
                     <p>
-                    <a href="{{ route('proposedProjects') }}">proposedProjects</a>
-                    <p>
-                    <a href="{{ route('myProjects')}}">My projects</a>
-                    <p>
-                    <a href="{{ route('convocatories') }}"> Convocatories</a>
+                    <a href="{{ route('convocatories') }}"> @lang('general.convocatories')</a>
                 </div>
             </div>
         </div>

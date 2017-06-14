@@ -68,7 +68,7 @@ $(document).ready(function(){
                                 @elseif($inscription->state == 5)
                                     <span class="label label-danger">@lang('enums.inscription_state_5')</span>
                                 @endif
-                                </h4>
+                                <span class="label label-info">{{$inscription->score}}</span></h4>
                                 <p>
                                     @if($convocatory->state == 1 && $inscription->state != 5)
                                         <form>
@@ -86,10 +86,11 @@ $(document).ready(function(){
             </div>
                 <div id="collapseProposa{{$inscription->student->user->id}}" class="panel-collapse collapse">
                     <ul class="list-group">
-                        <li class="list-group-item ">state: {{$inscription->state}}</li>
-                        <li class="list-group-item">score: {{$inscription->score}}</li>
-                        <li class="list-group-item">observations: {{$inscription->observations}}</li>
+                        <li class="list-group-item"><b>@lang('models.observations'):</b> {{$inscription->observations}}</li>
                     </ul>
+                        
+                    
+                        
                 </div>
     </div>
 @endforeach

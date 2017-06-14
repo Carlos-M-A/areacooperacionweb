@@ -7,63 +7,36 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-primary">
+            <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" href="#collapseOffer">{{$project->title}}</a>
-                    </h4>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a data-toggle="collapse" href="#collapseOffer">{{$project->title}}</a>
+                                @if($project->state ==1)
+                                    <span class="label label-success">@lang('enums.project_state_1')</span>
+                                @elseif($project->state ==2)
+                                    <span class="label label-warning">@lang('enums.project_state_2')</span>
+                                @elseif($project->state ==3)
+                                    <span class="label label-danger">@lang('enums.project_state_3')</span>
+                                @endif
+                                </h4>
+                    </div>
                 </div>
                     <div id="collapseOffer" class="panel-collapse collapse">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>field</th>
-                                    <th>data</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>title</td>
-                                    <td>{{$project->title}}</td>
-                                </tr>
-                                <tr>
-                                    <td>scope</td>
-                                    <td>{{$project->scope}}</td>
-                                </tr>
-                                <tr>
-                                    <td>description</td>
-                                    <td>{{$project->description}}</td>
-                                </tr>
-                                <tr>
-                                    <td>author</td>
-                                    <td>{{$project->author}}</td>
-                                </tr>
-                                <tr>
-                                    <td>tutor</td>
-                                    <td>{{$project->tutor}}</td>
-                                </tr>
-                                <tr>
-                                    <td>state</td>
-                                    <td>{{$project->state}}</td>
-                                </tr>
-                                <tr>
-                                    <td>finishedDate</td>
-                                    <td>{{$project->finishedDate}}</td>
-                                </tr>
-                                <tr>
-                                    <td>urlDocumentation</td>
-                                    <td>{{$project->urlDocumentation}}</td>
-                                </tr>
-                                
-                            </tbody>
-                        </table>
-                    </div>
+                        <ul class="list-group">
+                            <li class="list-group-item"><b>@lang('models.urlDocumentation'):</b> <a href="{{$project->urlDocumentation}}"><b>@lang('models.urlDocumentation')</b></a></li>
+                            <li class="list-group-item"><b>@lang('models.scope'):</b> {{$project->scope}}</li>
+                            <li class="list-group-item"><b>@lang('models.description'):</b> {{$project->description}}</li>
+                            <li class="list-group-item"><b>@lang('models.author'):</b> {{$project->author}}</li>
+                            <li class="list-group-item"><b>@lang('models.tutor'):</b> {{$project->tutor}}</li>
+                            <li class="list-group-item"><b>@lang('models.finishedDate'):</b> {{$project->finishedDate}}</li>
+                        </ul>
                 </div>
                 
                      @yield('project_options')
                 
             </div>
+            @yield('project_tutor')
+            
             @yield('project_inscriptions')
                                 
             @yield('student_inscription')

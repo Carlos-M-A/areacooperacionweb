@@ -7,114 +7,61 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-primary">
+            <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" href="#collapseOffer">{{$offer->title}}</a>
-                    </h4>
-                </div>
-                    <div id="collapseOffer" class="panel-collapse collapse">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>field</th>
-                                    <th>data</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>organization_id</td>
-                                    <td><a href='{{route('organization', ['id' => $offer->organization_id])}}'>{{$offer->organization->user->name}}</a></td>
-                                </tr>
-                                <tr>
-                                    <td>managedByArea</td>
-                                    <td>{{$offer->managedByArea}}</td>
-                                </tr>
-                                <tr>
-                                    <td>title</td>
-                                    <td>{{$offer->title}}</td>
-                                </tr>
-                                <tr>
-                                    <td>scope</td>
-                                    <td>{{$offer->scope}}</td>
-                                </tr>
-                                <tr>
-                                    <td>description</td>
-                                    <td>{{$offer->description}}</td>
-                                </tr>
-                                <tr>
-                                    <td>requeriments</td>
-                                    <td>{{$offer->requeriments}}</td>
-                                </tr>
-                                <tr>
-                                    <td>workplan</td>
-                                    <td>{{$offer->workplan}}</td>
-                                </tr>
-                                <tr>
-                                    <td>schedule</td>
-                                    <td>{{$offer->schedule}}</td>
-                                </tr>
-                                <tr>
-                                    <td>totalHours</td>
-                                    <td>{{$offer->totalHours}}</td>
-                                </tr>
-                                <tr>
-                                    <td>possibleStartDates</td>
-                                    <td>{{$offer->possibleStartDates}}</td>
-                                <tr>
-                                    <td>possibleEndDates</td>
-                                    <td>{{$offer->possibleEndDates}}</td>
-                                </tr>
-                                <tr>
-                                    <td>places</td>
-                                    <td>{{$offer->places}}</td>
-                                </tr>
-                                <tr>
-                                    <td>placesOccupied</td>
-                                    <td>{{$offer->getAmountOfAcceptedProposals()}}</td>
-                                </tr>
-                                <tr>
-                                    <td>monetaryHelp</td>
-                                    <td>{{$offer->monetaryHelp}}</td>
-                                </tr>
-                                <tr>
-                                    <td>personInCharge</td>
-                                    <td>{{$offer->personInCharge}}</td>
-                                </tr>
-                                <tr>
-                                    <td>createdDate</td>
-                                    <td>{{$offer->createdDate}}</td>
-                                </tr>
-                                <tr>
-                                    <td>deadLine</td>
-                                    <td>{{$offer->deadline}}</td>
-                                </tr>
-                                <tr>
-                                    <td>open</td>
-                                    <td>{{$offer->open}}</td>
-                                </tr>
-                                <tr>
-                                    <td>proposal amount</td>
-                                    <td>{{count($offer->proposals)}}</td>
-                                </tr>
-                                @if($offer->isOfferOfConvocatory)
-                                <tr>
-                                    <td>housing</td>
-                                    <td>{{$offer->offerOfConvocatory->housing}}</td>
-                                </tr>
-                                <tr>
-                                    <td>costs</td>
-                                    <td>{{$offer->offerOfConvocatory->costs}}</td>
-                                </tr>
-                                <tr>
-                                    <td>convocatory</td>
-                                    <td>{{$offer->offerOfConvocatory->convocatory->title}}</td>
-                                </tr>
+                    <!-- Left-aligned -->
+                        <div class="media">
+                            <div class="media-left">
+                                @if(!is_null($offer->organization->user->urlAvatar))
+                                <img src="{{URL::asset($offer->organization->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                @else
+                                <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
                                 @endif
-                            </tbody>
-                        </table>
-                    </div>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading"><a data-toggle="collapse" href="#collapseOffer">{{$offer->title}}</a>
+                                @if($offer->open)
+                                    <span class="label label-success">@lang('general.open')</span>
+                                @else
+                                    <span class="label label-danger">@lang('general.closed')</span>
+                                @endif
+                                </h4>
+                                <p><a href='{{route('organization', ['id' => $offer->organization_id])}}'>{{$offer->organization->user->name}}</a></p>
+                            </div>
+                        </div>
+                </div>
+                
+                <div class="">
+                    <ul class="nav nav-pills">
+                        <li class=""><a>@lang('models.deadline')<span class="badge">{{$offer->deadline}}</span></a></li>
+                        <li class=""><a>@lang('models.places')<span class="badge">{{$offer->places}}</span></a></li>
+                        <li class=""><a>@lang('general.places_occupied')<span class="badge">{{$offer->getAmountOfAcceptedProposals()}}</span></a></li>
+                        <li class=""><a>@lang('general.proposals')<span class="badge">{{count($offer->proposals)}}</span></a></li>
+                        </ul>
+                </div>
+                
+                    <div id="collapseOffer" class="panel-collapse collapse">
+                        <ul class="list-group">
+                            @if($offer->managedByArea)
+                            <li class="list-group-item"><b>@lang('models.managedByArea'):</b> <a href='{{route('organization', ['id' => 2])}}'>{{config('app.name', 'Area of Cooperation')}}</a></li>
+                            @endif
+                            <li class="list-group-item"><b>@lang('models.scope'):</b> {{$offer->scope}}</li>
+                            <li class="list-group-item"><b>@lang('models.description'):</b> {{$offer->description}}</li>
+                            <li class="list-group-item"><b>@lang('models.requeriments'):</b> {{$offer->requeriments}}</li>
+                            <li class="list-group-item"><b>@lang('models.workplan'):</b> {{$offer->workplan}}</li>
+                            <li class="list-group-item"><b>@lang('models.schedule'):</b> {{$offer->schedule}}</li>
+                            <li class="list-group-item"><b>@lang('models.totalHours'):</b> {{$offer->totalHours}}</li>
+                            <li class="list-group-item"><b>@lang('models.possibleStartDates'):</b> {{$offer->possibleStartDates}}</li>
+                            <li class="list-group-item"><b>@lang('models.possibleEndDates'):</b> {{$offer->possibleEndDates}}</li>
+                            <li class="list-group-item"><b>@lang('models.monetaryHelp'):</b> {{$offer->monetaryHelp}}</li>
+                            <li class="list-group-item"><b>@lang('models.personInCharge'):</b> {{$offer->personInCharge}}</li>
+                            <li class="list-group-item"><b>@lang('models.createdDate'):</b> {{$offer->createdDate}}</li>
+                            @if($offer->isOfferOfConvocatory)
+                            <li class="list-group-item"><b>@lang('models.housing'):</b> {{$offer->offerOfConvocatory->housing}}</li>
+                            <li class="list-group-item"><b>@lang('models.costs'):</b> {{$offer->offerOfConvocatory->costs}}</li>
+                            <li class="list-group-item"><b>@lang('models.convocatory'):</b> {{$offer->offerOfConvocatory->convocatory->title}}</li>
+                            @endif
+                        </ul>
                 </div>
                 
                      @yield('offer_options')

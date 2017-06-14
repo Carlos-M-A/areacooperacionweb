@@ -15,12 +15,6 @@
                 <div class="panel-body">
                     <div class="table-responsive">
                     <table class="table">
-                        <thead>
-                            <tr>
-                                <th>@lang('general.field')</th>
-                                <th>@lang('general.data')</th>
-                            </tr>
-                        </thead>
                         <tbody>
                             <tr>
                                 <td>Role</td>
