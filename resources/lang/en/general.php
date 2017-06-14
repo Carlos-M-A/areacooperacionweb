@@ -108,6 +108,10 @@ return [
     
     //Convocatories
     'evaluate' => 'Evaluate',
+    
+    //Offers
+    'closed' => 'Closed',
+    'open' => 'Open',
 ];
 
     

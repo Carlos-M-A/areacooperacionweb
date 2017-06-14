@@ -32,10 +32,49 @@
                 <div class="panel-group">
                    <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#{{'collapse'.$proposal->student->id}}">{{$proposal->student->user->getNameAndSurnames()}}</a>
-                            </h4>
+                <!-- Left-aligned -->
+                        <div class="media">
+                            <div class="media-left">
+                                @if(!is_null($proposal->student->user->urlAvatar))
+                                <img src="{{URL::asset($proposal->student->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                @else
+                                <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                @endif
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    <a data-toggle="collapse" href="#{{'collapse'.$proposal->student->id}}">{{$proposal->student->user->getNameAndSurnames()}}</a>
+                                @if($proposal->state == 1)
+                                    <span class="label label-info">@lang('enums.proposal_state_1')</span>
+                                @elseif($proposal->state == 2)
+                                    <span class="label label-success">@lang('enums.proposal_state_2')</span>
+                                @elseif($proposal->state == 3)
+                                    <span class="label label-danger">@lang('enums.proposal_state_3')</span>
+                                @elseif($proposal->state == 4)
+                                    <span class="label label-success">@lang('enums.proposal_state_4')</span>
+                                @elseif($proposal->state == 5)
+                                    <span class="label label-danger">@lang('enums.proposal_state_5')</span>
+                                @endif
+                                </h4>
+                                <p>
+                                    @if($offer->open)
+                                        <form>
+                                            {{ csrf_field() }}
+                                            <div class="btn-group">
+                                                @if($proposal->state == 1 || $proposal->state == 3)
+                                                <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('approveProposal', ['id'=> $proposal->id])}}">Approve</button>
+                                                @endif
+                                                @if($proposal->state <= 2)
+                                                <button class="btn btn-danger"  type="submit" formmethod="POST" formaction="{{route('rejectProposal', ['id'=> $proposal->id])}}">Reject</button>
+                                                @endif
+                                            </div>
+                                        </form>
+                                    @endif
+                                </p>
+                            </div>
                         </div>
+                        </li>
+            </div>
                     <div id="{{'collapse'.$proposal->student->id}}" class="panel-collapse collapse">
                     <ul class="list-group">
                         <li class="list-group-item ">type: {{$proposal->type}}</li>
@@ -54,22 +93,6 @@
                         <li class="list-group-item">email: {{$proposal->student->user->email}}</li>
                     </ul>
                     </div>
-                    @if($offer->open)
-                    <div class="panel-footer">
-                        
-                            <form>
-                                {{ csrf_field() }}
-                                <div class="btn-group">
-                                    @if($proposal->state == 1 || $proposal->state == 3)
-                                    <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('approveProposal', ['id'=> $proposal->id])}}">Approve</button>
-                                    @endif
-                                    @if($proposal->state <= 2)
-                                    <button class="btn btn-danger"  type="submit" formmethod="POST" formaction="{{route('rejectProposal', ['id'=> $proposal->id])}}">Reject</button>
-                                    @endif
-                                </div>
-                            </form>
-                    </div>
-                    @endif
                     </div>
                 </div> 
         @endforeach

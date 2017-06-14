@@ -25,10 +25,10 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h4 class="panel-title">
-           <a data-toggle="collapse" href="#collapseTutor">@lang('general.author')</a>
+           <a>@lang('general.author')</a>
         </h4>
     </div>
-    <div id="collapseTutor" class="panel-collapse collapse">
+    <div class="panel-body">
 
  
         <div class="panel-group">
@@ -37,32 +37,38 @@
                 @else
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#{{'collapse'.$inscriptionInProjectChosen->student->id}}">{{$inscriptionInProjectChosen->student->user->getNameAndSurnames()}}</a>
-                            </h4>
+                            
+                        <!-- Left-aligned -->
+                        <div class="media">
+                            <div class="media-left">
+                                @if(!is_null($inscriptionInProjectChosen->student->user->urlAvatar))
+                                <img src="{{URL::asset($inscriptionInProjectChosen->student->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                @else
+                                <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                @endif
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    <a data-toggle="collapse" href="#{{'collapse'.$inscriptionInProjectChosen->student->id}}">{{$inscriptionInProjectChosen->student->user->getNameAndSurnames()}}</a>
+                                    <span class="label label-success">@lang('enums.inscription_in_project_state_2')</span>
+                                </h4>
+                                <p>
+                                    @if($project->state == 2)
+                                        <!-- Trigger the modal to enter the tutor manually -->
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#cancelAuthor">Cancel author</button>
+                                    @endif
+                                </p>
+                            </div>
                         </div>
+                        </li>
+                        </div>
+                    <div id="{{'collapse'.$inscriptionInProjectChosen->student->id}}" class="panel-collapse collapse">
                     
-                        <div id="{{'collapse'.$inscriptionInProjectChosen->student->id}}" class="panel-collapse collapse">
-                            <ul class="list-group">
-                                <li class="list-group-item">state: {{$inscriptionInProjectChosen->state}}</li>
-                                <li class="list-group-item">comment: {{$inscriptionInProjectChosen->comment}}</li>
-                                <li class="list-group-item">phone: {{$inscriptionInProjectChosen->student->user->phone}}</li>
-                                <li class="list-group-item">email: {{$inscriptionInProjectChosen->student->user->email}}</li>
-                                <li class="list-group-item">areasOfInterest: {{$inscriptionInProjectChosen->student->areasOfInterest}}</li>
-                                <li class="list-group-item">skills: {{$inscriptionInProjectChosen->student->skills}}</li>
-                                <li class="list-group-item">urlCurriculum: {{$inscriptionInProjectChosen->student->urlCurriculum}}</li>
-                            </ul>
-                        </div>
+                    </div>
                     </div>
                 @endif
         </div> 
     </div>
-    @if($project->state == 2)
-    <div class="panel-footer">
-            <!-- Trigger the modal to enter the tutor manually -->
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#cancelAuthor">Cancel author</button>
-    </div>
-    @endif
 </div>
 
 @if($project->state <= 2)
@@ -79,9 +85,40 @@
                 <div class="panel-group">
                    <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#{{'collapse'.$inscription->student->id}}">{{$inscription->student->user->getNameAndSurnames()}}</a>
-                            </h4>
+                            
+                        <!-- Left-aligned -->
+                        <div class="media">
+                            <div class="media-left">
+                                @if(!is_null($inscription->student->user->urlAvatar))
+                                <img src="{{URL::asset($inscription->student->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                @else
+                                <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                @endif
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    <a data-toggle="collapse" href="#{{'collapse'.$inscription->student->id}}">{{$inscription->student->user->getNameAndSurnames()}}</a>
+                                @if($inscription->state == 1)
+                                    <span class="label label-info">@lang('enums.inscription_in_project_state_1')</span>
+                                @elseif($inscription->state == 2)
+                                    <span class="label label-success">@lang('enums.inscription_in_project_state_2')</span>
+                                @elseif($inscription->state == 3)
+                                    <span class="label label-danger">@lang('enums.inscription_in_project_state_3')</span>
+                                @endif
+                                </h4>
+                                <p>
+                                    @if($inscription->state == 1 && $project->state == 1)
+                                        <form>
+                                            {{ csrf_field() }}
+                                            <div class="btn-group">
+                                                <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('acceptInscriptionInProject', ['id'=> $inscription->id])}}">Choose</button>
+                                            </div>
+                                        </form>
+                                   @endif
+                                </p>
+                            </div>
+                        </div>
+                        </li>
                         </div>
                     <div id="{{'collapse'.$inscription->student->id}}" class="panel-collapse collapse">
                     <ul class="list-group">
@@ -94,16 +131,6 @@
                         <li class="list-group-item">urlCurriculum: {{$inscription->student->urlCurriculum}}</li>
                     </ul>
                     </div>
-                       @if($inscription->state == 1 && $project->state == 1)
-                        <div class="panel-footer">
-                            <form>
-                                {{ csrf_field() }}
-                                <div class="btn-group">
-                                    <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('acceptInscriptionInProject', ['id'=> $inscription->id])}}">Choose</button>
-                                </div>
-                            </form>
-                        </div>
-                       @endif
                     </div>
                 </div>
         @endforeach

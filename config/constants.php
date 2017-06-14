@@ -10,6 +10,6 @@
 
 return [
 
-    'pagination' => 1, // Items requested on each query
+    'pagination' => 3, // Items requested on each query
    
 ];

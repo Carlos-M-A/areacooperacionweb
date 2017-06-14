@@ -86,7 +86,7 @@ Route::get('/offers/newOffers', 'Offers\OffersController@newOffers')->name('newO
 Route::get('/offers/offersWithProposal', 'Offers\ProposalsController@offersWithProposal')->name('offersWithProposal');
 Route::get('/offers/acceptedProposals', 'Offers\ProposalsController@acceptedProposals')->name('acceptedProposals');
 Route::get('/offers/approvedProposals', 'Offers\ProposalsController@approvedProposals')->name('approvedProposals');
-Route::get('/organizations/{id}', 'Users\OrganizationsController@get')->name('organization');
+Route::get('/organizations/{id}', 'Users\OrganizationController@get')->name('organization');
 
 Route::get('/offers/{id}', 'Offers\OfferController@get')->name('offer');
 Route::get('/offers/{id}/showEdit', 'Offers\OfferController@showEdit')->name('showEditOffer');

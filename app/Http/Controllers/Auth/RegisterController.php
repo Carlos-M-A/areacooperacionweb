@@ -56,18 +56,17 @@ use RegistersUsers;
         $rules['password'] = 'required|string|min:6|confirmed|max:'.config('forms.password');
         $rules['idCard'] = 'required|string|unique:User|max:'.config('forms.idCard');
         $rules['phone'] = 'required|string|max:'.config('forms.phone');
+        $rules['surnames'] = 'required|string|max:'.config('forms.surnames');
 
         switch ($data['role']) {
             //student
             case 1:
-                $rules['surnames'] = 'required|string|max:'.config('forms.surnames');
                 $rules['study'] = 'required|integer|min:1';
                 $rules['areasOfInterest'] = 'required|string|max:'.config('forms.areasOfInterest');
                 $rules['skills'] = 'required|string|max:'.config('forms.skills');
                 break;
             //Teacher
             case 2:
-                $rules['surnames'] = 'required|string|max:'.config('forms.surnames');
                 $rules['areasOfInterest'] = 'required|string|max:'.config('forms.areasOfInterest');
                 //The next rule is a regular expresion to accpet the strings
                 //with this format: 234.343.23,121
@@ -76,14 +75,12 @@ use RegistersUsers;
                 break;
             //Other
             case 3:
-                $rules['surnames'] = 'required|string|max:'.config('forms.surnames');
                 $rules['areasOfInterest'] = 'required|string|max:'.config('forms.areasOfInterest');
                 $rules['description'] = 'required|string|max:'.config('forms.user_description');
                 break;
             // Organization
             case 4:
                 $rules['description'] = 'required|string|max:'.config('forms.user_description');
-                $rules['socialName'] = 'required|string|max:'.config('forms.socialName');
                 $rules['headquartersLocation'] = 'required|string|max:'.config('forms.headquartersLocation');
                 $rules['web'] = 'required|url|max:'.config('forms.url');
                 $rules['linksWithNearbyEntities'] = 'nullable|string|max:'.config('forms.linksWithNearbyEntities');

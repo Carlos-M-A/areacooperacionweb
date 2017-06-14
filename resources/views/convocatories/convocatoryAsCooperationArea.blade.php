@@ -45,28 +45,52 @@ $(document).ready(function(){
 @foreach($inscriptions as $inscription)
     <div class="panel panel-default">
             <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" href="#collapseProposa{{$inscription->student->user->id}}">{{$inscription->student->user->getNameAndSurnames()}}</a>
-                </h4>
+                <!-- Left-aligned -->
+                        <div class="media">
+                            <div class="media-left">
+                                @if(!is_null($inscription->student->user->urlAvatar))
+                                <img src="{{URL::asset($inscription->student->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                @else
+                                <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                @endif
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    <a data-toggle="collapse" href="#collapseProposa{{$inscription->student->user->id}}">{{$inscription->student->user->getNameAndSurnames()}}</a>
+                                @if($inscription->state == 1)
+                                    <span class="label label-info">@lang('enums.inscription_state_1')</span>
+                                @elseif($inscription->state == 2)
+                                    <span class="label label-success">@lang('enums.inscription_state_2')</span>
+                                @elseif($inscription->state == 3)
+                                    <span class="label label-warning">@lang('enums.inscription_state_3')</span>
+                                @elseif($inscription->state == 4)
+                                    <span class="label label-danger">@lang('enums.inscription_state_4')</span>
+                                @elseif($inscription->state == 5)
+                                    <span class="label label-danger">@lang('enums.inscription_state_5')</span>
+                                @endif
+                                </h4>
+                                <p>
+                                    @if($convocatory->state == 1 && $inscription->state != 5)
+                                        <form>
+                                                {{ csrf_field() }}
+                                                <div class="btn-group">
+                                                    <!-- Trigger the modal to evaluate the inscription -->
+                                                    <button id="{{$inscription->id}}" type="button" class="btn btn-primary evaluate_button" data-toggle="modal"  >@lang('general.evaluate')</button>
+                                                </div>
+                                            </form>
+                                    @endif
+                                </p>
+                            </div>
+                        </div>
+                        </li>
             </div>
-        <div id="collapseProposa{{$inscription->student->user->id}}" class="panel-collapse collapse">
-        <ul class="list-group">
-            <li class="list-group-item ">state: {{$inscription->state}}</li>
-            <li class="list-group-item">score: {{$inscription->score}}</li>
-            <li class="list-group-item">observations: {{$inscription->observations}}</li>
-        </ul>
-        </div>
-        @if($convocatory->state == 1 && $inscription->state != 5)
-        <div class="panel-footer">
-            <form>
-                    {{ csrf_field() }}
-                    <div class="btn-group">
-                        <!-- Trigger the modal to evaluate the inscription -->
-                        <button id="{{$inscription->id}}" type="button" class="btn btn-primary evaluate_button" data-toggle="modal"  >@lang('general.evaluate')</button>
-                    </div>
-                </form>
-        </div>
-        @endif
+                <div id="collapseProposa{{$inscription->student->user->id}}" class="panel-collapse collapse">
+                    <ul class="list-group">
+                        <li class="list-group-item ">state: {{$inscription->state}}</li>
+                        <li class="list-group-item">score: {{$inscription->score}}</li>
+                        <li class="list-group-item">observations: {{$inscription->observations}}</li>
+                    </ul>
+                </div>
     </div>
 @endforeach
     </div>
