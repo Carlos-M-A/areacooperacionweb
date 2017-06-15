@@ -34,12 +34,16 @@ $(document).ready(function(){
     <div class="panel-heading">
         Inscriptions
         <ul class="nav nav-pills">
-                        <li class="{{old('stateOfInscriptions')==1 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 1]) }}">Inscriptions<span class="badge">{{$convocatory->getAmountOfNotEvaluatedInscriptions()}}</span></a></li>
-                        <li class="{{old('stateOfInscriptions')==2 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 2]) }}">Accepted<span class="badge">{{$convocatory->getAmountOfAcceptedInscriptions()}}</span></a></li>
-                        <li class="{{old('stateOfInscriptions')==3 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 3]) }}">Alternate<span class="badge">{{$convocatory->getAmountOfAlternateInscriptions()}}</span></a></li>
-                        <li class="{{old('stateOfInscriptions')==4 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 4]) }}">Rejected<span class="badge">{{$convocatory->getAmountOfRejectedInscriptions()}}</span></a></li>
-                        <li class="{{old('stateOfInscriptions')==5 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 5]) }}">Cancelled inscriptions<span class="badge">{{$convocatory->getAmountOfCancelledInscriptions()}}</span></a></li>
-                    </ul>
+            @if(is_null(old('stateOfInscriptions')))
+                <li class="active"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 1]) }}">Inscriptions<span class="badge">{{$convocatory->getAmountOfNotEvaluatedInscriptions()}}</span></a></li>
+            @else
+                <li class="{{old('stateOfInscriptions')==1 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 1]) }}">Inscriptions<span class="badge">{{$convocatory->getAmountOfNotEvaluatedInscriptions()}}</span></a></li>
+            @endif
+                <li class="{{old('stateOfInscriptions')==2 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 2]) }}">Accepted<span class="badge">{{$convocatory->getAmountOfAcceptedInscriptions()}}</span></a></li>
+                <li class="{{old('stateOfInscriptions')==3 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 3]) }}">Alternate<span class="badge">{{$convocatory->getAmountOfAlternateInscriptions()}}</span></a></li>
+                <li class="{{old('stateOfInscriptions')==4 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 4]) }}">Rejected<span class="badge">{{$convocatory->getAmountOfRejectedInscriptions()}}</span></a></li>
+                <li class="{{old('stateOfInscriptions')==5 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 5]) }}">Cancelled inscriptions<span class="badge">{{$convocatory->getAmountOfCancelledInscriptions()}}</span></a></li>
+        </ul>
     </div>
     <div class="panel-body">  
 @foreach($inscriptions as $inscription)
@@ -70,15 +74,16 @@ $(document).ready(function(){
                                 @endif
                                 <span class="label label-info">{{$inscription->score}}</span></h4>
                                 <p>
-                                    @if($convocatory->state == 1 && $inscription->state != 5)
-                                        <form>
-                                                {{ csrf_field() }}
-                                                <div class="btn-group">
+                                    <form>
+                                        {{ csrf_field() }}
+                                        <div class="btn-group">
+                                            <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $inscription->student->user->id])}}">@lang('view')</button>
+                                            @if($convocatory->state == 1 && $inscription->state != 5)
                                                     <!-- Trigger the modal to evaluate the inscription -->
                                                     <button id="{{$inscription->id}}" type="button" class="btn btn-primary evaluate_button" data-toggle="modal"  >@lang('general.evaluate')</button>
-                                                </div>
-                                            </form>
-                                    @endif
+                                            @endif
+                                        </div>
+                                    </form>
                                 </p>
                             </div>
                         </div>

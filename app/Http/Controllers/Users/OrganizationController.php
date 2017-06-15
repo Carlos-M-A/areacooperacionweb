@@ -20,8 +20,8 @@ class OrganizationController extends Controller {
     }
 
     public function get($id) {
-        $organization = Organization::find($id);
-        return view('users/organization')->with('organization', $organization);
+        $user = Organization::find($id);
+        return view('users/user')->with('user', $user);
     }
 
     public function create(Request $request) {

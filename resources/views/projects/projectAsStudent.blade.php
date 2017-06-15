@@ -41,10 +41,9 @@
                             <div class="media-body">
                                 <h4 class="media-heading">{{$project->teacher->user->getNameAndSurnames()}}</h4>
                                 <p>
-                                    
-                                        <!-- Trigger the modal to enter the tutor manually -->
-                                        <button type="button" >View profile</button>
-                                    
+                                <form>
+                                        <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $project->teacher->user->id])}}">@lang('view')</button>
+                                </form>
                                 </p>
                             </div>
                         </div>

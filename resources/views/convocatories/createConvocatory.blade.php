@@ -73,7 +73,7 @@
                             <label for="estimatedPeriod" class="col-md-4 control-label">estimatedPeriod</label>
 
                             <div class="col-md-6">
-                                <textarea id="estimatedPeriod" cols="100" rows="7" maxlength="{{config('forms.estimatedPeriod')}}"
+                                <textarea id="estimatedPeriod" cols="100" rows="3" maxlength="{{config('forms.estimatedPeriod')}}"
                                            class="form-control" name="estimatedPeriod" autofocus>{{ old('estimatedPeriod') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('estimatedPeriod'))

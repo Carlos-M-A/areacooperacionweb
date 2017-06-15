@@ -18,7 +18,7 @@ class OffersController extends Controller {
         if ($user->role == 5) {
             $offers = Offer::where('managedByArea', 1);
         }
-        return view('offers/offers')->with('offers', $offers->paginate(config('constants.pagination')));
+        return view('offers/offers')->with('offers', $offers->paginate(config('constants.pagination')))->with('ask', 5);
     }
     public function myOpenOffers() {
         $offers = Offer::where('open', 1);
@@ -31,7 +31,7 @@ class OffersController extends Controller {
             $offers->where('managedByArea', 1);
         }
 
-        return view('offers/offers')->with('offers', $offers->paginate(config('constants.pagination')));
+        return view('offers/offers')->with('offers', $offers->paginate(config('constants.pagination')))->with('ask', 6);
     }
 
     public function myClosedOffers() {
@@ -45,7 +45,7 @@ class OffersController extends Controller {
             $offers->where('managedByArea', 1);
         }
 
-        return view('offers/offers')->with('offers', $offers->paginate(config('constants.pagination')));
+        return view('offers/offers')->with('offers', $offers->paginate(config('constants.pagination')))->with('ask', 7);
     }
     
     /**
@@ -58,6 +58,6 @@ class OffersController extends Controller {
                     $query->where('student_id', $user->id);
                 })->where('open', true);
 
-        return view('offers/offers')->with('offers', $offers->paginate(config('constants.pagination')));
+        return view('offers/offers')->with('offers', $offers->paginate(config('constants.pagination')))->with('ask', 1);
     }
 }

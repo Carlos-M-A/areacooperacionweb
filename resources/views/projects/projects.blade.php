@@ -14,12 +14,12 @@
                     Projects
                     @if($user->role == 1)
                     <ul class="nav nav-pills">
-                        <li class=""><a href="{{ route('myProjects') }}">@lang('general.my_projects')</a></li>
-                        <li class=""><a href="{{ route('proposedProjects') }}">@lang('general.proposed_projects')</a></li>
+                        <li class="{{($ask == 1) ? 'active' : ''}}"><a href="{{ route('myProjects') }}">@lang('general.my_projects')</a></li>
+                        <li class="{{($ask == 2) ? 'active' : ''}}"><a href="{{ route('proposedProjects') }}">@lang('general.proposed_projects')</a></li>
                     </ul>
                     @elseif($user->role == 2)
                     <ul class="nav nav-pills">
-                        <li class=""><a href="{{ route('myProjects') }}">@lang('general.my_projects')</a></li>
+                        <li class="{{($ask == 1) ? 'active' : ''}}"><a href="{{ route('myProjects') }}">@lang('general.my_projects')</a></li>
                     </ul>
                     @endif
                 </div>

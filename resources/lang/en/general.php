@@ -39,6 +39,7 @@ return [
     'reject' => 'Reject',
     'finish' => 'Finish',
     'cancel' => 'Cancel',
+    'view' => 'View',
     
     
     //Forms
@@ -71,7 +72,7 @@ return [
     'did_a_request' => 'You did a request to be a observatory member',
     'is_member' => 'Is member',
     'not_is_member' => 'Not is member',
-    'cancel_the_request' => 'Cancel the request',
+    'cancel_request' => 'Cancel the request',
     'request_obs_member' => 'Request to be observatory member',
     'cancel_obs_member' => 'Cancel to be observatory member',
     'studies_with_teaching' => 'Studies with teaching',
@@ -131,6 +132,7 @@ return [
     'approved_proposals' => 'Approved proposals',
     'my_practices' => 'My practices',
     'create_offer' => 'Create offer',
+    
     
 ];
 

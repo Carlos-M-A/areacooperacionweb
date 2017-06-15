@@ -1,78 +1,29 @@
-@extends('layouts.app')
+@extends('users.user')
 
-@section('content')
+@section('user_options')
+<div class="panel-footer">
+    <form>
+    <div class="btn-group">
+        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditProfile')}}">@lang('general.edit')</button>
+        @if($user->role<4)
+        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showCreateRoleChangeRequest')}}">@lang('general.change_role')</button>
+        @endif
+        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditPassword')}}">@lang('general.change_password')</button>
+        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showUploadAvatar', ['idUser' => $user->id])}}">@lang('general.upload_avatar')</button>
+        @if($user->role==1)
+        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showUploadCurriculum', ['idUser' => $user->id])}}">@lang('general.upload_curriculum')</button>
+        @endif
+    </div>
+    </form>
+</div>
+@endsection
 
-@php
-    $user = Auth::user();
-@endphp
+@section('more_content')
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-primary">
-                <div class="panel-heading">@lang('general.profile_data')</div>
-
-                <div class="panel-body">
-                    <div class="table-responsive">
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <td>Role</td>
-                                <td>{{$user->getRoleName()}}</td>
-                            </tr>
-                            <tr>
-                                <td>Name</td>
-                                <td>{{$user->name}}</td>
-                            </tr>
-                            <tr>
-                                <td>surnames</td>
-                                <td>{{$user->surnames}}</td>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td>{{$user->email}}</td>
-                            </tr>
-                            <tr>
-                                <td>id card</td>
-                                <td>{{$user->idCard}}</td>
-                            </tr>
-                            <tr>
-                                <td>Phone number</td>
-                                <td>{{$user->phone}}</td>
-                            </tr>
-                            <tr>
-                                <td>Imagen</td>
-                                <td><img src="{{URL::asset($user->urlAvatar)}}" alt="profile Pic" height="128" width="128"></td>
-                            </tr>
-                            @yield('role_data')
-
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
-                <div class="panel-footer">
-                    <form>
-                    <div class="btn-group">
-                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditProfile')}}">@lang('general.edit')</button>
-                        @if($user->role<4)
-                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showCreateRoleChangeRequest')}}">@lang('general.change_role')</button>
-                        @endif
-                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditPassword')}}">@lang('general.change_password')</button>
-                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showUploadAvatar', ['idUser' => $user->id])}}">@lang('general.upload_avatar')</button>
-                        @if($user->role==1)
-                        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showUploadCurriculum', ['idUser' => $user->id])}}">@lang('general.upload_curriculum')</button>
-                        @endif
-                    </div>
-                    </form>
-                </div>
-                    
-            </div>
-
-            
             @yield('studies_teacher')
             
             
-            <div class="panel panel-primary">
+            <div class="panel panel-info">
                 <div class="panel-heading">@lang('general.notifications')</div>
 
                 <div class="panel-body">
@@ -117,7 +68,7 @@
                 </div>
             </div>
             
-            <div class="panel panel-primary" >
+            <div class="panel panel-info" >
                 <div class="panel-heading">@lang('general.newsletter_subscription')</div>
 
                 <div class="panel-body">
@@ -134,7 +85,7 @@
                 </div>
             </div>
             
-            <div class="panel panel-primary">
+            <div class="panel panel-info">
                 <div class="panel-heading">@lang('general.observatory_name')</div>
 
                 <div class="panel-body">
@@ -150,7 +101,7 @@
                                         {{ csrf_field() }}
                                         <button   
                                             type="submit" class="btn btn-primary">
-                                                @lang('general.cancell_request')
+                                                @lang('general.cancel_request')
                                         </button>
                                     </form>
                     @else

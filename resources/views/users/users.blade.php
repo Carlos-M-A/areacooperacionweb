@@ -107,7 +107,7 @@
                                 @foreach($users as $user)
                                 <tr>
                                     <td><a href="{{route('user', ['id'=> $user->id])}}" >{{$user->getNameAndSurnames()}}</a></td>
-                                    <td>{{$user->getRoleName()}}</td>
+                                    <td>@lang('enums.role_' . $user->role)</td>
                                 </tr>
                                 @endforeach
 

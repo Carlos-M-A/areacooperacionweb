@@ -14,16 +14,16 @@ $user = Auth::user();
                     Offers
                     @if($user->role == 1)
                     <ul class="nav nav-pills">
-                        <li class=""><a href="{{ route('newOffers') }}">@lang('general.new_offers')</a></li>
-                        <li class=""><a href="{{ route('offersWithProposal') }}">@lang('general.my_proposals')</a></li>
-                        <li class=""><a href="{{ route('approvedProposals') }}">@lang('general.approved_proposals')</a></li>
-                        <li class=""><a href="{{ route('acceptedProposals') }}">@lang('general.my_practices')</a></li>
+                        <li class="{{($ask == 1) ? 'active' : ''}}"><a href="{{ route('newOffers') }}">@lang('general.new_offers')</a></li>
+                        <li class="{{($ask == 2) ? 'active' : ''}}"><a href="{{ route('offersWithProposal') }}">@lang('general.my_proposals')</a></li>
+                        <li class="{{($ask == 3) ? 'active' : ''}}"><a href="{{ route('approvedProposals') }}">@lang('general.approved_proposals')</a></li>
+                        <li class="{{($ask == 4) ? 'active' : ''}}"><a href="{{ route('acceptedProposals') }}">@lang('general.my_practices')</a></li>
                     </ul>
                     @elseif($user->role == 4 || $user->role == 5)
                     <ul class="nav nav-pills">
-                        <li class=""><a href="{{ route('myOffers') }}">@lang('general.my_offers')</a></li>
-                        <li class=""><a href="{{ route('myOpenOffers') }}">@lang('general.my_open_offers')</a></li>
-                        <li class=""><a href="{{ route('myClosedOffers') }}">@lang('general.my_closed_offers')</a></li>
+                        <li class="{{($ask == 5) ? 'active' : ''}}"><a href="{{ route('myOffers') }}">@lang('general.my_offers')</a></li>
+                        <li class="{{($ask == 6) ? 'active' : ''}}"><a href="{{ route('myOpenOffers') }}">@lang('general.my_open_offers')</a></li>
+                        <li class="{{($ask == 7) ? 'active' : ''}}"><a href="{{ route('myClosedOffers') }}">@lang('general.my_closed_offers')</a></li>
                     </ul>
                     @endif
                 </div>

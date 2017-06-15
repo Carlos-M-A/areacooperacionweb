@@ -101,7 +101,7 @@
                             <label for="requeriments" class="col-md-4 control-label">requeriments</label>
 
                             <div class="col-md-6">
-                                <textarea id="requeriments" cols="100" rows="7" maxlength="{{config('forms.requeriments')}}"
+                                <textarea id="requeriments" cols="100" rows="3" maxlength="{{config('forms.requeriments')}}"
                                            class="form-control" name="requeriments" autofocus>{{ old('requeriments') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('requeriments'))
@@ -131,7 +131,7 @@
                             <label for="schedule" class="col-md-4 control-label">schedule</label>
 
                             <div class="col-md-6">
-                                <textarea id="schedule" cols="100" rows="7" maxlength="{{config('forms.schedule')}}"
+                                <textarea id="schedule" cols="100" rows="3" maxlength="{{config('forms.schedule')}}"
                                            class="form-control" name="schedule" autofocus>{{ old('schedule') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('schedule'))
@@ -146,7 +146,7 @@
                             <label for="totalHours" class="col-md-4 control-label">totalHours</label>
 
                             <div class="col-md-6">
-                                <textarea id="totalHours" cols="100" rows="7" maxlength="{{config('forms.offer_totalHours')}}"
+                                <textarea id="totalHours" cols="100" rows="2" maxlength="{{config('forms.offer_totalHours')}}"
                                            class="form-control" name="totalHours" autofocus>{{ old('totalHours') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('totalHours'))
@@ -161,7 +161,7 @@
                             <label for="possibleStartDates" class="col-md-4 control-label">possibleStartDates</label>
 
                             <div class="col-md-6">
-                                <textarea id="possibleStartDates" cols="100" rows="7" maxlength="{{config('forms.possibleStartDates')}}"
+                                <textarea id="possibleStartDates" cols="100" rows="2" maxlength="{{config('forms.possibleStartDates')}}"
                                            class="form-control" name="possibleStartDates" autofocus>{{ old('possibleStartDates') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('possibleStartDates'))
@@ -176,7 +176,7 @@
                             <label for="possibleEndDates" class="col-md-4 control-label">possibleEndDates</label>
 
                             <div class="col-md-6">
-                                <textarea id="possibleEndDates" cols="100" rows="7" maxlength="{{config('forms.possibleEndDates')}}"
+                                <textarea id="possibleEndDates" cols="100" rows="2" maxlength="{{config('forms.possibleEndDates')}}"
                                            class="form-control" name="possibleEndDates" autofocus>{{ old('possibleEndDates') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('possibleEndDates'))
@@ -205,7 +205,7 @@
                             <label for="monetaryHelp" class="col-md-4 control-label">monetaryHelp</label>
 
                             <div class="col-md-6">
-                                <textarea id="monetaryHelp" cols="100" rows="7" maxlength="{{config('forms.monetaryHelp')}}"
+                                <textarea id="monetaryHelp" cols="100" rows="2" maxlength="{{config('forms.monetaryHelp')}}"
                                            class="form-control" name="monetaryHelp" autofocus>{{ old('monetaryHelp') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('monetaryHelp'))

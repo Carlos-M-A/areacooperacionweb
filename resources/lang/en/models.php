@@ -114,7 +114,7 @@ return [
         'isSubscriber' => 'Subscriber',
         'notificationInfoConvocatories' => 'Notification of Convocatories',
         'notificationInfoProjects' => 'Notification of Projects',
-        'lastConnectionDate' => 'Date of last connection',
+        'lastConnectionDate' => 'Last connection',
     
     
     //Names produced by relationships

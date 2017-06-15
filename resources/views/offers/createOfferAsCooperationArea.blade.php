@@ -107,7 +107,7 @@
     <label for="housing" class="col-md-4 control-label">housing</label>
 
     <div class="col-md-6">
-        <textarea id="housing" cols="100" rows="7" maxlength="{{config('forms.housing')}}"
+        <textarea id="housing" cols="100" rows="3" maxlength="{{config('forms.housing')}}"
             class="form-control" name="housing" autofocus>{{ old('housing') }}</textarea>
             <span class="pull-right label label-default"></span>
         @if ($errors->has('housing'))
@@ -122,7 +122,7 @@
     <label for="costs" class="col-md-4 control-label">costs</label>
 
     <div class="col-md-6">
-        <textarea id="costs" cols="100" rows="7" maxlength="{{config('forms.costs')}}"
+        <textarea id="costs" cols="100" rows="3" maxlength="{{config('forms.costs')}}"
             class="form-control" name="costs" autofocus>{{ old('costs') }}</textarea>
             <span class="pull-right label label-default"></span>
         @if ($errors->has('costs'))

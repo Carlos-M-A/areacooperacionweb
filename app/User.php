@@ -34,29 +34,21 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     
+    public function student() {
+        return $this->hasOne('App\Student', 'id');
+    }
+    
     public function teacher() {
         return $this->hasOne('App\Teacher', 'id');
     }
-    /**
-     * Return the role name of the user
-     * @return string
-     */
-    public function getRoleName() {
-        switch ($this->role){
-            case 1:
-                return 'Student';
-            case 2:
-                return 'Teacher';
-            case 3:
-                return 'Other';
-            case 4:
-                return 'Organizatión';
-            case 5:
-                return 'Cooperation area';
-            case 6:
-                return 'Admin';
-        }
+    
+    public function other() {
+        return $this->hasOne('App\Other', 'id');
     }
+    public function organization() {
+        return $this->hasOne('App\Organization', 'id');
+    }
+    
     
     public function getNameAndSurnames() {
         switch ($this->role){

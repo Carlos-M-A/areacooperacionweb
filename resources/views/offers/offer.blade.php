@@ -26,7 +26,7 @@
                                     <span class="label label-danger">@lang('general.closed')</span>
                                 @endif
                                 </h4>
-                                <p><a href='{{route('organization', ['id' => $offer->organization_id])}}'>{{$offer->organization->user->name}}</a></p>
+                                <p><a href='{{route('user', ['id' => $offer->organization->id])}}'>{{$offer->organization->user->name}}</a></p>
                             </div>
                         </div>
                 </div>
@@ -43,7 +43,7 @@
                     <div id="collapseOffer" class="panel-collapse collapse">
                         <ul class="list-group">
                             @if($offer->managedByArea)
-                            <li class="list-group-item"><b>@lang('models.managedByArea'):</b> <a href='{{route('organization', ['id' => 2])}}'>{{config('app.name', 'Area of Cooperation')}}</a></li>
+                            <li class="list-group-item"><b>@lang('models.managedByArea'):</b> <a href='{{route('user', ['id' => 2])}}'>{{config('app.name', 'Area of Cooperation')}}</a></li>
                             @endif
                             <li class="list-group-item"><b>@lang('models.scope'):</b> {{$offer->scope}}</li>
                             <li class="list-group-item"><b>@lang('models.description'):</b> {{$offer->description}}</li>
@@ -62,7 +62,7 @@
                             <li class="list-group-item"><b>@lang('models.convocatory'):</b> {{$offer->offerOfConvocatory->convocatory->title}}</li>
                             @endif
                         </ul>
-                </div>
+                    </div>
                 
                      @yield('offer_options')
                 

@@ -72,11 +72,15 @@
 </div>
 
 @if($project->state <= 2)
-<div class="panel panel-default">
+<div class="panel panel-info">
     <div class="panel-heading">
         <ul class="nav nav-pills">
-                        <li class="{{old('stateOfInscriptions')==1 ? 'active' : ''}}"><a href="{{ route('project', ['id'=> $project->id, 'stateOfInscriptions' => 1]) }}">Inscriptions<span class="badge">{{$project->getAmountOfNotChosenInscriptions()}}</span></a></li>
-                        <li class="{{old('stateOfInscriptions')==3 ? 'active' : ''}}"><a href="{{ route('project', ['id'=> $project->id, 'stateOfInscriptions' => 3]) }}">Cancelled inscriptions<span class="badge">{{$project->getAmountOfCancelledInscriptions()}}</span></a></li>
+            @if(is_null(old('stateOfInscriptions')))
+            <li class="active"><a href="{{ route('project', ['id'=> $project->id, 'stateOfInscriptions' => 1]) }}">Inscriptions<span class="badge">{{$project->getAmountOfNotChosenInscriptions()}}</span></a></li>
+            @else
+                <li class="{{old('stateOfInscriptions')==1 ? 'active' : ''}}"><a href="{{ route('project', ['id'=> $project->id, 'stateOfInscriptions' => 1]) }}">Inscriptions<span class="badge">{{$project->getAmountOfNotChosenInscriptions()}}</span></a></li>
+            @endif
+                <li class="{{old('stateOfInscriptions')==3 ? 'active' : ''}}"><a href="{{ route('project', ['id'=> $project->id, 'stateOfInscriptions' => 3]) }}">Cancelled inscriptions<span class="badge">{{$project->getAmountOfCancelledInscriptions()}}</span></a></li>
                     </ul>
     </div>
     <div class="panel-body">
@@ -107,14 +111,15 @@
                                 @endif
                                 </h4>
                                 <p>
+                                <form>
+                                    {{ csrf_field() }}
+                                    <div class="btn-group">
+                                    <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $inscription->student->user->id])}}">@lang('view')</button>
                                     @if($inscription->state == 1 && $project->state == 1)
-                                        <form>
-                                            {{ csrf_field() }}
-                                            <div class="btn-group">
                                                 <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('acceptInscriptionInProject', ['id'=> $inscription->id])}}">Choose</button>
-                                            </div>
-                                        </form>
-                                   @endif
+                                    @endif
+                                   </div>
+                                </form>
                                 </p>
                             </div>
                         </div>
