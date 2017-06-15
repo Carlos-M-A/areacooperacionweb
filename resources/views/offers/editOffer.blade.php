@@ -183,7 +183,7 @@
                             <label for="places" class="col-md-4 control-label">places</label>
 
                             <div class="col-md-6">
-                                <input id="places" type="number" class="form-control" name="places" value="{{ old('places')?old('places') : $offer->places }}" autofocus>
+                                <input id="places" type="number" min="1" max="{{config('forms.max_places')}}"  class="form-control" name="places" value="{{ old('places')?old('places') : $offer->places }}" autofocus>
 
                                 @if ($errors->has('places'))
                                 <span class="help-block">

@@ -19,7 +19,7 @@
                             <span class="label label-danger">@lang('enums.convocatory_state_' . $convocatory->state)</span>
                             @endif
                         </h4>
-                        <p><a href='{{route('user', ['id' => 2])}}'>{{config('app.name', 'Area of Cooperation')}}</a></p>
+                        <p><a href='{{route('user', ['id' => 2])}}'>{{App\User::find(2)->name}}</a></p>
                     </div>
                 </div>
                     <div class="">

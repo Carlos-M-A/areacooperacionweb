@@ -35,7 +35,7 @@
 
 @section('convocatory_option')
 <div class="form-group{{ $errors->has('organizationId') ? ' has-error' : '' }}">
-    <label for="organizationId" class="col-md-4 control-label">Type</label>
+    <label for="organizationId" class="col-md-4 control-label">@lang('models.organization')</label>
 
     <div class="col-md-6">
         <select  id="organizationId" class="form-control" name="organizationId" autofocus>
@@ -60,7 +60,7 @@
 
 
 <div id="isOfferOfConvocatory_div" class="form-group{{ $errors->has('isOfferOfConvocatory') ? ' has-error' : '' }}">
-    <label for="isOfferOfConvocatory" class="col-md-4 control-label">isOfferOfConvocatory</label>
+    <label for="isOfferOfConvocatory" class="col-md-4 control-label">@lang('models.isOfferOfConvocatory')</label>
 
     <div class="col-md-6">
         <label class="radio-inline">
@@ -78,7 +78,7 @@
 </div>
 
 <div id="convocatoryId_div" class="form-group{{ $errors->has('convocatoryId') ? ' has-error' : '' }}">
-    <label for="convocatoryId" class="col-md-4 control-label">Type</label>
+    <label for="convocatoryId" class="col-md-4 control-label">Convocatory</label>
 
     <div class="col-md-6">
         <select  id="convocatoryId" class="form-control" name="convocatoryId" autofocus>

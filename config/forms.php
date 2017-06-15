@@ -6,7 +6,7 @@
     |--------------------------------------------------------------------------
     |
     | - Max lengths of the strings
-    | 
+    | - Max and mins for numbers
     | 
     |
     | 
@@ -41,7 +41,7 @@ return [
     'abbreviation' => 5,
     
     //offers and proposals
-    'offer_title' => 200,
+    'offer_title' => 100,
     'offer_description' => 2000,
     'requeriments' => 1000,
     'workplan' => 1000,
@@ -71,4 +71,7 @@ return [
     'tutor' => 200,
     'author' => 200,
     'comment' => 500,
+    
+    //Max and mins of numbers
+    'max_places' => 100,
 ];
