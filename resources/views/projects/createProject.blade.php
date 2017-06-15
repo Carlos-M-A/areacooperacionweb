@@ -28,16 +28,16 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Create project</div>
+                <div class="panel-heading">@lang('general.create_project')</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('createProject') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('studyId') ? ' has-error' : '' }}">
-                            <label for="studyId" class="col-md-4 control-label">Study</label>
+                            <label for="studyId" class="col-md-4 control-label">@lang('models.study')</label>
 
                             <div class="col-md-6">
-                                <select  id="studyId" class="form-control" name="studyId" autofocus>
+                                <select  id="studyId" class="form-control" name="studyId" autofocus required>
                                     <option id="studyIdOption0" value="{{old('studyId') ? old('studyId') : ''}}">
                                         {{old('studyId') ? App\Study::find(old('studyId'))->name : ''}}
                                     </option>
@@ -61,11 +61,12 @@
                         </div>
 
                         <div id="title_div" class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                            <label for="title" class="col-md-4 control-label">title</label>
+                            <label for="title" class="col-md-4 control-label">@lang('models.title')</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" autofocus>
-
+                                <textarea id="title" cols="100" rows="1" maxlength="{{config('forms.project_title')}}"
+                                           class="form-control" name="title" autofocus required>{{ old('title') }}</textarea>
+                                           <span class="pull-right label label-default"></span>
                                 @if ($errors->has('title'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('title') }}</strong>
@@ -75,10 +76,10 @@
                         </div>
                         
                         <div id="scope_div" class="form-group{{ $errors->has('scope') ? ' has-error' : '' }}">
-                            <label for="scope" class="col-md-4 control-label">scope</label>
+                            <label for="scope" class="col-md-4 control-label">@lang('models.scope')</label>
 
                             <div class="col-md-6">
-                                <input id="scope" type="text" class="form-control" name="scope" value="{{ old('scope') }}" autofocus>
+                                <input id="scope" type="text" maxlength="{{config('forms.scope')}}" class="form-control" name="scope" value="{{ old('scope') }}" autofocus required>
 
                                 @if ($errors->has('scope'))
                                 <span class="help-block">
@@ -88,11 +89,11 @@
                             </div>
                         </div>
                         <div id="description_div" class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                            <label for="description" class="col-md-4 control-label">description</label>
+                            <label for="description" class="col-md-4 control-label">@lang('models.description')</label>
 
                             <div class="col-md-6">
                                 <textarea id="description" cols="100" rows="7" maxlength="{{config('forms.project_description')}}"
-                                           class="form-control" name="description" autofocus>{{ old('description') }}</textarea>
+                                           class="form-control" name="description" autofocus required>{{ old('description') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('description'))
                                 <span class="help-block">
@@ -107,7 +108,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Create
+                                    @lang('general.create')
                                 </button>
                             </div>
                         </div>

@@ -23,17 +23,17 @@
 @if(is_null($proposal))
 
 <div class="panel panel-default">
-                <div class="panel-heading">Create proposal</div>
+                <div class="panel-heading">@lang('general.create_proposal')</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('createProposal', ['id' => $offer->id]) }}">
                         {{ csrf_field() }}
 
 
                         <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
-                            <label for="type" class="col-md-4 control-label">Type</label>
+                            <label for="type" class="col-md-4 control-label">@lang('models.type')</label>
 
                             <div class="col-md-6">
-                                <select  id="type" class="form-control" name="type" autofocus>
+                                <select  id="type" class="form-control" name="type" autofocus required>
                                     <option id="typeOption0" value="{{ old('type')? old('type') : ''}}">{{ old('type')? __('enums.proposal_type_'.old('type')) : ''}}</option>
                                     <option id="typeOption1" value="1">@lang('enums.proposal_type_1')</option>
                                     <option id="typeOption2" value="2">@lang('enums.proposal_type_2')</option>
@@ -49,11 +49,11 @@
 
 
                         <div id="description_div" class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                            <label for="description" class="col-md-4 control-label">description</label>
+                            <label for="description" class="col-md-4 control-label">@lang('models.description')</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" cols="100" rows="7" maxlength="{{config('forms.proposal_description')}}"
-                                           class="form-control" name="description" autofocus>{{ old('description') }}</textarea>
+                                <textarea id="description" cols="100" rows="3" maxlength="{{config('forms.proposal_description')}}"
+                                           class="form-control" name="description" autofocus required>{{ old('description') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('description'))
                                 <span class="help-block">
@@ -64,11 +64,11 @@
                         </div>
                         
                         <div id="scheduleAvailable_div" class="form-group{{ $errors->has('scheduleAvailable') ? ' has-error' : '' }}">
-                            <label for="scheduleAvailable" class="col-md-4 control-label">scheduleAvailable</label>
+                            <label for="scheduleAvailable" class="col-md-4 control-label">@lang('models.scheduleAvailable')</label>
 
                             <div class="col-md-6">
-                                <textarea id="scheduleAvailable" cols="100" rows="7" maxlength="{{config('forms.scheduleAvailable')}}"
-                                           class="form-control" name="scheduleAvailable" autofocus>{{ old('scheduleAvailable') }}</textarea>
+                                <textarea id="scheduleAvailable" cols="100" rows="2" maxlength="{{config('forms.scheduleAvailable')}}"
+                                           class="form-control" name="scheduleAvailable" autofocus required>{{ old('scheduleAvailable') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('scheduleAvailable'))
                                 <span class="help-block">
@@ -79,11 +79,11 @@
                         </div>
                         
                         <div id="totalHours_div" class="form-group{{ $errors->has('totalHours') ? ' has-error' : '' }}">
-                            <label for="totalHours" class="col-md-4 control-label">totalHours</label>
+                            <label for="totalHours" class="col-md-4 control-label">@lang('models.totalHours')</label>
 
                             <div class="col-md-6">
-                                <textarea id="totalHours" cols="100" rows="7" maxlength="{{config('forms.proposal_totalHours')}}"
-                                           class="form-control" name="totalHours" autofocus>{{ old('totalHours') }}</textarea>
+                                <textarea id="totalHours" cols="100" rows="1" maxlength="{{config('forms.proposal_totalHours')}}"
+                                           class="form-control" name="totalHours" autofocus required>{{ old('totalHours') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('totalHours'))
                                 <span class="help-block">
@@ -94,11 +94,11 @@
                         </div>
                         
                         <div id="earliestStartDate_div" class="form-group{{ $errors->has('earliestStartDate') ? ' has-error' : '' }}">
-                            <label for="earliestStartDate" class="col-md-4 control-label">earliestStartDate</label>
+                            <label for="earliestStartDate" class="col-md-4 control-label">@lang('models.earliestStartDate')</label>
 
                             <div class="col-md-6">
-                                <textarea id="earliestStartDate" cols="100" rows="7" maxlength="{{config('forms.earliestStartDate')}}"
-                                           class="form-control" name="earliestStartDate" autofocus>{{ old('earliestStartDate') }}</textarea>
+                                <textarea id="earliestStartDate" cols="100" rows="1" maxlength="{{config('forms.earliestStartDate')}}"
+                                           class="form-control" name="earliestStartDate" autofocus required>{{ old('earliestStartDate') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('earliestStartDate'))
                                 <span class="help-block">
@@ -108,11 +108,11 @@
                             </div>
                         </div>
                         <div id="latestEndDate_div" class="form-group{{ $errors->has('latestEndDate') ? ' has-error' : '' }}">
-                            <label for="latestEndDate" class="col-md-4 control-label">latestEndDate</label>
+                            <label for="latestEndDate" class="col-md-4 control-label">@lang('models.latestEndDate')</label>
 
                             <div class="col-md-6">
-                                <textarea id="latestEndDate" cols="100" rows="7" maxlength="{{config('forms.latestEndDate')}}"
-                                           class="form-control" name="latestEndDate" autofocus>{{ old('latestEndDate') }}</textarea>
+                                <textarea id="latestEndDate" cols="100" rows="1" maxlength="{{config('forms.latestEndDate')}}"
+                                           class="form-control" name="latestEndDate" autofocus required>{{ old('latestEndDate') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('latestEndDate'))
                                 <span class="help-block">
@@ -125,7 +125,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Make proposal
+                                    @lang('general.create')
                                 </button>
                             </div>
                         </div>
@@ -167,15 +167,15 @@
                                         {{ csrf_field() }}
                                         <div class="btn-group">
                                             @if($proposal->state == 1)
-                                            <button class="btn btn-warning" type="submit" formmethod="POST" formaction="{{route('removeProposal', ['id'=> $proposal->id])}}">Remove</button>
+                                            <button class="btn btn-warning" type="submit" formmethod="POST" formaction="{{route('removeProposal', ['id'=> $proposal->id])}}">@lang('general.remove')</button>
                                             @endif
                                             @if($proposal->state <= 2)
                                             <!-- Trigger the modal to accept the offer -->
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalCancel">Cancel</button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalCancel">@lang('general.cancel')</button>
                                             @endif
                                             @if($proposal->state == 2)
                                             <!-- Trigger the modal to accept the offer -->
-                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalAccept">Accept</button>
+                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalAccept">@lang('general.accept')</button>
                                             @endif
                                         </div>
                                     </form>
@@ -220,7 +220,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-success">
-                                        Accept
+                                        @lang('general.accept')
                                 </button>
                             </div>
                         </div>
@@ -228,7 +228,7 @@
                         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('general.close')</button>
       </div>
     </div>
 

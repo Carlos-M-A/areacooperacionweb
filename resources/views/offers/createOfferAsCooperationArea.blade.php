@@ -8,23 +8,34 @@
 <script>
 
     function changeRadio(){
-        convocatoryIdDiv = document.getElementById('convocatoryId_div').style;
-        housingDiv = document.getElementById('housing_div').style;
-        costsDiv = document.getElementById('costs_div').style;
+        convocatoryIdDiv = document.getElementById('convocatoryId_div');
+        housingDiv = document.getElementById('housing_div');
+        costsDiv = document.getElementById('costs_div');
+        convocatoryId = document.getElementById('convocatoryId');
+        housing = document.getElementById('housing');
+        costs = document.getElementById('costs');
         
         radioYes = document.getElementById('radioYes');
         radioNo = document.getElementById('radioNo');
         
         if(radioYes.checked){
-            convocatoryIdDiv.display = 'block';
-            housingDiv.display = 'block';
-            costsDiv.display = 'block';
+            convocatoryIdDiv.style.display = 'block';
+            housingDiv.style.display = 'block';
+            costsDiv.style.display = 'block';
+            convocatoryId.required = 'required';
+            housing.required = 'required';
+            costs.required = 'required';
+            
             radioYes.checked = true;
             radioNo.checked = false;
         } else{
-            convocatoryIdDiv.display = 'none';
-            housingDiv.display = 'none';
-            costsDiv.display = 'none';
+            convocatoryIdDiv.style.display = 'none';
+            housingDiv.style.display = 'none';
+            costsDiv.style.display = 'none';
+            convocatoryId.required = '';
+            housing.required = '';
+            costs.required = '';
+            
             radioYes.checked = false;
             radioNo.checked = true;
         }
@@ -38,7 +49,7 @@
     <label for="organizationId" class="col-md-4 control-label">@lang('models.organization')</label>
 
     <div class="col-md-6">
-        <select  id="organizationId" class="form-control" name="organizationId" autofocus>
+        <select  id="organizationId" class="form-control" name="organizationId" autofocus required>
             <option id="organizationIdOption0" value="{{old('organizationId') ? old('organizationId') : ''}}">
                 {{old('organizationId') ? App\Organization::find(old('organizationId'))->user->name : ''}}
             </option>
@@ -65,10 +76,10 @@
     <div class="col-md-6">
         <label class="radio-inline">
             <input id="radioYes" onclick="changeRadio()" type="radio" name="isOfferOfConvocatory" value="1" {{ old('isOfferOfConvocatory') ? 'checked' : ''}}>
-            Yes</label>
+            @lang('general.yes')</label>
         <label class="radio-inline">
             <input id='radioNo' onclick="changeRadio()" type="radio" name="isOfferOfConvocatory" value="0" {{ old('isOfferOfConvocatory') ? '' : 'checked'}}>
-            No</label>
+            @lang('general.no')</label>
         @if ($errors->has('isOfferOfConvocatory'))
         <span class="help-block">
             <strong>{{ $errors->first('isOfferOfConvocatory') }}</strong>
@@ -78,7 +89,7 @@
 </div>
 
 <div id="convocatoryId_div" class="form-group{{ $errors->has('convocatoryId') ? ' has-error' : '' }}">
-    <label for="convocatoryId" class="col-md-4 control-label">Convocatory</label>
+    <label for="convocatoryId" class="col-md-4 control-label">@lang('models.convocatory')</label>
 
     <div class="col-md-6">
         <select  id="convocatoryId" class="form-control" name="convocatoryId" autofocus>
@@ -104,10 +115,10 @@
 
 @section('more_offer_fields')
 <div id="housing_div" class="form-group{{ $errors->has('housing') ? ' has-error' : '' }}">
-    <label for="housing" class="col-md-4 control-label">housing</label>
+    <label for="housing" class="col-md-4 control-label">@lang('models.housing')</label>
 
     <div class="col-md-6">
-        <textarea id="housing" cols="100" rows="3" maxlength="{{config('forms.housing')}}"
+        <textarea id="housing" cols="100" rows="2" maxlength="{{config('forms.housing')}}"
             class="form-control" name="housing" autofocus>{{ old('housing') }}</textarea>
             <span class="pull-right label label-default"></span>
         @if ($errors->has('housing'))
@@ -119,11 +130,11 @@
 </div>
 
 <div id="costs_div" class="form-group{{ $errors->has('costs') ? ' has-error' : '' }}">
-    <label for="costs" class="col-md-4 control-label">costs</label>
+    <label for="costs" class="col-md-4 control-label">@lang('models.costs')</label>
 
     <div class="col-md-6">
-        <textarea id="costs" cols="100" rows="3" maxlength="{{config('forms.costs')}}"
-            class="form-control" name="costs" autofocus>{{ old('costs') }}</textarea>
+        <textarea id="costs" cols="100" rows="2" maxlength="{{config('forms.costs')}}"
+                  class="form-control" name="costs" autofocus>{{ old('costs') }}</textarea>
             <span class="pull-right label label-default"></span>
         @if ($errors->has('costs'))
         <span class="help-block">

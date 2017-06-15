@@ -16,7 +16,7 @@
                         {{ csrf_field() }}
 
                         <div id="urlCurriculum_div" class="form-group{{ $errors->has('urlCurriculum') ? ' has-error' : '' }}">
-                            <label for="urlCurriculum" class="col-md-4 control-label">urlCurriculum</label>
+                            <label for="urlCurriculum" class="col-md-4 control-label">@lang('urlCurriculum')</label>
 
                             <div class="col-md-6">
                                 <input id="urlCurriculum" type="file" class="form-control filestyle" data-input="true" name="urlCurriculum" value="{{ old('urlCurriculum')}}" >

@@ -29,10 +29,14 @@
                         <!-- Left-aligned -->
                         <div class="media">
                             <div class="media-left">
-                                @if(!is_null($project->teacher->user->urlAvatar))
-                                <img src="{{URL::asset($project->teacher->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                @if($project->createdByAdmin)
+                                    <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
                                 @else
-                                <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                    @if(!is_null($project->teacher->user->urlAvatar))
+                                    <img src="{{URL::asset($project->teacher->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                    @else
+                                    <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                    @endif
                                 @endif
                             </div>
                             <div class="media-body">
@@ -45,7 +49,11 @@
                                     <span class="label label-danger">@lang('enums.project_state_3')</span>
                                 @endif
                                 </h4>
-                                <p>{{$project->teacher->user->getNameAndSurnames()}}</p>
+                                @if($project->createdByAdmin)
+                                    <p>{{$project->tutor}}</p>
+                                @else
+                                    <p>{{$project->teacher->user->getNameAndSurnames()}}</p>
+                                @endif
                             </div>
                         </div>
                         </li>

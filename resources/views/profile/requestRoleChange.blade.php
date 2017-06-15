@@ -300,7 +300,7 @@
 
 
                        <div id="study_div" class="form-group{{ $errors->has('study') ? ' has-error' : '' }}">
-                            <label for="study" class="col-md-4 control-label">Studys</label>
+                            <label for="study" class="col-md-4 control-label">@lang('models.Study')</label>
 
                             <div class="col-md-6">
                                 <select  id="study" class="form-control" name="study" value="{{ old('study') }}"  autofocus>
@@ -321,7 +321,7 @@
 
 
                          <div id="teachingStudies_div" name="teachingStudies_div" class="form-group{{ $errors->has('teachingStudies') ? ' has-error' : '' }}">
-                            <label for="teachingStudies" class="col-md-4 control-label">Study docencia</label>
+                            <label for="teachingStudies" class="col-md-4 control-label">@lang('general.studies_with_teaching')</label>
 
                             <div class="col-md-6">
                                 <select  id="teachingStudies" class="form-control" onchange="newStudy(0)" name="teachingStudies" value="{{ old('teachingStudies') }}" autofocus>
@@ -346,7 +346,7 @@
 
 
                         <div id="teachingStudiesSelected_div" class="form-group{{ $errors->has('teachingStudiesSelected') ? ' has-error' : '' }}">
-                            <label for="teachingStudiesSelected" class="col-md-4 control-label">Studys with teaching selected</label>
+                            <label for="teachingStudiesSelected" class="col-md-4 control-label">@lang('general.selected_studies_with_teaching')</label>
 
                             <div id='checkBoxes' class="col-md-6">
                                 <input id="teachingStudiesSelected"  type="checkbox" name="teachingStudiesSelected" value="" hidden="hidden" checked>
@@ -363,7 +363,7 @@
 
 
                         <div id="areasOfInterest_div" class="form-group{{ $errors->has('areasOfInterest') ? ' has-error' : '' }}">
-                            <label for="areasOfInterest" class="col-md-4 control-label">Areas of interest</label>
+                            <label for="areasOfInterest" class="col-md-4 control-label">@lang('models.areasOfInterest')</label>
 
                             <div class="col-md-6">
                                 <textarea id="areasOfInterest" cols="100" rows="7" maxlength="{{config('forms.areasOfInterest')}}"
@@ -378,7 +378,7 @@
                         </div>
 
                         <div id="skills_div" class="form-group{{ $errors->has('skills') ? ' has-error' : '' }}">
-                            <label for="skills" class="col-md-4 control-label">skills</label>
+                            <label for="skills" class="col-md-4 control-label">@lang('models.skills')</label>
 
                             <div class="col-md-6">
                                 <textarea id="skills" cols="100" rows="7" maxlength="{{config('forms.skills')}}"
@@ -393,7 +393,7 @@
                         </div>
 
                         <div id="departments_div" class="form-group{{ $errors->has('departments') ? ' has-error' : '' }}">
-                            <label for="departments" class="col-md-4 control-label">departments</label>
+                            <label for="departments" class="col-md-4 control-label">@lang('models.departments')</label>
 
                             <div class="col-md-6">
                                 <textarea id="departments" cols="100" rows="7" maxlength="{{config('forms.departments')}}"
@@ -408,7 +408,7 @@
                         </div>
 
                         <div id="description_div" class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                            <label for="description" class="col-md-4 control-label">description</label>
+                            <label for="description" class="col-md-4 control-label">@lang('models.description')</label>
 
                             <div class="col-md-6">
                                 <textarea id="description" cols="100" rows="7" maxlength="{{config('forms.user_description')}}"

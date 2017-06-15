@@ -2,57 +2,9 @@
 
 @section('content')
 
-
-<script>
-    
-    // Global variables
-
-    //Studies selected by the teacher
-    var studiesSelectedByTeacher = [];
-    //Studies names of all 
-    var namesOfStudies = [];
-    namesOfStudies[0] = '--Select--';
-    @php
-            $studiesList = App\Study::where('inactive', '=', '0') -> get();
-    @endphp
-
-    @foreach($studiesList as $element)
-            namesOfStudies[{{$element -> id}}] = '{{$element->name}} - {{App\Campus::find($element->campus_id)->abbreviation}}';
-    @endforeach
-    
-    /**
-     * Initialize the data and fields required
-     * Must be called when initializing the page
-     */
-    function initializes(){
-        updateStudyOfStudent();
-    }
-
-    /*
-     * When reload the page, this function update the study selected by the 
-     * student in the 'select' field (html item)
-     */
-    function updateStudyOfStudent(){
-        @if($user->role == 1)
-            studyID = {{old('study') ? old('study') : $roleData->study_id}};
-        @else
-            studyID = {{old('study') ? old('study') : 0}};
-        @endif
-       
-        if (studyID != 0){
-            oldOption = document.getElementById('studyOption');
-            //The new option (the option selected) is created
-            study = document.getElementById('study');
-            newOption = document.createElement('OPTION');
-            newOption.value = studyID;
-            text = document.createTextNode(namesOfStudies[studyID]);
-            newOption.appendChild(text);
-            newOption.selected = true;
-            //Default option is replaced by new option
-            study.replaceChild(newOption, oldOption);
-        }
-    }
-</script>
+@php
+    $studiesList = App\Study::where('inactive', '=', '0') -> get();
+@endphp
 
  <script>
     $( document ).ready(function() {
@@ -78,10 +30,10 @@
                         {{ csrf_field() }}
 
                         <div id="name_div" class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">@lang('models.name')</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name')? old('name') : $user->name}}" autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name')? old('name') : $user->name}}" autofocus required>
 
                                 @if ($errors->has('name'))
                                 <span class="help-block">
@@ -99,7 +51,7 @@
                                 <label for="surnames" class="col-md-4 control-label">@lang('models.socialName')</label>
                             @endif
                             <div class="col-md-6">
-                                <input id="surnames" type="text" class="form-control" name="surnames" value="{{ old('surnames')? old('surnames') : $user->surnames }}" autofocus>
+                                <input id="surnames" type="text" class="form-control" name="surnames" value="{{ old('surnames')? old('surnames') : $user->surnames }}" autofocus required>
 
                                 @if ($errors->has('surnames'))
                                 <span class="help-block">
@@ -111,10 +63,10 @@
 
 
                         <div id="email_div" class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">@lang('models.email')</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email')? old('email') : $user->email }}" >
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email')? old('email') : $user->email }}" autofocus required>
 
                                 @if ($errors->has('email'))
                                 <span class="help-block">
@@ -125,10 +77,10 @@
                         </div>
 
                         <div id="idCard_div" class="form-group{{ $errors->has('idCard') ? ' has-error' : '' }}">
-                            <label for="idCard" class="col-md-4 control-label">idCard</label>
+                            <label for="idCard" class="col-md-4 control-label">@lang('models.idCard')</label>
 
                             <div class="col-md-6">
-                                <input id="idCard" type="text" class="form-control" name="idCard" value="{{ old('idCard')? old('idCard') : $user->idCard }}" >
+                                <input id="idCard" type="text" class="form-control" name="idCard" value="{{ old('idCard')? old('idCard') : $user->idCard }}" autofocus required>
 
                                 @if ($errors->has('idCard'))
                                 <span class="help-block">
@@ -139,10 +91,10 @@
                         </div>
 
                         <div id="phone_div" class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                            <label for="phone" class="col-md-4 control-label">Phone</label>
+                            <label for="phone" class="col-md-4 control-label">@lang('models.phone')</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone')? old('phone') : $user->phone }}" >
+                                <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone')? old('phone') : $user->phone }}" autofocus>
 
                                 @if ($errors->has('phone'))
                                 <span class="help-block">
@@ -154,11 +106,13 @@
                         
                         @if($role==1)
                         <div id="study_div" class="form-group{{ $errors->has('study') ? ' has-error' : '' }}">
-                            <label for="study" class="col-md-4 control-label">Studys</label>
+                            <label for="study" class="col-md-4 control-label">@lang('models.study')</label>
 
                             <div class="col-md-6">
                                 <select  id="study" class="form-control" name="study" value="{{ old('study')? old('study') : $roleData->study }}"  autofocus>
-                                    <option id="studyOption" value="0">-- Choose a study --</option>
+                                    <option id="studyOption" value="{{old('study') ? old('study') : $roleData->study->id}}">
+                                        {{old('study') ? App\Study::find(old('study'))->name : $roleData->study->name.' - '.$roleData->study->campus->abbreviation}}
+                                    </option>
 
 
                                     @foreach($studiesList as $elemento)

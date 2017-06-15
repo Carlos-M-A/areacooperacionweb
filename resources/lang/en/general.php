@@ -25,6 +25,14 @@ return [
     'field' => 'Field',
     'data' => 'Data',
     'state' => 'State',
+    'cancelled' => 'Cancelled',
+    'approved' => 'Approved',
+    'rejected' => 'Rejected',
+    'accepted' => 'Accepted',
+    'not_evaluated' => 'Not evaluated',
+    'new' => 'New',
+    'chosen' => 'Chosen',
+    'alternate' => 'Alternate',
     
     //General buttons
     'create' => 'Create',
@@ -40,6 +48,7 @@ return [
     'finish' => 'Finish',
     'cancel' => 'Cancel',
     'view' => 'View',
+    'chose' => 'Chose',
     
     
     //Forms
@@ -47,6 +56,9 @@ return [
     'new_password' => 'New password',
     'current_password' => 'Current password',
     'user_type' => 'User type',
+    'yes' => 'Yes',
+    'no' => 'No',
+    'edit_data' => 'Edit data',
     
     //Profile
     'profile_data' => 'Profile data',
@@ -76,6 +88,7 @@ return [
     'request_obs_member' => 'Request to be observatory member',
     'cancel_obs_member' => 'Cancel to be observatory member',
     'studies_with_teaching' => 'Studies with teaching',
+    'selected_studies_with_teaching' => 'Selected studies with teaching',
     'add_study' => 'Add study',
     
     //Faculties and studies
@@ -116,6 +129,7 @@ return [
     'your_inscription' => 'Your inscription',
     'convocatories' => 'Convocatories',
     'create_convocatory' => 'Create convocatory',
+    'inscriptions' => 'Inscriptions',
     
     //Offers
     'closed' => 'Closed',
@@ -132,6 +146,7 @@ return [
     'approved_proposals' => 'Approved proposals',
     'my_practices' => 'My practices',
     'create_offer' => 'Create offer',
+    'create_proposal' => 'Create proposal',
     
     
 ];

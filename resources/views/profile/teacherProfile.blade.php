@@ -5,19 +5,9 @@
 
 @extends('profile.profile')
 
-@section('role_data')
-<tr>
-    <td>areaOfInterest</td>
-    <td>{{$teacher->areasOfInterest}}</td>
-</tr>
-<tr>
-    <td>departments</td>
-    <td>{{$teacher->departments}}</td>
-</tr>
-@endsection
 
 @section('studies_teacher')
-<div class="panel panel-primary">
+<div class="panel panel-info">
     <div class="panel-heading">@lang('general.studies_with_teaching')</div>
 
     <div class="panel-body">

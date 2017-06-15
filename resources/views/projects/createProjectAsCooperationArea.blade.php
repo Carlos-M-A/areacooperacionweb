@@ -22,10 +22,10 @@
 
 @section('more_fields')
 <div id="tutor_div" class="form-group{{ $errors->has('tutor') ? ' has-error' : '' }}">
-    <label for="tutor" class="col-md-4 control-label">tutor</label>
+    <label for="tutor" class="col-md-4 control-label">@lang('models.tutor')</label>
 
     <div class="col-md-6">
-        <input id="tutor" type="text" class="form-control" name="tutor" value="{{ old('tutor') }}" autofocus>
+        <input id="tutor" type="text" maxlength="{{config('forms.tutor')}}"  class="form-control" name="tutor" value="{{ old('tutor') }}" autofocus required>
 
         @if ($errors->has('tutor'))
         <span class="help-block">
@@ -36,10 +36,10 @@
 </div>
 
 <div id="author_div" class="form-group{{ $errors->has('author') ? ' has-error' : '' }}">
-    <label for="author" class="col-md-4 control-label">author</label>
+    <label for="author" class="col-md-4 control-label">@lang('models.author')</label>
 
     <div class="col-md-6">
-        <input id="author" type="text" class="form-control" name="author" value="{{ old('author') }}" autofocus>
+        <input id="author" type="text" maxlength="{{config('forms.author')}}"  class="form-control" name="author" value="{{ old('author') }}" autofocus required>
 
         @if ($errors->has('author'))
         <span class="help-block">
@@ -50,10 +50,10 @@
 </div>
 
 <div id="urlDocumentation_div" class="form-group{{ $errors->has('urlDocumentation') ? ' has-error' : '' }}">
-    <label for="urlDocumentation" class="col-md-4 control-label">urlDocumentation</label>
+    <label for="urlDocumentation" class="col-md-4 control-label">@lang('models.urlDocumentation')</label>
 
     <div class="col-md-6">
-        <input id="urlDocumentation" type="text" class="form-control" name="urlDocumentation" value="{{ old('urlDocumentation') }}" autofocus>
+        <input id="urlDocumentation" type="url" maxlength="{{config('forms.url')}}"  class="form-control" name="urlDocumentation" value="{{ old('urlDocumentation') }}" autofocus required>
 
         @if ($errors->has('urlDocumentation'))
         <span class="help-block">
@@ -64,10 +64,10 @@
 </div>
 
 <div id="finishedDate_div" class="form-group{{ $errors->has('finishedDate') ? ' has-error' : '' }}">
-    <label for="finishedDate" class="col-md-4 control-label">finishedDate</label>
+    <label for="finishedDate" class="col-md-4 control-label">@lang('models.finishedDate')</label>
 
     <div class="col-md-6">
-        <input id="finishedDate" type="text" class="form-control" name="finishedDate" value="{{ old('finishedDate') }}" autofocus>
+        <input id="finishedDate" type="text" class="form-control" name="finishedDate" value="{{ old('finishedDate') }}" autofocus required>
         @if ($errors->has('finishedDate'))
         <span class="help-block">
             <strong>{{ $errors->first('finishedDate') }}</strong>

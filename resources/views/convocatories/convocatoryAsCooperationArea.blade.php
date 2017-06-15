@@ -37,12 +37,12 @@ $(document).ready(function(){
             @if(is_null(old('stateOfInscriptions')))
                 <li class="active"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 1]) }}">Inscriptions<span class="badge">{{$convocatory->getAmountOfNotEvaluatedInscriptions()}}</span></a></li>
             @else
-                <li class="{{old('stateOfInscriptions')==1 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 1]) }}">Inscriptions<span class="badge">{{$convocatory->getAmountOfNotEvaluatedInscriptions()}}</span></a></li>
+                <li class="{{old('stateOfInscriptions')==1 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 1]) }}">@lang('general.inscriptions')<span class="badge">{{$convocatory->getAmountOfNotEvaluatedInscriptions()}}</span></a></li>
             @endif
-                <li class="{{old('stateOfInscriptions')==2 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 2]) }}">Accepted<span class="badge">{{$convocatory->getAmountOfAcceptedInscriptions()}}</span></a></li>
-                <li class="{{old('stateOfInscriptions')==3 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 3]) }}">Alternate<span class="badge">{{$convocatory->getAmountOfAlternateInscriptions()}}</span></a></li>
-                <li class="{{old('stateOfInscriptions')==4 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 4]) }}">Rejected<span class="badge">{{$convocatory->getAmountOfRejectedInscriptions()}}</span></a></li>
-                <li class="{{old('stateOfInscriptions')==5 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 5]) }}">Cancelled inscriptions<span class="badge">{{$convocatory->getAmountOfCancelledInscriptions()}}</span></a></li>
+                <li class="{{old('stateOfInscriptions')==2 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 2]) }}">@lang('general.accepted')<span class="badge">{{$convocatory->getAmountOfAcceptedInscriptions()}}</span></a></li>
+                <li class="{{old('stateOfInscriptions')==3 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 3]) }}">@lang('general.alternate')<span class="badge">{{$convocatory->getAmountOfAlternateInscriptions()}}</span></a></li>
+                <li class="{{old('stateOfInscriptions')==4 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 4]) }}">@lang('general.rejected')<span class="badge">{{$convocatory->getAmountOfRejectedInscriptions()}}</span></a></li>
+                <li class="{{old('stateOfInscriptions')==5 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 5]) }}">@lang('general.cancelled')<span class="badge">{{$convocatory->getAmountOfCancelledInscriptions()}}</span></a></li>
         </ul>
     </div>
     <div class="panel-body">  

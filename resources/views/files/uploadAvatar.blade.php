@@ -17,7 +17,7 @@
 
                         
                         <div id="urlAvatar_div" class="form-group{{ $errors->has('urlAvatar') ? ' has-error' : '' }}">
-                            <label for="urlAvatar" class="col-md-4 control-label">urlAvatar</label>
+                            <label for="urlAvatar" class="col-md-4 control-label">@lang('models.urlAvatar')</label>
 
                             <div class="col-md-6">
                                 <input id="urlAvatar" type="file" class="form-control filestyle" data-input="true" name="urlAvatar" value="{{ old('urlAvatar')}}" >

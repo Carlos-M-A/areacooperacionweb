@@ -55,7 +55,7 @@
                                 <p>
                                     @if($project->state == 2)
                                         <!-- Trigger the modal to enter the tutor manually -->
-                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#cancelAuthor">Cancel author</button>
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#cancelAuthor">@lang('general.cancel')</button>
                                     @endif
                                 </p>
                             </div>
@@ -76,11 +76,11 @@
     <div class="panel-heading">
         <ul class="nav nav-pills">
             @if(is_null(old('stateOfInscriptions')))
-            <li class="active"><a href="{{ route('project', ['id'=> $project->id, 'stateOfInscriptions' => 1]) }}">Inscriptions<span class="badge">{{$project->getAmountOfNotChosenInscriptions()}}</span></a></li>
+            <li class="active"><a href="{{ route('project', ['id'=> $project->id, 'stateOfInscriptions' => 1]) }}">@lang('general.inscriptions')<span class="badge">{{$project->getAmountOfNotChosenInscriptions()}}</span></a></li>
             @else
-                <li class="{{old('stateOfInscriptions')==1 ? 'active' : ''}}"><a href="{{ route('project', ['id'=> $project->id, 'stateOfInscriptions' => 1]) }}">Inscriptions<span class="badge">{{$project->getAmountOfNotChosenInscriptions()}}</span></a></li>
+                <li class="{{old('stateOfInscriptions')==1 ? 'active' : ''}}"><a href="{{ route('project', ['id'=> $project->id, 'stateOfInscriptions' => 1]) }}">@lang('general.inscriptions')<span class="badge">{{$project->getAmountOfNotChosenInscriptions()}}</span></a></li>
             @endif
-                <li class="{{old('stateOfInscriptions')==3 ? 'active' : ''}}"><a href="{{ route('project', ['id'=> $project->id, 'stateOfInscriptions' => 3]) }}">Cancelled inscriptions<span class="badge">{{$project->getAmountOfCancelledInscriptions()}}</span></a></li>
+                <li class="{{old('stateOfInscriptions')==3 ? 'active' : ''}}"><a href="{{ route('project', ['id'=> $project->id, 'stateOfInscriptions' => 3]) }}">@lang('general.cancelled')<span class="badge">{{$project->getAmountOfCancelledInscriptions()}}</span></a></li>
                     </ul>
     </div>
     <div class="panel-body">
@@ -116,7 +116,7 @@
                                     <div class="btn-group">
                                     <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $inscription->student->user->id])}}">@lang('view')</button>
                                     @if($inscription->state == 1 && $project->state == 1)
-                                                <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('acceptInscriptionInProject', ['id'=> $inscription->id])}}">Choose</button>
+                                                <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('acceptInscriptionInProject', ['id'=> $inscription->id])}}">@lang('general.choose')</button>
                                     @endif
                                    </div>
                                 </form>

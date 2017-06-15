@@ -23,12 +23,12 @@
             @if(is_null(old('stateOfProposals')))
                 <li class="active"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 1]) }}">news<span class="badge">{{$offer->getAmountOfNotEvaluatedProposals()}}</span></a></li>
             @else
-                <li class="{{old('stateOfProposals')==1 ? 'active' : ''}}"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 1]) }}">news<span class="badge">{{$offer->getAmountOfNotEvaluatedProposals()}}</span></a></li>
+                <li class="{{old('stateOfProposals')==1 ? 'active' : ''}}"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 1]) }}">@lang('general.not_evaluated')<span class="badge">{{$offer->getAmountOfNotEvaluatedProposals()}}</span></a></li>
             @endif
-                <li class="{{old('stateOfProposals')==2 ? 'active' : ''}}"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 2]) }}">Approved<span class="badge">{{$offer->getAmountOfApprovedProposals()}}</span></a></li>
-                <li class="{{old('stateOfProposals')==3 ? 'active' : ''}}"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 3]) }}">Rejected<span class="badge">{{$offer->getAmountOfRejectedProposals()}}</span></a></li>
-                <li class="{{old('stateOfProposals')==5 ? 'active' : ''}}"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 5]) }}">Cancelled<span class="badge">{{$offer->getAmountOfCancelledProposals()}}</span></a></li>
-                <li class="{{old('stateOfProposals')==4 ? 'active' : ''}}"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 4]) }}">Students winners<span class="badge">{{$offer->getAmountOfAcceptedProposals()}}</span></a></li>
+                <li class="{{old('stateOfProposals')==2 ? 'active' : ''}}"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 2]) }}">@lang('general.approved')<span class="badge">{{$offer->getAmountOfApprovedProposals()}}</span></a></li>
+                <li class="{{old('stateOfProposals')==3 ? 'active' : ''}}"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 3]) }}">@lang('general.rejected')<span class="badge">{{$offer->getAmountOfRejectedProposals()}}</span></a></li>
+                <li class="{{old('stateOfProposals')==5 ? 'active' : ''}}"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 5]) }}">@lang('general.cancelled')<span class="badge">{{$offer->getAmountOfCancelledProposals()}}</span></a></li>
+                <li class="{{old('stateOfProposals')==4 ? 'active' : ''}}"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 4]) }}">@lang('general.chosen')<span class="badge">{{$offer->getAmountOfAcceptedProposals()}}</span></a></li>
                     </ul>
     </div>
     <div class="panel-body">
@@ -68,10 +68,10 @@
                                             <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $proposal->student->user->id])}}">@lang('view')</button>
                                         @if($offer->open)
                                         @if($proposal->state == 1 || $proposal->state == 3)
-                                        <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('approveProposal', ['id'=> $proposal->id])}}">Approve</button>
+                                        <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('approveProposal', ['id'=> $proposal->id])}}">@lang('general.approve')</button>
                                         @endif
                                         @if($proposal->state <= 2)
-                                        <button class="btn btn-danger"  type="submit" formmethod="POST" formaction="{{route('rejectProposal', ['id'=> $proposal->id])}}">Reject</button>
+                                        <button class="btn btn-danger"  type="submit" formmethod="POST" formaction="{{route('rejectProposal', ['id'=> $proposal->id])}}">@lang('general.reject')</button>
                                         @endif
                                         @endif
                                         </div>
