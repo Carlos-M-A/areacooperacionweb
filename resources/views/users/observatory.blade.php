@@ -7,8 +7,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1> The observatory</h1>
-            <div class="panel panel-default">
+            <h1> @lang('general.the_observatory')</h1>
+            <div class="panel panel-info">
                 <div class="panel-heading"> 
                     <ul class="nav nav-pills">
                         <li class="{{old('ask')==1 ? 'active' : ''}}"><a href="{{ route('observatory', ['ask' => 1]) }}">Requests<span class="badge">{{App\ObservatoryRequest::all()->count()}}</span></a></li>
@@ -17,28 +17,26 @@
                 </div>
 
                 <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Role</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($users as $user)
-                                <tr>
-                                    <td><a href="{{route('user', ['id'=> $user->id])}}" >{{$user->getNameAndSurnames()}}</a></td>
-                                    <td>@lang('enums.role_' . $user->role)</td>
-                                </tr>
-                                @endforeach
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="panel-footer">
-                    {{ $users->appends(['ask' => old('ask')])->links() }}
+                    @foreach($users as $user)
+                        <li class="list-group-item">
+                        <!-- Left-aligned -->
+                        <div class="media">
+                            <div class="media-left">
+                                @if(!is_null($user->urlAvatar))
+                                <img src="{{URL::asset($user->urlAvatar)}}" class="media-object" style="width:60px">
+                                @else
+                                <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                @endif
+                                
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading"><a href="{{route('user', ['id'=> $user->id])}}" >{{$user->getNameAndSurnames()}}</a></h4>
+                                    <p>@lang('enums.role_' . $user->role)</p>
+                            </div>
+                        </div>
+                        </li>
+                        @endforeach
+                        {{ $users->appends(['ask' => old('ask')])->links() }}
                 </div>
             </div>
         </div>

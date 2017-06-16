@@ -14,27 +14,25 @@
                 <div class="panel-heading">@lang('general.registration_requests')</div>
 
                 <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Role</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                    @foreach($users as $user)
+                        <li class="list-group-item">
+                        <!-- Left-aligned -->
+                        <div class="media">
+                            <div class="media-left">
+                                @if(!is_null($user->urlAvatar))
+                                <img src="{{URL::asset($user->urlAvatar)}}" class="media-object" style="width:60px">
+                                @else
+                                <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                @endif
                                 
-                                @foreach($users as $user)
-                                <tr>
-                                    <td><a href="{{route('user', ['id'=> $user->id])}}" >{{$user->getNameAndSurnames()}}</a></td>
-                                    <td>@lang('enums.role_' . $user->role)</td>
-                                </tr>
-                                @endforeach
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading"><a href="{{route('user', ['id'=> $user->id])}}" >{{$user->getNameAndSurnames()}}</a></h4>
+                                    <p>@lang('enums.role_' . $user->role)</p>
+                            </div>
+                        </div>
+                        </li>
+                        @endforeach
                 <div class="panel-footer">
                     {{ $users->links() }}
                 </div>
