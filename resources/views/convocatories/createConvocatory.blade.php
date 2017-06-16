@@ -29,12 +29,30 @@
 
 @section('content')
 
+@php
+    $user = Auth::user();
+@endphp
 
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">@lang('general.create_convocatory')</div>
+            @if($user->role == 5)
+                    <ul class="nav nav-tabs">
+                        <li class=""><a href="{{ route('myOffers') }}">@lang('general.offers')</a></li>
+                        <li class="active"><a href="{{ route('convocatories') }}">@lang('general.convocatories')</a></li>
+                        <li class=""><a href="{{ route('finishedProjects') }}">@lang('general.projects')</a></li>
+                    </ul>
+                @endif
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    @lang('general.convocatories')
+                    @if($user->role == 5)
+                    <ul class="nav nav-pills">
+                        <li class=""><a href="{{ route('convocatories') }}">@lang('general.convocatories')</a></li>
+                        <li class="active"><a href="{{ route('showCreateConvocatory') }}">@lang('general.create_convocatory')</a></li>
+                    </ul>
+                    @endif
+                </div>
                 <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('createConvocatory') }}">
                         {{ csrf_field() }}

@@ -267,7 +267,7 @@
 
 
                         <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
-                            <label for="role" class="col-md-4 control-label">User type</label>
+                            <label for="role" class="col-md-4 control-label">@lang('models.role')</label>
 
                             <div class="col-md-6">
                                 <select  id="role" class="form-control" name="role" onchange="changeRole(0, true, true)" autofocus>
@@ -290,7 +290,7 @@
 
 
                         <div id="name_div" class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">@lang('models.name')</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
@@ -304,7 +304,7 @@
                         </div>
 
                         <div id="surnames_div" class="form-group{{ $errors->has('surnames') ? ' has-error' : '' }}">
-                            <label id="surnames_label"for="surnames" class="col-md-4 control-label">surnames</label>
+                            <label id="surnames_label"for="surnames" class="col-md-4 control-label">@lang('models.surnames')</label>
 
                             <div class="col-md-6">
                                 <input id="surnames" type="text" class="form-control" name="surnames" value="{{ old('surnames') }}" autofocus>
@@ -318,7 +318,7 @@
                         </div>
 
                         <div id="email_div" class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">@lang('models.email')</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" >
@@ -332,7 +332,7 @@
                         </div>
 
                         <div id="idCard_div" class="form-group{{ $errors->has('idCard') ? ' has-error' : '' }}">
-                            <label for="idCard" class="col-md-4 control-label">ID Card</label>
+                            <label for="idCard" class="col-md-4 control-label">@lang('models.idCard')</label>
 
                             <div class="col-md-6">
                                 <input id="idCard" type="text" class="form-control" name="idCard" value="{{ old('idCard') }}" >
@@ -346,7 +346,7 @@
                         </div>
 
                         <div id="phone_div" class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                            <label for="phone" class="col-md-4 control-label">phone</label>
+                            <label for="phone" class="col-md-4 control-label">@lang('models.phone')</label>
 
                             <div class="col-md-6">
                                 <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}" >
@@ -360,7 +360,7 @@
                         </div>
 
                         <div id="password_div" class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                            <label for="password" class="col-md-4 control-label">@lang('models.password')</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password">
@@ -383,7 +383,7 @@
 
 
                         <div id="study_div" class="form-group{{ $errors->has('study') ? ' has-error' : '' }}">
-                            <label for="study" class="col-md-4 control-label">Studys</label>
+                            <label for="study" class="col-md-4 control-label">@lang('models.study')</label>
 
                             <div class="col-md-6">
                                 <select  id="study" class="form-control" name="study" value="{{ old('study') }}"  autofocus>
@@ -404,7 +404,7 @@
 
 
                          <div id="teachingStudies_div" name="teachingStudies_div" class="form-group{{ $errors->has('teachingStudies') ? ' has-error' : '' }}">
-                            <label for="teachingStudies" class="col-md-4 control-label">Study docencia</label>
+                            <label for="teachingStudies" class="col-md-4 control-label">@lang('general.studies_with_teaching')</label>
 
                             <div class="col-md-6">
                                 <select  id="teachingStudies" class="form-control" onchange="newStudy(0)" name="teachingStudies" value="{{ old('teachingStudies') }}" autofocus>
@@ -429,7 +429,7 @@
 
 
                         <div id="teachingStudiesSelected_div" class="form-group{{ $errors->has('teachingStudiesSelected') ? ' has-error' : '' }}">
-                            <label for="teachingStudiesSelected" class="col-md-4 control-label">Studys with teaching selected</label>
+                            <label for="teachingStudiesSelected" class="col-md-4 control-label">@lang('general.selected_studies_with_teaching')</label>
 
                             <div id='checkBoxes' class="col-md-6">
                                 <input id="teachingStudiesSelected"  type="checkbox" name="teachingStudiesSelected" value="" hidden="hidden" checked>
@@ -445,8 +445,8 @@
 
 
 
-                        <div id="areasOfInterest_div" class="form-group{{ $errors->has('areasOfInterest') ? ' has-error' : '' }}">
-                            <label for="areasOfInterest" class="col-md-4 control-label">Areas of interest</label>
+                        <div id="areasOfInterest_div" class="form-group{{ $errors->has('') ? ' has-error' : '' }}">
+                            <label for="areasOfInterest" class="col-md-4 control-label">@lang('models.areasOfInterest')</label>
 
                             <div class="col-md-6">
                                 <textarea id="areasOfInterest" cols="100" rows="7" maxlength="{{config('forms.areasOfInterest')}}"
@@ -461,7 +461,7 @@
                         </div>
 
                         <div id="skills_div" class="form-group{{ $errors->has('skills') ? ' has-error' : '' }}">
-                            <label for="skills" class="col-md-4 control-label">skills</label>
+                            <label for="skills" class="col-md-4 control-label">@lang('models.skills')</label>
 
                             <div class="col-md-6">
                                 <textarea id="skills" cols="100" rows="7" maxlength="{{config('forms.skills')}}"
@@ -476,7 +476,7 @@
                         </div>
 
                         <div id="departments_div" class="form-group{{ $errors->has('departments') ? ' has-error' : '' }}">
-                            <label for="departments" class="col-md-4 control-label">departments</label>
+                            <label for="departments" class="col-md-4 control-label">@lang('models.departments')</label>
 
                             <div class="col-md-6">
                                 <textarea id="departments" cols="100" rows="7" maxlength="{{config('forms.departments')}}"
@@ -491,7 +491,7 @@
                         </div>
 
                         <div id="description_div" class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                            <label for="description" class="col-md-4 control-label">description</label>
+                            <label for="description" class="col-md-4 control-label">@lang('models.description')</label>
 
                             <div class="col-md-6">
                                 <textarea id="description" cols="100" rows="7" maxlength="{{config('forms.user_description')}}"
@@ -506,7 +506,7 @@
                         </div>
 
                         <div id="headquartersLocation_div" class="form-group{{ $errors->has('headquartersLocation') ? ' has-error' : '' }}">
-                            <label for="headquartersLocation" class="col-md-4 control-label">headquartersLocation</label>
+                            <label for="headquartersLocation" class="col-md-4 control-label">@lang('models.headquartersLocation')</label>
 
                             <div class="col-md-6">
                                 <textarea id="headquartersLocation" cols="100" rows="7" maxlength="{{config('forms.headquartersLocation')}}"
@@ -521,7 +521,7 @@
                         </div>
 
                         <div id="web_div" class="form-group{{ $errors->has('web') ? ' has-error' : '' }}">
-                            <label for="web" class="col-md-4 control-label">web</label>
+                            <label for="web" class="col-md-4 control-label">@lang('models.web')</label>
 
                             <div class="col-md-6">
                                 <input id="web" type="url" class="form-control" name="web" value="{{ old('web') }}" >
@@ -535,7 +535,7 @@
                         </div>
 
                         <div id="linksWithNearbyEntities_div" class="form-group{{ $errors->has('linksWithNearbyEntities') ? ' has-error' : '' }}">
-                            <label for="linksWithNearbyEntities" class="col-md-4 control-label">linksWithNearbyEntities</label>
+                            <label for="linksWithNearbyEntities" class="col-md-4 control-label">@lang('models.linksWithNearbyEntities')</label>
 
                             <div class="col-md-6">
                                 <textarea id="linksWithNearbyEntities" cols="100" rows="7" maxlength="{{config('forms.linksWithNearbyEntities')}}"

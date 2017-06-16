@@ -26,7 +26,7 @@
                         {{ csrf_field() }}
 
                         <div id="name_div" class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">@lang('models.name')</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name')? old('name') : $user->name}}" autofocus>
@@ -40,7 +40,7 @@
                         </div>
 
                         <div id="surnames_div" class="form-group{{ $errors->has('surnames') ? ' has-error' : '' }}">
-                            <label for="surnames" class="col-md-4 control-label">socialName</label>
+                            <label for="surnames" class="col-md-4 control-label">@lang('models.socialName')</label>
 
                             <div class="col-md-6">
                                 <input id="surnames" type="text" class="form-control" name="surnames" value="{{ old('surnames')? old('surnames') : $organization->user->surnames }}" >
@@ -54,7 +54,7 @@
                         </div>
 
                         <div id="email_div" class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">@lang('models.email')</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email')? old('email') : $user->email }}" >
@@ -68,7 +68,7 @@
                         </div>
 
                         <div id="idCard_div" class="form-group{{ $errors->has('idCard') ? ' has-error' : '' }}">
-                            <label for="idCard" class="col-md-4 control-label">idCard</label>
+                            <label for="idCard" class="col-md-4 control-label">@lang('models.idCard')</label>
 
                             <div class="col-md-6">
                                 <input id="idCard" type="text" class="form-control" name="idCard" value="{{ old('idCard')? old('idCard') : $user->idCard }}" >
@@ -82,7 +82,7 @@
                         </div>
 
                         <div id="phone_div" class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                            <label for="phone" class="col-md-4 control-label">Phone</label>
+                            <label for="phone" class="col-md-4 control-label">@lang('models.phone')</label>
 
                             <div class="col-md-6">
                                 <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone')? old('phone') : $user->phone }}" >
@@ -96,7 +96,7 @@
                         </div>
 
                         <div id="description_div" class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                            <label for="description" class="col-md-4 control-label">description</label>
+                            <label for="description" class="col-md-4 control-label">@lang('models.description')</label>
 
                             <div class="col-md-6">
                                 <textarea id="description" cols="200" rows="7" maxlength="{{config('forms.user_description')}}"
@@ -111,7 +111,7 @@
                         </div>
 
                         <div id="headquartersLocation_div" class="form-group{{ $errors->has('headquartersLocation') ? ' has-error' : '' }}">
-                            <label for="headquartersLocation" class="col-md-4 control-label">headquartersLocation</label>
+                            <label for="headquartersLocation" class="col-md-4 control-label">@lang('models.headquartersLocation')</label>
 
                             <div class="col-md-6">
                                 <textarea id="headquartersLocation" cols="200" rows="7" maxlength="{{config('forms.headquartersLocation')}}"
@@ -126,7 +126,7 @@
                         </div>
 
                         <div id="web_div" class="form-group{{ $errors->has('web') ? ' has-error' : '' }}">
-                            <label for="web" class="col-md-4 control-label">web</label>
+                            <label for="web" class="col-md-4 control-label">@lang('models.web')</label>
 
                             <div class="col-md-6">
                                 <input id="web" type="url" class="form-control" name="web" value="{{ old('web')? old('web') : $organization->web }}" >
@@ -140,7 +140,7 @@
                         </div>
 
                         <div id="linksWithNearbyEntities_div" class="form-group{{ $errors->has('linksWithNearbyEntities') ? ' has-error' : '' }}">
-                            <label for="linksWithNearbyEntities" class="col-md-4 control-label">linksWithNearbyEntities</label>
+                            <label for="linksWithNearbyEntities" class="col-md-4 control-label">@lang('models.linksWithNearbyEntities')</label>
 
                             <div class="col-md-6">
                                 <textarea id="linksWithNearbyEntities" cols="200" rows="7" maxlength="{{config('forms.linksWithNearbyEntities')}}"

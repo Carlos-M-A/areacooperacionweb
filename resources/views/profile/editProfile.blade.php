@@ -131,7 +131,7 @@
                         
                         @if($role<=3)
                         <div id="areasOfInterest_div" class="form-group{{ $errors->has('areasOfInterest') ? ' has-error' : '' }}">
-                            <label for="areasOfInterest" class="col-md-4 control-label">areasOfInterest</label>
+                            <label for="areasOfInterest" class="col-md-4 control-label">@lang('models.areasOfInterest')</label>
 
                             <div class="col-md-6">
                                 <textarea id="areasOfInterest" cols="200" rows="7" maxlength="{{config('forms.areasOfInterest')}}"
@@ -148,7 +148,7 @@
 
                         @if($role==1)
                         <div id="skills_div" class="form-group{{ $errors->has('skills') ? ' has-error' : '' }}">
-                            <label for="skills" class="col-md-4 control-label">skills</label>
+                            <label for="skills" class="col-md-4 control-label">@lang('models.skills')</label>
 
                             <div class="col-md-6">
                                 <textarea id="skills" cols="200" rows="7" maxlength="{{config('forms.skills')}}"
@@ -165,7 +165,7 @@
 
                         @if($role==2)
                         <div id="departments_div" class="form-group{{ $errors->has('departments') ? ' has-error' : '' }}">
-                            <label for="departments" class="col-md-4 control-label">departments</label>
+                            <label for="departments" class="col-md-4 control-label">@lang('models.departments')</label>
 
                             <div class="col-md-6">
                                 <textarea id="departments" cols="200" rows="7" maxlength="{{config('forms.departments')}}"
@@ -182,7 +182,7 @@
 
                         @if($role==3 || $role==4 || $role==5)
                         <div id="description_div" class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                            <label for="description" class="col-md-4 control-label">description</label>
+                            <label for="description" class="col-md-4 control-label">@lang('models.description')</label>
 
                             <div class="col-md-6">
                                 <textarea id="description" cols="200" rows="7" maxlength="{{config('forms.user_description')}}"
@@ -199,7 +199,7 @@
 
                         @if($role==4 || $role==5)
                         <div id="headquartersLocation_div" class="form-group{{ $errors->has('headquartersLocation') ? ' has-error' : '' }}">
-                            <label for="headquartersLocation" class="col-md-4 control-label">headquartersLocation</label>
+                            <label for="headquartersLocation" class="col-md-4 control-label">@lang('models.headquartersLocation')</label>
 
                             <div class="col-md-6">
                                 <textarea id="headquartersLocation" cols="200" rows="7" maxlength="{{config('forms.headquartersLocation')}}"
@@ -216,7 +216,7 @@
 
                         @if($role==4 || $role==5)
                         <div id="web_div" class="form-group{{ $errors->has('web') ? ' has-error' : '' }}">
-                            <label for="web" class="col-md-4 control-label">web</label>
+                            <label for="web" class="col-md-4 control-label">@lang('models.web')</label>
 
                             <div class="col-md-6">
                                 <input id="web" type="url" class="form-control" name="web" value="{{ old('web')? old('web') : $roleData->web }}" >
@@ -232,7 +232,7 @@
 
                         @if($role==4 || $role==5)
                         <div id="linksWithNearbyEntities_div" class="form-group{{ $errors->has('linksWithNearbyEntities') ? ' has-error' : '' }}">
-                            <label for="linksWithNearbyEntities" class="col-md-4 control-label">linksWithNearbyEntities</label>
+                            <label for="linksWithNearbyEntities" class="col-md-4 control-label">@lang('models.linksWithNearbyEntities')</label>
 
                             <div class="col-md-6">
                                 <textarea id="linksWithNearbyEntities" cols="200" rows="7" maxlength="{{config('forms.linksWithNearbyEntities')}}"

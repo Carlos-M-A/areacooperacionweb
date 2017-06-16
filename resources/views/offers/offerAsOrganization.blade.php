@@ -6,8 +6,8 @@
     <form>
         {{ csrf_field() }}
         <div class="btn-group">
-            <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditOffer', ['id'=> $offer->id])}}">Edit</button>
-            <button class="btn btn-warning" formmethod="POST" formaction="{{route('closeOffer', ['id'=> $offer->id])}}">Close</button>
+            <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditOffer', ['id'=> $offer->id])}}">@lang('general.edit')</button>
+            <button class="btn btn-warning" formmethod="POST" formaction="{{route('closeOffer', ['id'=> $offer->id])}}">@lang('general.close')</button>
         </div>
     </form>
 </div>
@@ -21,7 +21,7 @@
         Proposals
         <ul class="nav nav-pills">
             @if(is_null(old('stateOfProposals')))
-                <li class="active"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 1]) }}">news<span class="badge">{{$offer->getAmountOfNotEvaluatedProposals()}}</span></a></li>
+                <li class="active"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 1]) }}">@lang('general.not_evaluated')<span class="badge">{{$offer->getAmountOfNotEvaluatedProposals()}}</span></a></li>
             @else
                 <li class="{{old('stateOfProposals')==1 ? 'active' : ''}}"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 1]) }}">@lang('general.not_evaluated')<span class="badge">{{$offer->getAmountOfNotEvaluatedProposals()}}</span></a></li>
             @endif

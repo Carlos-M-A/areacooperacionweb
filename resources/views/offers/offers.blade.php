@@ -3,15 +3,29 @@
 @section('content')
 
 @php
-$user = Auth::user();
+    $user = Auth::user();
 @endphp
 
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            @if($user->role == 1)
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="{{ route('newOffers') }}">@lang('general.offers')</a></li>
+                        <li class=""><a href="{{ route('convocatories') }}">@lang('general.convocatories')</a></li>
+                        <li class=""><a href="{{ route('myProjects') }}">@lang('general.projects')</a></li>
+                    </ul>
+                @endif
+                @if($user->role == 5)
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="{{ route('myOffers') }}">@lang('general.offers')</a></li>
+                        <li class=""><a href="{{ route('convocatories') }}">@lang('general.convocatories')</a></li>
+                        <li class=""><a href="{{ route('finishedProjects') }}">@lang('general.projects')</a></li>
+                    </ul>
+                @endif
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    Offers
+                    @lang('general.offers')
                     @if($user->role == 1)
                     <ul class="nav nav-pills">
                         <li class="{{($ask == 1) ? 'active' : ''}}"><a href="{{ route('newOffers') }}">@lang('general.new_offers')</a></li>
@@ -24,6 +38,7 @@ $user = Auth::user();
                         <li class="{{($ask == 5) ? 'active' : ''}}"><a href="{{ route('myOffers') }}">@lang('general.my_offers')</a></li>
                         <li class="{{($ask == 6) ? 'active' : ''}}"><a href="{{ route('myOpenOffers') }}">@lang('general.my_open_offers')</a></li>
                         <li class="{{($ask == 7) ? 'active' : ''}}"><a href="{{ route('myClosedOffers') }}">@lang('general.my_closed_offers')</a></li>
+                        <li class=""><a href="{{ route('showCreateOffer') }}">@lang('general.create_offer')</a></li>
                     </ul>
                     @endif
                 </div>
@@ -55,9 +70,6 @@ $user = Auth::user();
                         </li>
                         @endforeach
                     </ul> 
-
-                </div>
-                <div class="panel-footer">
                     {{ $offers->links() }}
                 </div>
             </div>

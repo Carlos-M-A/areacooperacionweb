@@ -10,7 +10,7 @@
             <h1> Registration requests </h1>
             
             
-            <div class="panel panel-primary">
+            <div class="panel panel-info">
                 <div class="panel-heading">@lang('general.registration_requests')</div>
 
                 <div class="panel-body">
@@ -27,7 +27,7 @@
                                 @foreach($users as $user)
                                 <tr>
                                     <td><a href="{{route('user', ['id'=> $user->id])}}" >{{$user->getNameAndSurnames()}}</a></td>
-                                    <td>{{$user->getRoleName()}}</td>
+                                    <td>@lang('enums.role_' . $user->role)</td>
                                 </tr>
                                 @endforeach
 

@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h1> Role change request</h1>
-            <div class="panel panel-primary">
+            <div class="panel panel-info">
                 <div class="panel-heading">Request data</div>
 
                 <div class="panel-body">
@@ -27,11 +27,11 @@
                                 </tr>
                                 <tr>
                                     <td>Role current</td>
-                                    <td>{{$roleChangeRequest->currentRole}}</td>
+                                    <td>@lang('enums.role_' . $roleChangeRequest->currentRole)</td>
                                 </tr>
                                 <tr>
                                     <td>Role new</td>
-                                    <td>{{$roleChangeRequest->newRole}}</td>
+                                    <td>@lang('enums.role_' . $roleChangeRequest->newRole)</td>
                                 </tr>
                                 <tr>
                                     <td>areasOfInterest</td>
@@ -85,14 +85,12 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-
-                    <form action="{{route('acceptRoleChange', ['id'=> $roleChangeRequest->id])}}" method="post">
+                    <form>
                         {{ csrf_field() }}
-                        <button class="btn btn-primary" type="submit">@lang('general.Accept')</button>
-                    </form>
-                    <form action="{{route('rejectRoleChange', ['id'=> $roleChangeRequest->id])}}" method="post">
-                        {{ csrf_field() }}
-                        <button class="btn btn-primary" type="submit">@lang('general.reject')</button>
+                        <div class="btn-group">
+                            <button class="btn btn-danger" formmethod="POST" formaction="{{route('rejectRoleChange', ['id'=> $roleChangeRequest->id])}}">@lang('general.reject')</button>
+                            <button class="btn btn-success" formmethod="POST" formaction="{{route('acceptRoleChange', ['id'=> $roleChangeRequest->id])}}">@lang('general.accept')</button>
+                        </div>
                     </form>
 
                 </div>

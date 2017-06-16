@@ -35,30 +35,17 @@
         @endif
     </div>
     <div class="panel-footer">
-        @if(!is_null($user->observatoryRequest))
-        <form action="{{route('observatoryRejectRequest', ['id'=> $user->id])}}" method="post">
+        <form>
             {{ csrf_field() }}
-            <button   
-                type="submit" class="btn btn-primary">
-                @lang('general.reject')
-            </button>
+            <div class="btn-group">
+                @if(!is_null($user->observatoryRequest))
+                <button class="btn btn-danger" formmethod="POST" formaction="{{route('observatoryRejectRequest', ['id'=> $user->id])}}">@lang('general.reject')</button>
+                <button class="btn btn-success" formmethod="POST" formaction="{{route('observatoryAcceptRequest', ['id'=> $user->id])}}">@lang('general.accept')</button>
+                @elseif($user->isObservatoryMember)
+                <button class="btn btn-danger" formmethod="POST" formaction="{{route('observatoryRemoveMember', ['id'=> $user->id])}}">@lang('general.remove')</button>
+                @endif
+            </div>
         </form>
-        <form action="{{route('observatoryAcceptRequest', ['id'=> $user->id])}}" method="post">
-            {{ csrf_field() }}
-            <button   
-                type="submit" class="btn btn-primary">
-                @lang('general.accept')
-            </button>
-        </form>
-        @elseif($user->isObservatoryMember)
-        <form action="{{route('observatoryRemoveMember', ['id'=> $user->id])}}" method="post">
-            {{ csrf_field() }}
-            <button   
-                type="submit" class="btn btn-primary">
-                @lang('general.remove')
-            </button>
-        </form>
-        @endif
     </div>
 </div>
 @endsection

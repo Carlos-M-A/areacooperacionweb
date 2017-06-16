@@ -68,7 +68,7 @@
 
 
                         <div id="comment_div" class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
-                            <label for="comment" class="col-md-4 control-label">comment</label>
+                            <label for="comment" class="col-md-4 control-label">@lang('models.comment')</label>
 
                             <div class="col-md-6">
                                 <textarea id="comment" cols="100" rows="7" maxlength="{{config('forms.comment')}}"

@@ -35,7 +35,7 @@ $(document).ready(function(){
         Inscriptions
         <ul class="nav nav-pills">
             @if(is_null(old('stateOfInscriptions')))
-                <li class="active"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 1]) }}">Inscriptions<span class="badge">{{$convocatory->getAmountOfNotEvaluatedInscriptions()}}</span></a></li>
+                <li class="active"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 1]) }}">@lang('general.inscriptions')<span class="badge">{{$convocatory->getAmountOfNotEvaluatedInscriptions()}}</span></a></li>
             @else
                 <li class="{{old('stateOfInscriptions')==1 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 1]) }}">@lang('general.inscriptions')<span class="badge">{{$convocatory->getAmountOfNotEvaluatedInscriptions()}}</span></a></li>
             @endif
@@ -124,13 +124,13 @@ $(document).ready(function(){
                             {{ csrf_field() }}
                             
                         <div class="form-group{{ $errors->has('state') ? ' has-error' : '' }}">
-                            <label for="state" class="col-md-4 control-label">state</label>
+                            <label for="state" class="col-md-4 control-label">@lang('models.state')</label>
 
                             <div class="col-md-6">
                                 <select  id="type" class="form-control" name="state" autofocus>
-                                    <option value="2">Accepted</option>
-                                    <option value="3">Alternate</option>
-                                    <option value="4">Rejected</option>
+                                    <option value="2">@lang('enums.inscription_state_2')</option>
+                                    <option value="3">@lang('enums.inscription_state_3')</option>
+                                    <option value="4">@lang('enums.inscription_state_4')</option>
                                 </select>
 
                                 @if ($errors->has('state'))
@@ -142,7 +142,7 @@ $(document).ready(function(){
                         </div>
                         
                         <div id="score_div" class="form-group{{ $errors->has('score') ? ' has-error' : '' }}">
-                            <label for="score" class="col-md-4 control-label">score</label>
+                            <label for="score" class="col-md-4 control-label">@lang('models.score')</label>
 
                             <div class="col-md-6">
                                 <input id="score" type="number" min='0' max='10' step="0.01" class="form-control" name="score" value="{{ old('score')}}" autofocus required>
@@ -155,7 +155,7 @@ $(document).ready(function(){
                             </div>
                         </div>
                         <div id="observations_div" class="form-group{{ $errors->has('observations') ? ' has-error' : '' }}">
-                            <label for="observations" class="col-md-4 control-label">observations</label>
+                            <label for="observations" class="col-md-4 control-label">@lang('models.observations')</label>
 
                             <div class="col-md-6">
                                 <input id="observations" type="text" class="form-control" name="observations" value="{{ old('observations')}}" autofocus required>
@@ -178,7 +178,7 @@ $(document).ready(function(){
                         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('general.close')</button>
       </div>
     </div>
 

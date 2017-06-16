@@ -211,7 +211,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Enter data of project</h4>
+        <h4 class="modal-title">@lang('general.accept_practices')</h4>
       </div>
       <div class="modal-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('acceptProposal', ['id'=> $proposal->id]) }}">
@@ -245,7 +245,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Enter data of project</h4>
+        <h4 class="modal-title">@lang('general.cancel_proposal')</h4>
       </div>
       <div class="modal-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('cancelProposal', ['id'=> $proposal->id]) }}">
@@ -253,7 +253,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-danger">
-                                        Cancel
+                                        @lang('general.cancel')
                                 </button>
                             </div>
                         </div>
@@ -261,7 +261,7 @@
                         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('general.close')</button>
       </div>
     </div>
 

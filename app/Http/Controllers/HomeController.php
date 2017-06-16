@@ -24,15 +24,15 @@ class HomeController extends Controller {
         $user = Auth::user();
         switch ($user->role) {
             case 1:
-                return view('homes/studentHome');
+                return redirect('offers/newOffers');
             case 2:
-                return view('homes/teacherHome');
+                return redirect('projects/myProjects');
             case 3:
                 return view('homes/otherHome');
             case 4:
-                return view('homes/organizationHome');
+                return redirect('offers/myOffers');
             case 5:
-                return view('homes/cooperationAreaHome');
+                return redirect('offers/myOffers');
             case 6:
                 return view('homes/adminHome');
         }

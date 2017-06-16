@@ -122,7 +122,8 @@ return [
     'my_projects' => 'My projects',
     'proposed_projects' => 'Proposed projects',
     'finished_projects' => 'Finished projects',
-    'create_project' => 'Create projects',
+    'create_project' => 'Create project',
+    'cancel_author' => 'Cancel author',
     
     //Convocatories
     'evaluate' => 'Evaluate',
@@ -147,8 +148,8 @@ return [
     'my_practices' => 'My practices',
     'create_offer' => 'Create offer',
     'create_proposal' => 'Create proposal',
-    
-    
+    'cancel_proposal' => 'Cancel proposal',
+    'create_practices' => 'Create practices',
 ];
 
     

@@ -9,9 +9,23 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+                @if($user->role == 1)
+                    <ul class="nav nav-tabs">
+                        <li class=""><a href="{{ route('newOffers') }}">@lang('general.offers')</a></li>
+                        <li class=""><a href="{{ route('convocatories') }}">@lang('general.convocatories')</a></li>
+                        <li class="active"><a href="{{ route('myProjects') }}">@lang('general.projects')</a></li>
+                    </ul>
+                @endif
+                @if($user->role == 5)
+                    <ul class="nav nav-tabs">
+                        <li class=""><a href="{{ route('myOffers') }}">@lang('general.offers')</a></li>
+                        <li class=""><a href="{{ route('convocatories') }}">@lang('general.convocatories')</a></li>
+                        <li class="active"><a href="{{ route('finishedProjects') }}">@lang('general.projects')</a></li>
+                    </ul>
+                @endif
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    Projects
+                    @lang('general.projects')
                     @if($user->role == 1)
                     <ul class="nav nav-pills">
                         <li class="{{($ask == 1) ? 'active' : ''}}"><a href="{{ route('myProjects') }}">@lang('general.my_projects')</a></li>
@@ -20,6 +34,12 @@
                     @elseif($user->role == 2)
                     <ul class="nav nav-pills">
                         <li class="{{($ask == 1) ? 'active' : ''}}"><a href="{{ route('myProjects') }}">@lang('general.my_projects')</a></li>
+                        <li class=""><a href="{{ route('showCreateProject') }}">@lang('general.create_project')</a></li>
+                    </ul>
+                    @elseif($user->role == 5)
+                    <ul class="nav nav-pills">
+                        <li class="active"><a href="{{ route('finishedProjects') }}">@lang('general.finished_projects')</a></li>
+                        <li class=""><a href="{{ route('showCreateProject') }}">@lang('general.create_project')</a></li>
                     </ul>
                     @endif
                 </div>
@@ -58,10 +78,8 @@
                         </div>
                         </li>
                         @endforeach
-                <div class="panel-footer">
-                    {{ $projects->links() }}
-                </div>
-            </div>
+                        {{ $projects->links() }}
+                    </div>
         </div>
     </div>
 </div>

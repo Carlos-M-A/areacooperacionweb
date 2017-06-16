@@ -18,7 +18,7 @@
 
 
                         <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
-                            <label for="role" class="col-md-4 control-label">Role of user</label>
+                            <label for="role" class="col-md-4 control-label">@lang('models.role')</label>
 
                             <div class="col-md-6">
                                 <select  id="role" class="form-control" name="role" autofocus>
@@ -46,7 +46,7 @@
 
 
                         <div id="nameDiv" class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">@lang('models.name')</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
@@ -61,7 +61,7 @@
 
                         
                         <div id="idCardDiv" class="form-group{{ $errors->has('idCard') ? ' has-error' : '' }}">
-                            <label for="idCard" class="col-md-4 control-label">idCard</label>
+                            <label for="idCard" class="col-md-4 control-label">@lang('models.idCard')</label>
 
                             <div class="col-md-6">
                                 <input id="idCard" type="text" class="form-control" name="idCard" value="{{ old('idCard') }}" >
@@ -90,7 +90,7 @@
             
             
             
-            <div class="panel panel-primary">
+            <div class="panel panel-info">
                 <div class="panel-heading">@lang('general.users')</div>
 
                 <div class="panel-body">
@@ -98,8 +98,8 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Role</th>
+                                    <th>@lang('models.name')</th>
+                                    <th>@lang('models.role')</th>
                                 </tr>
                             </thead>
                             <tbody>

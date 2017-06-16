@@ -34,13 +34,33 @@
 
 @section('content')
 
+@php
+    $user = Auth::user();
+@endphp
 
 
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">@lang('general.create_offer')</div>
+            @if($user->role == 5)
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="{{ route('myOffers') }}">@lang('general.offers')</a></li>
+                        <li class=""><a href="{{ route('convocatories') }}">@lang('general.convocatories')</a></li>
+                        <li class=""><a href="{{ route('finishedProjects') }}">@lang('general.projects')</a></li>
+                    </ul>
+                @endif
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    @lang('general.offers')
+                    @if($user->role == 4 || $user->role == 5)
+                    <ul class="nav nav-pills">
+                        <li class=""><a href="{{ route('myOffers') }}">@lang('general.my_offers')</a></li>
+                        <li class=""><a href="{{ route('myOpenOffers') }}">@lang('general.my_open_offers')</a></li>
+                        <li class=""><a href="{{ route('myClosedOffers') }}">@lang('general.my_closed_offers')</a></li>
+                        <li class="active"><a href="{{ route('showCreateOffer') }}">@lang('general.create_offer')</a></li>
+                    </ul>
+                    @endif
+                </div>
                 <div class="panel-body">
                     @if(Auth::user()->role==4)
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('createOffer') }}">
