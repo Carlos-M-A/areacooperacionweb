@@ -21,6 +21,7 @@
                         <li class="active"><a href="{{ route('myOffers') }}">@lang('general.offers')</a></li>
                         <li class=""><a href="{{ route('convocatories') }}">@lang('general.convocatories')</a></li>
                         <li class=""><a href="{{ route('finishedProjects') }}">@lang('general.projects')</a></li>
+                        <li class=""><a href="{{ route('searchUsers', ['role' => 0]) }}">@lang('general.users')</a></li>
                     </ul>
                 @endif
             <div class="panel panel-info">

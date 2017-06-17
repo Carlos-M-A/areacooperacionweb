@@ -19,11 +19,6 @@ class OrganizationController extends Controller {
         return view('users/editOrganization')->with('organization', $organization)->with('user', $user);
     }
 
-    public function get($id) {
-        $user = Organization::find($id);
-        return view('users/user')->with('user', $user);
-    }
-
     public function create(Request $request) {
         $this->_validateData($request, 0);
 

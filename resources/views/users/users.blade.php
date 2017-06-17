@@ -2,6 +2,9 @@
 
 @section('content')
 
+@php 
+    $user = Auth::user();
+@endphp
 
 
 <div class="container">
@@ -10,8 +13,15 @@
             <h1> Users </h1>
             
             
-            
-            <div class="panel panel-default">
+            @if($user->role == 5)
+                    <ul class="nav nav-tabs">
+                        <li class=""><a href="{{ route('myOffers') }}">@lang('general.offers')</a></li>
+                        <li class=""><a href="{{ route('convocatories') }}">@lang('general.convocatories')</a></li>
+                        <li class=""><a href="{{ route('finishedProjects') }}">@lang('general.projects')</a></li>
+                        <li class="active"><a href="{{ route('searchUsers', ['role' => 0]) }}">@lang('general.users')</a></li>
+                    </ul>
+            @endif
+            <div class="panel panel-info">
                 <div class="panel-heading">@lang('general.search_users')</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="GET" action="{{ route('searchUsers') }}">
@@ -92,7 +102,7 @@
             
             <div class="panel panel-info">
                 <div class="panel-heading">@lang('general.users')</div>
-
+                
                 <div class="panel-body">
                     @foreach($users as $user)
                         <li class="list-group-item">
