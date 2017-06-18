@@ -70,11 +70,7 @@
                                     <span class="label label-danger">@lang('enums.project_state_3')</span>
                                 @endif
                                 </h4>
-                                @if($project->createdByAdmin)
-                                    <p>{{$project->tutor}}</p>
-                                @else
-                                    <p>{{$project->teacher->user->getNameAndSurnames()}}</p>
-                                @endif
+                                    <p>{{$project->study->name}}</p>
                             </div>
                         </div>
                         </li>

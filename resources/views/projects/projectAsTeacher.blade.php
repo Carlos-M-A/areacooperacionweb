@@ -116,7 +116,7 @@
                                     <div class="btn-group">
                                     <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $inscription->student->user->id])}}">@lang('view')</button>
                                     @if($inscription->state == 1 && $project->state == 1)
-                                                <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('acceptInscriptionInProject', ['id'=> $inscription->id])}}">@lang('general.choose')</button>
+                                                <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('acceptInscriptionInProject', ['id'=> $inscription->id])}}">@lang('general.chose')</button>
                                     @endif
                                    </div>
                                 </form>
