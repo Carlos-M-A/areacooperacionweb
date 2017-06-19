@@ -39,7 +39,37 @@ class UserController extends Controller {
 
     public function remove($id) {
         $user = User::find($id);
-        $user->delete();
+        
+        $user->email = uniqid('', true);
+        $user->idCard = uniqid('');
+        $user->phone = '';
+        $user->password = bcrypt(uniqid('pwRandom_'));
+        $user->isObservatoryMember = false;
+        $user->isSubscriber = false;
+        $user->notificationInfoConvocatories = false;
+        $user->notificationInfoProjects = false;
+        $user->removed = true;
+        $user->save();
+        
+        switch ($user->role){
+            case 1:
+                $user->student->areasOfInterest = '';
+                $user->student->save();
+                break;
+            case 2:
+                $user->teacher->areasOfInterest = '';
+                $user->teacher->studies()->detach();
+                $user->student->save();
+                break;
+            case 3:
+                $user->other->areasOfInterest = '';
+                $user->student->save();
+                break;
+            case 4:
+                $user->organization->description = '';
+                $user->student->save();
+                break;
+        }
     }
-
+    
 }

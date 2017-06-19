@@ -4,9 +4,6 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Student;
-use App\Teacher;
-use App\Other;
 
 class User extends Authenticatable
 {

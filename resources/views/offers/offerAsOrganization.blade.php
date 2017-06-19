@@ -33,22 +33,25 @@
     </div>
     <div class="panel-body">
         
-         @foreach($proposals as $proposal)
+        @foreach($proposals as $proposal)
+        @php
+            $user = App\User::find($proposal->student_id);
+        @endphp
                 <div class="panel-group">
                    <div class="panel panel-default">
                         <div class="panel-heading">
                 <!-- Left-aligned -->
                         <div class="media">
                             <div class="media-left">
-                                @if(!is_null($proposal->student->user->urlAvatar))
-                                <img src="{{URL::asset($proposal->student->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                @if(!is_null($user->urlAvatar))
+                                <img src="{{URL::asset($user->urlAvatar)}}" class="media-object" style="width:60px">
                                 @else
                                 <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
                                 @endif
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">
-                                    <a data-toggle="collapse" href="#{{'collapse'.$proposal->student->id}}">{{$proposal->student->user->getNameAndSurnames()}}</a>
+                                    <a data-toggle="collapse" href="#{{'collapse'.$user->id}}">{{$user->getNameAndSurnames()}}</a>
                                 @if($proposal->state == 1)
                                     <span class="label label-info">@lang('enums.proposal_state_1')</span>
                                 @elseif($proposal->state == 2)
@@ -65,7 +68,7 @@
                                     <form>
                                         {{ csrf_field() }}
                                         <div class="btn-group">
-                                            <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $proposal->student->user->id])}}">@lang('view')</button>
+                                            <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $user->id])}}">@lang('view')</button>
                                         @if($offer->open)
                                         @if($proposal->state == 1 || $proposal->state == 3)
                                         <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('approveProposal', ['id'=> $proposal->id])}}">@lang('general.approve')</button>
@@ -80,7 +83,7 @@
                             </div>
                         </div>
             </div>
-                    <div id="{{'collapse'.$proposal->student->id}}" class="panel-collapse collapse">
+                    <div id="{{'collapse'.$user->id}}" class="panel-collapse collapse">
                     <ul class="list-group">
                         <li class="list-group-item "><b>@lang('models.type'):</b> @lang('enums.proposal_type_' . $proposal->type)</li>
                         <li class="list-group-item"><b>@lang('models.description'):</b> {{$proposal->description}}</li>

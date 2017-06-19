@@ -44,17 +44,20 @@ class InscriptionInProjectController extends Controller {
         $project = $inscriptionInProject->project;
         $user = Auth::user();
         if ($user->role == 1) { //Caller is a student
-            $inscriptionInProject->state = 3;
+            if($inscriptionInProject->state == 2){
+                $project->author = '';
+                $project->state = 1;
+                $project->save();
+            }
+            $inscriptionInProject->delete();
             
         } elseif ($user->role == 2) { // caller is a teacher
             $inscriptionInProject->state = 1;
+            $project->author = '';
+            $project->state = 1;
+            $project->save();
         }
         
-        $inscriptionInProject->save();
-        $project->author = '';
-        $project->state = 1;
-        $project->save();
-
         return redirect('/projects/' . $inscriptionInProject->project_id);
     }
 

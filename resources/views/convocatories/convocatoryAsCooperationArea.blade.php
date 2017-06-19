@@ -47,20 +47,23 @@ $(document).ready(function(){
     </div>
     <div class="panel-body">  
 @foreach($inscriptions as $inscription)
+    @php
+        $user = App\User::find($inscription->student_id);
+    @endphp
     <div class="panel panel-default">
             <div class="panel-heading">
                 <!-- Left-aligned -->
                         <div class="media">
                             <div class="media-left">
-                                @if(!is_null($inscription->student->user->urlAvatar))
-                                <img src="{{URL::asset($inscription->student->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                @if(!is_null($user->urlAvatar))
+                                <img src="{{URL::asset($user->urlAvatar)}}" class="media-object" style="width:60px">
                                 @else
                                 <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
                                 @endif
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">
-                                    <a data-toggle="collapse" href="#collapseProposa{{$inscription->student->user->id}}">{{$inscription->student->user->getNameAndSurnames()}}</a>
+                                    <a data-toggle="collapse" href="#collapseProposa{{$user->id}}">{{$user->getNameAndSurnames()}}</a>
                                 @if($inscription->state == 1)
                                     <span class="label label-info">@lang('enums.inscription_state_1')</span>
                                 @elseif($inscription->state == 2)
@@ -77,7 +80,7 @@ $(document).ready(function(){
                                     <form>
                                         {{ csrf_field() }}
                                         <div class="btn-group">
-                                            <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $inscription->student->user->id])}}">@lang('view')</button>
+                                            <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $user->id])}}">@lang('view')</button>
                                             @if($convocatory->state == 1 && $inscription->state != 5)
                                                     <!-- Trigger the modal to evaluate the inscription -->
                                                     <button id="{{$inscription->id}}" type="button" class="btn btn-primary evaluate_button" data-toggle="modal"  >@lang('general.evaluate')</button>
@@ -89,7 +92,7 @@ $(document).ready(function(){
                         </div>
                         </li>
             </div>
-                <div id="collapseProposa{{$inscription->student->user->id}}" class="panel-collapse collapse">
+                <div id="collapseProposa{{$user->id}}" class="panel-collapse collapse">
                     <ul class="list-group">
                         <li class="list-group-item"><b>@lang('models.observations'):</b> {{$inscription->observations}}</li>
                     </ul>

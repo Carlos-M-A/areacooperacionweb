@@ -25,7 +25,10 @@ class RoleChangeController extends Controller {
 
         $user->role = $roleChangeRequest->newRole;
         $user->save();
-
+        
+        if($roleChangeRequest->currentRole == 2){
+            $currentRoleData->studies()->detach();
+        }
         $currentRoleData->delete();
         $roleChangeRequest->delete();
         return redirect('roleChanges');
@@ -34,7 +37,9 @@ class RoleChangeController extends Controller {
     public function reject($id) {
         $roleChangeRequest = RoleChangeRequest::find($id);
         $roleData = $this->_roleData($id, $roleChangeRequest->newRole);
-
+        if($roleChangeRequest->newRole == 2){
+            $roleData->studies()->detach();
+        }
         $roleChangeRequest->delete();
         $roleData->delete();
 

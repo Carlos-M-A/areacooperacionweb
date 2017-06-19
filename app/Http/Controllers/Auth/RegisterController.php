@@ -112,6 +112,7 @@ use RegistersUsers;
         $user->notificationInfoProjects = false;
         $user->lastConnectionDate = new DateTime();
         $user->createdDate = new DateTime();
+        $user->removed = false;
         $user->save();
 
 

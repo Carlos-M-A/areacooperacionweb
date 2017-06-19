@@ -71,8 +71,8 @@ class ProposalController extends Controller {
         $proposal->state = 4; //accepted by student
         $proposal->save();
         if ($offer->getAmountOfAcceptedProposals() >= $offer->places) {
-            $offer->open = false;
-            $offer->save();
+            $offerController = new OfferController();
+            $offerController->close($offer->id);
         }
         return redirect('/offers/' . $proposal->offer->id);
     }

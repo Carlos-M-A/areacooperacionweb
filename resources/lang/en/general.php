@@ -44,6 +44,7 @@ return [
     'search' => 'Search',
     'change' => 'Change',
     'accept' => 'Accept',
+    'approve' => 'Approve',
     'reject' => 'Reject',
     'finish' => 'Finish',
     'cancel' => 'Cancel',

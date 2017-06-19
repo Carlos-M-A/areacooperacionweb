@@ -31,18 +31,21 @@
                             
                         <!-- Left-aligned -->
                         <div class="media">
+                            @php
+                                $tutor = App\User::find($project->teacher_id);
+                            @endphp
                             <div class="media-left">
-                                @if(!is_null($project->teacher->user->urlAvatar))
-                                <img src="{{URL::asset($project->teacher->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                @if(!is_null($tutor->urlAvatar))
+                                <img src="{{URL::asset($tutor->urlAvatar)}}" class="media-object" style="width:60px">
                                 @else
                                 <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
                                 @endif
                             </div>
                             <div class="media-body">
-                                <h4 class="media-heading">{{$project->teacher->user->getNameAndSurnames()}}</h4>
+                                <h4 class="media-heading">{{$tutor->getNameAndSurnames()}}</h4>
                                 <p>
                                 <form>
-                                        <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $project->teacher->user->id])}}">@lang('view')</button>
+                                        <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $tutor->id])}}">@lang('view')</button>
                                 </form>
                                 </p>
                             </div>

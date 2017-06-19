@@ -35,21 +35,24 @@
             @if(is_null($inscriptionInProjectChosen))
                 @lang('general.no_author_has_been_chosen')
                 @else
+                    @php
+                        $autor = App\User::find($inscriptionInProjectChosen->student_id);
+                    @endphp
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             
                         <!-- Left-aligned -->
                         <div class="media">
                             <div class="media-left">
-                                @if(!is_null($inscriptionInProjectChosen->student->user->urlAvatar))
-                                <img src="{{URL::asset($inscriptionInProjectChosen->student->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                @if(!is_null($autor->urlAvatar))
+                                <img src="{{URL::asset($autor->urlAvatar)}}" class="media-object" style="width:60px">
                                 @else
                                 <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
                                 @endif
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">
-                                    <a data-toggle="collapse" href="#{{'collapse'.$inscriptionInProjectChosen->student->id}}">{{$inscriptionInProjectChosen->student->user->getNameAndSurnames()}}</a>
+                                    <a data-toggle="collapse" href="#{{'collapse'.$autor->id}}">{{$autor->getNameAndSurnames()}}</a>
                                     <span class="label label-success">@lang('enums.inscription_in_project_state_2')</span>
                                 </h4>
                                 <p>
@@ -86,6 +89,9 @@
     <div class="panel-body">
         
          @foreach($inscriptions as $inscription)
+            @php
+                $user = App\User::find($inscription->student_id);
+            @endphp
                 <div class="panel-group">
                    <div class="panel panel-default">
                         <div class="panel-heading">
@@ -93,15 +99,15 @@
                         <!-- Left-aligned -->
                         <div class="media">
                             <div class="media-left">
-                                @if(!is_null($inscription->student->user->urlAvatar))
-                                <img src="{{URL::asset($inscription->student->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                @if(!is_null($user->urlAvatar))
+                                <img src="{{URL::asset($user->urlAvatar)}}" class="media-object" style="width:60px">
                                 @else
                                 <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
                                 @endif
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">
-                                    <a data-toggle="collapse" href="#{{'collapse'.$inscription->student->id}}">{{$inscription->student->user->getNameAndSurnames()}}</a>
+                                    <a data-toggle="collapse" href="#{{'collapse'.$user->id}}">{{$user->getNameAndSurnames()}}</a>
                                 @if($inscription->state == 1)
                                     <span class="label label-info">@lang('enums.inscription_in_project_state_1')</span>
                                 @elseif($inscription->state == 2)
@@ -114,7 +120,7 @@
                                 <form>
                                     {{ csrf_field() }}
                                     <div class="btn-group">
-                                    <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $inscription->student->user->id])}}">@lang('view')</button>
+                                    <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $user->id])}}">@lang('view')</button>
                                     @if($inscription->state == 1 && $project->state == 1)
                                                 <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('acceptInscriptionInProject', ['id'=> $inscription->id])}}">@lang('general.chose')</button>
                                     @endif
@@ -125,7 +131,7 @@
                         </div>
                         </li>
                         </div>
-                    <div id="{{'collapse'.$inscription->student->id}}" class="panel-collapse collapse">
+                    <div id="{{'collapse'.$user->id}}" class="panel-collapse collapse">
                     <ul class="list-group">
                         <li class="list-group-item"><b>@lang('models.comment'):</b> {{$inscription->comment}}</li>
                     </ul>
