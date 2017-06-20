@@ -54,20 +54,24 @@ class UserController extends Controller {
         switch ($user->role){
             case 1:
                 $user->student->areasOfInterest = '';
+                $user->student->skills = '';
                 $user->student->save();
                 break;
             case 2:
                 $user->teacher->areasOfInterest = '';
+                $user->teacher->departments = '';
+                $user->teacher->save();
                 $user->teacher->studies()->detach();
-                $user->student->save();
+                
                 break;
             case 3:
                 $user->other->areasOfInterest = '';
-                $user->student->save();
+                $user->other->description = '';
+                $user->other->save();
                 break;
             case 4:
                 $user->organization->description = '';
-                $user->student->save();
+                $user->organization->save();
                 break;
         }
     }

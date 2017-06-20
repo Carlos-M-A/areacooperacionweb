@@ -210,6 +210,6 @@ Route::group(['middleware' => ['auth', 'checkAccepted']], function() {
         Route::post('/curriculums/upload/{idUser}', 'Files\CurriculumController@upload')->name('uploadCurriculum')->where('idUser', '[0-9]+');
     });
 
-    Route::get('/avatars/{file}', 'Files\AvatarController@get')->name('getImage')->where('file', '[0-9]+');
-    Route::get('/curriculums/{file}', 'Files\CurriculumController@get')->name('getCurriculum')->where('file', '[0-9]+');
+    Route::get('/avatars/{file}', 'Files\AvatarController@get')->name('getImage');
+    Route::get('/curriculums/{file}', 'Files\CurriculumController@get')->name('getCurriculum');
 });

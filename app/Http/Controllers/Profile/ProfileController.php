@@ -31,6 +31,9 @@ class ProfileController extends Controller {
             case 5:
                 $roleData = Organization::find($user->id);
                 break;
+            case 6:
+                $roleData = null;
+                break;
         }
         return view('profile/editProfile')->with('role', $user->role)->with('user', $user)->with('roleData', $roleData);
     }

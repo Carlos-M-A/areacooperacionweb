@@ -168,7 +168,7 @@ class OfferController extends Controller {
             'places' => 'required|integer|max:255|min:' . $minPlaces,
             'monetaryHelp' => 'required|string|max:' . config('forms.monetaryHelp'),
             'personInCharge' => 'required|string|max:' . config('forms.personInCharge'),
-            'deadline' => 'required|date',
+            'deadline' => 'required|date|after:today',
         ];
         return $rules;
     }

@@ -28,11 +28,12 @@ class AvatarController extends Controller {
         $user = User::find($idUser);
 
         $rules = [
-            'urlAvatar' => 'required|image|dimensions:max_width=256,max_height=256,ratio=1',
+            'urlAvatar' => 'required|image|dimensions:max_width=256,max_height=256,ratio=1|max:100',
         ];
         $this->validate($request, $rules);
-
+        
         if ($request->hasFile('urlAvatar')) {
+            Storage::delete($user->urlAvatar);
             $user->urlAvatar = $request->urlAvatar->store('avatars');
         }
         $user->save();

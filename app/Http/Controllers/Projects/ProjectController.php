@@ -78,7 +78,7 @@ class ProjectController extends Controller {
         $rules = $this->_getProjectFieldsRules();
         $rules['studyId'] = 'required|int|min:1';
         if($user->role == 5){
-            $rules['finishedDate'] = 'required|date';
+            $rules['finishedDate'] = 'required|date|before:tomorrow';
             $rules['tutor'] = 'required|string|max:' . config('forms.tutor');
             $rules['author'] = 'required|string|max:' . config('forms.author');
             $rules['urlDocumentation'] = 'required|url|max:' . config('forms.url');
@@ -114,9 +114,10 @@ class ProjectController extends Controller {
         
         $rules = $this->_getProjectFieldsRules();
         if($user->role == 5){ // role = Cooperation area
-            $rules['finishedDate'] = 'required|date';
+            $rules['finishedDate'] = 'required|date|before:tomorrow';
             $rules['urlDocumentation'] = 'required|url|max:' . config('forms.url');
             if($project->createdByAdmin == true){
+                $rules['studyId'] = 'required|int|min:1';
                 $rules['tutor'] = 'required|string|max:' . config('forms.tutor');
                 $rules['author'] = 'required|string|max:' . config('forms.author');
             }
@@ -132,6 +133,7 @@ class ProjectController extends Controller {
             if($project->createdByAdmin == true){
                 $project->tutor = $request->tutor;
                 $project->author = $request->author;
+                $project->study_id = $request->studyId;
             }
         }
         $project->save();

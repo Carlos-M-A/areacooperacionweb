@@ -111,6 +111,7 @@ return [
     'members' => 'Members',
     'requests_to_observatory' => 'Requests to observatory',
     'user_has_a_request' => 'The user has a request in the observatory',
+    'removed_user' => 'Removed user',
     
     //Projects
     'tutor' => 'Tutor',

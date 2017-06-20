@@ -23,6 +23,7 @@
                 </div>
                     <div id="collapseOffer" class="panel-collapse collapse">
                         <ul class="list-group">
+                            <li class="list-group-item"><b>@lang('models.study'):</b> {{$project->study->name}}</li>
                             <li class="list-group-item"><b>@lang('models.urlDocumentation'):</b> <a href="{{$project->urlDocumentation}}"><b>@lang('models.urlDocumentation')</b></a></li>
                             <li class="list-group-item"><b>@lang('models.scope'):</b> {{$project->scope}}</li>
                             <li class="list-group-item"><b>@lang('models.description'):</b> {{$project->description}}</li>

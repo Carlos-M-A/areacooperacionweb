@@ -86,7 +86,7 @@ class ConvocatoryController extends Controller {
             'information' => 'required|string|max:' . config('forms.information'),
             'estimatedPeriod' => 'required|string|max:' . config('forms.estimatedPeriod'),
             'urlDocumentation' => 'required|url',
-            'deadline' => 'required|date',
+            'deadline' => 'required|date|after:today',
         ];
         $this->validate($request, $rules);
     }

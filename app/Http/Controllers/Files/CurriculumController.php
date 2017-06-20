@@ -27,11 +27,12 @@ class CurriculumController extends Controller {
     public function upload(int $idUser, Request $request) {
         $user = User::find($idUser);
 
-        $rules['urlCurriculum'] = 'required|file|mimes:pdf';
+        $rules['urlCurriculum'] = 'required|file|mimes:pdf|max:200';
         $this->validate($request, $rules);
 
         $student = Student::find($user->id);
         if ($request->hasFile('urlCurriculum')) {
+            Storage::delete($student->urlCurriculum);
             $student->urlCurriculum = $request->urlCurriculum->store('curriculums');
         }
         $student->save();
