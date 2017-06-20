@@ -9,6 +9,7 @@ use App\Student;
 use App\Teacher;
 use App\Other;
 use App\Organization;
+use App\InscriptionInProject;
 
 class ProfileController extends Controller {
 
@@ -111,6 +112,14 @@ class ProfileController extends Controller {
             case 1:
                 $student = Student::find($user->id);
                 $student->areasOfInterest = $request->areasOfInterest;
+                if($student->study_id != $request->study){
+                    $inscriptions = InscriptionInProject::where('student_id', $student->id)->where('state', '!=', 2)->get();
+                    foreach($inscriptions as $inscription2){
+                        //if($inscription2->project->study_id == $inscription2->student->study_id){
+                            $inscription2->delete();
+                        //}
+                    }
+                }
                 $student->study_id = $request->study;
                 $student->skills = $request->skills;
                 $student->save();

@@ -61,7 +61,7 @@
 
 @section('student_inscription')
 
-@if(is_null($inscriptionInProject) && $project->state==1)
+@if(is_null($inscriptionInProject) && $project->state==1 && $project->study_id==Auth::user()->student->study_id && !Auth::user()->student->hasProjectAssigned())
 
 <div class="panel panel-default">
                 <div class="panel-heading">@lang('general.create_inscription_in_project')</div>
@@ -75,7 +75,7 @@
 
                             <div class="col-md-6">
                                 <textarea id="comment" cols="100" rows="7" maxlength="{{config('forms.comment')}}"
-                                           class="form-control" name="comment" autofocus>{{ old('comment') }}</textarea>
+                                           class="form-control" name="comment" autofocus required>{{ old('comment') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('comment'))
                                 <span class="help-block">
@@ -96,7 +96,7 @@
                 </div>
             </div>
 
-@else
+@elseif(!is_null($inscriptionInProject))
 <div class="panel-group">
                    <div class="panel panel-default">
                         <div class="panel-heading">
@@ -122,7 +122,7 @@
                                 @endif
                                 </h4>
                                 <p>
-                                    @if(!$project->state == 3)
+                                    @if($project->state <= 2)
                                     <form>
                                         {{ csrf_field() }}
                                         <div class="btn-group">

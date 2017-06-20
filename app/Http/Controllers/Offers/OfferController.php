@@ -142,13 +142,17 @@ class OfferController extends Controller {
     }
 
     public function close($id) {
+        $this->closeOffer($id);
+        $offer = Offer::find($id);
+        return redirect('/offers/' . $offer->id);
+    }
+    
+    public function closeOffer($id) {
         $offer = Offer::find($id);
         $offer->open = false;
         $offer->save();
 
         Proposal::where('offer_id', $offer->id)->where('state', '<=', 2)->update(['state' => 3]);
-
-        return redirect('/offers/' . $offer->id);
     }
 
     private function _getOfferFieldsRules($minPlaces) {

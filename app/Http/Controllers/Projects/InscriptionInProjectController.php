@@ -32,45 +32,47 @@ class InscriptionInProjectController extends Controller {
 
     public function remove($id) {
         $inscriptionInProject = InscriptionInProject::find($id);
-        $project = $inscriptionInProject->project;
-        $project->state = 1;
-        $project->save();
         $inscriptionInProject->delete();
         return redirect('/projects/' . $inscriptionInProject->project_id);
     }
 
     public function cancel($id) {
-        $inscriptionInProject = InscriptionInProject::find($id);
-        $project = $inscriptionInProject->project;
-        $user = Auth::user();
-        if ($user->role == 1) { //Caller is a student
-            if($inscriptionInProject->state == 2){
-                $project->author = '';
-                $project->state = 1;
-                $project->save();
-            }
-            $inscriptionInProject->delete();
-            
-        } elseif ($user->role == 2) { // caller is a teacher
-            $inscriptionInProject->state = 1;
+        $inscription = InscriptionInProject::find($id);
+        $project = $inscription->project;
+        
+            $inscription->delete();
             $project->author = '';
             $project->state = 1;
             $project->save();
-        }
+            
+            $inscriptions = InscriptionInProject::where('student_id', $inscription->student->id)->where('state', 3)->get();
+            
+            foreach($inscriptions as $inscription2){
+                    $inscription2->state = 1;
+                    $inscription2->save();
+            }
         
-        return redirect('/projects/' . $inscriptionInProject->project_id);
+        
+        return redirect('/projects/' . $inscription->project_id);
     }
 
     public function accept($id) {
-        $inscriptionInProjectAccepted = InscriptionInProject::find($id);
-        $project = $inscriptionInProjectAccepted->project;
-        $inscriptionInProjectAccepted->state = 2; //Choosen
-        $inscriptionInProjectAccepted->save();
+        $inscription = InscriptionInProject::find($id);
+        $project = $inscription->project;
+        
+        $inscription->state = 2; //Chosen
+        $inscription->save();
 
-        $project->author = $inscriptionInProjectAccepted->student->user->getNameAndSurnames();
+        $project->author = $inscription->student->user->getNameAndSurnames();
         $project->state = 2; //state = started
         $project->save();
-
+        
+        $inscriptions = InscriptionInProject::where('student_id', $inscription->student->id)->where('state', 1)->get();
+            foreach($inscriptions as $inscription2){
+                    $inscription2->state = 3;
+                    $inscription2->save();
+            }                
+        
         return redirect('/projects/' . $project->id);
     }
 

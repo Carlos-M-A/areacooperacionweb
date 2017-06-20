@@ -161,7 +161,7 @@ class ProjectController extends Controller {
         
         $project->delete();
 
-        return redirect('projects/closedProjects');
+        return redirect('projects/finishedProjects');
     }
 
     private function _getProjectFieldsRules() {

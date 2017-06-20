@@ -27,7 +27,8 @@ class ProjectsController extends Controller {
     }
 
     public function proposedProjects() {
-        $projects = Project::where('state', 1);
+        $user = Auth::user();
+        $projects = Project::where('state', 1)->where('study_id', $user->student->study_id);
 
         return view('projects/projects')->with('projects', $projects->paginate(config('constants.pagination')))->with('ask', 2);;
     }

@@ -22,6 +22,9 @@
 
 @if(is_null($proposal))
 
+@if($offer->isOfferOfConvocatory && ! Auth::user()->student->isAcceptedInConvocatory($offer->offerOfConvocatory->convocatory))
+    No estas aceptado en la convocatoria de esta oferta
+@else
 <div class="panel panel-default">
                 <div class="panel-heading">@lang('general.create_proposal')</div>
                 <div class="panel-body">
@@ -132,7 +135,7 @@
                     </form>
                 </div>
             </div>
-
+@endif
 @else
 
 <div class="panel-group">

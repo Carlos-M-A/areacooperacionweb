@@ -56,10 +56,17 @@
                                     <span class="label label-success">@lang('enums.inscription_in_project_state_2')</span>
                                 </h4>
                                 <p>
+                                    <form>
+                                    {{ csrf_field() }}
+                                    <div class="btn-group">
+                                    <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $autor->id])}}">@lang('view')</button>
                                     @if($project->state == 2)
                                         <!-- Trigger the modal to enter the tutor manually -->
                                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#cancelAuthor">@lang('general.cancel')</button>
                                     @endif
+                                   </div>
+                                    </form>
+                                    
                                 </p>
                             </div>
                         </div>
