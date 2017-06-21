@@ -50,6 +50,8 @@ return [
     'cancel' => 'Cancel',
     'view' => 'View',
     'chose' => 'Chose',
+    'activate' => 'Activate',
+    'deactivate' => 'Deactivate',
     
     
     //Forms
@@ -74,8 +76,6 @@ return [
     'notification_convocatories' => 'notification convocatories',
     'active' => 'active',
     'inactive' => 'inactive',
-    'activate' => 'activate',
-    'deactivate' => 'deactivate',
     'newsletter_subscription' => 'newsletter subscription',
     'subscript' => 'subscript',
     'not_subscript' => 'not subscript',
@@ -92,13 +92,19 @@ return [
     'selected_studies_with_teaching' => 'Selected studies with teaching',
     'add_study' => 'Add study',
     
-    //Faculties and studies
+    //Campus, studies, configuration
     'create_campus' => 'Create campus',
+    'edit_campus' => 'Edit campus',
+    'edit_study' => 'Edit campus',
     'create_study' => 'Create study',
     'search_campuses' => 'Search campuses',
     'campuses' => 'Campuses',
     'search_studies' => 'Search studies',
     'studies' => 'Studies',
+    'configuration' => 'Configuration',
+    'app_name' => 'App name',
+    'app_image' => 'App image',
+    
     
     //users
     'users' => 'Users',

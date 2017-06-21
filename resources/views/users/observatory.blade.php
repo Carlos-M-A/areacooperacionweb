@@ -7,9 +7,10 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1> @lang('general.the_observatory')</h1>
+            @include('layouts.navigationBar', ['active' => 6])
             <div class="panel panel-info">
-                <div class="panel-heading"> 
+                <div class="panel-heading">
+                    @lang('general.the_observatory')
                     <ul class="nav nav-pills">
                         <li class="{{old('ask')==1 ? 'active' : ''}}"><a href="{{ route('observatory', ['ask' => 1]) }}">Requests<span class="badge">{{App\ObservatoryRequest::all()->count()}}</span></a></li>
                         <li class="{{old('ask')==2 ? 'active' : ''}}"><a href="{{ route('observatory', ['ask' => 2]) }}">Members<span class="badge">{{App\User::where('isObservatoryMember', true)->count()}}</span></a></li>

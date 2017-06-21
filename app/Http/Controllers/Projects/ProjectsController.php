@@ -7,6 +7,16 @@ use App\Project;
 use Illuminate\Support\Facades\Auth;
 
 class ProjectsController extends Controller {
+    
+    public function index() {
+        switch (Auth::user()->role){
+            case 1:
+            case 2:
+                return $this->myProjects();
+            case 5:
+                return $this->finishedProjects();
+        }
+    }
 
     public function myProjects() {
         $user = Auth::user();

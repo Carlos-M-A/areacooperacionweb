@@ -24,7 +24,7 @@ Route::get('/notAccepted', function() {
 Route::group(['middleware' => ['auth', 'checkAccepted']], function() {
 //Managemer of the homes
     Route::get('/home', 'HomeController@index')->name('home');
-
+    Route::get('/configuration', 'Configuration\ConfigurationController@index')->name('configuration');
 // Profile management
     Route::get('/profile', 'Profile\ProfileController@get')->name('profile');
     Route::post('/profile/edit', 'Profile\ProfileController@edit')->name('editProfile');
@@ -75,7 +75,7 @@ Route::group(['middleware' => ['auth', 'checkAccepted']], function() {
         Route::post('/observatory/remove/{id}', 'Users\ObservatoryController@removeMember')->name('observatoryRemoveMember')->where('id', '[0-9]+');
     });
 
-//Studies and faculties management
+//Studies and campuses management
     Route::group(['middleware' => []], function() {
         Route::get('/studies', 'Configuration\StudiesController@search')->name('searchStudies');
         Route::get('/campuses', 'Configuration\CampusesController@search')->name('searchCampuses');
@@ -96,7 +96,8 @@ Route::group(['middleware' => ['auth', 'checkAccepted']], function() {
 
 // Offers management
     Route::get('/offers/{id}', 'Offers\OfferController@get')->name('offer')->where('id', '[0-9]+');
-
+    Route::get('/offers', 'Offers\OffersController@index')->name('offers');
+    
     Route::group(['middleware' => []], function() {
         Route::get('/offers/create', 'Offers\OfferController@showCreate')->name('showCreateOffer');
         Route::post('/offers/create', 'Offers\OfferController@create')->name('createOffer');
@@ -149,6 +150,7 @@ Route::group(['middleware' => ['auth', 'checkAccepted']], function() {
 
 // Projects management
     Route::get('/projects/{id}', 'Projects\ProjectController@get')->name('project')->where('id', '[0-9]+');
+    Route::get('/projects', 'Projects\ProjectsController@index')->name('projects');
 
     Route::group(['middleware' => []], function() {
         Route::get('/projects/showCreate', 'Projects\ProjectController@showCreate')->name('showCreateProject');

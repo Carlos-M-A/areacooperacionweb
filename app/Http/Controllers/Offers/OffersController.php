@@ -8,6 +8,16 @@ use App\Offer;
 use Illuminate\Support\Facades\Auth;
 
 class OffersController extends Controller {
+    
+    public function index() {
+        switch (Auth::user()->role){
+            case 1:
+                return $this->newOffers();
+            case 4:
+            case 5:
+                return $this->myOffers();
+        }
+    }
 
     public function myOffers() {
         $user = Auth::user();

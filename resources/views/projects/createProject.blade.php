@@ -27,13 +27,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            @if($user->role == 5)
-                    <ul class="nav nav-tabs">
-                        <li class=""><a href="{{ route('myOffers') }}">@lang('general.offers')</a></li>
-                        <li class=""><a href="{{ route('convocatories') }}">@lang('general.convocatories')</a></li>
-                        <li class="active"><a href="{{ route('finishedProjects') }}">@lang('general.projects')</a></li>
-                    </ul>
-                @endif
+            @include('layouts.navigationBar', ['active' => 3])
             <div class="panel panel-info">
                 <div class="panel-heading">
                     @lang('general.projects')

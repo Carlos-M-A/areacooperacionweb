@@ -6,6 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            @yield('user_navigation_bar')
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <!-- Left-aligned -->

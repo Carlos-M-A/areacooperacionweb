@@ -8,82 +8,62 @@
         <div class="col-md-8 col-md-offset-2">
             <h1> Role change request</h1>
             <div class="panel panel-info">
-                <div class="panel-heading">Request data</div>
-
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Field</th>
-                                    <th>Data</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <tr>
-                                    <td>User</td>
-                                    <td><a href="{{route('user', ['id'=> $roleChangeRequest->user->id])}}" >{{$roleChangeRequest->user->getNameAndSurnames()}}</a></td>
-                                </tr>
-                                <tr>
-                                    <td>Role current</td>
-                                    <td>@lang('enums.role_' . $roleChangeRequest->currentRole)</td>
-                                </tr>
-                                <tr>
-                                    <td>Role new</td>
-                                    <td>@lang('enums.role_' . $roleChangeRequest->newRole)</td>
-                                </tr>
-                                <tr>
-                                    <td>areasOfInterest</td>
-                                    <td>{{$roleData->areasOfInterest}}</td>
-                                </tr>
-                                @if($roleChangeRequest->newRole==1)
-                                <tr>
-                                    <td>skills</td>
-                                    <td>{{$roleData->skills}}</td>
-                                </tr>
+                <div class="panel-heading">
+                    <!-- Left-aligned -->
+                        <div class="media">
+                            <div class="media-left">
+                                @if(!is_null($roleChangeRequest->user->urlAvatar))
+                                <img src="{{URL::asset($roleChangeRequest->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                @else
+                                <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
                                 @endif
-                                @if($roleChangeRequest->newRole==1)
-                                <tr>
-                                    <td>Curriculum</td>
-                                    <td>{{$roleData->urlCurriculum}}</td>
-                                </tr>
-                                @endif
-                                @if($roleChangeRequest->newRole==1)
-                                <tr>
-                                    <td>Study</td>
-                                    <td><a href="{{route('study', ['id'=> $roleData->study->id])}}" >{{$roleData->study->name}}</a></td>
-                                </tr>
-                                @endif
-                                @if($roleChangeRequest->newRole==2)
-                                <tr>
-                                    <td>departments</td>
-                                    <td>{{$roleData->departments}}</td>
-                                </tr>
-                                @endif
-                                @if($roleChangeRequest->newRole==3)
-                                <tr>
-                                    <td>description</td>
-                                    <td>{{$roleData->description}}</td>
-                                </tr>
-                                @endif
-                                @if($roleChangeRequest->newRole==2)
-                                <tr>
-                                    <td rowspan="{{count($roleData->studies)}}">Studys with teaching</td>
-                                    @foreach($roleData->studies as $study)
-
-                                    <td><a href="{{route('study', ['id'=> $study->id])}}" >{{$study->name}}</a></td>
-
-                                    </tr>
-                                    <tr>
-                                    @endforeach
-                                </tr>
-                                @endif
-
-                            </tbody>
-                        </table>
-                    </div>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading"><a data-toggle="collapse" href="#collapseUser">{{$roleChangeRequest->user->getNameAndSurnames()}}</a></h4>
+                                <p>@lang('enums.role_' . $roleChangeRequest->user->role) <span class="glyphicon glyphicon-arrow-right"></span> @lang('enums.role_' . $roleChangeRequest->newRole)</p>
+                            </div>
+                        </div>
                 </div>
+                
+                <div class="">
+                    <ul class="nav nav-pills">
+                        <li class=""><a href="{{route('user', ['id'=> $roleChangeRequest->user->id])}}" >{{$roleChangeRequest->user->getNameAndSurnames()}}</a></li>
+                    </ul>
+                </div>
+                
+                <div id="collapseUser" class="panel-collapse collapse">
+                    <ul class="list-group">
+                        @if($roleChangeRequest->newRole == 1)
+                            <li class="list-group-item"><b>@lang('models.study'):</b> {{$roleData->study->name}} - {{$roleData->study->campus->name}}</li>
+                            @if(is_null($roleData->urlCurriculum))
+                                <li class="list-group-item"><b>@lang('models.urlCurriculum'):</b> There isn't a curriculum</li>
+                            @else
+                                <li class="list-group-item"><b>@lang('models.urlCurriculum'):</b> <a href="{{url($roleData->urlCurriculum)}}">@lang('models.urlCurriculum')</a></li>
+                            @endif
+                            
+                            <li class="list-group-item"><b>@lang('models.areasOfInterest'):</b> {{$roleData->areasOfInterest}}</li>
+                            <li class="list-group-item"><b>@lang('models.skills'):</b> {{$roleData->skills}}</li>
+                        @endif
+                        @if($roleChangeRequest->newRole == 2)
+                            <li class="list-group-item"><b>@lang('general.studies'):</b> 
+                                <ul>
+                                @foreach($roleData->studies as $study)
+                                <li> {{$study->name}} - {{$study->campus->name}}</li>
+                                @endforeach
+                                </ul>
+                            </li>
+                            <li class="list-group-item"><b>@lang('models.areasOfInterest'):</b> {{$roleData->areasOfInterest}}</li>
+                            <li class="list-group-item"><b>@lang('models.departments'):</b> {{$roleData->departments}}</li>
+                        @endif
+                        @if($roleChangeRequest->newRole == 3)
+                            <li class="list-group-item"><b>@lang('models.areasOfInterest'):</b> {{$roleData->areasOfInterest}}</li>
+                            <li class="list-group-item"><b>@lang('models.description'):</b> {{$roleData->description}}</li>
+                        @endif
+                    </ul>
+                </div>
+                
+
+                
                 <div class="panel-footer">
                     <form>
                         {{ csrf_field() }}

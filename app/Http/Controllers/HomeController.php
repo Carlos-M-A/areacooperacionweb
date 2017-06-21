@@ -28,13 +28,13 @@ class HomeController extends Controller {
             case 2:
                 return redirect('projects/myProjects');
             case 3:
-                return view('homes/otherHome');
+                return redirect('profile');
             case 4:
                 return redirect('offers/myOffers');
             case 5:
                 return redirect('offers/myOffers');
             case 6:
-                return view('homes/adminHome');
+                return redirect('users/requests');
         }
     }
 

@@ -9,43 +9,13 @@
         <div class="col-md-8 col-md-offset-2">
             <h1> Campus </h1>
             
-            <div class="panel panel-default">
-                <div class="panel-heading">Campus</div>
+            <div class="panel panel-info">
+                <div class="panel-heading">@lang('models.campus')</div>
                 <div class="panel-body">
-                    <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Field</th>
-                                <th>Data</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Abbreviation</td>
-                                <td>{{$campus->abbreviation}}</td>
-                            </tr>
-                            <tr>
-                                <td>Campus</td>
-                                <td>{{$campus->name}}</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="{{count($campus->studies)}}">Studys</td>
-                            @foreach($campus->studies as $study)
-                            
-                                    <td><a href="{{route('study', ['id'=> $study->id])}}" >{{$study->name}}</a></td>
-                                    
-                                </tr>
-                                <tr>
-                                @endforeach
-                                </tr>
-                            <tr>
-                                <td>Inactive</td>
-                                <td>{{$campus->inactive}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    </div>
+                     <li class="list-group-item"><b>@lang('models.name'):</b> {{$campus->name}}</li>
+                        <li class="list-group-item"><b>@lang('models.abbreviation'):</b> @lang('models.abbreviation' . $campus->abbreviation)</li>
+                        <li class="list-group-item"><b>@lang('models.state'):</b> {{$campus->inactive ? __('general.inactive') : __('general.active')}}</li>
+                        
                 </div>
                 <div class="panel-footer">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('changeCampusToInactive', ['id'=> $campus->id]) }}">
@@ -54,7 +24,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{$campus->inactive? 'Activate' : 'Mark as inactive'}}
+                                    {{$campus->inactive? __('general.activate') : __('general.deactivate')}}
                                 </button>
                             </div>
                         </div>
@@ -63,17 +33,17 @@
             </div>
             
             
-            <div class="panel panel-default">
-                <div class="panel-heading">Edit campus</div>
+            <div class="panel panel-info">
+                <div class="panel-heading">@lang('general.edit_campus')</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('changeCampusName', ['id'=> $campus->id]) }}">
                         {{ csrf_field() }}
 
                         <div id="nameDiv" class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">@lang('models.name')</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"required>
 
                                 @if ($errors->has('name'))
                                 <span class="help-block">
@@ -97,10 +67,10 @@
                         {{ csrf_field() }}
 
                         <div id="abbreviationDiv" class="form-group{{ $errors->has('abbreviation') ? ' has-error' : '' }}">
-                            <label for="abbreviation" class="col-md-4 control-label">abbreviation</label>
+                            <label for="abbreviation" class="col-md-4 control-label">@lang('models.abbreviation')</label>
 
                             <div class="col-md-6">
-                                <input id="abbreviation" type="text" class="form-control" name="abbreviation" value="{{ old('abbreviation') }}" autofocus>
+                                <input id="abbreviation" type="text" class="form-control" name="abbreviation" value="{{ old('abbreviation') }}" required>
 
                                 @if ($errors->has('abbreviation'))
                                 <span class="help-block">

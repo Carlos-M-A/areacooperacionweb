@@ -10,19 +10,20 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1> Users </h1>
-            
-            
-            @if($user->role == 5)
-                    <ul class="nav nav-tabs">
-                        <li class=""><a href="{{ route('myOffers') }}">@lang('general.offers')</a></li>
-                        <li class=""><a href="{{ route('convocatories') }}">@lang('general.convocatories')</a></li>
-                        <li class=""><a href="{{ route('finishedProjects') }}">@lang('general.projects')</a></li>
-                        <li class="active"><a href="{{ route('searchUsers', ['role' => 0]) }}">@lang('general.users')</a></li>
-                    </ul>
-            @endif
+            @include('layouts.navigationBar', ['active' => 5])
             <div class="panel panel-info">
-                <div class="panel-heading">@lang('general.search_users')</div>
+                <div class="panel-heading">
+                    @lang('general.users')
+                    <ul class="nav nav-pills">
+                        <li class="active"><a href="{{ route('searchUsers', ['role' => 0]) }}">@lang('general.users')</a></li>
+                        @if(Auth::user()->role == 6)
+                        <li class=""><a href="{{ route('registrationRequests') }}">@lang('general.registration_requests')</a></li>
+                        <li class=""><a href="{{ route('roleChanges') }}">@lang('general.role_change_requests')</a></li>
+                        <li class=""><a href="{{ route('showCreateOrganization') }}">@lang('general.register_organization')</a></li>
+                        @endif
+                    </ul>
+                    
+                </div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="GET" action="{{ route('searchUsers') }}">
 

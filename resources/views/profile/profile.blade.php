@@ -1,4 +1,9 @@
+
 @extends('users.user')
+
+@section('user_navigation_bar')
+@include('layouts.navigationBar', ['active' => 8])
+@endsection
 
 @section('user_options')
 <div class="panel-footer">

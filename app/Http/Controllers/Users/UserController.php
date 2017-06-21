@@ -75,6 +75,7 @@ class UserController extends Controller {
                 $this->_removeOrganization($user->organization);
                 break;
         }
+        return redirect('users/' . $user->id);
     }
     
     private function _removeStudent($student) {

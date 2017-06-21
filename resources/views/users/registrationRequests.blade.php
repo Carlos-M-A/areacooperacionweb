@@ -7,11 +7,18 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1> Registration requests </h1>
-            
-            
+            @include('layouts.navigationBar', ['active' => 5])
             <div class="panel panel-info">
-                <div class="panel-heading">@lang('general.registration_requests')</div>
+                <div class="panel-heading">@lang('general.users')
+                <ul class="nav nav-pills">
+                        <li class=""><a href="{{ route('searchUsers', ['role' => 0]) }}">@lang('general.users')</a></li>
+                        @if(Auth::user()->role == 6)
+                        <li class="active"><a href="{{ route('registrationRequests') }}">@lang('general.registration_requests')</a></li>
+                        <li class=""><a href="{{ route('roleChanges') }}">@lang('general.role_change_requests')</a></li>
+                        <li class=""><a href="{{ route('showCreateOrganization') }}">@lang('general.register_organization')</a></li>
+                        @endif
+                    </ul>
+                </div>
 
                 <div class="panel-body">
                     @foreach($users as $user)

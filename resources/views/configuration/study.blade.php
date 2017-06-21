@@ -7,44 +7,16 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1> Study </h1>
             
-            <div class="panel panel-default">
-                <div class="panel-heading">@lang('general.studies')</div>
+            <div class="panel panel-info">
+                <div class="panel-heading">@lang('models.study')</div>
                 <div class="panel-body">
-                    <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>field</th>
-                                <th>Dato</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Abbreviation</td>
-                                <td>{{$study->campus->abbreviation}}</td>
-                            </tr>
-                            <tr>
-                                <td>Campus</td>
-                                <td><a href="{{route('campus', ['id'=> $study->campus->id])}}"> {{$study->campus->name}} </a></td>
-                            </tr>
-                            <tr>
-                                <td>Name</td>
-                                <td>{{$study->name}}</td>
-                            </tr>
-                            
-                            <tr>
-                                <td>Branch</td>
-                                <td>{{$study->branch}}</td>
-                            </tr>
-                            <tr>
-                                <td>Inactive</td>
-                                <td>{{$study->inactive}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>@lang('models.name'):</b> {{$study->name}}</li>
+                        <li class="list-group-item"><b>@lang('models.campus'):</b> <a href="{{route('campus', ['id'=> $study->campus->id])}}"> {{$study->campus->name}} </a></li>
+                        <li class="list-group-item"><b>@lang('models.branch'):</b> @lang('enums.branch_' . $study->branch)</li>
+                        <li class="list-group-item"><b>@lang('models.state'):</b> {{$study->inactive ? __('general.inactive') : __('general.active')}}</li>
+                    </ul>
                 </div>
                 <div class="panel-footer">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('changeStudyToInactive', ['id'=> $study->id]) }}">
@@ -53,7 +25,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{$study->inactive? 'Active' : 'Mark as inactive'}}
+                                    {{$study->inactive? __('general.activate') : __('general.deactivate')}}
                                 </button>
                             </div>
                         </div>
@@ -62,17 +34,17 @@
             </div>
             
             
-            <div class="panel panel-default">
-                <div class="panel-heading">Edit studies</div>
+            <div class="panel panel-info">
+                <div class="panel-heading">@lang('general.edit_study')</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('changeStudyName', ['id'=> $study->id]) }}">
                         {{ csrf_field() }}
 
                         <div id="nameDiv" class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">@lang('models.name')</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus required>
 
                                 @if ($errors->has('name'))
                                 <span class="help-block">
@@ -96,17 +68,17 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('branch') ? ' has-error' : '' }}">
-                            <label for="branch" class="col-md-4 control-label">branch</label>
+                            <label for="branch" class="col-md-4 control-label">@lang('models.branch')</label>
 
                             <div class="col-md-6">
-                                <select  id="branch" class="form-control" name="branch" autofocus>
-                                    <option value="0">--All branchs--</option>
-                                    <option value="1">Arts and Humanities</option>
-                                    <option value="2">Sciences</option>
-                                    <option value="3">Health sciences</option>
-                                    <option value="4">Social and legal sciences</option>
-                                    <option value="5">Engineering and architecture</option>
-                                    <option value="6">Other</option>
+                                <select  id="branch" class="form-control" name="branch" autofocus required>
+                                    <option value=""></option>
+                                    <option value="1">@lang('enums.branch_1')</option>
+                                    <option value="2">@lang('enums.branch_2')</option>
+                                    <option value="3">@lang('enums.branch_3')</option>
+                                    <option value="4">@lang('enums.branch_4')</option>
+                                    <option value="5">@lang('enums.branch_5')</option>
+                                    <option value="6">@lang('enums.branch_6')</option>
                                 </select>
 
                                 @if ($errors->has('branch'))
@@ -133,8 +105,8 @@
                             <label for="campus" class="col-md-4 control-label">Campus</label>
 
                             <div class="col-md-6">
-                                <select  id="campus" class="form-control" name="campus" autofocus>
-                                    <option>--Choose a campus--</option>
+                                <select  id="campus" class="form-control" name="campus" autofocus required>
+                                    <option></option>
                                     
                                     @php
                                         $campuses = App\Campus::all();

@@ -7,15 +7,24 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1> @lang('general.campuses') </h1>
-            
-            <div class="panel panel-default">
-                <div class="panel-heading">@lang('general.search_campuses')</div>
+          
+            @include('layouts.navigationBar', ['active' => 7])
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                @lang('general.configuration')
+                    <ul class="nav nav-pills">
+                        <li class=""><a href="{{ route('configuration') }}">@lang('general.configuration')</a></li>
+                        <li class=""><a href="{{ route('searchStudies', ['branch' => 0]) }}"> @lang('general.studies')</a></li>
+                        <li class=""><a href="{{ route('showCreateStudy') }}"> @lang('general.create_study')</a></li>
+                        <li class="active"><a href="{{ route('searchCampuses') }}"> @lang('general.campuses')</a></li>
+                        <li class=""><a href="{{ route('showCreateCampus') }}"> @lang('general.create_campus')</a></li>
+                    </ul>
+                </div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="GET" action="{{ route('searchCampuses') }}">
 
                         <div id="nameDiv" class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">@lang('models.name')</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
@@ -40,28 +49,16 @@
             </div>
             
             
-            <div class="panel panel-primary">
-                <div class="panel-heading">Campuses</div>
+            <div class="panel panel-info">
+                <div class="panel-heading">@lang('general.campuses')</div>
 
                 <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Abbreviation</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($campuses as $campus)
-                                <tr>
-                                    <td><a href="{{route('campus', ['id'=> $campus->id])}}" >{{$campus->name}}</a></td>
-                                    <td>{{$campus->abbreviation}}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                    @foreach($campuses as $campus)
+                    <li class="list-group-item">
+                        <a href="{{route('campus', ['id'=> $campus->id])}}" >{{$campus->name}}</a>
+                    </li>
+                    @endforeach
+                    
                 </div>
                 
                 <div class="panel-footer">
