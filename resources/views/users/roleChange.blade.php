@@ -13,9 +13,9 @@
                         <div class="media">
                             <div class="media-left">
                                 @if(!is_null($roleChangeRequest->user->urlAvatar))
-                                <img src="{{URL::asset($roleChangeRequest->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                <img src="{{url($roleChangeRequest->user->urlAvatar)}}" class="media-object" style="width:60px">
                                 @else
-                                <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                <img src="{{URL::asset('images/avatar.jpg')}}" class="media-object" style="width:60px">
                                 @endif
                             </div>
                             <div class="media-body">

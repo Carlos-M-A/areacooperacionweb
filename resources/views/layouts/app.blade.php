@@ -19,10 +19,10 @@
      
      
      
-     <script src="{{ url('js/jquery-3.2.1.js') }}"></script>
+     <script src="{{ URL::asset('js/jquery-3.2.1.js') }}"></script>
      
-     <link href="{{ url('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
-     <script src="{{ url('bootstrap/js/bootstrap.min.js') }}"></script>
+     <link href="{{ URL::asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+     <script src="{{ URL::asset('bootstrap/js/bootstrap.min.js') }}"></script>
      
      
       <!--With this, the web work perfectly, but the css and js would not be in own server

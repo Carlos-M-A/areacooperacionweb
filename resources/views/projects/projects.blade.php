@@ -37,12 +37,12 @@
                         <div class="media">
                             <div class="media-left">
                                 @if($project->createdByAdmin)
-                                    <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                    <img src="{{URL::asset('images/avatar.jpg')}}" class="media-object" style="width:60px">
                                 @else
                                     @if(!is_null($project->teacher->user->urlAvatar))
-                                    <img src="{{URL::asset($project->teacher->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                    <img src="{{url($project->teacher->user->urlAvatar)}}" class="media-object" style="width:60px">
                                     @else
-                                    <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                    <img src="{{URL::asset('images/avatar.jpg')}}" class="media-object" style="width:60px">
                                     @endif
                                 @endif
                             </div>

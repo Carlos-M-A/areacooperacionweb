@@ -28,9 +28,9 @@
                         <div class="media">
                             <div class="media-left">
                                 @if(!is_null($request->user->urlAvatar))
-                                <img src="{{URL::asset($request->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                <img src="{{url($request->user->urlAvatar)}}" class="media-object" style="width:60px">
                                 @else
-                                <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                <img src="{{URL::asset('images/avatar.jpg')}}" class="media-object" style="width:60px">
                                 @endif
                                 
                             </div>

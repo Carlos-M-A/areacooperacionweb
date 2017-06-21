@@ -45,12 +45,12 @@
                             <div class="col-md-6">
                                 <select  id="branch" class="form-control" name="branch" autofocus required>
                                     <option value="{{ old('branch') }}">{{old('branch') ? __('enums.branch_' . old('name')) : '' }}</option>
-                                    <option value="1">Arts and Humanities</option>
-                                    <option value="2">Sciences</option>
-                                    <option value="3">Health sciences</option>
-                                    <option value="4">Social and legal sciences</option>
-                                    <option value="5">Engineering and architecture</option>
-                                    <option value="6">Other</option>
+                                    <option value="1">@lang('enums.branch_1')</option>
+                                    <option value="2">@lang('enums.branch_2')</option>
+                                    <option value="3">@lang('enums.branch_3')</option>
+                                    <option value="4">@lang('enums.branch_4')</option>
+                                    <option value="5">@lang('enums.branch_5')</option>
+                                    <option value="6">@lang('enums.branch_6')</option>
                                 </select>
 
                                 @if ($errors->has('branch'))

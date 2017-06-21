@@ -12,8 +12,8 @@
                 <div class="panel-heading">
                     @lang('general.the_observatory')
                     <ul class="nav nav-pills">
-                        <li class="{{old('ask')==1 ? 'active' : ''}}"><a href="{{ route('observatory', ['ask' => 1]) }}">Requests<span class="badge">{{App\ObservatoryRequest::all()->count()}}</span></a></li>
-                        <li class="{{old('ask')==2 ? 'active' : ''}}"><a href="{{ route('observatory', ['ask' => 2]) }}">Members<span class="badge">{{App\User::where('isObservatoryMember', true)->count()}}</span></a></li>
+                        <li class="{{old('ask')==1 ? 'active' : ''}}"><a href="{{ route('observatory', ['ask' => 1]) }}">@lang('general.requests')<span class="badge">{{App\ObservatoryRequest::all()->count()}}</span></a></li>
+                        <li class="{{old('ask')==2 ? 'active' : ''}}"><a href="{{ route('observatory', ['ask' => 2]) }}">@lang('general.members')<span class="badge">{{App\User::where('isObservatoryMember', true)->count()}}</span></a></li>
                     </ul>
                 </div>
 
@@ -24,9 +24,9 @@
                         <div class="media">
                             <div class="media-left">
                                 @if(!is_null($user->urlAvatar))
-                                <img src="{{URL::asset($user->urlAvatar)}}" class="media-object" style="width:60px">
+                                <img src="{{url($user->urlAvatar)}}" class="media-object" style="width:60px">
                                 @else
-                                <img src="{{url('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                <img src="{{URL::asset('images/avatar.jpg')}}" class="media-object" style="width:60px">
                                 @endif
                                 
                             </div>

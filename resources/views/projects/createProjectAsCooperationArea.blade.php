@@ -3,8 +3,8 @@
 @section('more_more_script')
 
 
-    <link rel="stylesheet" href="{{url('css/bootstrap-datepicker.min.css')}}" />
-    <script src="{{url('js/bootstrap-datepicker.min.js')}}"></script>
+    <link rel="stylesheet" href="{{URL::asset('css/bootstrap-datepicker.min.css')}}" />
+    <script src="{{URL::asset('js/bootstrap-datepicker.min.js')}}"></script>
     
 <script>
     $( document ).ready(function() {
