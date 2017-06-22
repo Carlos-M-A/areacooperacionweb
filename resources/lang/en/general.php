@@ -52,6 +52,7 @@ return [
     'chose' => 'Chose',
     'activate' => 'Activate',
     'deactivate' => 'Deactivate',
+    'enroll' => 'Enroll',
     
     
     //Forms
@@ -67,13 +68,13 @@ return [
     'profile_data' => 'Profile data',
     'profile' => 'Profile',
     'change_password' => 'Change password',
-    'change_role' => 'Changerole',
+    'change_role' => 'Change role',
     'upload_avatar' => 'Upload avatar',
     'upload_curriculum' => 'Upload curriculum',
     'notifications' => 'Notifications',
     'notification' => 'Notification',
     'notification_projects' => 'Notification projects',
-    'notification_convocatories' => 'Notification convocatories',
+    'notification_convocatories' => 'Notification offers and convocatories',
     'active' => 'Active',
     'inactive' => 'Inactive',
     'newsletter_subscription' => 'Newsletter subscription',
@@ -95,7 +96,7 @@ return [
     //Campus, studies, configuration
     'create_campus' => 'Create campus',
     'edit_campus' => 'Edit campus',
-    'edit_study' => 'Edit campus',
+    'edit_study' => 'Edit study',
     'create_study' => 'Create study',
     'search_campuses' => 'Search campuses',
     'campuses' => 'Campuses',

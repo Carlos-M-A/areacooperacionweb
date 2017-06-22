@@ -8,7 +8,7 @@
         <form>
             {{ csrf_field() }}
             <div class="btn-group">
-                <button class="btn btn-warning" formmethod="POST" formaction="{{route('createInscription', ['id'=> $convocatory->id])}}">@lang('register')</button>
+                <button class="btn btn-warning" formmethod="POST" formaction="{{route('createInscription', ['id'=> $convocatory->id])}}">@lang('general.enroll')</button>
             </div>
         </form>
     </div>

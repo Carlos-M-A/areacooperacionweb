@@ -63,7 +63,7 @@ return [
         'housing' => 'Housing',
         'costs' => 'Costs',
     
-    'organization' => 'organization',
+    'organization' => 'Organization',
         'socialName' => 'Social name',
         'headquartersLocation' => 'Headquarters Location',
         'web' => 'web',
@@ -78,7 +78,7 @@ return [
     
     'proposal' => 'Proposal',
         'scheduleAvailable' => 'Schedule available',
-        'totalHours' => 'TotalHours',
+        'totalHours' => 'Total hours',
         'earliestStartDate' => 'Earliest start date',
         'latestEndDate' => 'Latest end date',
         'creationDate' => 'Creation date',
