@@ -3,7 +3,7 @@
 @section('content')
 
 @section('more_script')
-<script type="text/javascript" src="{{url("js/bootstrap-filestyle.min.js")}}"> </script>
+<script type="text/javascript" src="{{URL::asset("js/bootstrap-filestyle.min.js")}}"> </script>
 @endsection
 
 <div class="container">
