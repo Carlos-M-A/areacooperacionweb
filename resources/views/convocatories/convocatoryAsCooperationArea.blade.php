@@ -20,9 +20,9 @@ $(document).ready(function(){
         <form>
             {{ csrf_field() }}
             <div class="btn-group">
-                <button class="btn btn-warning" formmethod="GET" formaction="{{route('showEditConvocatory', ['id'=> $convocatory->id])}}">@lang('edit')</button>
+                <button class="btn btn-warning" formmethod="GET" formaction="{{route('showEditConvocatory', ['id'=> $convocatory->id])}}">@lang('general.edit')</button>
                 @if($convocatory->state == 2)
-                <button class="btn btn-warning" formmethod="POST" formaction="{{route('closeConvocatory', ['id'=> $convocatory->id])}}">@lang('close')</button>
+                <button class="btn btn-warning" formmethod="POST" formaction="{{route('closeConvocatory', ['id'=> $convocatory->id])}}">@lang('general.close')</button>
                 @endif
             </div>
         </form>
@@ -32,10 +32,10 @@ $(document).ready(function(){
 @section('convocatory_inscriptions')
 <div class="panel panel-info">
     <div class="panel-heading">
-        Inscriptions
+        @lang('general.inscriptions')
         <ul class="nav nav-pills">
             @if(is_null(old('stateOfInscriptions')))
-                <li class="active"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 1]) }}">@lang('general.inscriptions')<span class="badge">{{$convocatory->getAmountOfNotEvaluatedInscriptions()}}</span></a></li>
+                <li class="active"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 1]) }}">@lang('general.not_evaluated')<span class="badge">{{$convocatory->getAmountOfNotEvaluatedInscriptions()}}</span></a></li>
             @else
                 <li class="{{old('stateOfInscriptions')==1 ? 'active' : ''}}"><a href="{{ route('convocatory', ['id'=> $convocatory->id, 'stateOfInscriptions' => 1]) }}">@lang('general.inscriptions')<span class="badge">{{$convocatory->getAmountOfNotEvaluatedInscriptions()}}</span></a></li>
             @endif
@@ -80,7 +80,7 @@ $(document).ready(function(){
                                     <form>
                                         {{ csrf_field() }}
                                         <div class="btn-group">
-                                            <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $user->id])}}">@lang('view')</button>
+                                            <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $user->id])}}">@lang('general.view')</button>
                                             @if($convocatory->state == 1 && $inscription->state != 5)
                                                     <!-- Trigger the modal to evaluate the inscription -->
                                                     <button id="{{$inscription->id}}" type="button" class="btn btn-primary evaluate_button" data-toggle="modal"  >@lang('general.evaluate')</button>

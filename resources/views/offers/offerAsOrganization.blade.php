@@ -68,7 +68,7 @@
                                     <form>
                                         {{ csrf_field() }}
                                         <div class="btn-group">
-                                            <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $user->id])}}">@lang('view')</button>
+                                            <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $user->id])}}">@lang('general.view')</button>
                                         @if($offer->open)
                                         @if($proposal->state == 1 || $proposal->state == 3)
                                         <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('approveProposal', ['id'=> $proposal->id])}}">@lang('general.approve')</button>

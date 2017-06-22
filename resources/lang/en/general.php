@@ -48,7 +48,7 @@ return [
     'reject' => 'Reject',
     'finish' => 'Finish',
     'cancel' => 'Cancel',
-    'view' => 'View',
+    'view' => 'View user',
     'chose' => 'Chose',
     'activate' => 'Activate',
     'deactivate' => 'Deactivate',
@@ -71,6 +71,8 @@ return [
     'change_role' => 'Change role',
     'upload_avatar' => 'Upload avatar',
     'upload_curriculum' => 'Upload curriculum',
+    'options' => 'Options',
+    'option' => 'Option',
     'notifications' => 'Notifications',
     'notification' => 'Notification',
     'notification_projects' => 'Notification projects',
@@ -92,6 +94,7 @@ return [
     'studies_with_teaching' => 'Studies with teaching',
     'selected_studies_with_teaching' => 'Selected studies with teaching',
     'add_study' => 'Add study',
+    'remove_user' => 'Remove user',
     
     //Campus, studies, configuration
     'create_campus' => 'Create campus',

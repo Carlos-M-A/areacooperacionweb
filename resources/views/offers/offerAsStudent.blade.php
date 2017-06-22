@@ -25,7 +25,7 @@
 @if($offer->isOfferOfConvocatory && ! Auth::user()->student->isAcceptedInConvocatory($offer->offerOfConvocatory->convocatory))
     No estas aceptado en la convocatoria de esta oferta
 @else
-<div class="panel panel-default">
+<div class="panel panel-info">
                 <div class="panel-heading">@lang('general.create_proposal')</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('createProposal', ['id' => $offer->id]) }}">
@@ -139,7 +139,7 @@
 @else
 
 <div class="panel-group">
-                   <div class="panel panel-default">
+                   <div class="panel panel-info">
                         <div class="panel-heading">
                             @lang('general.your_proposal')
                         <div class="media">

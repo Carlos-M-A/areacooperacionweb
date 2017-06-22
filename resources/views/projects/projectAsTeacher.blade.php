@@ -59,7 +59,7 @@
                                     <form>
                                     {{ csrf_field() }}
                                     <div class="btn-group">
-                                    <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $autor->id])}}">@lang('view')</button>
+                                    <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $autor->id])}}">@lang('general.view')</button>
                                     @if($project->state == 2)
                                         <!-- Trigger the modal to enter the tutor manually -->
                                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#cancelAuthor">@lang('general.cancel')</button>
@@ -127,7 +127,7 @@
                                 <form>
                                     {{ csrf_field() }}
                                     <div class="btn-group">
-                                    <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $user->id])}}">@lang('view')</button>
+                                    <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $user->id])}}">@lang('general.view')</button>
                                     @if($inscription->state == 1 && $project->state == 1)
                                                 <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('acceptInscriptionInProject', ['id'=> $inscription->id])}}">@lang('general.chose')</button>
                                     @endif

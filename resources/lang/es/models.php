@@ -93,7 +93,7 @@ return [
         'skills' => 'Competencias y experiencia',
         'urlCurriculum' => 'Curriculum',
     
-    'study' => 'Estido',
+    'study' => 'Estudio',
         'branch' => 'Rama',
     
     'teacher' => 'Docente',

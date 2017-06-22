@@ -45,7 +45,7 @@
                                 <h4 class="media-heading">{{$tutor->getNameAndSurnames()}}</h4>
                                 <p>
                                 <form>
-                                        <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $tutor->id])}}">@lang('view')</button>
+                                        <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $tutor->id])}}">@lang('general.view')</button>
                                 </form>
                                 </p>
                             </div>
@@ -63,7 +63,7 @@
 
 @if(is_null($inscriptionInProject) && $project->state==1 && $project->study_id==Auth::user()->student->study_id && !Auth::user()->student->hasProjectAssigned())
 
-<div class="panel panel-default">
+<div class="panel panel-info">
                 <div class="panel-heading">@lang('general.create_inscription_in_project')</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('createInscriptionInProject', ['id' => $project->id]) }}">
