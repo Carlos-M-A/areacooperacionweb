@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
         $schedule->command('checkdeadlines:offers')->daily();
-        $schedule->command('checkdeadlines:convocatories')->everyMinute();
+        $schedule->command('checkdeadlines:convocatories')->daily();
     }
 
     /**

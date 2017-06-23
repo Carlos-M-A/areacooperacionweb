@@ -39,7 +39,7 @@ class CheckDeadlinesOfConvocatories extends Command
      */
     public function handle()
     {
-        Convocatory::where('state', 1)->whereDate('deadline', '<=', Carbon::tomorrow())->update(['state' => 2]);
+        Convocatory::where('state', 1)->whereDate('deadline', '<=', Carbon::today())->update(['state' => 2]);
         
     }
 }
