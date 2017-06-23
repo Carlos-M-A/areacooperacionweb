@@ -7,9 +7,9 @@
     <div class="panel-footer">
         <form>
             {{ csrf_field() }}
-            <div class="btn-group">
-                <button class="btn btn-warning" formmethod="POST" formaction="{{route('createInscription', ['id'=> $convocatory->id])}}">@lang('general.enroll')</button>
-            </div>
+                <button class="btn btn-warning" formmethod="POST" formaction="{{route('createInscription', ['id'=> $convocatory->id])}}"
+                        data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.enroll_in_convocatory')"
+                        >@lang('general.enroll')</button>
         </form>
     </div>
 @endif
@@ -49,16 +49,21 @@
                                 @endif
                                 <span class="label label-info">{{$inscription->score}}</span></h4>
                                 <p>
-                                    @if($convocatory->state == 1)
+                                    
                                     <form>
                                         {{ csrf_field() }}
-                                        <div class="btn-group">
-                                            
-                                            <button class="btn btn-danger" type="submit" formmethod="POST" formaction="{{route('removeInscription', ['id'=> $inscription->id])}}">@lang('general.remove')</button>
-                                            
-                                        </div>
+                                            @if($convocatory->state == 1)
+                                            <button class="btn btn-danger" type="submit" formmethod="POST" formaction="{{route('removeInscription', ['id'=> $inscription->id])}}"
+                                                    data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.remove_inscription')"
+                                                    >@lang('general.remove')</button>
+                                            @endif
+                                            @if($inscription->state < 5 && $convocatory->state == 2)
+                                            <button class="btn btn-danger" type="submit" formmethod="POST" formaction="{{route('cancelInscription', ['id'=> $inscription->id])}}"
+                                                    data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.cancel_inscription')"
+                                                    >@lang('general.cancel')</button>
+                                            @endif
                                     </form>
-                                    @endif
+                                    
                                 </p>
                             </div>
                         </div>

@@ -13,6 +13,10 @@ class Convocatory extends Model
         return $this->hasMany('App\Inscription', 'convocatory_id', 'id');
     }
     
+    public function offersOfConvocatory() {
+        return $this->hasMany('App\OffersOfConvocatory', 'convocatory_id', 'id');
+    }
+    
     public function getAmountOfNotEvaluatedInscriptions() {
         return Inscription::where('convocatory_id', $this->id)->where('state', 1)->count();
     }

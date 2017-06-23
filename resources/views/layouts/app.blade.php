@@ -24,6 +24,8 @@
      <link href="{{ URL::asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
      <script src="{{ URL::asset('bootstrap/js/bootstrap.min.js') }}"></script>
      
+     <script src="{{ URL::asset('js/bootstrap-confirmation.min.js') }}"></script>
+     
      
       <!--With this, the web work perfectly, but the css and js would not be in own server
      
@@ -43,6 +45,14 @@
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
+    
+   $( document ).ready(function() {
+        
+         $('[data-toggle=confirmation]').confirmation({
+            rootSelector: '[data-toggle=confirmation]',
+            // other options
+            });
+    });
     </script>
     
     @yield('more_script')

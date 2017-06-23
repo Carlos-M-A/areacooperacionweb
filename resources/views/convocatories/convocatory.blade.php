@@ -41,6 +41,8 @@
             @yield('convocatory_inscriptions')
                                 
             @yield('inscription')
+            
+            
         </div>
     </div>
 </div>

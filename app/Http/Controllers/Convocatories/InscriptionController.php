@@ -48,5 +48,13 @@ class InscriptionController extends Controller {
 
         return redirect('convocatories/' . $inscription->convocatory->id);
     }
+    
+    public function cancel($id) {
+        $inscription = Inscription::find($id);
+        $inscription->state = 5;
+        $inscription->save();
+
+        return redirect('convocatories/' . $inscription->convocatory->id);
+    }
 
 }

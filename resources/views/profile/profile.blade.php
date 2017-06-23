@@ -8,20 +8,26 @@
 @section('user_options')
 <div class="panel-footer">
     <form>
+        {{ csrf_field() }}
     <div class="btn-group">
         <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditProfile')}}">@lang('general.edit')</button>
-        @if($user->role<4)
-        <button class="btn btn-primary" formmethod="GET" formaction="{{route('showCreateRoleChangeRequest')}}">@lang('general.change_role')</button>
-        @endif
         <button class="btn btn-warning" formmethod="GET" formaction="{{route('showEditPassword')}}">@lang('general.change_password')</button>
         <button class="btn btn-primary" formmethod="GET" formaction="{{route('showUploadAvatar', ['idUser' => $user->id])}}">@lang('general.upload_avatar')</button>
         @if($user->role==1)
         <button class="btn btn-primary" formmethod="GET" formaction="{{route('showUploadCurriculum', ['idUser' => $user->id])}}">@lang('general.upload_curriculum')</button>
         @endif
-        @if($user->role<=4)
-        <button class="btn btn-danger" formmethod="GET" formaction="{{route('removeUser', ['id'=> $user->id])}}">@lang('general.remove_user')</button>
-        @endif
     </div>
+        @if($user->role<4)
+        <button class="btn btn-warning" formmethod="GET" formaction="{{route('showCreateRoleChangeRequest')}}"
+                data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.change_role')"
+                >@lang('general.change_role')</button>
+        @endif
+        @if($user->role<=4)
+        <button class="btn btn-danger" formmethod="POST" formaction="{{route('removeUser', ['id'=> $user->id])}}"
+                data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.remove_my_user')"
+                >@lang('general.remove_user')</button>
+        @endif
+
     </form>
 </div>
 @endsection
@@ -53,7 +59,8 @@
                         <form action="{{$user->isObservatoryMember? route('observatoryRemoveMember', ['id' => $user->id]) : route('createObservatoryRequest')}}" method="post">
                                         {{ csrf_field() }}
                                         <button   
-                                            type="submit" class="btn {{$user->isObservatoryMember? 'btn-danger' : 'btn-success'}}">
+                                            type="submit" class="btn {{$user->isObservatoryMember? 'btn-danger' : 'btn-success'}}"
+                                            data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="{{$user->isObservatoryMember? __('confirmations.cancel_obs_member') : __('confirmations.request_obs_member')}}">
                                                 {{$user->isObservatoryMember? __('general.cancel_obs_member') : __('general.request_obs_member')}}
                                         </button>
                                     </form>

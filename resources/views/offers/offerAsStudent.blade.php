@@ -14,6 +14,7 @@
             
             $('#' + event.target.id).next().html(text_length + ' / ' + text_max);
         });
+        
     });
 </script>
 @endsection
@@ -168,19 +169,24 @@
                                 <p>
                                     <form>
                                         {{ csrf_field() }}
-                                        <div class="btn-group">
                                             @if($proposal->state == 1)
-                                            <button class="btn btn-warning" type="submit" formmethod="POST" formaction="{{route('removeProposal', ['id'=> $proposal->id])}}">@lang('general.remove')</button>
+                                            <button class="btn btn-warning" type="submit" formmethod="POST" formaction="{{route('removeProposal', ['id'=> $proposal->id])}}"
+                                                    data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.remove_proposal')"
+                                                    >@lang('general.remove')</button>
                                             @endif
+                                            
                                             @if($proposal->state <= 2)
                                             <!-- Trigger the modal to accept the offer -->
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalCancel">@lang('general.cancel')</button>
+                                            <button type="submit" class="btn btn-danger" formmethod="POST" formaction="{{ route('cancelProposal', ['id'=> $proposal->id]) }}"
+                                                    data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.cancel_proposal')"
+                                                    >@lang('general.cancel')</button>
                                             @endif
                                             @if($proposal->state == 2)
                                             <!-- Trigger the modal to accept the offer -->
-                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalAccept">@lang('general.accept')</button>
+                                            <button type="submit" class="btn btn-success" formmethod="POST" formaction="{{ route('acceptProposal', ['id'=> $proposal->id]) }}"
+                                                    data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.accept_proposal')"
+                                                    >@lang('general.accept')</button>
                                             @endif
-                                        </div>
                                     </form>
                                 </p>
                             </div>
@@ -203,71 +209,3 @@
 @endif
 
 @endsection
-
-
-@if(!is_null($proposal))
-<!-- Modal to accept offer-->
-<div id="modalAccept" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">@lang('general.accept_practices')</h4>
-      </div>
-      <div class="modal-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('acceptProposal', ['id'=> $proposal->id]) }}">
-                            {{ csrf_field() }}
-                       
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-success">
-                                        @lang('general.accept')
-                                </button>
-                            </div>
-                        </div>
-                            
-                        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('general.close')</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-@endif
-
-@if(!is_null($proposal))
-<!-- Modal to cancel proposal-->
-<div id="modalCancel" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">@lang('general.cancel_proposal')</h4>
-      </div>
-      <div class="modal-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('cancelProposal', ['id'=> $proposal->id]) }}">
-                            {{ csrf_field() }}
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-danger">
-                                        @lang('general.cancel')
-                                </button>
-                            </div>
-                        </div>
-                            
-                        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('general.close')</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-@endif

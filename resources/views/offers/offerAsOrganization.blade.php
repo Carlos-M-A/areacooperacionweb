@@ -5,10 +5,10 @@
 <div class="panel-footer">
     <form>
         {{ csrf_field() }}
-        <div class="btn-group">
             <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditOffer', ['id'=> $offer->id])}}">@lang('general.edit')</button>
-            <button class="btn btn-warning" formmethod="POST" formaction="{{route('closeOffer', ['id'=> $offer->id])}}">@lang('general.close')</button>
-        </div>
+            <button class="btn btn-warning" formmethod="POST" formaction="{{route('closeOffer', ['id'=> $offer->id])}}"
+                    data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.close_offer')"
+                    >@lang('general.close')</button>
     </form>
 </div>
 @endif

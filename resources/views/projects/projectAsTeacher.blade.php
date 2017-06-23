@@ -58,13 +58,13 @@
                                 <p>
                                     <form>
                                     {{ csrf_field() }}
-                                    <div class="btn-group">
                                     <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $autor->id])}}">@lang('general.view')</button>
                                     @if($project->state == 2)
-                                        <!-- Trigger the modal to enter the tutor manually -->
-                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#cancelAuthor">@lang('general.cancel')</button>
+                                    
+                                        <button type="submit" class="btn btn-warning" formmethod="POST" formaction="{{route('cancelInscriptionInProject', ['id' => $inscriptionInProjectChosen->id])}}"
+                                                data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.cancel_author')"
+                                                >@lang('general.cancel')</button>
                                     @endif
-                                   </div>
                                     </form>
                                     
                                 </p>
@@ -126,12 +126,12 @@
                                 <p>
                                 <form>
                                     {{ csrf_field() }}
-                                    <div class="btn-group">
                                     <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $user->id])}}">@lang('general.view')</button>
                                     @if($inscription->state == 1 && $project->state == 1)
-                                                <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('acceptInscriptionInProject', ['id'=> $inscription->id])}}">@lang('general.chose')</button>
+                                                <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('acceptInscriptionInProject', ['id'=> $inscription->id])}}"
+                                                        data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.chose_author')"
+                                                        >@lang('general.chose')</button>
                                     @endif
-                                   </div>
                                 </form>
                                 </p>
                             </div>
@@ -157,38 +157,7 @@
 @endsection
 
 
-@if($project->state == 2 && !is_null($inscriptionInProjectChosen))
-<!-- Modal of cancel the author chosen -->
-<div id="cancelAuthor" class="modal fade" role="dialog">
-  <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">@lang('general.cancel_author')</h4>
-      </div>
-      <div class="modal-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{route('cancelInscriptionInProject', ['id' => $inscriptionInProjectChosen->id])}}">
-                        {{ csrf_field() }}
-                        
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    @lang('general.cancel')
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('general.close')</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-@endif
 
 @if($project->state == 2)
 <!-- Modal of finish project -->

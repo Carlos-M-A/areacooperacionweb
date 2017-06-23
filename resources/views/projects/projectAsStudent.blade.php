@@ -125,14 +125,16 @@
                                     @if($project->state <= 2)
                                     <form>
                                         {{ csrf_field() }}
-                                        <div class="btn-group">
                                             @if($inscriptionInProject->state == 1)
-                                            <button class="btn btn-danger" type="submit" formmethod="POST" formaction="{{route('removeInscriptionInProject', ['id'=> $inscriptionInProject->id])}}">@lang('general.remove')</button>
+                                            <button class="btn btn-danger" type="submit" formmethod="POST" formaction="{{route('removeInscriptionInProject', ['id'=> $inscriptionInProject->id])}}" 
+                                                    data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.remove_inscription_in_project')"
+                                                    >@lang('general.remove')</button>
                                             @endif
                                             @if($inscriptionInProject->state == 2)
-                                            <button class="btn btn-danger" type="submit" formmethod="POST" formaction="{{route('cancelInscriptionInProject', ['id'=> $inscriptionInProject->id])}}">@lang('general.cancel')</button>
+                                            <button class="btn btn-danger" type="submit" formmethod="POST" formaction="{{route('cancelInscriptionInProject', ['id'=> $inscriptionInProject->id])}}"
+                                                    data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.cancel_be_the_author')"
+                                                    >@lang('general.cancel')</button>
                                             @endif
-                                        </div>
                                     </form>
                                     @endif
                                 </p>

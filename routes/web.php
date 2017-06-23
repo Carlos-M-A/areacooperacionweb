@@ -200,7 +200,10 @@ Route::group(['middleware' => ['auth', 'checkAccepted']], function() {
         Route::post('/convocatories/{id}/removeInscription', 'Convocatories\InscriptionController@remove')->name('removeInscription')->where('id', '[0-9]+');
     });
     Route::group(['middleware' => []], function() {
-        Route::post('/inscriptions/{id}/edit', 'Convocatories\InscriptionController@edit')->name('editInscription')->where('idUser', '[0-9]+');
+        Route::post('/inscriptions/{id}/edit', 'Convocatories\InscriptionController@edit')->name('editInscription')->where('id', '[0-9]+');
+    });
+    Route::group(['middleware' => []], function() {
+        Route::post('/inscriptions/{id}/cancel', 'Convocatories\InscriptionController@cancel')->name('cancelInscription')->where('id', '[0-9]+');
     });
 // Files management
     Route::group(['middleware' => []], function() {

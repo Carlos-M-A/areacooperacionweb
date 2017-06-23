@@ -19,12 +19,14 @@ $(document).ready(function(){
     <div class="panel-footer">
         <form>
             {{ csrf_field() }}
-            <div class="btn-group">
+                @if($convocatory->state == 1)
                 <button class="btn btn-warning" formmethod="GET" formaction="{{route('showEditConvocatory', ['id'=> $convocatory->id])}}">@lang('general.edit')</button>
-                @if($convocatory->state == 2)
-                <button class="btn btn-warning" formmethod="POST" formaction="{{route('closeConvocatory', ['id'=> $convocatory->id])}}">@lang('general.close')</button>
                 @endif
-            </div>
+                @if($convocatory->state == 2)
+                <button class="btn btn-warning" formmethod="POST" formaction="{{route('closeConvocatory', ['id'=> $convocatory->id])}}"
+                        data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.close_convocatory')"
+                        >@lang('general.close')</button>
+                @endif
         </form>
     </div>
 @endsection
@@ -81,7 +83,7 @@ $(document).ready(function(){
                                         {{ csrf_field() }}
                                         <div class="btn-group">
                                             <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $user->id])}}">@lang('general.view')</button>
-                                            @if($convocatory->state == 1 && $inscription->state != 5)
+                                            @if($convocatory->state == 2 && $inscription->state < 5)
                                                     <!-- Trigger the modal to evaluate the inscription -->
                                                     <button id="{{$inscription->id}}" type="button" class="btn btn-primary evaluate_button" data-toggle="modal"  >@lang('general.evaluate')</button>
                                             @endif

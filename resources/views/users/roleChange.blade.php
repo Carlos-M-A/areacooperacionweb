@@ -67,10 +67,13 @@
                 <div class="panel-footer">
                     <form>
                         {{ csrf_field() }}
-                        <div class="btn-group">
-                            <button class="btn btn-danger" formmethod="POST" formaction="{{route('rejectRoleChange', ['id'=> $roleChangeRequest->id])}}">@lang('general.reject')</button>
-                            <button class="btn btn-success" formmethod="POST" formaction="{{route('acceptRoleChange', ['id'=> $roleChangeRequest->id])}}">@lang('general.accept')</button>
-                        </div>
+                        <button class="btn btn-success" formmethod="POST" formaction="{{route('acceptRoleChange', ['id'=> $roleChangeRequest->id])}}"
+                                    data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.accept_role_change')"
+                                    >@lang('general.accept')</button>
+                            <button class="btn btn-danger" formmethod="POST" formaction="{{route('rejectRoleChange', ['id'=> $roleChangeRequest->id])}}"
+                                    data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.reject_role_change')"
+                                    >@lang('general.reject')</button>
+                            
                     </form>
 
                 </div>
