@@ -51,6 +51,7 @@ return [
         'open' => 'Open',
         'requeriments' => 'Requeriments',
         'workplan' => 'Workplan',
+        'workplace' => 'Workplace',
         'schedule' => 'Schedule',
         'totalHours' => 'Total hours',
         'possibleStartDates' => 'Possible start dates',

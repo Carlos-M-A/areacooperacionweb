@@ -45,6 +45,7 @@ return [
     'offer_description' => 2000,
     'requeriments' => 1000,
     'workplan' => 1000,
+    'workplace' => 300,
     'schedule' => 1000,
     'offer_totalHours' => 200,
     'possibleStartDates' => 200,

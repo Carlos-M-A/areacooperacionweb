@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\CheckDeadlinesOfOffers::class,
+        Commands\CheckDeadlinesOfConvocatories::class,
     ];
 
     /**
@@ -26,6 +27,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        $schedule->command('checkdeadlines:offers')->daily();
+        $schedule->command('checkdeadlines:convocatories')->everyMinute();
     }
 
     /**

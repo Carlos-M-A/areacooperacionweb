@@ -165,6 +165,7 @@ class OfferController extends Controller {
             'description' => 'required|string|max:' . config('forms.offer_description'),
             'requeriments' => 'required|string|max:' . config('forms.requeriments'),
             'workplan' => 'required|string|max:' . config('forms.workplan'),
+            'workplace' => 'required|string|max:' . config('forms.workplace'),
             'schedule' => 'required|string|max:' . config('forms.schedule'),
             'totalHours' => 'required|string|max:' . config('forms.offer_totalHours'),
             'possibleStartDates' => 'required|string|max:' . config('forms.possibleStartDates'),
@@ -183,6 +184,7 @@ class OfferController extends Controller {
         $offer->description = $request->description;
         $offer->requeriments = $request->requeriments;
         $offer->workplan = $request->workplan;
+        $offer->workplace = $request->workplace;
         $offer->schedule = $request->schedule;
         $offer->totalHours = $request->totalHours;
         $offer->possibleStartDates = $request->possibleStartDates;

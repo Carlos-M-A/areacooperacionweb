@@ -120,6 +120,21 @@
                             </div>
                         </div>
                         
+                        <div id="workplace_div" class="form-group{{ $errors->has('workplace') ? ' has-error' : '' }}">
+                            <label for="workplace" class="col-md-4 control-label">@lang('models.workplace')</label>
+
+                            <div class="col-md-6">
+                                <textarea id="workplace" cols="200" rows="2" maxlength="{{config('forms.workplace')}}"
+                                           class="form-control" name="workplace" autofocus>{{ old('workplace')?old('workplace') : $offer->workplace }}</textarea>
+                                           <span class="pull-right label label-default"></span>
+                                @if ($errors->has('workplace'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('workplace') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
+                        
                         <div id="schedule_div" class="form-group{{ $errors->has('schedule') ? ' has-error' : '' }}">
                             <label for="schedule" class="col-md-4 control-label">@lang('models.schedule')</label>
 

@@ -49,6 +49,7 @@
                             <li class="list-group-item"><b>@lang('models.description'):</b> {{$offer->description}}</li>
                             <li class="list-group-item"><b>@lang('models.requeriments'):</b> {{$offer->requeriments}}</li>
                             <li class="list-group-item"><b>@lang('models.workplan'):</b> {{$offer->workplan}}</li>
+                            <li class="list-group-item"><b>@lang('models.workplace'):</b> {{$offer->workplace}}</li>
                             <li class="list-group-item"><b>@lang('models.schedule'):</b> {{$offer->schedule}}</li>
                             <li class="list-group-item"><b>@lang('models.totalHours'):</b> {{$offer->totalHours}}</li>
                             <li class="list-group-item"><b>@lang('models.possibleStartDates'):</b> {{$offer->possibleStartDates}}</li>

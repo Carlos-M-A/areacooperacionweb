@@ -24,6 +24,7 @@ class CreateOffer extends Migration
             $table->string('description', config('forms.offer_description'));
             $table->string('requeriments', config('forms.requeriments'))->nullable();
             $table->string('workplan', config('forms.workplan'))->nullable();
+            $table->string('workplace', config('forms.workplace'));
             $table->string('schedule', config('forms.schedule'));
             $table->string('totalHours', config('forms.offer_totalHours'));
             $table->string('possibleStartDates', config('forms.possibleStartDates'));
