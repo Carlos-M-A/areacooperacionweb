@@ -78,7 +78,7 @@
                             <label for="title" class="col-md-4 control-label">@lang('models.title')</label>
 
                             <div class="col-md-6">
-                                <textarea id="title" cols="100" rows="1" maxlength="{{config('forms.project_title')}}"
+                                <textarea id="title" cols="100" rows="1" maxlength="{{config('forms.project_title')}}" placeholder="@lang('placeholders.project_title')"
                                            class="form-control" name="title" autofocus required>{{ old('title') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('title'))
@@ -93,7 +93,8 @@
                             <label for="scope" class="col-md-4 control-label">@lang('models.scope')</label>
 
                             <div class="col-md-6">
-                                <input id="scope" type="text" maxlength="{{config('forms.scope')}}" class="form-control" name="scope" value="{{ old('scope') }}" autofocus required>
+                                <input id="scope" type="text" maxlength="{{config('forms.scope')}}"  placeholder="@lang('placeholders.scope')"
+                                       class="form-control" name="scope" value="{{ old('scope') }}" autofocus required>
 
                                 @if ($errors->has('scope'))
                                 <span class="help-block">
@@ -106,7 +107,7 @@
                             <label for="description" class="col-md-4 control-label">@lang('models.description')</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" cols="100" rows="7" maxlength="{{config('forms.project_description')}}"
+                                <textarea id="description" cols="100" rows="7" maxlength="{{config('forms.project_description')}}" placeholder="@lang('placeholders.project_description')"
                                            class="form-control" name="description" autofocus required>{{ old('description') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('description'))

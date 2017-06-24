@@ -118,7 +118,7 @@
     <label for="housing" class="col-md-4 control-label">@lang('models.housing')</label>
 
     <div class="col-md-6">
-        <textarea id="housing" cols="100" rows="2" maxlength="{{config('forms.housing')}}"
+        <textarea id="housing" cols="100" rows="2" maxlength="{{config('forms.housing')}}" placeholder="@lang('placeholders.housing')"
             class="form-control" name="housing" autofocus>{{ old('housing') }}</textarea>
             <span class="pull-right label label-default"></span>
         @if ($errors->has('housing'))
@@ -133,7 +133,7 @@
     <label for="costs" class="col-md-4 control-label">@lang('models.costs')</label>
 
     <div class="col-md-6">
-        <textarea id="costs" cols="100" rows="2" maxlength="{{config('forms.costs')}}"
+        <textarea id="costs" cols="100" rows="2" maxlength="{{config('forms.costs')}}" placeholder="@lang('placeholders.costs')"
                   class="form-control" name="costs" autofocus>{{ old('costs') }}</textarea>
             <span class="pull-right label label-default"></span>
         @if ($errors->has('costs'))

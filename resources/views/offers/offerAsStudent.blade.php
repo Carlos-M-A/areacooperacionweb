@@ -56,7 +56,7 @@
                             <label for="description" class="col-md-4 control-label">@lang('models.description')</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" cols="100" rows="3" maxlength="{{config('forms.proposal_description')}}"
+                                <textarea id="description" cols="100" rows="3" maxlength="{{config('forms.proposal_description')}}" placeholder="@lang('placeholders.proposal_description')"
                                            class="form-control" name="description" autofocus required>{{ old('description') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('description'))
@@ -71,7 +71,7 @@
                             <label for="scheduleAvailable" class="col-md-4 control-label">@lang('models.scheduleAvailable')</label>
 
                             <div class="col-md-6">
-                                <textarea id="scheduleAvailable" cols="100" rows="2" maxlength="{{config('forms.scheduleAvailable')}}"
+                                <textarea id="scheduleAvailable" cols="100" rows="2" maxlength="{{config('forms.scheduleAvailable')}}" placeholder="@lang('placeholders.scheduleAvailable')"
                                            class="form-control" name="scheduleAvailable" autofocus required>{{ old('scheduleAvailable') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('scheduleAvailable'))
@@ -86,7 +86,7 @@
                             <label for="totalHours" class="col-md-4 control-label">@lang('models.totalHours')</label>
 
                             <div class="col-md-6">
-                                <textarea id="totalHours" cols="100" rows="1" maxlength="{{config('forms.proposal_totalHours')}}"
+                                <textarea id="totalHours" cols="100" rows="1" maxlength="{{config('forms.proposal_totalHours')}}" placeholder="@lang('placeholders.proposal_totalHours')"
                                            class="form-control" name="totalHours" autofocus required>{{ old('totalHours') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('totalHours'))
@@ -101,7 +101,7 @@
                             <label for="earliestStartDate" class="col-md-4 control-label">@lang('models.earliestStartDate')</label>
 
                             <div class="col-md-6">
-                                <textarea id="earliestStartDate" cols="100" rows="1" maxlength="{{config('forms.earliestStartDate')}}"
+                                <textarea id="earliestStartDate" cols="100" rows="1" maxlength="{{config('forms.earliestStartDate')}}" placeholder="@lang('placeholders.earliestStartDate')"
                                            class="form-control" name="earliestStartDate" autofocus required>{{ old('earliestStartDate') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('earliestStartDate'))
@@ -115,7 +115,7 @@
                             <label for="latestEndDate" class="col-md-4 control-label">@lang('models.latestEndDate')</label>
 
                             <div class="col-md-6">
-                                <textarea id="latestEndDate" cols="100" rows="1" maxlength="{{config('forms.latestEndDate')}}"
+                                <textarea id="latestEndDate" cols="100" rows="1" maxlength="{{config('forms.latestEndDate')}}" placeholder="@lang('placeholders.latestEndDate')"
                                            class="form-control" name="latestEndDate" autofocus required>{{ old('latestEndDate') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('latestEndDate'))

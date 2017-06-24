@@ -33,7 +33,7 @@
  
         <div class="panel-group">
             @if(is_null($inscriptionInProjectChosen))
-                @lang('general.no_author_has_been_chosen')
+                @lang('explanations.no_author_has_been_chosen')
                 @else
                     @php
                         $autor = App\User::find($inscriptionInProjectChosen->student_id);

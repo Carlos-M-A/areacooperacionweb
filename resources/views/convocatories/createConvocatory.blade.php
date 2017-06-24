@@ -56,7 +56,7 @@
                             <label for="title" class="col-md-4 control-label">@lang('models.title')</label>
 
                             <div class="col-md-6">
-                                <textarea id="title" cols="100" rows="1" maxlength="{{config('forms.convocatory_title')}}"
+                                <textarea id="title" cols="100" rows="1" maxlength="{{config('forms.convocatory_title')}}" placeholder="@lang('placeholders.convocatory_title')"
                                            class="form-control" name="title" autofocus required>{{ old('title') }}</textarea>
                                            <span class="pull-right label label-default"></span>
 
@@ -72,7 +72,7 @@
                             <label for="information" class="col-md-4 control-label">@lang('models.information')</label>
 
                             <div class="col-md-6">
-                                <textarea id="information" cols="100" rows="7" maxlength="{{config('forms.information')}}"
+                                <textarea id="information" cols="100" rows="7" maxlength="{{config('forms.information')}}" placeholder="@lang('placeholders.information')"
                                            class="form-control" name="information" autofocus required>{{ old('information') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('information'))
@@ -87,7 +87,7 @@
                             <label for="estimatedPeriod" class="col-md-4 control-label">@lang('models.estimatedPeriod')</label>
 
                             <div class="col-md-6">
-                                <textarea id="estimatedPeriod" cols="100" rows="2" maxlength="{{config('forms.estimatedPeriod')}}"
+                                <textarea id="estimatedPeriod" cols="100" rows="2" maxlength="{{config('forms.estimatedPeriod')}}" placeholder="@lang('placeholders.estimatedPeriod')"
                                            class="form-control" name="estimatedPeriod" autofocus required>{{ old('estimatedPeriod') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('estimatedPeriod'))
@@ -102,7 +102,8 @@
                             <label for="urlDocumentation" class="col-md-4 control-label">@lang('models.urlDocumentation')</label>
 
                             <div class="col-md-6">
-                                <input id="urlDocumentation" type="url" maxlength="{{config('forms.url')}}"  class="form-control" name="urlDocumentation" value="{{ old('urlDocumentation') }}" autofocus required>
+                                <input id="urlDocumentation" type="url" maxlength="{{config('forms.url')}}" placeholder="@lang('placeholders.urlDocumentation')"
+                                       class="form-control" name="urlDocumentation" value="{{ old('urlDocumentation') }}" autofocus required>
 
                                 @if ($errors->has('urlDocumentation'))
                                 <span class="help-block">
@@ -116,7 +117,8 @@
                             <label for="deadline" class="col-md-4 control-label">@lang('models.deadline')</label>
 
                             <div class="col-md-6">
-                                <input id="deadline" type="text" class="form-control" name="deadline" value="{{ old('deadline') }}" autofocus required>
+                                <input id="deadline" type="text"  placeholder="@lang('placeholders.convocatory_deadline')"
+                                       class="form-control" name="deadline" value="{{ old('deadline') }}" autofocus required>
 
                                 @if ($errors->has('deadline'))
                                 <span class="help-block">

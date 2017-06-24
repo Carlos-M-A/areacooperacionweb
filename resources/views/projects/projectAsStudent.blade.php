@@ -74,7 +74,7 @@
                             <label for="comment" class="col-md-4 control-label">@lang('models.comment')</label>
 
                             <div class="col-md-6">
-                                <textarea id="comment" cols="100" rows="7" maxlength="{{config('forms.comment')}}"
+                                <textarea id="comment" cols="100" rows="7" maxlength="{{config('forms.comment')}}"  placeholder="@lang('placeholders.comment')"
                                            class="form-control" name="comment" autofocus required>{{ old('comment') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('comment'))

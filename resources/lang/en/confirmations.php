@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Enums Language Lines
+    | Confirmations Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines contain the strings with the confirmation

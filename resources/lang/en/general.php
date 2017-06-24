@@ -128,7 +128,6 @@ return [
     //Projects
     'tutor' => 'Tutor',
     'author' => 'Author',
-    'no_author_has_been_chosen' => 'No author has been chosen',
     'enter_url_to_documentation' => 'Enter url to documentation',
     'projects' => 'Projects',
     'inscriptions_in_project' => 'Inscriptions in project',

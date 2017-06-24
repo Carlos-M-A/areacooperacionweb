@@ -300,11 +300,11 @@
 
 
                        <div id="study_div" class="form-group{{ $errors->has('study') ? ' has-error' : '' }}">
-                            <label for="study" class="col-md-4 control-label">@lang('models.Study')</label>
+                            <label for="study" class="col-md-4 control-label">@lang('models.study')</label>
 
                             <div class="col-md-6">
                                 <select  id="study" class="form-control" name="study" value="{{ old('study') }}"  autofocus>
-                                    <option id="opcionStudy" value="0">-- Choose a study --</option>
+                                    <option id="opcionStudy" value=""></option>
 
                                     @foreach($studiesList as $element)
                                     <option value="{{$element->id}}" > {{$element->name}} - {{App\Campus::find($element->campus_id)->abbreviation}}</option>
@@ -325,7 +325,7 @@
 
                             <div class="col-md-6">
                                 <select  id="teachingStudies" class="form-control" onchange="newStudy(0)" name="teachingStudies" value="{{ old('teachingStudies') }}" autofocus>
-                                    <option value="0">-- Choose a study --</option>
+                                    <option value=""></option>
                                     
 
                                     @foreach($studiesList as $element)
@@ -366,7 +366,7 @@
                             <label for="areasOfInterest" class="col-md-4 control-label">@lang('models.areasOfInterest')</label>
 
                             <div class="col-md-6">
-                                <textarea id="areasOfInterest" cols="100" rows="7" maxlength="{{config('forms.areasOfInterest')}}"
+                                <textarea id="areasOfInterest" cols="100" rows="7" maxlength="{{config('forms.areasOfInterest')}}"  placeholder="@lang('placeholders.areasOfInterest')"
                                            class="form-control" name="areasOfInterest" autofocus>{{ old('areasOfInterest') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('areasOfInterest'))
@@ -381,7 +381,7 @@
                             <label for="skills" class="col-md-4 control-label">@lang('models.skills')</label>
 
                             <div class="col-md-6">
-                                <textarea id="skills" cols="100" rows="7" maxlength="{{config('forms.skills')}}"
+                                <textarea id="skills" cols="100" rows="7" maxlength="{{config('forms.skills')}}"  placeholder="@lang('placeholders.skills')"
                                            class="form-control" name="skills" autofocus>{{ old('skills') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('skills'))
@@ -396,7 +396,7 @@
                             <label for="departments" class="col-md-4 control-label">@lang('models.departments')</label>
 
                             <div class="col-md-6">
-                                <textarea id="departments" cols="100" rows="7" maxlength="{{config('forms.departments')}}"
+                                <textarea id="departments" cols="100" rows="7" maxlength="{{config('forms.departments')}}"  placeholder="@lang('placeholders.departments')"
                                            class="form-control" name="departments" autofocus>{{ old('departments') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('departments'))
@@ -411,7 +411,7 @@
                             <label for="description" class="col-md-4 control-label">@lang('models.description')</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" cols="100" rows="7" maxlength="{{config('forms.user_description')}}"
+                                <textarea id="description" cols="100" rows="7" maxlength="{{config('forms.user_description')}}"  placeholder="@lang('placeholders.user_description')"
                                            class="form-control" name="description" autofocus>{{ old('description') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('description'))

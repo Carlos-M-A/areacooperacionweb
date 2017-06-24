@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Enums Language Lines
+    | Explanations Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines contain the strings with the explanations
@@ -18,12 +18,13 @@ return [
     // Projects
     'finish_project' => 'You are going to finish this project. This meaning that the author have terminate the project.'
     . 'Only need to add the link to the documentation of the project.',
+    'no_author_has_been_chosen' => 'No author has been chosen',
     
     // Profile
-    'not_accepted' => 'Your registration request are saved, but you are not accepted yet in the system. When you will be accepted you will be able to use the application'
+    'not_accepted' => 'Your registration request are saved, but you are not accepted yet in the system. When you will be accepted you will be able to use the application',
     
     // Users
-    
+    'removed_user' => 'This user was removed',
     
     
     

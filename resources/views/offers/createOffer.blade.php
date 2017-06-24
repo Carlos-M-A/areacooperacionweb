@@ -73,7 +73,7 @@
                             <label for="title" class="col-md-4 control-label">@lang('models.title')</label>
 
                             <div class="col-md-6">
-                                <textarea id="title" cols="200" rows="1" maxlength="{{config('forms.offer_title')}}"
+                                <textarea id="title" cols="200" rows="1" maxlength="{{config('forms.offer_title')}}" placeholder="@lang('placeholders.offer_title')"
                                            class="form-control" name="title" autofocus required>{{ old('title') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('title'))
@@ -88,7 +88,8 @@
                             <label for="scope" class="col-md-4 control-label">@lang('models.scope')</label>
 
                             <div class="col-md-6">
-                                <input id="scope" type="text" maxlength="{{config('forms.scope')}}"class="form-control" name="scope" value="{{ old('scope') }}" autofocus required>
+                                <input id="scope" type="text" maxlength="{{config('forms.scope')}}" placeholder="@lang('placeholders.scope')" 
+                                       class="form-control" name="scope" value="{{ old('scope') }}" autofocus required>
 
                                 @if ($errors->has('scope'))
                                 <span class="help-block">
@@ -101,7 +102,7 @@
                             <label for="description" class="col-md-4 control-label">@lang('models.description')</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" cols="200" rows="7" maxlength="{{config('forms.project_description')}}"
+                                <textarea id="description" cols="200" rows="7" maxlength="{{config('forms.project_description')}}" placeholder="@lang('placeholders.offer_description')"
                                            class="form-control" name="description" autofocus required>{{ old('description') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('description'))
@@ -116,7 +117,7 @@
                             <label for="requeriments" class="col-md-4 control-label">@lang('models.requeriments')</label>
 
                             <div class="col-md-6">
-                                <textarea id="requeriments" cols="100" rows="2" maxlength="{{config('forms.requeriments')}}"
+                                <textarea id="requeriments" cols="100" rows="2" maxlength="{{config('forms.requeriments')}}" placeholder="@lang('placeholders.requeriments')"
                                            class="form-control" name="requeriments" autofocus required>{{ old('requeriments') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('requeriments'))
@@ -131,7 +132,7 @@
                             <label for="workplan" class="col-md-4 control-label">@lang('models.workplan')</label>
 
                             <div class="col-md-6">
-                                <textarea id="workplan" cols="100" rows="3" maxlength="{{config('forms.workplan')}}"
+                                <textarea id="workplan" cols="100" rows="3" maxlength="{{config('forms.workplan')}}" placeholder="@lang('placeholders.workplan')"
                                            class="form-control" name="workplan" autofocus required>{{ old('workplan') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('workplan'))
@@ -146,7 +147,7 @@
                             <label for="workplace" class="col-md-4 control-label">@lang('models.workplace')</label>
 
                             <div class="col-md-6">
-                                <textarea id="workplace" cols="100" rows="2" maxlength="{{config('forms.workplace')}}"
+                                <textarea id="workplace" cols="100" rows="2" maxlength="{{config('forms.workplace')}}"placeholder="@lang('placeholders.workplace')"
                                            class="form-control" name="workplace" autofocus required>{{ old('workplace') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('workplace'))
@@ -161,7 +162,7 @@
                             <label for="schedule" class="col-md-4 control-label">@lang('models.schedule')</label>
 
                             <div class="col-md-6">
-                                <textarea id="schedule" cols="100" rows="2" maxlength="{{config('forms.schedule')}}"
+                                <textarea id="schedule" cols="100" rows="2" maxlength="{{config('forms.schedule')}}"placeholder="@lang('placeholders.schedule')"
                                            class="form-control" name="schedule" autofocus required>{{ old('schedule') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('schedule'))
@@ -176,7 +177,7 @@
                             <label for="totalHours" class="col-md-4 control-label">@lang('models.totalHours')</label>
 
                             <div class="col-md-6">
-                                <textarea id="totalHours" cols="100" rows="1" maxlength="{{config('forms.offer_totalHours')}}"
+                                <textarea id="totalHours" cols="100" rows="1" maxlength="{{config('forms.offer_totalHours')}}" placeholder="@lang('placeholders.offer_totalHours')"
                                            class="form-control" name="totalHours" autofocus required>{{ old('totalHours') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('totalHours'))
@@ -191,7 +192,7 @@
                             <label for="possibleStartDates" class="col-md-4 control-label">@lang('models.possibleStartDates')</label>
 
                             <div class="col-md-6">
-                                <textarea id="possibleStartDates" cols="100" rows="1" maxlength="{{config('forms.possibleStartDates')}}"
+                                <textarea id="possibleStartDates" cols="100" rows="1" maxlength="{{config('forms.possibleStartDates')}}" placeholder="@lang('placeholders.possibleStartDates')"
                                            class="form-control" name="possibleStartDates" autofocus required>{{ old('possibleStartDates') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('possibleStartDates'))
@@ -206,7 +207,7 @@
                             <label for="possibleEndDates" class="col-md-4 control-label">@lang('models.possibleEndDates')</label>
 
                             <div class="col-md-6">
-                                <textarea id="possibleEndDates" cols="100" rows="1" maxlength="{{config('forms.possibleEndDates')}}"
+                                <textarea id="possibleEndDates" cols="100" rows="1" maxlength="{{config('forms.possibleEndDates')}}" placeholder="@lang('placeholders.possibleEndDates')"
                                            class="form-control" name="possibleEndDates" autofocus required>{{ old('possibleEndDates') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('possibleEndDates'))
@@ -221,7 +222,8 @@
                             <label for="places" class="col-md-4 control-label">@lang('models.places')</label>
 
                             <div class="col-md-6">
-                                <input id="places" type="number" min="1" max="{{config('forms.max_places')}}" class="form-control" name="places" value="{{ old('places') }}" autofocus required>
+                                <input id="places" type="number" min="1" max="{{config('forms.max_places')}}"  placeholder="@lang('placeholders.places')"
+                                       class="form-control" name="places" value="{{ old('places') }}" autofocus required>
 
                                 @if ($errors->has('places'))
                                 <span class="help-block">
@@ -235,7 +237,7 @@
                             <label for="monetaryHelp" class="col-md-4 control-label">@lang('models.monetaryHelp')</label>
 
                             <div class="col-md-6">
-                                <textarea id="monetaryHelp" cols="100" rows="1" maxlength="{{config('forms.monetaryHelp')}}"
+                                <textarea id="monetaryHelp" cols="100" rows="1" maxlength="{{config('forms.monetaryHelp')}}" placeholder="@lang('placeholders.monetaryHelp')"
                                            class="form-control" name="monetaryHelp" autofocus required>{{ old('monetaryHelp') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('monetaryHelp'))
@@ -252,7 +254,8 @@
                             <label for="personInCharge" class="col-md-4 control-label">@lang('models.personInCharge')</label>
 
                             <div class="col-md-6">
-                                <input id="personInCharge" type="text" maxlength="{{config('forms.personInCharge')}}" class="form-control" name="personInCharge" value="{{ old('personInCharge') }}" autofocus required>
+                                <input id="personInCharge" type="text" maxlength="{{config('forms.personInCharge')}}"  placeholder="@lang('placeholders.personInCharge')" 
+                                       class="form-control" name="personInCharge" value="{{ old('personInCharge') }}" autofocus required>
 
                                 @if ($errors->has('personInCharge'))
                                 <span class="help-block">
@@ -267,7 +270,8 @@
 
                             <div class="col-md-6">
                                 <div id="sandbox-container">
-                                    <input id="deadline" type="text" class="form-control" name="deadline" value="{{old('deadline')}}" required>
+                                    <input id="deadline" type="text" class="form-control"  placeholder="@lang('placeholders.offer_deadline')"
+                                           name="deadline" value="{{old('deadline')}}" required>
                                 </div>
                                 @if ($errors->has('deadline'))
                                 <span class="help-block">
