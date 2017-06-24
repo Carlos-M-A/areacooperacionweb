@@ -15,7 +15,7 @@ return [
     
     // Names of attributes that are in at least two models
     
-    'name' => 'Name',
+    'name' => '',
     'scope' => 'Scope. E.g. Fair trade. Or E.g. Ecologism',
     
     'areasOfInterest' => 'Areas of cooperation of develepment in that you are interested',
@@ -89,11 +89,11 @@ return [
         'comment' => 'Comment to the tutor of the project. Explain that you can offer or why you are interested',
 
     //user
-        'surnames' => 'Surnames',
-        'password' => 'Password',
+        'surnames' => '',
+        'password' => '',
         'email' => 'Email',
-        'idCard' => 'ID Card ',
-        'phone' => 'Phone',
+        'idCard' => 'e.g. 594938292r',
+        'phone' => 'e.g. 23232323443',
         'urlAvatar' => 'Avatar image',
         'user_description' => 'Description about you that can be useful'
 ];

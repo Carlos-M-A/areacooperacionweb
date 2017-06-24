@@ -33,7 +33,7 @@
                             <label for="name" class="col-md-4 control-label">@lang('models.name')</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name')? old('name') : $user->name}}" autofocus required>
+                                <input id="name" type="text" maxlength="{{config('forms.user_name')}}" class="form-control" name="name" value="{{ old('name')? old('name') : $user->name}}" autofocus required>
 
                                 @if ($errors->has('name'))
                                 <span class="help-block">
@@ -51,7 +51,7 @@
                                 <label for="surnames" class="col-md-4 control-label">@lang('models.socialName')</label>
                             @endif
                             <div class="col-md-6">
-                                <input id="surnames" type="text" class="form-control" name="surnames" value="{{ old('surnames')? old('surnames') : $user->surnames }}" autofocus required>
+                                <input id="surnames" type="text" maxlength="{{config('forms.surnames')}}" class="form-control" name="surnames" value="{{ old('surnames')? old('surnames') : $user->surnames }}" autofocus required>
 
                                 @if ($errors->has('surnames'))
                                 <span class="help-block">
@@ -66,7 +66,7 @@
                             <label for="email" class="col-md-4 control-label">@lang('models.email')</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email')? old('email') : $user->email }}" autofocus required>
+                                <input id="email" type="email" maxlength="{{config('forms.email')}}"class="form-control" name="email" value="{{ old('email')? old('email') : $user->email }}" autofocus required>
 
                                 @if ($errors->has('email'))
                                 <span class="help-block">
@@ -80,7 +80,7 @@
                             <label for="idCard" class="col-md-4 control-label">@lang('models.idCard')</label>
 
                             <div class="col-md-6">
-                                <input id="idCard" type="text" class="form-control" name="idCard" value="{{ old('idCard')? old('idCard') : $user->idCard }}" autofocus required>
+                                <input id="idCard" type="text"  maxlength="{{config('forms.idCard')}}"class="form-control" name="idCard" value="{{ old('idCard')? old('idCard') : $user->idCard }}" autofocus required>
 
                                 @if ($errors->has('idCard'))
                                 <span class="help-block">
@@ -94,7 +94,7 @@
                             <label for="phone" class="col-md-4 control-label">@lang('models.phone')</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone')? old('phone') : $user->phone }}" autofocus>
+                                <input id="phone" type="text" maxlength="{{config('forms.phone')}}" class="form-control" name="phone" value="{{ old('phone')? old('phone') : $user->phone }}" autofocus>
 
                                 @if ($errors->has('phone'))
                                 <span class="help-block">
@@ -134,7 +134,7 @@
                             <label for="areasOfInterest" class="col-md-4 control-label">@lang('models.areasOfInterest')</label>
 
                             <div class="col-md-6">
-                                <textarea id="areasOfInterest" cols="200" rows="7" maxlength="{{config('forms.areasOfInterest')}}"
+                                <textarea id="areasOfInterest" cols="200" rows="4" maxlength="{{config('forms.areasOfInterest')}}"
                                            class="form-control" name="areasOfInterest" autofocus>{{ old('areasOfInterest')?old('areasOfInterest') : $roleData->areasOfInterest }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('areasOfInterest'))
@@ -151,7 +151,7 @@
                             <label for="skills" class="col-md-4 control-label">@lang('models.skills')</label>
 
                             <div class="col-md-6">
-                                <textarea id="skills" cols="200" rows="7" maxlength="{{config('forms.skills')}}"
+                                <textarea id="skills" cols="200" rows="4" maxlength="{{config('forms.skills')}}"
                                            class="form-control" name="skills" autofocus>{{ old('skills')?old('skills') : $roleData->skills }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('skills'))
@@ -168,7 +168,7 @@
                             <label for="departments" class="col-md-4 control-label">@lang('models.departments')</label>
 
                             <div class="col-md-6">
-                                <textarea id="departments" cols="200" rows="7" maxlength="{{config('forms.departments')}}"
+                                <textarea id="departments" cols="200" rows="3" maxlength="{{config('forms.departments')}}"
                                            class="form-control" name="departments" autofocus>{{ old('departments')?old('departments') : $roleData->departments }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('departments'))
@@ -185,7 +185,7 @@
                             <label for="description" class="col-md-4 control-label">@lang('models.description')</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" cols="200" rows="7" maxlength="{{config('forms.user_description')}}"
+                                <textarea id="description" cols="200" rows="4" maxlength="{{config('forms.user_description')}}"
                                            class="form-control" name="description" autofocus>{{ old('description')?old('description') : $roleData->description }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('description'))
@@ -202,7 +202,7 @@
                             <label for="headquartersLocation" class="col-md-4 control-label">@lang('models.headquartersLocation')</label>
 
                             <div class="col-md-6">
-                                <textarea id="headquartersLocation" cols="200" rows="7" maxlength="{{config('forms.headquartersLocation')}}"
+                                <textarea id="headquartersLocation" cols="200" rows="1" maxlength="{{config('forms.headquartersLocation')}}"
                                            class="form-control" name="headquartersLocation" autofocus>{{ old('headquartersLocation')?old('headquartersLocation') : $roleData->headquartersLocation }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('headquartersLocation'))
@@ -219,7 +219,7 @@
                             <label for="web" class="col-md-4 control-label">@lang('models.web')</label>
 
                             <div class="col-md-6">
-                                <input id="web" type="url" class="form-control" name="web" value="{{ old('web')? old('web') : $roleData->web }}" >
+                                <input id="web" type="url"  maxlength="{{config('forms.url')}}" class="form-control" name="web" value="{{ old('web')? old('web') : $roleData->web }}" >
 
                                 @if ($errors->has('web'))
                                 <span class="help-block">
@@ -235,7 +235,7 @@
                             <label for="linksWithNearbyEntities" class="col-md-4 control-label">@lang('models.linksWithNearbyEntities')</label>
 
                             <div class="col-md-6">
-                                <textarea id="linksWithNearbyEntities" cols="200" rows="7" maxlength="{{config('forms.linksWithNearbyEntities')}}"
+                                <textarea id="linksWithNearbyEntities" cols="200" rows="2" maxlength="{{config('forms.linksWithNearbyEntities')}}"
                                            class="form-control" name="linksWithNearbyEntities" autofocus>{{ old('linksWithNearbyEntities')?old('linksWithNearbyEntities') : $roleData->linksWithNearbyEntities }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('linksWithNearbyEntities'))

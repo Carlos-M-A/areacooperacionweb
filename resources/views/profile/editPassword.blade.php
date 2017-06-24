@@ -17,7 +17,7 @@
                             <label for="currentPassword" class="col-md-4 control-label">@lang('general.current_password')</label>
 
                             <div class="col-md-6">
-                                <input id="currentPassword" type="password" class="form-control" name="currentPassword" required autofocus>
+                                <input id="currentPassword" type="password"  maxlength="{{config('forms.password')}}" class="form-control" name="currentPassword" required autofocus>
 
                                 @if(isset($passwordFail))
                                 <span class="help-block">
@@ -39,7 +39,7 @@
                             <label for="password" class="col-md-4 control-label">@lang('general.new_password')</label>
 
                             <div class="col-md-6">
-                                <input id="passwordNuevo" type="password" class="form-control" name="password" required autofocus>
+                                <input id="passwordNuevo" type="password" maxlength="{{config('forms.password')}}" class="form-control" name="password" required autofocus>
 
                                 @if ($errors->has('password'))
                                 <span class="help-block">
@@ -53,7 +53,7 @@
                             <label for="password-confirm" class="col-md-4 control-label">@lang('general.confirm_password')</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autofocus>
+                                <input id="password-confirm" type="password" maxlength="{{config('forms.password')}}" class="form-control" name="password_confirmation" required autofocus>
                             </div>
                         </div>
                         

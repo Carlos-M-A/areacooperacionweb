@@ -29,7 +29,7 @@
                             <label for="name" class="col-md-4 control-label">@lang('models.name')</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name')? old('name') : $user->name}}" autofocus>
+                                <input id="name" type="text" maxlength="{{config('forms.user_name')}}" class="form-control" name="name" value="{{ old('name')? old('name') : $user->name}}" autofocus>
 
                                 @if ($errors->has('name'))
                                 <span class="help-block">
@@ -43,7 +43,7 @@
                             <label for="surnames" class="col-md-4 control-label">@lang('models.socialName')</label>
 
                             <div class="col-md-6">
-                                <input id="surnames" type="text" class="form-control" name="surnames" value="{{ old('surnames')? old('surnames') : $organization->user->surnames }}" >
+                                <input id="surnames" type="text" maxlength="{{config('forms.surnames')}}" class="form-control" name="surnames" value="{{ old('surnames')? old('surnames') : $organization->user->surnames }}" >
 
                                 @if ($errors->has('surnames'))
                                 <span class="help-block">
@@ -57,7 +57,7 @@
                             <label for="email" class="col-md-4 control-label">@lang('models.email')</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email')? old('email') : $user->email }}" >
+                                <input id="email" type="email" maxlength="{{config('forms.email')}}" class="form-control" name="email" value="{{ old('email')? old('email') : $user->email }}" >
 
                                 @if ($errors->has('email'))
                                 <span class="help-block">
@@ -71,7 +71,7 @@
                             <label for="idCard" class="col-md-4 control-label">@lang('models.idCard')</label>
 
                             <div class="col-md-6">
-                                <input id="idCard" type="text" class="form-control" name="idCard" value="{{ old('idCard')? old('idCard') : $user->idCard }}" >
+                                <input id="idCard" type="text" maxlength="{{config('forms.idCard')}}" class="form-control" name="idCard" value="{{ old('idCard')? old('idCard') : $user->idCard }}" >
 
                                 @if ($errors->has('idCard'))
                                 <span class="help-block">
@@ -85,7 +85,7 @@
                             <label for="phone" class="col-md-4 control-label">@lang('models.phone')</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone')? old('phone') : $user->phone }}" >
+                                <input id="phone" type="text" maxlength="{{config('forms.phone')}}" class="form-control" name="phone" value="{{ old('phone')? old('phone') : $user->phone }}" >
 
                                 @if ($errors->has('phone'))
                                 <span class="help-block">
@@ -129,7 +129,7 @@
                             <label for="web" class="col-md-4 control-label">@lang('models.web')</label>
 
                             <div class="col-md-6">
-                                <input id="web" type="url" class="form-control" name="web" value="{{ old('web')? old('web') : $organization->web }}" >
+                                <input id="web" type="url" maxlength="{{config('forms.url')}}" class="form-control" name="web" value="{{ old('web')? old('web') : $organization->web }}" >
 
                                 @if ($errors->has('web'))
                                 <span class="help-block">
