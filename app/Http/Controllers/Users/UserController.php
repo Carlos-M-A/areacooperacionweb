@@ -61,6 +61,13 @@ class UserController extends Controller {
         $user->urlAvatar = null;
         $user->save();
         
+        if(! is_null($user->roleChangeRequest)){
+            $user->roleChangeRequest->delete();
+        }
+        if(! is_null($user->observatoryRequest)){
+            $user->observatoryRequest->delete();
+        }
+        
         switch ($user->role){
             case 1:
                 $this->_removeStudent($user->student);

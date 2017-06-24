@@ -99,7 +99,7 @@
                         </div>
                         
                         <div id="urlDocumentation_div" class="form-group{{ $errors->has('urlDocumentation') ? ' has-error' : '' }}">
-                            <label for="urlDocumentation" class="col-md-4 control-label">@lang('models.estimatedPeriod')</label>
+                            <label for="urlDocumentation" class="col-md-4 control-label">@lang('models.urlDocumentation')</label>
 
                             <div class="col-md-6">
                                 <input id="urlDocumentation" type="url" maxlength="{{config('forms.url')}}"  class="form-control" name="urlDocumentation" value="{{ old('urlDocumentation') }}" autofocus required>

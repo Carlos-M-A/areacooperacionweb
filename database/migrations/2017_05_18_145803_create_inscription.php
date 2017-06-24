@@ -19,7 +19,7 @@ class CreateInscription extends Migration
             $table->integer('convocatory_id')->unsigned();
             $table->tinyInteger('state');
             $table->float('score', 5, 3);
-            $table->string('observations', config('forms.observations'));
+            $table->string('observations', config('forms.observations'))->nullable();
             
             $table->foreign('student_id')->references('id')->on('Student')
                     ->onDelete('cascade');

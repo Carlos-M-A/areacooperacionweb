@@ -169,12 +169,13 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">@lang('general.enter_url_to_documentation')</h4>
+        <p>@lang('explanations.finish_project')</p>
       </div>
       <div class="modal-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('finishProject', ['id' => $project->id]) }}">
                         {{ csrf_field() }}
                         <div id="urlDocumentation_div" class="form-group{{ $errors->has('urlDocumentation') ? ' has-error' : '' }}">
-                            <label for="urlDocumentation" class="col-md-4 control-label">urlDocumentation</label>
+                            <label for="urlDocumentation" class="col-md-4 control-label">@lang('models.urlDocumentation')</label>
 
                             <div class="col-md-6">
                                 <input id="urlDocumentation" type="url" class="form-control" name="urlDocumentation" value="{{ old('urlDocumentation') }}" required>
@@ -189,7 +190,7 @@
                         
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-warning">
                                     @lang('general.finish')
                                 </button>
                             </div>

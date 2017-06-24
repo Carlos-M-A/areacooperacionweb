@@ -27,13 +27,15 @@
                 
                 <div class="">
                     <ul class="nav nav-pills">
-                        @if($user->removed)
-                        <li class=""><h1><span class="label label-danger">@lang('general.removed_user')</span></h1></li>
-                        @else
+                        
+                        @if(! $user->removed)
                             <li class=""><a href="mailto:{{$user->email}}">@lang('models.email')<span class="badge">{{$user->email}}</span></a></li>
                             <li class=""><a>@lang('models.phone')<span class="badge">{{$user->phone}}</span></a></li>
                         @endif
                         <li class=""><a>@lang('models.lastConnectionDate')<span class="badge">{{$user->lastConnectionDate}}</span></a></li>
+                        @if($user->removed)
+                       <li class=""><h1><span class="label label-danger">@lang('general.removed_user')</span></h1></li>
+                        @endif
                         </ul>
                 </div>
                 

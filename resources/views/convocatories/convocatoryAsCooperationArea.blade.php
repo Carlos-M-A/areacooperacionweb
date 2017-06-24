@@ -113,7 +113,7 @@ $(document).ready(function(){
 
 
 
-@if($convocatory->state == 1)
+@if($convocatory->state == 2)
 <!-- Modal -->
 <div id="modalEvaluateInscription" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -123,6 +123,7 @@ $(document).ready(function(){
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">@lang('general.evaluate')</h4>
+        <p>@lang('explanations.evaluate_inscription')</p>
       </div>
       <div class="modal-body">
                     <form id="modal_form" class="form-horizontal" role="form" method="POST" action="">
@@ -163,7 +164,7 @@ $(document).ready(function(){
                             <label for="observations" class="col-md-4 control-label">@lang('models.observations')</label>
 
                             <div class="col-md-6">
-                                <input id="observations" type="text" class="form-control" name="observations" value="{{ old('observations')}}" autofocus required>
+                                <input id="observations" type="text" class="form-control" name="observations" value="{{ old('observations')}}" autofocus>
 
                                 @if ($errors->has('observations'))
                                 <span class="help-block">

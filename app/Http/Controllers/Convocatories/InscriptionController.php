@@ -29,7 +29,7 @@ class InscriptionController extends Controller {
         $rules = [
             'state' => 'required|integer|min:2|max:4',
             'score' => 'required|numeric|min:0|max:10',
-            'observations' => 'required|string|max:' . config('forms.observations'),
+            'observations' => 'nullable|string|max:' . config('forms.observations'),
         ];
         $this->validate($request, $rules);
 

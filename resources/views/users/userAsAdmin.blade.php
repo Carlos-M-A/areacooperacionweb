@@ -4,7 +4,7 @@
 <div class="panel-footer">
     <form>
         {{ csrf_field() }}
-        @if($user->role < 5)
+        @if($user->role < 5 && ! $user->removed)
             @if($user->accepted)
                 <button class="btn btn-danger" formmethod="POST" formaction="{{route('removeUser', ['id'=> $user->id])}}"
                         data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.remove_user')"
@@ -43,11 +43,12 @@
             {{ csrf_field() }}
             <div class="btn-group">
                 @if(!is_null($user->observatoryRequest))
-                <button class="btn btn-danger" formmethod="POST" formaction="{{route('observatoryRejectRequest', ['id'=> $user->id])}}">@lang('general.reject')</button>
                 <button class="btn btn-success" formmethod="POST" formaction="{{route('observatoryAcceptRequest', ['id'=> $user->id])}}">@lang('general.accept')</button>
+                <button class="btn btn-danger" formmethod="POST" formaction="{{route('observatoryRejectRequest', ['id'=> $user->id])}}">@lang('general.reject')</button>
+                
                 @elseif($user->isObservatoryMember)
                 <button class="btn btn-danger" formmethod="POST" formaction="{{route('observatoryRemoveMember', ['id'=> $user->id])}}"
-                        data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.remove_obervatory_member')"
+                        data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.remove_observatory_member')"
                         >@lang('general.remove')</button>
                 @endif
             </div>
