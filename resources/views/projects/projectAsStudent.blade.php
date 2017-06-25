@@ -61,7 +61,7 @@
 
 @section('student_inscription')
 
-@if(is_null($inscriptionInProject) && $project->state==1 && $project->study_id==Auth::user()->student->study_id && !Auth::user()->student->hasProjectAssigned())
+@if(is_null($inscriptionInProject) && $project->state==1 && $project->study_id==Auth::user()->student->study_id && ! Auth::user()->student->hasProjectAssigned())
 
 <div class="panel panel-info">
                 <div class="panel-heading">@lang('general.create_inscription_in_project')</div>

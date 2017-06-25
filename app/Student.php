@@ -25,8 +25,7 @@ class Student extends Model
     public function hasProjectAssigned() {
         $amountOfProjectsAssigned = InscriptionInProject::whereHas('project', function ($query) {
             $query->where('study_id', $this->study->id);
-            $query->where('state', 2);
-        })->count();
+        })->where('state', 2)->where('student_id', $this->id)->count();
         return ($amountOfProjectsAssigned > 0);
     }
     
