@@ -106,7 +106,7 @@ return [
     'studies' => 'Estudios',
     'configuration' => 'Configuración',
     'app_name' => 'Nombre de la aplicación',
-    'app_image' => 'Imagen de la aplicación',
+    'app_url' => 'URL donde enlazar cuando se pulsa en el nombre de la aplicación',
     
     
     //users

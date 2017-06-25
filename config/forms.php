@@ -73,6 +73,6 @@ return [
     'author' => 200,
     'comment' => 500,
     
-    //Max and mins of numbers
+    //Max of places in offers
     'max_places' => 100,
 ];

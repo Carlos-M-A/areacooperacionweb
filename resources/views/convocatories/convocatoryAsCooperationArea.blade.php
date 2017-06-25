@@ -82,7 +82,7 @@ $(document).ready(function(){
                                     <form>
                                         {{ csrf_field() }}
                                             <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $user->id])}}">@lang('general.view')</button>
-                                            @if($convocatory->state == 1 && $inscription->state < 5)
+                                            @if($convocatory->state == 2 && $inscription->state < 5)
                                                     <!-- Trigger the modal to evaluate the inscription -->
                                                     <button id="{{$inscription->id}}" type="button" class="btn btn-primary evaluate_button" data-toggle="modal"  >@lang('general.evaluate')</button>
                                             @endif
@@ -111,7 +111,7 @@ $(document).ready(function(){
 
 
 
-@if($convocatory->state == 1)
+@if($convocatory->state == 2)
 <!-- Modal -->
 <div id="modalEvaluateInscription" class="modal fade" role="dialog">
   <div class="modal-dialog">

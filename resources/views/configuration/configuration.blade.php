@@ -19,60 +19,46 @@
                     </ul>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('editConfiguration') }}">
                         {{ csrf_field() }}
-
-                        <div id="nameDiv" class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">@lang('general.app_name')</label>
+                        
+                    
+                        <div id="appName_div" class="form-group{{ $errors->has('appName') ? ' has-error' : '' }}">
+                            <label for="appName" class="col-md-4 control-label">@lang('general.app_name')</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"required>
+                                <input id="appName" type="text" maxlength="100" class="form-control" name="appName" value="{{ old('appName')? old('appName') : @config('app.name')}}" autofocus required>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('appName'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('name') }}</strong>
+                                    <strong>{{ $errors->first('appName') }}</strong>
                                 </span>
                                 @endif
                             </div>
                         </div>
                         
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    @lang('general.change')
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                    
-                    <form class="form-horizontal" role="form" method="POST" action="">
-                        {{ csrf_field() }}
-
-                        <div id="abbreviationDiv" class="form-group{{ $errors->has('abbreviation') ? ' has-error' : '' }}">
-                            <label for="abbreviation" class="col-md-4 control-label">@lang('general.app_image')</label>
+                        <div id="linkInAppName_div" class="form-group{{ $errors->has('linkInAppName') ? ' has-error' : '' }}">
+                            <label for="linkInAppName" class="col-md-4 control-label">@lang('general.app_url')</label>
 
                             <div class="col-md-6">
-                                <input id="abbreviation" type="text" class="form-control" name="abbreviation" value="{{ old('abbreviation') }}" required>
+                                <input id="linkInAppName" type="url" maxlength="{{config('forms.url')}}" class="form-control" name="linkInAppName" value="{{ old('linkInAppName')? old('linkInAppName') : @config('constants.link_in_app_name')}}" autofocus required>
 
-                                @if ($errors->has('abbreviation'))
+                                @if ($errors->has('linkInAppName'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('abbreviation') }}</strong>
+                                    <strong>{{ $errors->first('linkInAppName') }}</strong>
                                 </span>
                                 @endif
                             </div>
                         </div>
-                        
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    @lang('general.change')
+                                      @lang('general.save')
                                 </button>
                             </div>
                         </div>
                     </form>
-                    
                 </div>
             </div>
             

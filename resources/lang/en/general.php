@@ -107,7 +107,7 @@ return [
     'studies' => 'Studies',
     'configuration' => 'Configuration',
     'app_name' => 'App name',
-    'app_image' => 'App image',
+    'app_url' => 'URL to link when click in app name',
     
     
     //users

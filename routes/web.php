@@ -22,9 +22,10 @@ Route::get('/notAccepted', function() {
 });
 
 Route::group(['middleware' => ['auth', 'checkAccepted']], function() {
+    
 //Managemer of the homes
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/configuration', 'Configuration\ConfigurationController@index')->name('configuration');
+    
 // Profile management
     Route::get('/profile', 'Profile\ProfileController@get')->name('profile');
     Route::post('/profile/edit', 'Profile\ProfileController@edit')->name('editProfile');
@@ -75,7 +76,7 @@ Route::group(['middleware' => ['auth', 'checkAccepted']], function() {
         Route::post('/observatory/remove/{id}', 'Users\ObservatoryController@removeMember')->name('observatoryRemoveMember')->where('id', '[0-9]+');
     });
 
-//Studies and campuses management
+//Configuration, studies and campuses management
     Route::group(['middleware' => []], function() {
         Route::get('/studies', 'Configuration\StudiesController@search')->name('searchStudies');
         Route::get('/campuses', 'Configuration\CampusesController@search')->name('searchCampuses');
@@ -92,6 +93,9 @@ Route::group(['middleware' => ['auth', 'checkAccepted']], function() {
         Route::post('/campuses/{id}/changeInactive', 'Configuration\CampusController@changeInactive')->name('changeCampusToInactive')->where('id', '[0-9]+');
         Route::post('/campuses/{id}/changeName', 'Configuration\CampusController@changeName')->name('changeCampusName')->where('id', '[0-9]+');
         Route::post('/campuses/{id}/changeAbbreviation', 'Configuration\CampusController@changeAbbreviation')->name('changeCampusAbbreviation')->where('id', '[0-9]+');
+        
+        Route::get('/configuration', 'Configuration\ConfigurationController@index')->name('configuration');
+        Route::post('/configuration', 'Configuration\ConfigurationController@edit')->name('editConfiguration');
     });
 
 // Offers management

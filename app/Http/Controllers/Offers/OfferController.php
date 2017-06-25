@@ -170,7 +170,7 @@ class OfferController extends Controller {
             'totalHours' => 'required|string|max:' . config('forms.offer_totalHours'),
             'possibleStartDates' => 'required|string|max:' . config('forms.possibleStartDates'),
             'possibleEndDates' => 'required|string|max:' . config('forms.possibleEndDates'),
-            'places' => 'required|integer|max:255|min:' . $minPlaces,
+            'places' => 'required|integer|max:'.config('forms.max_places').'|min:' . $minPlaces,
             'monetaryHelp' => 'required|string|max:' . config('forms.monetaryHelp'),
             'personInCharge' => 'required|string|max:' . config('forms.personInCharge'),
             'deadline' => 'required|date|after:today',

@@ -17,7 +17,7 @@ return [
     'not_accepted_in_convocatory' => 'No estas aceptado en la convocatoria de la que depende esta oferta. Por eso no puedes apuntarte en esta oferta',
     
     // Projects
-    'finish_project' => 'Vas a marcar el proyecto como terminado, lo que significa que el autor finalizo el trabajo.'
+    'finish_project' => 'Vas a marcar el proyecto como terminado, lo que significa que el autor finalizó el trabajo.'
             . ' Solo necesitas añadir en link a la documentación o memoria del proyecto',
     'no_author_has_been_chosen' => 'Ningún autor ha sido elegido',
     

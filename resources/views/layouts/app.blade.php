@@ -74,11 +74,11 @@
 
                     <!-- Branding Image -->
                     @if (Auth::guest())
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ config('constants.link_in_app_name', '/') }}">
                         {{ config('app.name', 'CooperationArea') }}
                     </a>
                     @else
-                    <a class="navbar-brand" href="{{ url('/home') }}">
+                    <a class="navbar-brand" href="{{ config('constants.link_in_app_name', '/') }}">
                         {{ config('app.name', 'CooperationArea') }}
                     </a>
                     @endif
