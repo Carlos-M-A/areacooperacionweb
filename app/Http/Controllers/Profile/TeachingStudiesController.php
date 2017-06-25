@@ -18,6 +18,12 @@ class TeachingStudiesController extends Controller {
         ]);
 
         $teacher = Teacher::find(Auth::user()->id);
+        
+        foreach($teacher->studies as $study){
+            if($study->id == $request->studyWithTeaching){
+                return redirect($this->redirectTo);
+            }
+        }
         $teacher->studies()->attach($request->studyWithTeaching);
         
         return redirect($this->redirectTo);

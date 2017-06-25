@@ -120,7 +120,7 @@ return [
     'members' => 'Miembros',
     'requests_to_observatory' => 'Solicitudes al observatorio',
     'user_has_a_request' => 'El usuario tiene una solicitud al observatorio',
-    'removed_user' => 'Eliminar usuario',
+    'removed_user' => 'Usuario eliminado',
     'requests' => 'Solicitudes',
     'members' => 'Miembros',
     

@@ -13,17 +13,15 @@
     <div class="panel-body">
         <ul class="list-group">
             @foreach($teacher->studies as $study)
-            <ul  class="list-group">
-                <li class="list-group-item">{{$study->name}} -- {{$study->campus->name}} </li>
-                <li  class="list-group-item">
+            
+                <li class="list-group-item">
                     <form action="{{route('removeTeachingStudy')}}" method="post">
                         {{ csrf_field() }}
-                        <button type="submit" class="btn btn-primary" name="studyWithTeaching" value="{{$study->id}}">
+                        {{$study->name}} -- {{$study->campus->name}}   <button type="submit" class="btn btn-danger btn-sm" name="studyWithTeaching" value="{{$study->id}}">
                             @lang('general.delete')
                         </button>
                     </form>
                 </li>
-            </ul>
             @endforeach
         </ul>
     </div>
@@ -35,8 +33,8 @@
 
 
                     <div class="col-md-6">
-                        <select  id="studyWithTeaching" class="form-control" name="studyWithTeaching">
-                            <option value="0">-- Elige un study --</option>
+                        <select  id="studyWithTeaching" class="form-control" name="studyWithTeaching" required>
+                            <option value=""></option>
                             @php
                                 $studiesList = App\Study::where('inactive', '=', '0')->get();
                             @endphp

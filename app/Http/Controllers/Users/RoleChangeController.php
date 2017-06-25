@@ -3,11 +3,17 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\RoleChangeRequest;
 use App\Student;
 use App\Teacher;
 use App\Other;
 use App\User;
+use App\Project;
+use App\InscriptionInProject;
+use App\Inscription;
+use App\Proposal;
+
 
 class RoleChangeController extends Controller {
 
@@ -22,13 +28,22 @@ class RoleChangeController extends Controller {
         $user = User::find($id);
         $roleChangeRequest = RoleChangeRequest::find($id);
         $currentRoleData = $this->_roleData($id, $roleChangeRequest->currentRole);
-
-        $user->role = $roleChangeRequest->newRole;
-        $user->save();
+        
+        if($roleChangeRequest->currentRole == 1){
+            Storage::delete($currentRoleData->urlCurriculum);
+            Inscription::where('student_id', $currentRoleData->id)->where('state', 1)->delete();
+            InscriptionInProject::where('student_id', $currentRoleData->id)->where('state', '!=', 2)->delete();
+            Proposal::where('student_id', $currentRoleData->id)->where('state', '!=', 4)->delete();
+        }
         
         if($roleChangeRequest->currentRole == 2){
             $currentRoleData->studies()->detach();
+            Project::where('teacher_id', $currentRoleData->id)->where('state', '<=', 2)->delete();
         }
+        
+        $user->role = $roleChangeRequest->newRole;
+        $user->save();
+        
         $currentRoleData->delete();
         $roleChangeRequest->delete();
         return redirect('roleChanges');
