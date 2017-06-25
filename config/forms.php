@@ -64,7 +64,7 @@ return [
     'convocatory_title' => 200,
     'information' => 2000,
     'estimatedPeriod' => 500,
-    'observations' => 500,
+    'observations' => 200,
     
     //projects and inscriptions in project
     'project_title' => 200,

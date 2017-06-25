@@ -25,7 +25,7 @@
                     <div class="">
                         <ul class="nav nav-pills">
                         <li class=""><a>@lang('models.deadline')<span class="badge">{{$convocatory->deadline}}</span></a></li>
-                        <li class=""><a href="{{$convocatory->urlDocumentation}}">@lang('models.urlDocumentation')</a></li>
+                        <li class=""><a href="{{$convocatory->urlDocumentation}}" target="_blank">@lang('models.urlDocumentation')</a></li>
                         </ul>
                     </div>
                     <div id="collapseConvocatory" class="panel-collapse collapse">

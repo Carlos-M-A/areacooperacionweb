@@ -45,9 +45,9 @@
                         <div class="media">
                             <div class="media-left">
                                 @if(!is_null($autor->urlAvatar))
-                                <img src="{{url($autor->urlAvatar)}}" class="media-object" style="width:60px">
+                                <img src="{{url($autor->urlAvatar)}}" class="media-object img-circle img-thumbnail" style="width:60px;height:60px;">
                                 @else
-                                <img src="{{URL::asset('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                <img src="{{URL::asset('images/avatar.jpg')}}" class="media-object img-circle img-thumbnail" style="width:60px;height:60px;">
                                 @endif
                             </div>
                             <div class="media-body">
@@ -107,9 +107,9 @@
                         <div class="media">
                             <div class="media-left">
                                 @if(!is_null($user->urlAvatar))
-                                <img src="{{url($user->urlAvatar)}}" class="media-object" style="width:60px">
+                                <img src="{{url($user->urlAvatar)}}" class="media-object img-circle img-thumbnail" style="width:60px;height:60px;">
                                 @else
-                                <img src="{{URL::asset('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                <img src="{{URL::asset('images/avatar.jpg')}}" class="media-object img-circle img-thumbnail" style="width:60px;height:60px;">
                                 @endif
                             </div>
                             <div class="media-body">
@@ -178,7 +178,7 @@
                             <label for="urlDocumentation" class="col-md-4 control-label">@lang('models.urlDocumentation')</label>
 
                             <div class="col-md-6">
-                                <input id="urlDocumentation" type="url" class="form-control" name="urlDocumentation" value="{{ old('urlDocumentation') }}" required>
+                                <input id="urlDocumentation" type="url" maxlength="{{config('forms.url')}}"  placeholder="@lang('placeholders.urlDocumentation')" class="form-control" name="urlDocumentation" value="{{ old('urlDocumentation') }}" required>
 
                                 @if ($errors->has('urlDocumentation'))
                                 <span class="help-block">

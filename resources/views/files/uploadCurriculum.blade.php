@@ -12,6 +12,9 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">@lang('general.edit')</div>
                 <div class="panel-body">
+                    <div>
+                        @lang('explanations.pdf_curriculum_requeriments')
+                    </div>
                     <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="{{ route('uploadCurriculum', ['idUser' => $user->id]) }}">
                         {{ csrf_field() }}
 

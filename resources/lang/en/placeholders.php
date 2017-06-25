@@ -16,14 +16,14 @@ return [
     // Names of attributes that are in at least two models
     
     'name' => '',
-    'scope' => 'Scope. E.g. Fair trade. Or E.g. Ecologism',
+    'scope' => 'E.g. Fair trade or Ecologism',
     
     'areasOfInterest' => 'Areas of cooperation of develepment in that you are interested',
-    'urlDocumentation' => 'URL(link) to the documentation, E.g. http://uvadoc.uva.es/handle/1032dsf4/2asdfasd',
+    'urlDocumentation' => 'URL(link). E.g. http://uvadoc.uva.es/handle/1032dsf4/2asdfasd',
     
     
     // convocatory
-        'convocatory_title' => 'Full title. E.g. PACID practices 2018',
+        'convocatory_title' => 'E.g. PACID practices 2018',
         'information' => 'Here put all information about the convocatory',
         'estimatedPeriod' => 'Estimated period when the practices of the convocatories will be done',
         'convocatory_deadline' => 'Deadline to enroll in convocatory',
@@ -39,7 +39,7 @@ return [
         
     
     // offer
-        'offer_title' => 'Explanatory title. E.g. Help in construction of health center in Kobane, Syria',
+        'offer_title' => 'E.g. Help in construction of health center in Kobane, Syria',
         'offer_description' => 'Full description of the practices. Describe all aspects of the practices.',
         'requeriments' => 'Requeriments that student should meet',
         'workplan' => 'Workplan that the student will do',
@@ -50,7 +50,7 @@ return [
         'possibleEndDates' => 'Time frame when the practices will end',
         'places' => '   Maximun of student that can work in this practices',
         'monetaryHelp' => 'Monetary help that the student will receive',
-        'personInCharge' => 'Person who is the contact between students and organization',
+        'personInCharge' => 'Contact person in organization',
         'offer_deadline' => 'Date when the offer will be closed automatically',
     
     //offer of convocatory
@@ -60,7 +60,7 @@ return [
     //organization
         'socialName' => 'Full name of the organization',
         'headquartersLocation' => 'Location of the organization heardquarters. E.g. Liberty street, 1, Valladolid',
-        'web' => 'URL (Link) to the web of the organization E.g. http://www.organization.com',
+        'web' => 'URL (Link). E.g. http://www.organization.com',
         'linksWithNearbyEntities' => 'Links with entities in Valladolid, Palencia, Soria or Segovia.'
                             . ' Complete this field if your heradquarters location not is in this provinces',
     
@@ -91,7 +91,7 @@ return [
     //user
         'surnames' => '',
         'password' => '',
-        'email' => 'Email',
+        'email' => 'E.g. name@email.com',
         'idCard' => 'e.g. 594938292r',
         'phone' => 'e.g. 23232323443',
         'urlAvatar' => 'Avatar image',

@@ -28,7 +28,7 @@ class AvatarController extends Controller {
         $user = User::find($idUser);
 
         $rules = [
-            'urlAvatar' => 'required|image|dimensions:max_width=512,max_height=512,ratio=1|max:100',
+            'urlAvatar' => 'required|image|dimensions:max_width='. config('constants.max_width_height_images').',max_height='. config('constants.max_width_height_images').'|max:'. config('constants.max_size_of_images'),
         ];
         $this->validate($request, $rules);
         

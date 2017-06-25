@@ -12,6 +12,10 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">@lang('general.edit')</div>
                 <div class="panel-body">
+                    <div>
+                        @lang('explanations.image_avatar_requeriments')
+                    </div>
+                    
                     <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="{{ route('uploadAvatar', ['idUser' => $user->id]) }}">
                         {{ csrf_field() }}
 

@@ -36,9 +36,9 @@
                             @endphp
                             <div class="media-left">
                                 @if(!is_null($tutor->urlAvatar))
-                                <img src="{{url($tutor->urlAvatar)}}" class="media-object" style="width:60px">
+                                <img src="{{url($tutor->urlAvatar)}}" class="media-object img-circle img-thumbnail" style="width:60px;height:60px;">
                                 @else
-                                <img src="{{URL::asset('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                <img src="{{URL::asset('images/avatar.jpg')}}" class="media-object img-circle img-thumbnail" style="width:60px;height:60px;">
                                 @endif
                             </div>
                             <div class="media-body">
@@ -105,9 +105,9 @@
                             @lang('general.your_inscription')
                             <div class="media-left">
                                 @if(!is_null($inscriptionInProject->student->user->urlAvatar))
-                                <img src="{{url($inscriptionInProject->student->user->urlAvatar)}}" class="media-object" style="width:60px">
+                                <img src="{{url($inscriptionInProject->student->user->urlAvatar)}}" class="media-object img-circle img-thumbnail" style="width:60px;height:60px;">
                                 @else
-                                <img src="{{URL::asset('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                <img src="{{URL::asset('images/avatar.jpg')}}" class="media-object img-circle img-thumbnail" style="width:60px;height:60px;">
                                 @endif
                             </div>
                             <div class="media-body">

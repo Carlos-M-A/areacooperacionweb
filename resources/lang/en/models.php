@@ -67,7 +67,7 @@ return [
     'organization' => 'Organization',
         'socialName' => 'Social name',
         'headquartersLocation' => 'Headquarters Location',
-        'web' => 'web',
+        'web' => 'Web',
         'linksWithNearbyEntities' => 'Links With Nearby Entities',
     
     'other' => 'Other',
@@ -91,7 +91,7 @@ return [
     
     'student' => 'Student',
         'skills' => 'Skills',
-        'urlCurriculum' => 'urlCurriculum',
+        'urlCurriculum' => 'Curriculum',
     
     'study' => 'Study',
         'branch' => 'Branch',

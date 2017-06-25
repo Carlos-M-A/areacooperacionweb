@@ -13,9 +13,12 @@
                         <div class="media">
                             <div class="media-left">
                                 @if(!is_null($user->urlAvatar))
-                                <img src="{{url($user->urlAvatar)}}" class="media-object" style="width:60px">
+                                <a href="{{url($user->urlAvatar)}}" target="_blank">
+                                    <img src="{{url($user->urlAvatar)}}" class="media-object img-circle img-thumbnail" style="width:60px;height:60px;">
+                                </a>
+                                
                                 @else
-                                <img src="{{URL::asset('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                <img src="{{URL::asset('images/avatar.jpg')}}" class="media-object img-circle img-thumbnail" style="width:60px;height:60px;">
                                 @endif
                             </div>
                             <div class="media-body">
@@ -46,7 +49,7 @@
                             @if(is_null($user->student->urlCurriculum))
                                 <li class="list-group-item"><b>@lang('models.urlCurriculum'):</b> There isn't a curriculum</li>
                             @else
-                                <li class="list-group-item"><b>@lang('models.urlCurriculum'):</b> <a href="{{url($user->student->urlCurriculum)}}">@lang('models.urlCurriculum')</a></li>
+                                <li class="list-group-item"><b>@lang('models.urlCurriculum'):</b> <a href="{{url($user->student->urlCurriculum)}}" target="_blank">@lang('models.urlCurriculum')</a></li>
                             @endif
                             
                             <li class="list-group-item"><b>@lang('models.areasOfInterest'):</b> {{$user->student->areasOfInterest}}</li>
@@ -71,7 +74,7 @@
                             <li class="list-group-item"><b>@lang('models.socialName'):</b> {{$user->surnames}}</li>
                             <li class="list-group-item"><b>@lang('models.description'):</b> {{$user->organization->description}}</li>
                             <li class="list-group-item"><b>@lang('models.headquartersLocation'):</b> {{$user->organization->headquartersLocation}}</li>
-                            <li class="list-group-item"><b>@lang('models.web'):</b> <a href="{{$user->organization->web}}">{{$user->name}}</a></li>
+                            <li class="list-group-item"><b>@lang('models.web'):</b> <a href="{{$user->organization->web}}" target="_blank">{{$user->name}}</a></li>
                             <li class="list-group-item"><b>@lang('models.linksWithNearbyEntities'):</b> {{$user->organization->linksWithNearbyEntities}}</li>
                             
                         @endif

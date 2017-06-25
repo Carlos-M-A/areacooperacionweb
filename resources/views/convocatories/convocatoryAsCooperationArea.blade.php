@@ -58,9 +58,9 @@ $(document).ready(function(){
                         <div class="media">
                             <div class="media-left">
                                 @if(!is_null($user->urlAvatar))
-                                <img src="{{url($user->urlAvatar)}}" class="media-object" style="width:60px">
+                                <img src="{{url($user->urlAvatar)}}" class="media-object img-circle img-thumbnail" style="width:60px;height:60px;">
                                 @else
-                                <img src="{{URL::asset('images/avatar.jpg')}}" class="media-object" style="width:60px">
+                                <img src="{{URL::asset('images/avatar.jpg')}}" class="media-object img-circle img-thumbnail" style="width:60px;height:60px;">
                                 @endif
                             </div>
                             <div class="media-body">
@@ -83,7 +83,7 @@ $(document).ready(function(){
                                         {{ csrf_field() }}
                                         <div class="btn-group">
                                             <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $user->id])}}">@lang('general.view')</button>
-                                            @if($convocatory->state == 2 && $inscription->state < 5)
+                                            @if($convocatory->state == 1 && $inscription->state < 5)
                                                     <!-- Trigger the modal to evaluate the inscription -->
                                                     <button id="{{$inscription->id}}" type="button" class="btn btn-primary evaluate_button" data-toggle="modal"  >@lang('general.evaluate')</button>
                                             @endif
@@ -113,7 +113,7 @@ $(document).ready(function(){
 
 
 
-@if($convocatory->state == 2)
+@if($convocatory->state == 1)
 <!-- Modal -->
 <div id="modalEvaluateInscription" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -164,7 +164,7 @@ $(document).ready(function(){
                             <label for="observations" class="col-md-4 control-label">@lang('models.observations')</label>
 
                             <div class="col-md-6">
-                                <input id="observations" type="text" class="form-control" name="observations" value="{{ old('observations')}}" autofocus>
+                                <input id="observations" type="text" maxlength="{{config('forms.observations')}}"  placeholder="@lang('placeholders.observations')"class="form-control" name="observations" value="{{ old('observations')}}" autofocus>
 
                                 @if ($errors->has('observations'))
                                 <span class="help-block">
