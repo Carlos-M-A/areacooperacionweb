@@ -81,13 +81,11 @@ $(document).ready(function(){
                                 <p>
                                     <form>
                                         {{ csrf_field() }}
-                                        <div class="btn-group">
                                             <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $user->id])}}">@lang('general.view')</button>
                                             @if($convocatory->state == 1 && $inscription->state < 5)
                                                     <!-- Trigger the modal to evaluate the inscription -->
                                                     <button id="{{$inscription->id}}" type="button" class="btn btn-primary evaluate_button" data-toggle="modal"  >@lang('general.evaluate')</button>
                                             @endif
-                                        </div>
                                     </form>
                                 </p>
                             </div>

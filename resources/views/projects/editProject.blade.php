@@ -26,7 +26,7 @@
                         {{ csrf_field() }}
 
                         <div id="title_div" class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                            <label for="title" class="col-md-4 control-label">@lang('models.title')title</label>
+                            <label for="title" class="col-md-4 control-label">@lang('models.title')</label>
 
                             <div class="col-md-6">
                                 <textarea id="title" cols="100" rows="1" maxlength="{{config('forms.project_title')}}"

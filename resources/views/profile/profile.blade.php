@@ -9,14 +9,12 @@
 <div class="panel-footer">
     <form>
         {{ csrf_field() }}
-    <div class="btn-group">
         <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditProfile')}}">@lang('general.edit')</button>
         <button class="btn btn-warning" formmethod="GET" formaction="{{route('showEditPassword')}}">@lang('general.change_password')</button>
         <button class="btn btn-primary" formmethod="GET" formaction="{{route('showUploadAvatar', ['idUser' => $user->id])}}">@lang('general.upload_avatar')</button>
         @if($user->role==1)
         <button class="btn btn-primary" formmethod="GET" formaction="{{route('showUploadCurriculum', ['idUser' => $user->id])}}">@lang('general.upload_curriculum')</button>
         @endif
-    </div>
         @if($user->role<4)
         <button class="btn btn-warning" formmethod="GET" formaction="{{route('showCreateRoleChangeRequest')}}"
                 data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.change_role')"
@@ -35,6 +33,8 @@
 @section('more_content')
 
             @yield('studies_teacher')
+            
+            @if($user->role<4)
             
             <div class="panel panel-info">
                 <div class="panel-heading">@lang('general.observatory_name')</div>
@@ -67,7 +67,7 @@
                     @endif
                 </div>
             </div>
-            
+            @endif
             
             <div class="panel panel-info">
                 <div class="panel-heading">@lang('general.options')</div>

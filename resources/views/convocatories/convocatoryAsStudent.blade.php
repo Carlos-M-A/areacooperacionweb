@@ -21,7 +21,7 @@
 
 @section('inscription')
 @if(!is_null($inscription))
-<div class="panel panel-info">
+<div class="panel panel-default">
             <div class="panel-heading">
                 <!-- Left-aligned -->
                         <div class="media">

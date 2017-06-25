@@ -140,7 +140,7 @@
 @else
 
 <div class="panel-group">
-                   <div class="panel panel-info">
+                   <div class="panel panel-default">
                         <div class="panel-heading">
                             @lang('general.your_proposal')
                         <div class="media">
@@ -175,7 +175,7 @@
                                                     >@lang('general.remove')</button>
                                             @endif
                                             
-                                            @if($proposal->state <= 2)
+                                            @if($proposal->state == 2)
                                             <!-- Trigger the modal to accept the offer -->
                                             <button type="submit" class="btn btn-danger" formmethod="POST" formaction="{{ route('cancelProposal', ['id'=> $proposal->id]) }}"
                                                     data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.cancel_proposal')"
