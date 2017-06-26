@@ -22,7 +22,7 @@ class CreateUser extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->string('idCard', config('forms.idCard'))->unique();
-            $table->string('phone', config('forms.phone'));
+            $table->string('phone', config('forms.phone'))->nullable();
             $table->string('urlAvatar', config('forms.file_name'))->nullable();
             $table->tinyInteger('role');
             $table->boolean('accepted');

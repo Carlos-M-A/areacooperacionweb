@@ -55,7 +55,7 @@ use RegistersUsers;
         $rules['email'] = 'required|string|email|unique:User|max:'.config('forms.email');
         $rules['password'] = 'required|string|min:6|confirmed|max:'.config('forms.password');
         $rules['idCard'] = 'required|string|unique:User|max:'.config('forms.idCard');
-        $rules['phone'] = 'required|string|max:'.config('forms.phone');
+        $rules['phone'] = 'nullable|string|max:'.config('forms.phone');
         $rules['surnames'] = 'required|string|max:'.config('forms.surnames');
 
         switch ($data['role']) {

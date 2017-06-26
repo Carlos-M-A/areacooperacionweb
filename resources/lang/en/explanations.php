@@ -35,6 +35,7 @@ return [
     
     // Users
     'removed_user' => 'This user was removed',
+    'phone_field' => 'The phone is not a obligatory field, but it would be very helpful.',
     
     
     

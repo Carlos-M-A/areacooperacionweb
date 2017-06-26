@@ -37,6 +37,7 @@ return [
     
     // Users
     'removed_user' => 'Este usuario fue eliminado',
+    'phone_field' => 'El telefono no es un campo obligatorio, pero será de gran ayuda cuando sea necesario contactar contigo.',
     
     
     

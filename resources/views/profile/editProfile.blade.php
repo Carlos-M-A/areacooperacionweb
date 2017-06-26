@@ -94,7 +94,7 @@
                             <label for="phone" class="col-md-4 control-label">@lang('models.phone')</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="text" maxlength="{{config('forms.phone')}}" class="form-control" name="phone" value="{{ old('phone')? old('phone') : $user->phone }}" autofocus>
+                                <input id="phone" type="text" maxlength="{{config('forms.phone')}}" class="form-control" name="phone" value="{{ old('phone')? old('phone') : $user->phone }}" autofocus required>
 
                                 @if ($errors->has('phone'))
                                 <span class="help-block">
@@ -109,7 +109,7 @@
                             <label for="study" class="col-md-4 control-label">@lang('models.study')</label>
 
                             <div class="col-md-6">
-                                <select  id="study" class="form-control" name="study" value="{{ old('study')? old('study') : $roleData->study }}"  autofocus>
+                                <select  id="study" class="form-control" name="study" value="{{ old('study')? old('study') : $roleData->study }}"  autofocus required>
                                     <option id="studyOption" value="{{old('study') ? old('study') : $roleData->study->id}}">
                                         {{old('study') ? App\Study::find(old('study'))->name : $roleData->study->name.' - '.$roleData->study->campus->abbreviation}}
                                     </option>
@@ -135,7 +135,7 @@
 
                             <div class="col-md-6">
                                 <textarea id="areasOfInterest" cols="200" rows="4" maxlength="{{config('forms.areasOfInterest')}}"
-                                           class="form-control" name="areasOfInterest" autofocus>{{ old('areasOfInterest')?old('areasOfInterest') : $roleData->areasOfInterest }}</textarea>
+                                           class="form-control" name="areasOfInterest" autofocus required>{{ old('areasOfInterest')?old('areasOfInterest') : $roleData->areasOfInterest }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('areasOfInterest'))
                                 <span class="help-block">
@@ -152,7 +152,7 @@
 
                             <div class="col-md-6">
                                 <textarea id="skills" cols="200" rows="4" maxlength="{{config('forms.skills')}}"
-                                           class="form-control" name="skills" autofocus>{{ old('skills')?old('skills') : $roleData->skills }}</textarea>
+                                           class="form-control" name="skills" autofocus required>{{ old('skills')?old('skills') : $roleData->skills }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('skills'))
                                 <span class="help-block">
@@ -169,7 +169,7 @@
 
                             <div class="col-md-6">
                                 <textarea id="departments" cols="200" rows="3" maxlength="{{config('forms.departments')}}"
-                                           class="form-control" name="departments" autofocus>{{ old('departments')?old('departments') : $roleData->departments }}</textarea>
+                                           class="form-control" name="departments" autofocus required>{{ old('departments')?old('departments') : $roleData->departments }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('departments'))
                                 <span class="help-block">
@@ -186,7 +186,7 @@
 
                             <div class="col-md-6">
                                 <textarea id="description" cols="200" rows="4" maxlength="{{config('forms.user_description')}}"
-                                           class="form-control" name="description" autofocus>{{ old('description')?old('description') : $roleData->description }}</textarea>
+                                           class="form-control" name="description" autofocus required>{{ old('description')?old('description') : $roleData->description }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('description'))
                                 <span class="help-block">
@@ -203,7 +203,7 @@
 
                             <div class="col-md-6">
                                 <textarea id="headquartersLocation" cols="200" rows="1" maxlength="{{config('forms.headquartersLocation')}}"
-                                           class="form-control" name="headquartersLocation" autofocus>{{ old('headquartersLocation')?old('headquartersLocation') : $roleData->headquartersLocation }}</textarea>
+                                           class="form-control" name="headquartersLocation" autofocus required>{{ old('headquartersLocation')?old('headquartersLocation') : $roleData->headquartersLocation }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('headquartersLocation'))
                                 <span class="help-block">
@@ -219,7 +219,7 @@
                             <label for="web" class="col-md-4 control-label">@lang('models.web')</label>
 
                             <div class="col-md-6">
-                                <input id="web" type="url"  maxlength="{{config('forms.url')}}" class="form-control" name="web" value="{{ old('web')? old('web') : $roleData->web }}" >
+                                <input id="web" type="url"  maxlength="{{config('forms.url')}}" class="form-control" name="web" value="{{ old('web')? old('web') : $roleData->web }}" required>
 
                                 @if ($errors->has('web'))
                                 <span class="help-block">

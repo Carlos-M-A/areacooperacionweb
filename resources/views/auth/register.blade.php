@@ -272,7 +272,7 @@
                             <div class="col-md-6">
                                 <select  id="role" class="form-control" name="role" onchange="changeRole(0, true, true)" autofocus>
 
-                                    <option id="roleOption5" value="5">-- Elige un tipo --</option>
+                                    <option id="roleOption5" value="5"> </option>
                                     <option id="roleOption1" value="1" onclick="changeRole(1, true, true)" onkeyup="changeRole(1, true, true)">Student UVa</option>
                                     <option id="roleOption2" value="2" onclick="changeRole(2, true, true)" onkeyup="changeRole(2, true, true)" >Teacher UVa</option>
                                     <option id="roleOption3" value="3" onclick="changeRole(3, true, true)" onkeyup="changeRole(3, true, true)">Other</option>
@@ -294,7 +294,7 @@
 
                             <div class="col-md-6">
                                 <input id="name" type="text" maxlength="{{config('forms.user_name')}}" placeholder="@lang('placeholders.name')"
-                                       class="form-control" name="name" value="{{ old('name') }}" autofocus>
+                                       class="form-control" name="name" value="{{ old('name') }}" autofocus required>
 
                                 @if ($errors->has('name'))
                                 <span class="help-block">
@@ -309,7 +309,7 @@
 
                             <div class="col-md-6">
                                 <input id="surnames" type="text" maxlength="{{config('forms.surnames')}}" placeholder="@lang('placeholders.surnames')" 
-                                       class="form-control" name="surnames" value="{{ old('surnames') }}" autofocus>
+                                       class="form-control" name="surnames" value="{{ old('surnames') }}" autofocus required>
 
                                 @if ($errors->has('surnames'))
                                 <span class="help-block">
@@ -324,7 +324,7 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" maxlength="{{config('forms.email')}}" placeholder="@lang('placeholders.email')" 
-                                       class="form-control" name="email" value="{{ old('email') }}" >
+                                       class="form-control" name="email" value="{{ old('email') }}"  required>
 
                                 @if ($errors->has('email'))
                                 <span class="help-block">
@@ -339,7 +339,7 @@
 
                             <div class="col-md-6">
                                 <input id="idCard" type="text" maxlength="{{config('forms.idCard')}}" placeholder="@lang('placeholders.idCard')" 
-                                       class="form-control" name="idCard" value="{{ old('idCard') }}" >
+                                       class="form-control" name="idCard" value="{{ old('idCard') }}"  required>
 
                                 @if ($errors->has('idCard'))
                                 <span class="help-block">
@@ -355,7 +355,9 @@
                             <div class="col-md-6">
                                 <input id="phone" type="text" maxlength="{{config('forms.phone')}}" placeholder="@lang('placeholders.phone')" 
                                        class="form-control" name="phone" value="{{ old('phone') }}" >
-
+                                <span class="help-block">
+                                    <strong>@lang('explanations.phone_field')</strong>
+                                </span>
                                 @if ($errors->has('phone'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('phone') }}</strong>
@@ -368,7 +370,7 @@
                             <label for="password" class="col-md-4 control-label">@lang('models.password')</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" maxlength="{{config('forms.password')}}" class="form-control" name="password">
+                                <input id="password" type="password" minlength="6" maxlength="{{config('forms.password')}}" class="form-control" name="password"  required>
 
                                 @if ($errors->has('password'))
                                 <span class="help-block">
@@ -382,7 +384,7 @@
                             <label for="password-confirm" class="col-md-4 control-label">@lang('general.confirm_password')</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" maxlength="{{config('forms.password')}}" class="form-control" name="password_confirmation" >
+                                <input id="password-confirm" type="password" minlength="6" maxlength="{{config('forms.password')}}" class="form-control" name="password_confirmation"  required>
                             </div>
                         </div>
 
@@ -450,13 +452,14 @@
 
 
 
-                        <div id="areasOfInterest_div" class="form-group{{ $errors->has('') ? ' has-error' : '' }}">
+                        <div id="areasOfInterest_div" class="form-group{{ $errors->has('areasOfInterest') ? ' has-error' : '' }}">
                             <label for="areasOfInterest" class="col-md-4 control-label">@lang('models.areasOfInterest')</label>
 
                             <div class="col-md-6">
                                 <textarea id="areasOfInterest" cols="100" rows="4" maxlength="{{config('forms.areasOfInterest')}}" placeholder="@lang('placeholders.areasOfInterest')"
                                            class="form-control" name="areasOfInterest" autofocus>{{ old('areasOfInterest') }}</textarea>
                                            <span class="pull-right label label-default"></span>
+                                           
                                 @if ($errors->has('areasOfInterest'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('areasOfInterest') }}</strong>
