@@ -28,6 +28,9 @@
                         <li class=""><a href="{{$convocatory->urlDocumentation}}" target="_blank">@lang('models.urlDocumentation')</a></li>
                         </ul>
                     </div>
+                <div class="text-center">
+                    <a data-toggle="collapse" href="#collapseConvocatory"><span class="glyphicon glyphicon-menu-down" style="font-size: 40px;"></span></a>
+                </div>
                     <div id="collapseConvocatory" class="panel-collapse collapse">
                         <ul class="list-group">
                             <li class="list-group-item"><b>@lang('models.information'):</b> {{$convocatory->information}}</li>

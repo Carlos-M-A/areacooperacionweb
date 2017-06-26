@@ -42,6 +42,10 @@
                         </ul>
                 </div>
                 
+                <div class="text-center">
+                    <a data-toggle="collapse" href="#collapseUser"><span class="glyphicon glyphicon-menu-down" style="font-size: 40px;"></span></a>
+                </div>
+                
                 <div id="collapseUser" class="panel-collapse collapse">
                     <ul class="list-group">
                         @if($user->role == 1)

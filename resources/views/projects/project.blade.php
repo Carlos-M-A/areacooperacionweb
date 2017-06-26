@@ -10,7 +10,7 @@
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <div class="media-body">
-                        <h4 class="media-heading"><a data-toggle="collapse" href="#collapseOffer">{{$project->title}}</a>
+                        <h4 class="media-heading"><a data-toggle="collapse" href="#collapseProject">{{$project->title}}</a>
                                 @if($project->state ==1)
                                     <span class="label label-success">@lang('enums.project_state_1')</span>
                                 @elseif($project->state ==2)
@@ -21,7 +21,10 @@
                                 </h4>
                     </div>
                 </div>
-                    <div id="collapseOffer" class="panel-collapse collapse">
+                <div class="text-center">
+                    <a data-toggle="collapse" href="#collapseProject"><span class="glyphicon glyphicon-menu-down" style="font-size: 40px;"></span></a>
+                </div>
+                    <div id="collapseProject" class="panel-collapse collapse">
                         <ul class="list-group">
                             <li class="list-group-item"><b>@lang('models.study'):</b> {{$project->study->name}}</li>
                             <li class="list-group-item"><b>@lang('models.urlDocumentation'):</b> <a href="{{$project->urlDocumentation}}" target="_blank"><b>@lang('models.urlDocumentation')</b></a></li>

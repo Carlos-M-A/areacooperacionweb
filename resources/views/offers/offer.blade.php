@@ -39,7 +39,9 @@
                         <li class=""><a>@lang('general.proposals')<span class="badge">{{count($offer->proposals)}}</span></a></li>
                         </ul>
                 </div>
-                
+                <div class="text-center">
+                    <a data-toggle="collapse" href="#collapseOffer"><span class="glyphicon glyphicon-menu-down" style="font-size: 40px;"></span></a>
+                </div>
                     <div id="collapseOffer" class="panel-collapse collapse">
                         <ul class="list-group">
                             @if($offer->managedByArea)

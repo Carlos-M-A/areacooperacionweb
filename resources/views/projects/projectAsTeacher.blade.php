@@ -138,6 +138,9 @@
                         </div>
                         </li>
                         </div>
+                       <div class="text-center">
+                           <a data-toggle="collapse" href="#{{'collapse'.$user->id}}"><span class="glyphicon glyphicon-menu-down" style="font-size: 20px;"></span></a>
+                        </div>
                     <div id="{{'collapse'.$user->id}}" class="panel-collapse collapse">
                     <ul class="list-group">
                         <li class="list-group-item"><b>@lang('models.comment'):</b> {{$inscription->comment}}</li>
