@@ -95,6 +95,7 @@ return [
         'idCard' => 'e.g. 594938292r',
         'phone' => 'e.g. 23232323443',
         'urlAvatar' => 'Avatar image',
-        'user_description' => 'Description about you that can be useful'
+        'user_description' => 'Full description that help to know your actities in the cooperation',
+        
 ];
 

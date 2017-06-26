@@ -78,7 +78,7 @@
                             <label for="title" class="col-md-4 control-label">@lang('models.title')</label>
 
                             <div class="col-md-6">
-                                <textarea id="title" cols="100" rows="1" maxlength="{{config('forms.project_title')}}" placeholder="@lang('placeholders.project_title')"
+                                <textarea id="title" cols="100" rows="2" maxlength="{{config('forms.project_title')}}" placeholder="@lang('placeholders.project_title')"
                                            class="form-control" name="title" autofocus required>{{ old('title') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('title'))

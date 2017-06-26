@@ -33,9 +33,16 @@
                         
                         @if(! $user->removed)
                             <li class=""><a href="mailto:{{$user->email}}">@lang('models.email')<span class="badge">{{$user->email}}</span></a></li>
+                            @if(! is_null($user->phone))
                             <li class=""><a>@lang('models.phone')<span class="badge">{{$user->phone}}</span></a></li>
+                            @endif
+                            @if(Auth::user()->role > 4 || Auth::user()->id == $user->id)
+                            <li class=""><a>@lang('general.registration_date')<span class="badge">{{$user->createdDate}}</span></a></li>
+                            <li class=""><a>@lang('models.idCard')<span class="badge">{{$user->idCard}}</span></a></li>
+                            @endif
                         @endif
-                        <li class=""><a>@lang('models.lastConnectionDate')<span class="badge">{{$user->lastConnectionDate}}</span></a></li>
+                        
+                        
                         @if($user->removed)
                        <li class=""><h1><span class="label label-danger">@lang('general.removed_user')</span></h1></li>
                         @endif

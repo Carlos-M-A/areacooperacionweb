@@ -74,7 +74,7 @@ class ProfileController extends Controller {
             'name' => 'required|string|max:' . config('forms.user_name'),
             'email' => 'required|string|email|unique:User,email,' . $user->id . '|max:' . config('forms.email'),
             'idCard' => 'required|string|unique:User,idCard,' . $user->id . '|max:' . config('forms.idCard'),
-            'phone' => 'required|string|max:' . config('forms.phone'),
+            'phone' => 'nullable|string|max:' . config('forms.phone'),
             'surnames' => 'required|string|max:' . config('forms.surnames'),
         ];
 

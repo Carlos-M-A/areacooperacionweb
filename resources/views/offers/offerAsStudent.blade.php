@@ -101,7 +101,7 @@
                             <label for="earliestStartDate" class="col-md-4 control-label">@lang('models.earliestStartDate')</label>
 
                             <div class="col-md-6">
-                                <textarea id="earliestStartDate" cols="100" rows="1" maxlength="{{config('forms.earliestStartDate')}}" placeholder="@lang('placeholders.earliestStartDate')"
+                                <textarea id="earliestStartDate" cols="100" rows="2" maxlength="{{config('forms.earliestStartDate')}}" placeholder="@lang('placeholders.earliestStartDate')"
                                            class="form-control" name="earliestStartDate" autofocus required>{{ old('earliestStartDate') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('earliestStartDate'))
@@ -115,7 +115,7 @@
                             <label for="latestEndDate" class="col-md-4 control-label">@lang('models.latestEndDate')</label>
 
                             <div class="col-md-6">
-                                <textarea id="latestEndDate" cols="100" rows="1" maxlength="{{config('forms.latestEndDate')}}" placeholder="@lang('placeholders.latestEndDate')"
+                                <textarea id="latestEndDate" cols="100" rows="2" maxlength="{{config('forms.latestEndDate')}}" placeholder="@lang('placeholders.latestEndDate')"
                                            class="form-control" name="latestEndDate" autofocus required>{{ old('latestEndDate') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('latestEndDate'))

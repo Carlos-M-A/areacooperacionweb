@@ -33,19 +33,19 @@ class ProjectsController extends Controller {
                 break;
         }
 
-        return view('projects/projects')->with('projects', $projects->paginate(config('constants.pagination')))->with('ask', 1);
+        return view('projects/projects')->with('projects', $projects->latest('createdDate')->paginate(config('constants.pagination')))->with('ask', 1);
     }
 
     public function proposedProjects() {
         $user = Auth::user();
         $projects = Project::where('state', 1)->where('study_id', $user->student->study_id);
 
-        return view('projects/projects')->with('projects', $projects->paginate(config('constants.pagination')))->with('ask', 2);;
+        return view('projects/projects')->with('projects', $projects->latest('createdDate')->paginate(config('constants.pagination')))->with('ask', 2);;
     }
 
     public function finishedProjects() {
         $projects = Project::where('state', 3);
 
-        return view('projects/projects')->with('projects', $projects->paginate(config('constants.pagination')));
+        return view('projects/projects')->with('projects', $projects->latest('finishedDate')->paginate(config('constants.pagination')));
     }
 }

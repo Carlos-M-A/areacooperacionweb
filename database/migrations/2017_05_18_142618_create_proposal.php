@@ -26,7 +26,7 @@ class CreateProposal extends Migration
             $table->string('earliestStartDate', config('forms.earliestStartDate'));
             $table->string('latestEndDate', config('forms.latestEndDate'));
             $table->tinyInteger('state');
-            $table->dateTime('creationDate');
+            $table->date('creationDate');
             
             $table->foreign('student_id')->references('id')->on('Student')
                     ->onDelete('cascade');

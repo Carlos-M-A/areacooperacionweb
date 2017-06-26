@@ -126,6 +126,7 @@ return [
     'removed_user' => 'Removed user',
     'requests' => 'Requests',
     'members' => 'Members',
+    'registration_date' => 'Registration date',
     
     //Projects
     'tutor' => 'Tutor',

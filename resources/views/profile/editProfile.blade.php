@@ -94,7 +94,7 @@
                             <label for="phone" class="col-md-4 control-label">@lang('models.phone')</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="text" maxlength="{{config('forms.phone')}}" class="form-control" name="phone" value="{{ old('phone')? old('phone') : $user->phone }}" autofocus required>
+                                <input id="phone" type="text" maxlength="{{config('forms.phone')}}" class="form-control" name="phone" value="{{ old('phone')? old('phone') : $user->phone }}" autofocus>
 
                                 @if ($errors->has('phone'))
                                 <span class="help-block">

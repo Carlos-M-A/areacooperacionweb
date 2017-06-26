@@ -44,14 +44,14 @@ return [
         'requeriments' => 'Requisitos que los estudiantes deben cumplir',
         'workplan' => 'Plan de trabajo que se llevará a cabo',
         'workplace' => 'Lugar donde se realizará el trabajo',
-        'schedule' => 'Horario en el que se puede o se debe hacer el trabajo',
+        'schedule' => 'Horario semanal en el que se puede o se debe hacer el trabajo',
         'offer_totalHours' => 'Número total de horas que los estudiantes puden hacer. P. ej. Max 300 horas',
         'possibleStartDates' => 'Periodo en el que se pueden/deben empezar las prácticas',
         'possibleEndDates' => 'Fechas en las que se pueden/deben finalizar las prácticas',
         'places' => '   Límite de estudiantes que harán las prácticas',
-        'monetaryHelp' => 'Ayuda económica que cada estudiante recibirá',
+        'monetaryHelp' => 'Explica si existe una remuneración por el trabajo y su cuantía',
         'personInCharge' => 'Persona de contacto en la organización',
-        'offer_deadline' => 'Fecha en la que la oferta se cerrará automáticamente',
+        'offer_deadline' => 'Cuando se cerrará automáticamente la oferta',
     
     //offer of convocatory
         'housing' => 'Alojamiento donde los estudiantes se hospedarán',
@@ -96,6 +96,6 @@ return [
         'idCard' => 'P. ej. 594938292r',
         'phone' => 'P. ej. 633434323',
         'urlAvatar' => 'Imagen del avatar',
-        'user_description' => 'Descripción sobre tus actividades'
+        'user_description' => 'Descripción completa que ayude a conocer tus actividades relacionadas con la cooperación.',
 ];
 

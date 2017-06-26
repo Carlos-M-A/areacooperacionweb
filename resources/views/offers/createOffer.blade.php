@@ -177,7 +177,7 @@
                             <label for="totalHours" class="col-md-4 control-label">@lang('models.totalHours')</label>
 
                             <div class="col-md-6">
-                                <textarea id="totalHours" cols="100" rows="1" maxlength="{{config('forms.offer_totalHours')}}" placeholder="@lang('placeholders.offer_totalHours')"
+                                <textarea id="totalHours" cols="100" rows="2" maxlength="{{config('forms.offer_totalHours')}}" placeholder="@lang('placeholders.offer_totalHours')"
                                            class="form-control" name="totalHours" autofocus required>{{ old('totalHours') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('totalHours'))
@@ -192,7 +192,7 @@
                             <label for="possibleStartDates" class="col-md-4 control-label">@lang('models.possibleStartDates')</label>
 
                             <div class="col-md-6">
-                                <textarea id="possibleStartDates" cols="100" rows="1" maxlength="{{config('forms.possibleStartDates')}}" placeholder="@lang('placeholders.possibleStartDates')"
+                                <textarea id="possibleStartDates" cols="100" rows="2" maxlength="{{config('forms.possibleStartDates')}}" placeholder="@lang('placeholders.possibleStartDates')"
                                            class="form-control" name="possibleStartDates" autofocus required>{{ old('possibleStartDates') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('possibleStartDates'))
@@ -207,7 +207,7 @@
                             <label for="possibleEndDates" class="col-md-4 control-label">@lang('models.possibleEndDates')</label>
 
                             <div class="col-md-6">
-                                <textarea id="possibleEndDates" cols="100" rows="1" maxlength="{{config('forms.possibleEndDates')}}" placeholder="@lang('placeholders.possibleEndDates')"
+                                <textarea id="possibleEndDates" cols="100" rows="2" maxlength="{{config('forms.possibleEndDates')}}" placeholder="@lang('placeholders.possibleEndDates')"
                                            class="form-control" name="possibleEndDates" autofocus required>{{ old('possibleEndDates') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('possibleEndDates'))
@@ -237,7 +237,7 @@
                             <label for="monetaryHelp" class="col-md-4 control-label">@lang('models.monetaryHelp')</label>
 
                             <div class="col-md-6">
-                                <textarea id="monetaryHelp" cols="100" rows="1" maxlength="{{config('forms.monetaryHelp')}}" placeholder="@lang('placeholders.monetaryHelp')"
+                                <textarea id="monetaryHelp" cols="100" rows="2" maxlength="{{config('forms.monetaryHelp')}}" placeholder="@lang('placeholders.monetaryHelp')"
                                            class="form-control" name="monetaryHelp" autofocus required>{{ old('monetaryHelp') }}</textarea>
                                            <span class="pull-right label label-default"></span>
                                 @if ($errors->has('monetaryHelp'))

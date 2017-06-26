@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Project;
 use App\InscriptionInProject;
 use Illuminate\Support\Facades\Auth;
+use DateTime;
 
 class ProjectController extends Controller {
 
@@ -88,6 +89,7 @@ class ProjectController extends Controller {
         $project = new Project();
         $this->_requestToProject($request, $project);
         $project->study_id = $request->studyId;
+        $project->createdDate = new DateTime();
         
         if($user->role == 5){
             $project->teacher_id = $user->id;

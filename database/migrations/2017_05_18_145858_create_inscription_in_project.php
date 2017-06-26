@@ -20,7 +20,7 @@ class CreateInscriptionInProject extends Migration
             
             $table->tinyInteger('state');
             $table->string('comment', config('forms.comment'))->nullable();
-            $table->dateTime('createdDate');
+            $table->date('createdDate');
             
             $table->foreign('student_id')->references('id')->on('Student')
                     ->onDelete('cascade');

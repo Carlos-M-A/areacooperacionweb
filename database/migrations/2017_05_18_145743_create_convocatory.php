@@ -22,7 +22,7 @@ class CreateConvocatory extends Migration
             $table->string('urlDocumentation', config('forms.url'));
             $table->tinyInteger('state');
             $table->date('deadline');
-            $table->dateTime('createdDate');
+            $table->date('createdDate');
         });
     }
 

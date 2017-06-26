@@ -26,6 +26,7 @@ class CreateProject extends Migration
             $table->string('urlDocumentation', config('forms.url'))->nullable();
             $table->tinyInteger('state');
             $table->date('finishedDate')->nullable();
+            $table->date('createdDate');
             $table->boolean('createdByAdmin');
             
             $table->foreign('study_id')->references('id')->on('Study');

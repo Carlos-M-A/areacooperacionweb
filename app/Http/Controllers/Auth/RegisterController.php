@@ -110,7 +110,6 @@ use RegistersUsers;
         $user->isSubscriber = false;
         $user->notificationInfoConvocatories = false;
         $user->notificationInfoProjects = false;
-        $user->lastConnectionDate = new DateTime();
         $user->createdDate = new DateTime();
         $user->removed = false;
         $user->save();

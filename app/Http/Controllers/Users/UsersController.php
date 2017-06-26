@@ -28,7 +28,7 @@ class UsersController extends Controller {
             $users->where('idCard', 'LIKE', '%' . $request->idCard . '%');
         }
 
-        return view('users/users')->with('users', $users->paginate(config('constants.pagination')));
+        return view('users/users')->with('users', $users->orderBy('name', 'asc')->paginate(config('constants.pagination')));
     }
 
     public function registrationRequests() {

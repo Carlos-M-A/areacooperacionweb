@@ -30,8 +30,7 @@ class CreateUser extends Migration
             $table->boolean('isSubscriber');
             $table->boolean('notificationInfoConvocatories');
             $table->boolean('notificationInfoProjects');
-            $table->dateTime('lastConnectionDate')->nullable();
-            $table->dateTime('createdDate')->nullable();
+            $table->date('createdDate')->nullable();
             $table->boolean('removed');
         });
     }

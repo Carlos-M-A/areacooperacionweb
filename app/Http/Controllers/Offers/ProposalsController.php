@@ -18,7 +18,7 @@ class ProposalsController extends Controller {
                     $query->where('student_id', $user->id);
                 });
 
-        return view('offers/offers')->with('offers', $offers->paginate(config('constants.pagination')))->with('ask', 2);
+        return view('offers/offers')->with('offers', $offers->latest('createdDate')->paginate(config('constants.pagination')))->with('ask', 2);
     }
 
     /**
@@ -31,7 +31,7 @@ class ProposalsController extends Controller {
                     $query->where('student_id', $user->id)->where('state', 2);
                 });
 
-        return view('offers/offers')->with('offers', $offers->paginate(config('constants.pagination')))->with('ask', 3);
+        return view('offers/offers')->with('offers', $offers->latest('createdDate')->paginate(config('constants.pagination')))->with('ask', 3);
     }
 
     /**
@@ -44,7 +44,7 @@ class ProposalsController extends Controller {
                     $query->where('student_id', $user->id)->where('state', 4);
                 });
 
-        return view('offers/offers')->with('offers', $offers->paginate(config('constants.pagination')))->with('ask', 4);
+        return view('offers/offers')->with('offers', $offers->latest('createdDate')->paginate(config('constants.pagination')))->with('ask', 4);
     }
     
 }

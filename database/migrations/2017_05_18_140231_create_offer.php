@@ -32,7 +32,7 @@ class CreateOffer extends Migration
             $table->integer('places')->unsigned();
             $table->string('monetaryHelp', config('forms.monetaryHelp'));
             $table->string('personInCharge', config('forms.personInCharge'));
-            $table->dateTime('createdDate');
+            $table->date('createdDate');
             $table->date('deadline');
             
             $table->foreign('organization_id')->references('id')->on('Organization')

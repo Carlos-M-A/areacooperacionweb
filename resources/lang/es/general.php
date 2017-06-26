@@ -125,6 +125,7 @@ return [
     'removed_user' => 'Usuario eliminado',
     'requests' => 'Solicitudes',
     'members' => 'Miembros',
+    'registration_date' => 'Fecha de registro',
     
     //Projects
     'tutor' => 'Tutor',

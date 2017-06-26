@@ -28,7 +28,6 @@ class UserSeeder extends Seeder
         $user->isSubscriber = false;
         $user->notificationInfoConvocatories = false;
         $user->notificationInfoProjects = false;
-        $user->lastConnectionDate = new \DateTime();
         $user->createdDate = new \DateTime();
         $user->removed = false;
         $user->save();
@@ -47,7 +46,6 @@ class UserSeeder extends Seeder
         $user->isSubscriber = false;
         $user->notificationInfoConvocatories = false;
         $user->notificationInfoProjects = false;
-        $user->lastConnectionDate = new \DateTime();
         $user->createdDate = new \DateTime();
         $user->removed = false;
         $user->save();
@@ -65,7 +63,6 @@ class UserSeeder extends Seeder
         $user->isSubscriber = false;
         $user->notificationInfoConvocatories = false;
         $user->notificationInfoProjects = false;
-        $user->lastConnectionDate = new \DateTime();
         $user->createdDate = new \DateTime();
         $user->removed = false;
         $user->save();
@@ -83,7 +80,6 @@ class UserSeeder extends Seeder
         $user->isSubscriber = false;
         $user->notificationInfoConvocatories = false;
         $user->notificationInfoProjects = false;
-        $user->lastConnectionDate = new \DateTime();
         $user->createdDate = new \DateTime();
         $user->removed = false;
         $user->save();
@@ -101,7 +97,6 @@ class UserSeeder extends Seeder
         $user->isSubscriber = false;
         $user->notificationInfoConvocatories = false;
         $user->notificationInfoProjects = false;
-        $user->lastConnectionDate = new \DateTime();
         $user->createdDate = new \DateTime();
         $user->removed = false;
         $user->save();
@@ -119,7 +114,6 @@ class UserSeeder extends Seeder
         $user->isSubscriber = false;
         $user->notificationInfoConvocatories = false;
         $user->notificationInfoProjects = false;
-        $user->lastConnectionDate = new \DateTime();
         $user->createdDate = new \DateTime();
         $user->removed = false;
         $user->save();
@@ -139,7 +133,6 @@ class UserSeeder extends Seeder
         $user->isSubscriber = false;
         $user->notificationInfoConvocatories = false;
         $user->notificationInfoProjects = false;
-        $user->lastConnectionDate = new \DateTime();
         $user->createdDate = new \DateTime();
         $user->removed = false;
         $user->save();
@@ -157,7 +150,6 @@ class UserSeeder extends Seeder
         $user->isSubscriber = false;
         $user->notificationInfoConvocatories = false;
         $user->notificationInfoProjects = false;
-        $user->lastConnectionDate = new \DateTime();
         $user->createdDate = new \DateTime();
         $user->removed = false;
         $user->save();
