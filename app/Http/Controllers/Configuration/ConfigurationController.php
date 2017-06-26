@@ -18,23 +18,39 @@ class ConfigurationController extends Controller
         $this->validate($request, [
             'appName' => 'required|string|max:100',
             'linkInAppName' => 'required|url|max:' . config('forms.url'),
+            'newsletterActive' => 'required|boolean',
         ]);
         
-        $this->_setEnvironmentValue('APP_NAME', 'app.name', $request->appName);
-        $this->_setEnvironmentValue('APP_NAME_LINK', 'constants.link_in_app_name', $request->linkInAppName);
+        $this->_setEnvironmentValue('APP_NAME', 'app.name', config('app.name'), $request->appName);
+        $this->_setEnvironmentValue('APP_NAME_LINK', 'app.link_in_app_name', config('app.link_in_app_name'), $request->linkInAppName);
+        
+        if($request->newsletterActive){
+            if(config('app.newsletter_active')){
+                $this->_setEnvironmentValue('APP_NEWSLETTER_ACTIVE', 'app.newsletter_active', 'true', 'true');
+            } else {
+                $this->_setEnvironmentValue('APP_NEWSLETTER_ACTIVE', 'app.newsletter_active', 'false', 'true');
+            }
+        } else {
+            if(config('app.newsletter_active')){
+                $this->_setEnvironmentValue('APP_NEWSLETTER_ACTIVE', 'app.newsletter_active', 'true', 'false');
+            } else {
+                $this->_setEnvironmentValue('APP_NEWSLETTER_ACTIVE', 'app.newsletter_active', 'false', 'false');
+            }
+        }
         
         return redirect('configuration');
     }
     
     /**
      * Change a value in .env file
-     * @param type $environmentNameis the key in the environment file (example.. APP_LOG_LEVEL)
-     * @param type $configKey is the key used to access the configuration at runtime (example.. app.log_level (tinker config('app.log_level')).
+     * @param type $environmentName is the key in the environment file (example.. APP_LOG_LEVEL)
+     * @param type $configKey  is the key used to access the configuration at runtime (example.. app.log_level (tinker config('app.log_level'))
+     * @param type $currentValue is the current value of the enviroment field
      * @param type $newValue is of course the new value you wish to persist.
      */
-    private function _setEnvironmentValue($environmentName, $configKey, $newValue) {
+    private function _setEnvironmentValue($environmentName, $configKey, $currentValue, $newValue) {
         file_put_contents(App::environmentFilePath(), str_replace(
-            $environmentName . '=' . '"'.config($configKey).'"',
+            $environmentName . '=' . '"'.$currentValue.'"',
             $environmentName . '=' . '"'.$newValue.'"',
             file_get_contents(App::environmentFilePath())
         ));

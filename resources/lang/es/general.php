@@ -107,6 +107,8 @@ return [
     'configuration' => 'Configuración',
     'app_name' => 'Nombre de la aplicación',
     'app_url' => 'URL donde enlazar cuando se pulsa en el nombre de la aplicación',
+    'newsletter_active' => '¿Está activo el plugin para el Boletin? Solo activarlo si WordPress se conecta a la misma base de datos que la '
+    . 'aplicación y está instalado el plugin: Email Subscribers & Newsletters.',
     
     
     //users

@@ -108,6 +108,8 @@ return [
     'configuration' => 'Configuration',
     'app_name' => 'App name',
     'app_url' => 'URL to link when click in app name',
+    'newsletter_active' => 'Is the newsletter puglin active? (Only put yes if WordPress is connected to the same database that the '
+    . 'application and the plugin Email Subscribers & Newsletters is installed)',
     
     
     //users

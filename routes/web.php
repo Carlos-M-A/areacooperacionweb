@@ -11,6 +11,8 @@
   |
  */
 
+
+// PUBLIC ROUTES
 Route::get('/', function () {
     return view('/auth/login');
 })->name('root');
@@ -21,7 +23,14 @@ Route::get('/notAccepted', function() {
     return view('notAccepted');
 });
 
-Route::group(['middleware' => ['auth', 'checkAccepted']], function() {
+Route::get('/observatory', 'Users\ObservatoryController@index')->name('observatory');
+Route::get('/projects/finishedProjects', 'Projects\ProjectsController@finishedProjects')->name('finishedProjects');
+Route::get('/projects/{id}', 'Projects\ProjectController@get')->name('project')->where('id', '[0-9]+');
+
+
+// PRIVATE ROUTES
+
+Route::group(['middleware' => ['auth', 'checkAccepted']], function() { 
     
 //Managemer of the homes
     Route::get('/home', 'HomeController@index')->name('home');
@@ -54,7 +63,6 @@ Route::group(['middleware' => ['auth', 'checkAccepted']], function() {
 
     Route::group(['middleware' => []], function() {
         Route::get('/users', 'Users\UsersController@search')->name('searchUsers');
-        Route::get('/observatory', 'Users\ObservatoryController@index')->name('observatory');
     });
 
     Route::group(['middleware' => []], function() {
@@ -153,7 +161,7 @@ Route::group(['middleware' => ['auth', 'checkAccepted']], function() {
 
 
 // Projects management
-    Route::get('/projects/{id}', 'Projects\ProjectController@get')->name('project')->where('id', '[0-9]+');
+    
     Route::get('/projects', 'Projects\ProjectsController@index')->name('projects');
 
     Route::group(['middleware' => []], function() {
@@ -161,7 +169,7 @@ Route::group(['middleware' => ['auth', 'checkAccepted']], function() {
         Route::post('/projects/create', 'Projects\ProjectController@create')->name('createProject');
     });
     Route::get('/projects/myProjects', 'Projects\ProjectsController@myProjects')->name('myProjects');
-    Route::get('/projects/finishedProjects', 'Projects\ProjectsController@finishedProjects')->name('finishedProjects');
+    
 
     Route::group(['middleware' => []], function() {
         Route::get('/projects/proposedProjects', 'Projects\ProjectsController@proposedProjects')->name('proposedProjects');

@@ -41,11 +41,30 @@
                             <label for="linkInAppName" class="col-md-4 control-label">@lang('general.app_url')</label>
 
                             <div class="col-md-6">
-                                <input id="linkInAppName" type="url" maxlength="{{config('forms.url')}}" class="form-control" name="linkInAppName" value="{{ old('linkInAppName')? old('linkInAppName') : @config('constants.link_in_app_name')}}" autofocus required>
+                                <input id="linkInAppName" type="url" maxlength="{{config('forms.url')}}" class="form-control" name="linkInAppName" value="{{ old('linkInAppName')? old('linkInAppName') : @config('app.link_in_app_name')}}" autofocus required>
 
                                 @if ($errors->has('linkInAppName'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('linkInAppName') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div id="newsletterActive_div" class="form-group{{ $errors->has('newsletterActive') ? ' has-error' : '' }}">
+                            <label for="newsletterActive" class="col-md-4 control-label">@lang('general.newsletter_active')</label>
+
+                            <div class="col-md-6">
+
+                                <label class="radio-inline">
+                                    <input id="radioYes" type="radio" name="newsletterActive" value="1" {{ config('app.newsletter_active') ? 'checked' : ''}}>
+                                    @lang('general.yes')</label>
+                                <label class="radio-inline">
+                                    <input id='radioNo' type="radio" name="newsletterActive" value="0" {{ config('app.newsletter_active') ? '' : 'checked'}}>
+                                    @lang('general.no')</label>
+                                @if ($errors->has('newsletterActive'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('newsletterActive') }}</strong>
                                 </span>
                                 @endif
                             </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Profile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Student;
 use App\Teacher;
 use App\Other;
@@ -101,6 +102,11 @@ class ProfileController extends Controller {
         }
         $this->validate($request, $rules);
 
+        if($user->isSubscriber && config('app.newsletter_active')){
+            DB::update('update wp_es_emaillist set es_email_name = ? where es_email_mail LIKE ?', [$request->name, $user->email]);
+            DB::update('update wp_es_emaillist set es_email_mail = ? where es_email_mail LIKE ?', [$request->email, $user->email]);
+        }
+        
         $user->name = $request->name;
         $user->surnames = $request->surnames;
         $user->email = $request->email;
@@ -147,6 +153,8 @@ class ProfileController extends Controller {
                 break;
         }
 
+        
+        
         return redirect($this->redirectTo);
     }
 

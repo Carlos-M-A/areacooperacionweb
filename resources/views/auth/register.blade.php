@@ -392,7 +392,7 @@
 
                             <div class="col-md-6">
                                 <select  id="study" class="form-control" name="study" value="{{ old('study') }}"  autofocus>
-                                    <option id="optionStudy" value="0">-- Choose a study --</option>
+                                    <option id="optionStudy" value="0"></option>
 
                                     @foreach($studiesList as $element)
                                     <option value="{{$element->id}}" > {{$element->name}} - {{App\Campus::find($element->campus_id)->abbreviation}}</option>
@@ -413,7 +413,7 @@
 
                             <div class="col-md-6">
                                 <select  id="teachingStudies" class="form-control" onchange="newStudy(0)" name="teachingStudies" value="{{ old('teachingStudies') }}" autofocus>
-                                    <option value="0">-- Choose a study --</option>
+                                    <option value="0"></option>
                                     
 
                                     @foreach($studiesList as $element)

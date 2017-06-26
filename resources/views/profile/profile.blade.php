@@ -113,6 +113,7 @@
                                 <td>@lang('general.newsletter_subscription')</td>
                                 <td>{{$user->isSubscriber? __('general.subscript') : __('general.not_subscript')}}</td>
                                 <th>
+                                    @if(config('app.newsletter_active'))
                                     <form action="{{route('changeSubscription')}}" method="post">
                                         {{ csrf_field() }}
                                         <button   
@@ -120,6 +121,7 @@
                                                 {{$user->isSubscriber ? __('general.cancel_subscription') : __('general.subscribe')}}
                                         </button>
                                     </form>
+                                    @endif
                                 </th>
                             </tr>
                         </tbody>

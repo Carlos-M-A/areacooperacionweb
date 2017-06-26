@@ -74,11 +74,11 @@
 
                     <!-- Branding Image -->
                     @if (Auth::guest())
-                    <a class="navbar-brand" href="{{ config('constants.link_in_app_name', '/') }}">
+                    <a class="navbar-brand" href="{{ config('app.link_in_app_name', '/') }}">
                         {{ config('app.name', 'CooperationArea') }}
                     </a>
                     @else
-                    <a class="navbar-brand" href="{{ config('constants.link_in_app_name', '/') }}">
+                    <a class="navbar-brand" href="{{ config('app.link_in_app_name', '/') }}">
                         {{ config('app.name', 'CooperationArea') }}
                     </a>
                     @endif
@@ -99,6 +99,8 @@
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">@lang('general.login')</a></li>
                             <li><a href="{{ route('register') }}">@lang('general.register')</a></li>
+                            <li><a href="{{ route('finishedProjects') }}">@lang('general.projects')</a></li>
+                            <li><a href="{{ route('observatory', ['ask' => 2]) }}">@lang('general.the_observatory')</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

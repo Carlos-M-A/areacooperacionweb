@@ -13,6 +13,15 @@ return [
     */
     'name' => env('APP_NAME', 'AreaCooperacion'),
 
+    // Link when click in app name in header of web
+    'link_in_app_name' => env('APP_NAME_LINK', 'http://localhost'), 
+    // If the newsletter plugin is installed or not.
+    // The plugin is Email subscribers & newsletter. A WordPress plugin
+    // Only activate ir WordPress is connect to the same database that de application
+    'newsletter_active' => env('APP_NEWSLETTER_ACTIVE', false),
+    
+    
+    
     /*
     |--------------------------------------------------------------------------
     | Application Environment

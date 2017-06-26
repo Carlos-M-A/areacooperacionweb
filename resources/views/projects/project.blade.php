@@ -16,7 +16,7 @@
                                 @elseif($project->state ==2)
                                     <span class="label label-warning">@lang('enums.project_state_2')</span>
                                 @elseif($project->state ==3)
-                                    <span class="label label-danger">@lang('enums.project_state_3')</span>
+                                    <span class="label label-info">@lang('enums.project_state_3')</span>
                                 @endif
                                 </h4>
                     </div>
