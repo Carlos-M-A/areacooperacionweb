@@ -3,9 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Proposal;
+use App\Project;
 
-class CheckRemoveProposal
+class CheckRemoveProject
 {
     /**
      * Handle an incoming request.
@@ -18,14 +18,14 @@ class CheckRemoveProposal
     {
         $user = $request->user();
         try{
-            $proposal = Proposal::findOrFail($request->route('id'));
+            $project = Project::findOrFail($request->route('id'));
         } catch (Exception $e){
             return abort(404, 'Resource Not Found.');
         }
         
         
-        if ($proposal->student->id == $user->id && 
-                $proposal->state == 1){
+        if (( (! $project->createdByAdmin) && ($project->teacher->id == $user->id) &&  $project->state == 1)
+                || ($user->role == 5 && $project->state == 3)){
             return $next($request);
         } else {
             return abort(403, 'Unauthorized action.');

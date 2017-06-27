@@ -24,7 +24,9 @@
 @if(is_null($proposal))
 
 @if($offer->isOfferOfConvocatory && ! Auth::user()->student->isAcceptedInConvocatory($offer->offerOfConvocatory->convocatory))
+<div class="alert alert-warning">
     @lang('explanations.not_accepted_in_convocatory')
+</div>
 @else
 <div class="panel panel-info">
                 <div class="panel-heading">@lang('general.create_proposal')</div>

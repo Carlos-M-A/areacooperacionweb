@@ -15,6 +15,8 @@ class ProjectsController extends Controller {
                 return $this->myProjects();
             case 5:
                 return $this->finishedProjects();
+            default:
+                return $this->finishedProjects();
         }
     }
 

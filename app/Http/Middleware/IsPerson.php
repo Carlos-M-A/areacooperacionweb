@@ -15,6 +15,13 @@ class IsPerson
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        $user = $request->user();
+        
+        if ($user->role <= 3){
+            return $next($request);
+            
+        } else {
+            return abort(403, 'Unauthorized action.');
+        }
     }
 }

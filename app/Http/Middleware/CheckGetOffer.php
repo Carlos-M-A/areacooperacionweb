@@ -3,8 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\InscriptionInProject;
-class CheckCancelInscriptionInProject
+use App\Offer;
+
+class CheckGetOffer
 {
     /**
      * Handle an incoming request.
@@ -17,28 +18,27 @@ class CheckCancelInscriptionInProject
     {
         $user = $request->user();
         try{
-            $inscriptionInProject = InscriptionInProject::findOrFail($request->route('id'));
+            $offer = Offer::findOrFail($request->route('id'));
         } catch (Exception $e){
             return abort(404, 'Resource Not Found.');
         }
         
         switch ($user->role){
             case 1:
-                if (($inscriptionInProject->student->id == $user->id)  && 
-                        ($inscriptionInProject->state == 2)){
+                return $next($request);
+                break;
+            case 4:
+                if ($offer->organization->id == $user->id){
                     return $next($request);
                 } else {
                     return abort(403, 'Unauthorized action.');
                 }
                 break;
-            case 2:
-                if (($inscriptionInProject->project->teacher->id == $user->id)  && 
-                        ($inscriptionInProject->state == 2)){
-                    return $next($request);
-                } else {
-                    return abort(403, 'Unauthorized action.');
-                }
+            case 5:
+                return $next($request);
                 break;
+            default:
+                return abort(403, 'Unauthorized action.');
         }
         
     }

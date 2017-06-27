@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Offer;
 
 class CheckEditOffer
 {
@@ -15,6 +16,19 @@ class CheckEditOffer
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        $user = $request->user();
+        try{
+            $offer = Offer::findOrFail($request->route('id'));
+        } catch (Exception $e){
+            return abort(404, 'Resource Not Found.');
+        }
+        
+        
+        if (((($offer->organization->id == $user->id) && !$offer->managedByArea) || ($offer->managedByArea && $user->role == 5))
+                && $offer->open){
+            return $next($request);
+        } else {
+            return abort(403, 'Unauthorized action.');
+        }
     }
 }

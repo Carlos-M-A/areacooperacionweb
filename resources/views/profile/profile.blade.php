@@ -34,7 +34,7 @@
 
             @yield('studies_teacher')
             
-            @if($user->role<4)
+            @if($user->role < 4)
             
             <div class="panel panel-info">
                 <div class="panel-heading">@lang('general.observatory_name')</div>
@@ -83,6 +83,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if($user->role <= 2)
                             <tr>    
                                 <td>@lang('general.notification_projects')</td>
                                 <td>{{$user->notificationInfoProjects ? __('general.active') : __('general.inactive')}}</td>
@@ -95,6 +96,8 @@
                                     </form>
                                 </th>
                             </tr>
+                            @endif
+                            @if($user->role == 1 || $user->role == 4 || $user->role == 5)
                             <tr>
                                 <td>@lang('general.notification_convocatories')</td>
                                 <td>{{$user->notificationInfoConvocatories ? __('general.active') : __('general.inactive')}}</td>
@@ -108,7 +111,7 @@
                                     </form>
                                 </th>
                             </tr>
-                            
+                            @endif
                             <tr>
                                 <td>@lang('general.newsletter_subscription')</td>
                                 <td>{{$user->isSubscriber? __('general.subscript') : __('general.not_subscript')}}</td>

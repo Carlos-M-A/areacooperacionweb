@@ -23,7 +23,7 @@ return [
     
     // Profile
     'not_accepted' => 'Tu solicitud de registro ha sido guardada, pero todavía no has sido aceptado en la aplicación. '
-    . 'Cuando seas aceptado serás avisado y podrás usar la aplicación',
+    . 'Cuando seas aceptado podrás acceder',
     'image_avatar_requeriments' => 'La imagen que vas a subir debe que tener las siguientes propiedades:'
         . '<ul>'
             . '<li>Menos de '. config('constants.max_size_of_images').' KB de tamaño.</li>'

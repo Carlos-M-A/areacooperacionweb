@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Convocatory;
 
 class CheckEditConvocatory
 {
@@ -15,6 +16,17 @@ class CheckEditConvocatory
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        try{
+            $convocatory = Convocatory::findOrFail($request->route('id'));
+        } catch (Exception $e){
+            return abort(404, 'Resource Not Found.');
+        }
+        
+        
+        if ($convocatory->state == 1){
+            return $next($request);
+        } else {
+            return abort(403, 'Unauthorized action.');
+        }
     }
 }

@@ -16,6 +16,8 @@ class OffersController extends Controller {
             case 4:
             case 5:
                 return $this->myOffers();
+            default:
+                return abort(403, 'Unauthorized action.');
         }
     }
 

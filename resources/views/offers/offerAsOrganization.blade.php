@@ -2,15 +2,17 @@
 
 @section('offer_options')
 @if($offer->open)
-<div class="panel-footer">
-    <form>
-        {{ csrf_field() }}
-            <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditOffer', ['id'=> $offer->id])}}">@lang('general.edit')</button>
-            <button class="btn btn-warning" formmethod="POST" formaction="{{route('closeOffer', ['id'=> $offer->id])}}"
-                    data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.close_offer')"
-                    >@lang('general.close')</button>
-    </form>
-</div>
+    @if((($offer->organization->id == Auth::user()->id) && !$offer->managedByArea) || ($offer->managedByArea && Auth::user()->role == 5))
+    <div class="panel-footer">
+        <form>
+            {{ csrf_field() }}
+                <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditOffer', ['id'=> $offer->id])}}">@lang('general.edit')</button>
+                <button class="btn btn-warning" formmethod="POST" formaction="{{route('closeOffer', ['id'=> $offer->id])}}"
+                        data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.close_offer')"
+                        >@lang('general.close')</button>
+        </form>
+    </div>
+    @endif
 @endif
 @endsection
 
@@ -69,12 +71,14 @@
                                         {{ csrf_field() }}
                                             <button class="btn btn-info" type="submit" formmethod="GET" formaction="{{route('user', ['id'=> $user->id])}}">@lang('general.view')</button>
                                         @if($offer->open)
-                                        @if($proposal->state == 1 || $proposal->state == 3)
-                                        <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('approveProposal', ['id'=> $proposal->id])}}">@lang('general.approve')</button>
-                                        @endif
-                                        @if($proposal->state <= 2)
-                                        <button class="btn btn-danger"  type="submit" formmethod="POST" formaction="{{route('rejectProposal', ['id'=> $proposal->id])}}">@lang('general.reject')</button>
-                                        @endif
+                                            @if((($offer->organization->id == Auth::user()->id) && !$offer->managedByArea) || ($offer->managedByArea && Auth::user()->role == 5))
+                                                @if($proposal->state == 1 || $proposal->state == 3)
+                                                <button class="btn btn-success" type="submit" formmethod="POST" formaction="{{route('approveProposal', ['id'=> $proposal->id])}}">@lang('general.approve')</button>
+                                                @endif
+                                                @if($proposal->state <= 2)
+                                                <button class="btn btn-danger"  type="submit" formmethod="POST" formaction="{{route('rejectProposal', ['id'=> $proposal->id])}}">@lang('general.reject')</button>
+                                                @endif
+                                            @endif
                                         @endif
                                     </form>
                                 </p>

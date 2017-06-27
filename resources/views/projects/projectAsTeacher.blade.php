@@ -5,14 +5,17 @@
 @if($project->state <=2)
 <div class="panel-footer">
     <form>
-        <div class="btn-group">
+        {{ csrf_field() }}
             @if($project->state == 2)
-            <!-- Trigger the modal to terminate project -->
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalOfFinishProject">@lang('general.finish')</button>
+                <!-- Trigger the modal to terminate project -->
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalOfFinishProject">@lang('general.finish')</button>
             @endif
-            <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditProject', ['id'=> $project->id])}}">@lang('general.edit')</button>
-            
-        </div>
+                <button class="btn btn-primary" formmethod="GET" formaction="{{route('showEditProject', ['id'=> $project->id])}}">@lang('general.edit')</button>
+            @if($project->state == 1)
+                <button class="btn btn-danger" formmethod="POST" formaction="{{route('removeProject', ['id'=> $project->id])}}" 
+                        data-toggle="confirmation" data-btn-ok-label="@lang('general.yes')"  data-btn-ok-class="btn-success" data-btn-cancel-label="@lang('general.no')"  data-btn-cancel-class="btn-danger" data-title="@lang('confirmations.remove_project')"
+                        >@lang('general.remove')</button>
+            @endif
     </form>
 </div>
 @endif

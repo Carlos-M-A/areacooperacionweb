@@ -36,7 +36,13 @@ class ProjectController extends Controller {
     }
 
     public function get($id, Request $request) {
-        $project = Project::find($id);
+        
+        try{
+            $project = Project::findOrFail($id);
+        } catch (Exception $e){
+            return abort(404, 'Resource Not Found.');
+        }
+        
         if(! Auth::check()){
             return view('projects/project')->with('project', $project);
         }
@@ -92,7 +98,7 @@ class ProjectController extends Controller {
         $project->createdDate = new DateTime();
         
         if($user->role == 5){
-            $project->teacher_id = $user->id;
+            $project->teacher_id = 0;
             $project->tutor = $request->tutor;
             $project->author = $request->author;
             $project->state = 3; //state = Finished
@@ -160,10 +166,15 @@ class ProjectController extends Controller {
     
     public function remove(int $id) {
         $project = Project::find($id);
-        
+        foreach ($project->inscriptionsInProject as $inscription){
+            $inscription->delete();
+        }
         $project->delete();
-
-        return redirect('projects/finishedProjects');
+        if(Auth::user()->role == 2){
+            return redirect('projects/myProjects');
+        } else {
+            return redirect('projects/finishedProjects');
+        }
     }
 
     private function _getProjectFieldsRules() {

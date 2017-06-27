@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\InscriptionInProject;
 
 class CheckAcceptInscriptionInProject
 {
@@ -15,6 +16,19 @@ class CheckAcceptInscriptionInProject
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        $user = $request->user();
+        try{
+            $inscriptionInProject = InscriptionInProject::findOrFail($request->route('id'));
+        } catch (Exception $e){
+            return abort(404, 'Resource Not Found.');
+        }
+        
+        
+        if (($inscriptionInProject->project->teacher->id == $user->id) && 
+                ($inscriptionInProject->project->state == 1)){
+            return $next($request);
+        } else {
+            return abort(403, 'Unauthorized action.');
+        }
     }
 }

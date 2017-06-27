@@ -5,10 +5,10 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class IsAdmin
+class CheckRemoved
 {
     /**
-     * Handle an incoming request.
+     * Check if the user who make the request is removed
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
@@ -16,13 +16,11 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        $user = $request->user();
-        
-        if ($user->role == 6){
-            return $next($request);
-            
-        } else {
-            return abort(403, 'Unauthorized action.');
+        $user = Auth::user();
+        if ($user->removed){
+            return abort(403, 'Unauthorized action');
         }
+        
+        return $next($request);
     }
 }

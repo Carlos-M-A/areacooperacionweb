@@ -22,7 +22,6 @@ class UserController extends Controller {
             case 2:
             case 3:
             case 4:
-                return view('users/user')->with('user', $user);
             case 5:
                 return view('users/user')->with('user', $user);
             case 6:

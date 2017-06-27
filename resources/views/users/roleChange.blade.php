@@ -6,7 +6,6 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1> Role change request</h1>
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <!-- Left-aligned -->
