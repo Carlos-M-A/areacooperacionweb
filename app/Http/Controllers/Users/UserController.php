@@ -67,6 +67,9 @@ class UserController extends Controller {
         if(! is_null($user->observatoryRequest)){
             $user->observatoryRequest->delete();
         }
+        if($user->isSubscriber && config('app.newsletter_active')){
+            DB::delete('delete from wp_es_emaillist where es_email_mail LIKE ?', [$user->email]);
+        }
         
         switch ($user->role){
             case 1:
@@ -81,6 +84,10 @@ class UserController extends Controller {
             case 4:
                 $this->_removeOrganization($user->organization);
                 break;
+        }
+        if($user->id == Auth::user()->id){
+            Auth::logout();
+            return redirect('login');
         }
         return redirect('users/' . $user->id);
     }

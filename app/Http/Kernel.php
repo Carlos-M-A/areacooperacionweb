@@ -59,7 +59,18 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         
-        
         'checkAccepted' => \App\Http\Middleware\CheckAccepted::class,
+        
+        'checkAccepted' => \App\Http\Middleware\IsAdmin::class,
+        'checkAccepted' => \App\Http\Middleware\lsCooperationArea::class,
+        'checkAccepted' => \App\Http\Middleware\IsCooperationAreaOrAdmin::class,
+        'checkAccepted' => \App\Http\Middleware\IsCooperationAreaOrTeacher::class,
+        'checkAccepted' => \App\Http\Middleware\CheckAccepted::class,
+        'checkAccepted' => \App\Http\Middleware\CheckAccepted::class,
+        'checkAccepted' => \App\Http\Middleware\CheckAccepted::class,
+        'checkAccepted' => \App\Http\Middleware\CheckAccepted::class,
+        'checkAccepted' => \App\Http\Middleware\CheckAccepted::class,
+        'checkAccepted' => \App\Http\Middleware\CheckAccepted::class,
+        
     ];
 }
