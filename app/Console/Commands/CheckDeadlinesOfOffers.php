@@ -34,7 +34,8 @@ class CheckDeadlinesOfOffers extends Command
     }
 
     /**
-     * Execute the console command.
+     * Execute the console command. Check all offers. If a offer has a deadline
+     * that is out of time, update the offer state.
      *
      * @return mixed
      */

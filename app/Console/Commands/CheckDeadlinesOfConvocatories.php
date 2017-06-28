@@ -33,7 +33,8 @@ class CheckDeadlinesOfConvocatories extends Command
     }
 
     /**
-     * Execute the console command.
+     * Execute the console command. Check all convocatories. If a convcoatory has a deadline
+     * that is out of time, update the convocatory state.
      *
      * @return mixed
      */

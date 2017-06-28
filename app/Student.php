@@ -18,9 +18,11 @@ class Student extends Model
     }
     
     /**
-     * Return if the student has a project where he is the author. The study 
-     * of the project is the same study of the student.
-     * @return boolean 
+     * Checks if this student has a project where he is the author. The study 
+     * of the project must be the same study of the student.
+     * @return boolean True if this student has a project in that he is author (project
+     *                  with the same study that this student).
+     *                  False if he hasn't one.
      */
     public function hasProjectAssigned() {
         $amountOfProjectsAssigned = InscriptionInProject::whereHas('project', function ($query) {
@@ -29,6 +31,11 @@ class Student extends Model
         return ($amountOfProjectsAssigned > 0);
     }
     
+    /**
+     * Check if this student has a accepted inscription in the convocatory
+     * @param \App\Convocatory $convocatory The convocatory where the student must be enrolled
+     * @return boolean True if this student has a accepted inscription. False if he hasn't one.
+     */
     public function isAcceptedInConvocatory(Convocatory $convocatory) {
         $inscription = Inscription::where('convocatory_id', $convocatory->id)->where('student_id', $this->id)->first();
         if(is_null($inscription)){

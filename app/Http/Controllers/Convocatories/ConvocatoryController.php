@@ -19,7 +19,7 @@ class ConvocatoryController extends Controller {
         return view('convocatories/editConvocatory')->with('convocatory', $convocatory);
     }
 
-    public function get($id, Request $request) {
+    public function get(int $id, Request $request) {
         $convocatory = Convocatory::find($id);
         $user = Auth::user();
 

@@ -15,6 +15,10 @@ class ConfigurationController extends Controller
         return view('configuration.configuration');
     }
     
+    /**
+     * Changes the values in the .env file
+     * @param Request $request
+     */
     public function edit(Request $request) {
         $this->validate($request, [
             'appName' => 'required|string|max:100',

@@ -8,7 +8,8 @@ use App\User;
 class CheckRemoveUser
 {
     /**
-     * Handle an incoming request.
+     * Check if the user who make the request can upload a new avatar
+     * The user whose avatar will be updated must be the same that make the request
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

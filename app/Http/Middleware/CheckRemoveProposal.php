@@ -8,7 +8,8 @@ use App\Proposal;
 class CheckRemoveProposal
 {
     /**
-     * Handle an incoming request.
+     * Check if the user who make the request can remove the proposal
+     * The proposal must be in not evaluated state
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

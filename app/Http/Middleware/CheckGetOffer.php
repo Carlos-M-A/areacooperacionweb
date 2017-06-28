@@ -8,7 +8,9 @@ use App\Offer;
 class CheckGetOffer
 {
     /**
-     * Handle an incoming request.
+     * Checks if the user who make the request can get a offer data
+     * A studente and the Area of cooperation always can
+     * A organizations only can if he is the organization of the offer 
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

@@ -24,6 +24,11 @@ class RoleChangeController extends Controller {
         return view('users/roleChange')->with('roleChangeRequest', $roleChangeRequest)->with('roleData', $roleData);
     }
 
+    /**
+     * Change the role of the project who made the role change request.
+     * Remove the old data of the old role of the user.
+     * @param type $id Id of the role change request
+     */
     public function accept($id) {
         $user = User::find($id);
         $roleChangeRequest = RoleChangeRequest::find($id);

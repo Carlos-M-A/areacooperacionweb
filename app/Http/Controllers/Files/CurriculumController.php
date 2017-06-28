@@ -24,6 +24,12 @@ class CurriculumController extends Controller {
         return response()->make($curriculum, 200, ['content-type' => 'application/pdf']);
     }
 
+    /**
+     * Removes the old curriculum pdf of the student and save the new one
+     * @param int $idUser
+     * @param Request $request
+     * @return type
+     */
     public function upload(int $idUser, Request $request) {
         $user = User::find($idUser);
 

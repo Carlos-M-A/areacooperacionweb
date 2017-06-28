@@ -8,7 +8,9 @@ use App\Project;
 class CheckCreateInscriptionInProject
 {
     /**
-     * Handle an incoming request.
+     * Checks if the user who make the request can create a new inscription in the project
+     * The project must be in proposed state and the project must be the same study
+     * that the user who make the request
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

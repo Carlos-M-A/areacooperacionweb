@@ -5,10 +5,13 @@ namespace App\Http\Middleware;
 use Closure;
 use App\InscriptionInProject;
 
+
 class CheckAcceptInscriptionInProject
 {
     /**
-     * Handle an incoming request.
+     * Checks if the user who make the request can mark inscription as accepted
+     * The project of inscription must be in proposed state and the user who made the proposal must be
+     * the same who make the project of the inscription
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

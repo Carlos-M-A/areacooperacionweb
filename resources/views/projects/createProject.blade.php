@@ -56,7 +56,7 @@
                                         {{old('studyId') ? App\Study::find(old('studyId'))->name : ''}}
                                     </option>
                                     @if($user->role==5)
-                                        @foreach(App\Study::all() as $study)
+                                        @foreach(App\Study::where('inactive', false)->get() as $study)
                                             <option id="studyIdOption{{$study->id}}" value="{{$study->id}}">{{$study->name}} -- {{$study->campus->abbreviation}}</option>
                                         @endforeach
                                     @else

@@ -46,7 +46,19 @@ class User extends Authenticatable
         return $this->hasOne('App\Organization', 'id');
     }
     
+    public function roleChangeRequest(){
+        return $this->hasOne('App\RoleChangeRequest', 'id');
+    }
     
+    public function observatoryRequest(){
+        return $this->hasOne('App\ObservatoryRequest', 'id');
+    }
+    
+    /**
+     * If this user is a person: Return the concatenation of name + surname.
+     * If this user is a organization: Only return the name
+     * @return string The name + surname concatenate
+     */
     public function getNameAndSurnames() {
         switch ($this->role){
             case 1:
@@ -59,13 +71,7 @@ class User extends Authenticatable
         }
     }
     
-    public function roleChangeRequest(){
-        return $this->hasOne('App\RoleChangeRequest', 'id');
-    }
     
-    public function observatoryRequest(){
-        return $this->hasOne('App\ObservatoryRequest', 'id');
-    }
     
    
 }

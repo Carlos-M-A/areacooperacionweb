@@ -29,6 +29,9 @@
                                 @endif
                                 </h4>
                                 <p><a href='{{route('user', ['id' => $offer->organization->id])}}'>{{$offer->organization->user->name}}</a></p>
+                                @if($offer->isOfferOfConvocatory)
+                                <span class="badge">{{$offer->offerOfConvocatory->convocatory->title}}</span>
+                                @endif
                             </div>
                         </div>
                 </div>

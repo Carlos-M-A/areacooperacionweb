@@ -13,6 +13,11 @@ class SubscriptionController extends Controller
     //Route to redirect after a action in profile
     protected $redirectTo = 'profile';
     
+    /**
+     * Change the subscription state of the project. If is active the subscription will be deactivated.
+     * If is inactive the subscription will be activated
+     * @return 
+     */
     public function changeSubscription() {
 
         if(! config('app.newsletter_active')){

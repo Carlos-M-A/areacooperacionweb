@@ -24,6 +24,12 @@ class AvatarController extends Controller {
         return response()->make($image, 200, ['content-type' => 'image']);
     }
 
+    /**
+     * Remove the old avatar of the user and save the new one
+     * @param int $idUser
+     * @param Request $request
+     * @return type
+     */
     public function upload(int $idUser, Request $request) {
         $user = User::find($idUser);
 

@@ -8,7 +8,9 @@ use App\Offer;
 class CheckCreateProposal
 {
     /**
-     * Handle an incoming request.
+     * Checks if the user who make the request can create a new proposal in the offer
+     * The offer must be open. If the offer depends on a convocatory, the user who
+     * make the request must be accepted in this convocatory.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

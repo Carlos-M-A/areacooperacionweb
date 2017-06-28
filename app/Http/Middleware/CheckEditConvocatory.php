@@ -8,7 +8,8 @@ use App\Convocatory;
 class CheckEditConvocatory
 {
     /**
-     * Handle an incoming request.
+     * Checks if the user who make the request can edit a convocatory
+     * The convocatory must be open
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

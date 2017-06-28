@@ -7,7 +7,7 @@ use Closure;
 class IsPerson
 {
     /**
-     * Handle an incoming request.
+     * Check if the user who make the request is a person (teacher, student or other)
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

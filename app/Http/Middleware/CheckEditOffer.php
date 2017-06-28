@@ -8,7 +8,9 @@ use App\Offer;
 class CheckEditOffer
 {
     /**
-     * Handle an incoming request.
+     * Checks if the user who make the request can edit a offer
+     * The offer must be open.
+     * THe user who make the request can be the same who made the offer.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

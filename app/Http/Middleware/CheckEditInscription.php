@@ -8,7 +8,8 @@ use App\Inscription;
 class CheckEditInscription
 {
     /**
-     * Handle an incoming request.
+     * Checks if the user who make the request can edit (evaluate) a inscription in convocatory
+     * The convocatory must be in out of time state
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

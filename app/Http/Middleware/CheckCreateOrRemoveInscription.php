@@ -8,7 +8,9 @@ use App\Convocatory;
 class CheckCreateOrRemoveInscription
 {
     /**
-     * Handle an incoming request.
+     * Checks if the user who make the request can create a new inscription in the convocatory
+     * or remove his inscription if he has one
+     * The convocatory must be open
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

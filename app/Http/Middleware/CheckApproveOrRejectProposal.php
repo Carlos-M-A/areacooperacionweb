@@ -8,7 +8,9 @@ use App\Proposal;
 class CheckApproveOrRejectProposal
 {
     /**
-     * Handle an incoming request.
+     * Checks if the user who make the request can mark the proposal as approved or rejected.
+     * The proposal must be not evaluated (or approved or rejected) and the user who made the proposal must be
+     * the same who make the offer of the proposal. Also, the offer of the proposal must be open.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

@@ -8,7 +8,8 @@ use App\User;
 class CheckUploadCurriculum
 {
     /**
-     * Handle an incoming request.
+     * Check if the user who make the request can upload a new curriculum
+     * The user whose curriculum will be updated must be the same that make the request
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

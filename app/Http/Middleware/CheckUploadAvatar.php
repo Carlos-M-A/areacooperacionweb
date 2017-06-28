@@ -8,7 +8,8 @@ use App\User;
 class CheckUploadAvatar
 {
     /**
-     * Handle an incoming request.
+     * Check if the user who make the request can remove the inscription
+     * The inscription must be in not chosen state
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

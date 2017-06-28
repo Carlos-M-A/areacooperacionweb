@@ -50,8 +50,13 @@
                                 @else
                                     <span class="label label-danger">@lang('general.closed')</span>
                                 @endif
+                                
                                 </h4>
                                 <p>{{$offer->organization->user->name}}</p>
+                                @if($offer->isOfferOfConvocatory)
+                                <span class="badge">{{$offer->offerOfConvocatory->convocatory->title}}</span>
+                                @endif
+                                
                             </div>
                         </div>
                         </li>

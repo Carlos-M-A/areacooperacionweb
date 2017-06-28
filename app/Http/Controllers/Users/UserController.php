@@ -43,6 +43,13 @@ class UserController extends Controller {
         return redirect('users/requests');
     }
 
+    /**
+     * Remove all data of the user but not remove the user.
+     * Mark the user as removed.
+     * Not remove the name and surnames of the user.
+     * @param type $id
+     * @return type
+     */
     public function remove($id) {
         $user = User::find($id);
         

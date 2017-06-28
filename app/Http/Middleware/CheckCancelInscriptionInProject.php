@@ -7,7 +7,9 @@ use App\InscriptionInProject;
 class CheckCancelInscriptionInProject
 {
     /**
-     * Handle an incoming request.
+     * Checks if the user who make the request can mark the inscription as cancelled.
+     * The project of the inscription must be started
+     *  and the user who made the project of the inscription must be the same who make the request
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

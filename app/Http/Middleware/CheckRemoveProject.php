@@ -8,7 +8,8 @@ use App\Project;
 class CheckRemoveProject
 {
     /**
-     * Handle an incoming request.
+     * Check if the user who make the request can remove the project
+     * The project must be in proposed state
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

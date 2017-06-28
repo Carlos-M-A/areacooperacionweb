@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class CheckAccepted
 {
     /**
-     * Check if the user who make the request is accepted
+     * Checks if the user who make the request is accepted
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

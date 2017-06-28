@@ -8,7 +8,8 @@ use App\Convocatory;
 class CheckCloseConvocatory
 {
     /**
-     * Handle an incoming request.
+     * Checks if the user who make the request can mark the convocatory as close.
+     * The convocatory must be in out of time state
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

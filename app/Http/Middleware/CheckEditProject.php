@@ -8,7 +8,9 @@ use App\Project;
 class CheckEditProject
 {
     /**
-     * Handle an incoming request.
+     * Checks if the user who make the request can edit a project
+     * The project must not be finished.
+     * THe user who make the request can be the same who made the project.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

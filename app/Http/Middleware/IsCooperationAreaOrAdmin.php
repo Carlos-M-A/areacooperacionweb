@@ -7,7 +7,7 @@ use Closure;
 class IsCooperationAreaOrAdmin
 {
     /**
-     * Handle an incoming request.
+     * Check if the user who make the request is the cooperation area or the admin
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

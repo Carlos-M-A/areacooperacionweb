@@ -7,7 +7,7 @@ use Closure;
 class IsOrganization
 {
     /**
-     * Handle an incoming request.
+     * Check if the user who make the request is a organization
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

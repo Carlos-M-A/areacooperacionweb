@@ -8,7 +8,9 @@ use App\Inscription;
 class CheckCancelInscription
 {
     /**
-     * Handle an incoming request.
+     * Checks if the user who make the request can mark the inscription as cancelled.
+     * The convocatory of the inscription must be in out of time state
+     *  and the user who made the inscription must be the same who make the request
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

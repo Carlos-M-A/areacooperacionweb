@@ -13,7 +13,11 @@ class CheckGetUser
     private $user;
     private $userRequested;
     /**
-     * Handle an incoming request.
+     * Checks if the user who make the request can get a user data
+     * the admin and the Area of cooperation always can
+     * A student can access to the organizations and the teachers who have a project in his stuty
+     * A Teacher can access ti the students that have inscriptions in any project his
+     * A Teacher can access ti the students that have proposals in any offer his
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

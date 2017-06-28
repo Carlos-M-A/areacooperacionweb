@@ -7,7 +7,7 @@ use Closure;
 class IsStudent
 {
     /**
-     * Handle an incoming request.
+     * Check if the user who make the request is a student
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

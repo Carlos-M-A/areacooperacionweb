@@ -78,6 +78,11 @@ class OfferController extends Controller {
         return redirect('/offers/' . $offer->id);
     }
 
+    /**
+     * Creates a new offers that is marked as managed by area.
+     * If is a offer of convocatory the function creates a offer of convocatory.
+     * @param Request $request
+     */
     public function createOfferManagedByArea(Request $request) {
         $rules = $this->_getOfferFieldsRules(1);
         $rules['organizationId'] = 'required|integer|min:1';
