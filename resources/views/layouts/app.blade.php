@@ -113,6 +113,12 @@
                                             @lang('general.profile')
                                         </a>
                                         
+                                        <a href="{{URL::asset('files/manual.pdf')}}" target="_blank">
+                                            @lang('general.help')
+                                        </a>
+                                        
+                                        
+                                        
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

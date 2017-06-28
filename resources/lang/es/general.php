@@ -33,6 +33,7 @@ return [
     'new' => 'Nuevo',
     'chosen' => 'Elegido',
     'alternate' => 'Suplente',
+    'help' => 'Ayuda',
     
     //General buttons
     'create' => 'Crear',

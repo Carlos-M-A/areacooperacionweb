@@ -45,7 +45,7 @@ class ConfigurationController extends Controller
             }
         }
         
-        
+        Artisan::call("config:clear");
         return back();
     }
     
