@@ -6,6 +6,10 @@
 
 @section('content')
 
+<ul class="pager">
+    <li class="previous"><a href="{{ url()->previous() }}">@lang('pagination.previous')</a></li>
+</ul>
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">

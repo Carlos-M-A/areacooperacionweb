@@ -53,17 +53,17 @@ class ProfileController extends Controller {
         $user = Auth::user();
         switch ($user->role) {
             case 1:
-                return view('profile/studentProfile')->with('user', $user);
+                return view('profile/profile')->with('user', $user);
             case 2:
                 return view('profile/teacherProfile')->with('user', $user);
             case 3:
-                return view('profile/otherProfile')->with('user', $user);
+                return view('profile/profile')->with('user', $user);
             case 4:
-                return view('profile/organizationProfile')->with('user', $user);
+                return view('profile/profile')->with('user', $user);
             case 5:
-                return view('profile/organizationProfile')->with('user', $user);
+                return view('profile/profile')->with('user', $user);
             case 6:
-                return view('profile/adminProfile')->with('user', $user);
+                return view('profile/profile')->with('user', $user);
         }
     }
 

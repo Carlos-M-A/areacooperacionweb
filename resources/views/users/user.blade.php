@@ -2,6 +2,24 @@
 
 @section('content')
 
+@if($user->id != Auth::user()->id)
+    @if(Auth::user()->role < 6)
+    <ul class="pager">
+        <li class="previous"><a href="{{ url()->previous() }}">@lang('pagination.previous')</a></li>
+    </ul>
+    @endif
+    @if(Auth::user()->role == 6)
+        @if($user->accepted)
+        <ul class="pager">
+            <li class="previous"><a href="{{ route('searchUsers', ['role' => 0]) }}">@lang('pagination.previous')</a></li>
+        </ul>
+        @else
+        <ul class="pager">
+            <li class="previous"><a href="{{ route('registrationRequests') }}">@lang('pagination.previous')</a></li>
+        </ul>
+        @endif
+    @endif
+@endif
 
 <div class="container">
     <div class="row">

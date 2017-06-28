@@ -27,7 +27,7 @@
                             <label for="appName" class="col-md-4 control-label">@lang('general.app_name')</label>
 
                             <div class="col-md-6">
-                                <input id="appName" type="text" maxlength="100" class="form-control" name="appName" value="{{ old('appName')? old('appName') : @config('app.name')}}" autofocus required>
+                                <input id="appName" type="text" maxlength="100" class="form-control" name="appName" value="{{@config('app.name')}}" autofocus required>
 
                                 @if ($errors->has('appName'))
                                 <span class="help-block">
@@ -41,7 +41,7 @@
                             <label for="linkInAppName" class="col-md-4 control-label">@lang('general.app_url')</label>
 
                             <div class="col-md-6">
-                                <input id="linkInAppName" type="url" maxlength="{{config('forms.url')}}" class="form-control" name="linkInAppName" value="{{ old('linkInAppName')? old('linkInAppName') : @config('app.link_in_app_name')}}" autofocus required>
+                                <input id="linkInAppName" type="url" maxlength="{{config('forms.url')}}" class="form-control" name="linkInAppName" value="{{ @config('app.link_in_app_name')}}" autofocus required>
 
                                 @if ($errors->has('linkInAppName'))
                                 <span class="help-block">

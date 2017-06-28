@@ -21,9 +21,11 @@ class ConfigurationController extends Controller
             'linkInAppName' => 'required|url|max:' . config('forms.url'),
             'newsletterActive' => 'required|boolean',
         ]);
+            
         
         $this->_setEnvironmentValue('APP_NAME', 'app.name', config('app.name'), $request->appName);
         $this->_setEnvironmentValue('APP_NAME_LINK', 'app.link_in_app_name', config('app.link_in_app_name'), $request->linkInAppName);
+        
         
         if($request->newsletterActive){
             if(config('app.newsletter_active')){
@@ -39,7 +41,8 @@ class ConfigurationController extends Controller
             }
         }
         
-        return redirect('configuration');
+        
+        return back();
     }
     
     /**
@@ -63,4 +66,5 @@ class ConfigurationController extends Controller
             Artisan::call("config:cache");
         }
 }
+
 }

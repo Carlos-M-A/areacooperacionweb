@@ -14,12 +14,15 @@
     });
 </script>   
 
+<ul class="pager">
+    <li class="previous"><a href="{{ url()->previous() }}">@lang('pagination.previous')</a></li>
+</ul>
 
 
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-primary">
+            <div class="panel panel-info">
                 <div class="panel-heading">@lang('general.edit')</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="{{ route('editOrganization', ['id' => $organization->id]) }}">

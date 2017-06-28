@@ -54,7 +54,7 @@
                 {{old('organizationId') ? App\Organization::find(old('organizationId'))->user->name : $offer->organization->user->name}}
             </option>
             @php
-                $organizations = App\Organization::all();
+                $organizations = App\Organization::where('removed', false);
             @endphp
             @foreach($organizations as $organization)
                 <option id="organizationIdOption{{$organization->id}}" value="{{$organization->id}}">{{$organization->user->name}}</option>

@@ -29,6 +29,10 @@
 
 @section('content')
 
+<ul class="pager">
+    <li class="previous"><a href="{{route('offer', ['id'=> $offer->id])}}">@lang('pagination.previous')</a></li>
+</ul>
+
 
 <div class="container">
     <div class="row">

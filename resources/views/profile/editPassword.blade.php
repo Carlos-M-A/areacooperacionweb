@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
+<ul class="pager">
+    <li class="previous"><a href="{{ route('profile') }}">@lang('pagination.previous')</a></li>
+</ul>
 
 <div class="container">
     <div class="row">

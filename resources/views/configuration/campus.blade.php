@@ -2,7 +2,9 @@
 
 @section('content')
 
-
+<ul class="pager">
+    <li class="previous"><a href="{{ route('searchCampuses') }}">@lang('pagination.previous')</a></li>
+</ul>
 
 <div class="container">
     <div class="row">
@@ -12,7 +14,7 @@
                 <div class="panel-heading">@lang('models.campus')</div>
                 <div class="panel-body">
                      <li class="list-group-item"><b>@lang('models.name'):</b> {{$campus->name}}</li>
-                        <li class="list-group-item"><b>@lang('models.abbreviation'):</b> @lang('models.abbreviation' . $campus->abbreviation)</li>
+                        <li class="list-group-item"><b>@lang('models.abbreviation'):</b> {{$campus->abbreviation}}</li>
                         <li class="list-group-item"><b>@lang('models.state'):</b> {{$campus->inactive ? __('general.inactive') : __('general.active')}}</li>
                         
                 </div>
