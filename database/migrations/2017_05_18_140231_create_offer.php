@@ -21,9 +21,9 @@ class CreateOffer extends Migration
             $table->boolean('open');
             $table->string('title', config('forms.offer_title'));
             $table->string('scope', config('forms.scope'));
-            $table->string('description', config('forms.offer_description'));
-            $table->string('requeriments', config('forms.requeriments'))->nullable();
-            $table->string('workplan', config('forms.workplan'))->nullable();
+            $table->text('description');
+            $table->text('requeriments')->nullable();
+            $table->text('workplan')->nullable();
             $table->string('workplace', config('forms.workplace'));
             $table->string('schedule', config('forms.schedule'));
             $table->string('totalHours', config('forms.offer_totalHours'));

@@ -20,7 +20,7 @@
 
 <div class="panel panel-info">
     <div class="panel-heading">
-        Proposals
+        @lang('general.proposals')
         <ul class="nav nav-pills">
             @if(is_null(old('stateOfProposals')))
                 <li class="active"><a href="{{ route('offer', ['id'=> $offer->id, 'stateOfProposals' => 1]) }}">@lang('general.not_evaluated')<span class="badge">{{$offer->getAmountOfNotEvaluatedProposals()}}</span></a></li>

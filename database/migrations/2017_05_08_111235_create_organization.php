@@ -15,7 +15,7 @@ class CreateOrganization extends Migration
     {
         Schema::create('Organization', function (Blueprint $table) {
             $table->integer('id')->unsigned();
-            $table->string('description', config('forms.organization_description'));
+            $table->text('description');
             $table->string('headquartersLocation', config('forms.headquartersLocation'));
             $table->string('web', config('forms.url'));
             //If the organization is placed so far, as other country

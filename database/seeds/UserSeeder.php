@@ -17,11 +17,11 @@ class UserSeeder extends Seeder
         
         $user = new User;
         $user->name = 'Administrador';
-        $user->surnames = 'Apellidos admin';
+        $user->surnames = '';
         $user->email = 'administrador@email.com';
         $user->password = bcrypt('123456');
-        $user->idCard = 'adminDNI';
-        $user->phone = 'adminTel';
+        $user->idCard = '';
+        $user->phone = '';
         $user->role = 6;
         $user->accepted = true;
         $user->isObservatoryMember = false;
@@ -30,6 +30,7 @@ class UserSeeder extends Seeder
         $user->notificationInfoProjects = false;
         $user->createdDate = new \DateTime();
         $user->removed = false;
+	$user->urlAvatar = null;
         $user->save();
         
         
@@ -38,8 +39,8 @@ class UserSeeder extends Seeder
         $user->surnames = 'Área de Cooperacion Internacional para el Desarrollo de la Universidad de Valladaolid';
         $user->email = 'areacooperacion@email.com';
         $user->password = bcrypt('123456');
-        $user->idCard = 'areaDNI';
-        $user->phone = 'areaTel';
+        $user->idCard = '';
+        $user->phone = '';
         $user->role = 5;
         $user->accepted = true;
         $user->isObservatoryMember = false;
@@ -48,32 +49,35 @@ class UserSeeder extends Seeder
         $user->notificationInfoProjects = false;
         $user->createdDate = new \DateTime();
         $user->removed = false;
+	$user->urlAvatar = 'avatars/areacoop.png';
         $user->save();
         
+        /*
         $user = new User;
-        $user->name = 'Organizacion';
-        $user->surnames = 'Social name org';
+        $user->name = 'Azacan';
+        $user->surnames = 'ONG Azacan';
         $user->email = 'organizacion@email.com';
         $user->password = bcrypt('123456');
-        $user->idCard = 'orgDNI';
-        $user->phone = 'orgTel';
+        $user->idCard = '23242342d';
+        $user->phone = '95234512º';
         $user->role = 4;
-        $user->accepted = false;
+        $user->accepted = true;
         $user->isObservatoryMember = false;
         $user->isSubscriber = false;
         $user->notificationInfoConvocatories = false;
         $user->notificationInfoProjects = false;
         $user->createdDate = new \DateTime();
         $user->removed = false;
+	$user->urlAvatar = 'avatars/azacan.png';
         $user->save();
         
         $user = new User;
-        $user->name = 'Otro';
-        $user->surnames = 'Apellidos otro';
+        $user->name = 'Pedro';
+        $user->surnames = 'Rodriguez Almunia';
         $user->email = 'otro@email.com';
         $user->password = bcrypt('123456');
-        $user->idCard = 'otroDNI';
-        $user->phone = 'otroTel';
+        $user->idCard = '23422342D';
+        $user->phone = '43422323';
         $user->role = 3;
         $user->accepted = false;
         $user->isObservatoryMember = false;
@@ -82,78 +86,101 @@ class UserSeeder extends Seeder
         $user->notificationInfoProjects = false;
         $user->createdDate = new \DateTime();
         $user->removed = false;
+	$user->urlAvatar = 'avatars/luis.jpeg';
         $user->save();
         
         $user = new User;
-        $user->name = 'Docente';
-        $user->surnames = 'Apellidos doce';
+        $user->name = 'Laura';
+        $user->surnames = 'Pascual Hernandez';
         $user->email = 'docente@email.com';
         $user->password = bcrypt('123456');
-        $user->idCard = 'docenteDNI';
-        $user->phone = 'docenteTel';
+        $user->idCard = '894038290K';
+        $user->phone = '664323343';
         $user->role = 2;
-        $user->accepted = false;
-        $user->isObservatoryMember = false;
+        $user->accepted = true;
+        $user->isObservatoryMember = true;
         $user->isSubscriber = false;
         $user->notificationInfoConvocatories = false;
         $user->notificationInfoProjects = false;
         $user->createdDate = new \DateTime();
         $user->removed = false;
+	$user->urlAvatar = 'avatars/laura.png';
         $user->save();
         
         $user = new User;
-        $user->name = 'Estudiante';
-        $user->surnames = 'Apellidos estu';
+        $user->name = 'Carmen';
+        $user->surnames = 'Sanzoles Torre';
         $user->email = 'estudiante@email.com';
         $user->password = bcrypt('123456');
-        $user->idCard = 'estudianteDNI';
-        $user->phone = 'estudianteTel';
+        $user->idCard = '48903992L';
+        $user->phone = '603394554';
         $user->role = 1;
-        $user->accepted = false;
+        $user->accepted = true;
         $user->isObservatoryMember = false;
         $user->isSubscriber = false;
         $user->notificationInfoConvocatories = false;
         $user->notificationInfoProjects = false;
         $user->createdDate = new \DateTime();
         $user->removed = false;
+	$user->urlAvatar = 'avatars/carmen.png';
         $user->save();
         
         
         
         $user = new User;
-        $user->name = 'Organizacion gestionada 1';
-        $user->surnames = 'social name 1';
+        $user->name = 'ACPP';
+        $user->surnames = 'Asamblea de Cooperación Por la Paz';
         $user->email = 'organizacionGes1@email.com';
         $user->password = bcrypt('123456');
-        $user->idCard = 'orgDNI1';
-        $user->phone = 'orgTel1';
+        $user->idCard = 'G-484838383';
+        $user->phone = '916399440';
         $user->role = 4;
-        $user->accepted = false;
+        $user->accepted = true;
         $user->isObservatoryMember = false;
         $user->isSubscriber = false;
         $user->notificationInfoConvocatories = false;
         $user->notificationInfoProjects = false;
         $user->createdDate = new \DateTime();
         $user->removed = false;
+	$user->urlAvatar = 'avatars/acpp.jpg';
         $user->save();
         
         $user = new User;
-        $user->name = 'Organizacion gestionada 2';
-        $user->surnames = 'social name 2';
+        $user->name = 'Oxfam';
+        $user->surnames = 'Oxfam intermon ONG';
         $user->email = 'organizacionGes2@email.com';
         $user->password = bcrypt('123456');
-        $user->idCard = 'orgDNI2';
-        $user->phone = 'orgTel2';
+        $user->idCard = 'G-23452343';
+        $user->phone = '937193484';
         $user->role = 4;
-        $user->accepted = false;
+        $user->accepted = true;
         $user->isObservatoryMember = false;
         $user->isSubscriber = false;
         $user->notificationInfoConvocatories = false;
         $user->notificationInfoProjects = false;
         $user->createdDate = new \DateTime();
         $user->removed = false;
+	$user->urlAvatar = 'avatars/oxfam.jpg';
         $user->save();
         
+        $user = new User;
+        $user->name = 'Carlos';
+        $user->surnames = 'Torrecilla Asunción';
+        $user->email = 'estudiante2@email.com';
+        $user->password = bcrypt('123456');
+        $user->idCard = '48934432L';
+        $user->phone = '603394523';
+        $user->role = 1;
+        $user->accepted = true;
+        $user->isObservatoryMember = true;
+        $user->isSubscriber = false;
+        $user->notificationInfoConvocatories = false;
+        $user->notificationInfoProjects = false;
+        $user->createdDate = new \DateTime();
+        $user->removed = false;
+	$user->urlAvatar = 'avatars/carlos.jpeg';
+        $user->save();
+        */
         
     }
 }

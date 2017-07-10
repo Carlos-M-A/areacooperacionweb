@@ -20,7 +20,7 @@ class CreateProject extends Migration
             
             $table->string('title', config('forms.project_title'));
             $table->string('scope', config('forms.scope'));
-            $table->string('description', config('forms.project_description'));
+            $table->text('description');
             $table->string('tutor', config('forms.tutor'));
             $table->string('author', config('forms.author'))->nullable();
             $table->string('urlDocumentation', config('forms.url'))->nullable();

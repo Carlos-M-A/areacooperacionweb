@@ -16,8 +16,8 @@ class TeacherSeeder extends Seeder
         
         $teacher = new Teacher();
         $teacher->id = 5;
-        $teacher->areasOfInterest = 'areas interes teacher';
-        $teacher->departments = 'departamentos teacher';
+        $teacher->areasOfInterest = 'Estoy muy interesada en todos los proyectos de cooperación al desarrollo en los que podamos ayudar desde el conocimiento en la informática. Aunque de forma especial, me interesan el comercio justo y el ecologismo.';
+        $teacher->departments = 'Podeis encontrarme en el departamento de informática en la Escuela de Ingeniería Informática. Despacho 1D3234';
         $teacher->save();
         
         DB::table('Study_Teacher')->insert([
@@ -27,10 +27,6 @@ class TeacherSeeder extends Seeder
         DB::table('Study_Teacher')->insert([
             'teacher_id' => 5,
             'study_id' => 2,
-        ]);
-        DB::table('Study_Teacher')->insert([
-            'teacher_id' => 5,
-            'study_id' => 3,
         ]);
         
     }

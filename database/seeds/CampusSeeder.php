@@ -16,25 +16,25 @@ class CampusSeeder extends Seeder
         
         $campus = new Campus();
         $campus->name = 'Campus de Valladolid';
-        $campus->abbreviation = 'VA';
+        $campus->abbreviation = 'Valladolid';
         $campus->inactive = false;
         $campus->save();
         
         $campus = new Campus();
         $campus->name = 'Campus de Palencia';
-        $campus->abbreviation = 'PA';
+        $campus->abbreviation = 'Palencia';
         $campus->inactive = false;
         $campus->save();
         
         $campus = new Campus();
         $campus->name = 'Campus de Segovia';
-        $campus->abbreviation = 'SE';
+        $campus->abbreviation = 'Segovia';
         $campus->inactive = false;
         $campus->save();
         
         $campus = new Campus();
         $campus->name = 'Campus de Soria';
-        $campus->abbreviation = 'SO';
+        $campus->abbreviation = 'Soria';
         $campus->inactive = false;
         $campus->save();
         

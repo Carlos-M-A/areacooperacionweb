@@ -23,8 +23,8 @@ class RoleChangeRequestSeeder extends Seeder
         
         $teacher = new Teacher();
         $teacher->id = 6;
-        $teacher->areasOfInterest = 'Areas interes cambio rol estu a doce';
-        $teacher->departments = 'departamentos cambio de rol estudiante a teacher';
+        $teacher->areasOfInterest = 'Ecologismo. Comercio Justo';
+        $teacher->departments = 'Departamento de Física Aplicada, despacho 23d33';
         $teacher->save();
         
         DB::table('Study_Teacher')->insert([

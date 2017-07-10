@@ -15,8 +15,8 @@ class CreateOther extends Migration
     {
         Schema::create('Other', function (Blueprint $table) {
             $table->integer('id')->unsigned();
-            $table->string('areasOfInterest', config('forms.areasOfInterest'));
-            $table->string('description', config('forms.other_description'));
+            $table->text('areasOfInterest');
+            $table->text('description');
             
             $table->primary('id');
             $table->foreign('id')->references('id')->on('User')
