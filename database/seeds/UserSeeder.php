@@ -20,8 +20,8 @@ class UserSeeder extends Seeder
         $user->surnames = '';
         $user->email = 'administrador@email.com';
         $user->password = bcrypt('123456');
-        $user->idCard = '';
-        $user->phone = '';
+        $user->idCard = 'asdfasdf';
+        $user->phone = 'asdfasdf';
         $user->role = 6;
         $user->accepted = true;
         $user->isObservatoryMember = false;
@@ -39,8 +39,8 @@ class UserSeeder extends Seeder
         $user->surnames = 'Área de Cooperacion Internacional para el Desarrollo de la Universidad de Valladaolid';
         $user->email = 'areacooperacion@email.com';
         $user->password = bcrypt('123456');
-        $user->idCard = '';
-        $user->phone = '';
+        $user->idCard = 'dfdfdffd';
+        $user->phone = 'dfdfdfffd';
         $user->role = 5;
         $user->accepted = true;
         $user->isObservatoryMember = false;
